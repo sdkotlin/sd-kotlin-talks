@@ -11,7 +11,7 @@
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="kotlin-for-java-devs_main" target="1.8" />
       <module name="kotlin-for-java-devs_test" target="1.8" />
     </bytecodeTargetLevel>
