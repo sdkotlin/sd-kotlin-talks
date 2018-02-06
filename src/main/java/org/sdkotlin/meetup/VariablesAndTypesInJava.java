@@ -1,6 +1,6 @@
 package org.sdkotlin.meetup;
 
-public class TypesInJava {
+public class VariablesAndTypesInJava {
 	boolean bool; // = false
 	Boolean Bool; // = null
 	byte b; // = 0
@@ -17,4 +17,11 @@ public class TypesInJava {
 	Float F; // = null
 	double d; // = 0.0d
 	Double D; // = null
+
+	final int j = 0;
+
+	void funWithVariables() {
+		i++;
+		// j++; // Does not compile
+	}
 }
