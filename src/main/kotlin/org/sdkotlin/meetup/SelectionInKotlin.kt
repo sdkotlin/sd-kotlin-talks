@@ -15,6 +15,7 @@ fun main(args: Array<String>) {
 	// As such no ternary operator
 	val x = if (true) 1 else 0
 
+	// Instead of `switch-case` we have the more powerful and elegant `when`
 	when (x) {
 		0, 1 -> println("x is 0 or 1")
 		in 2..10 -> println("x between 2 and 10 (inclusive)")
