@@ -21,6 +21,6 @@ val d = 0.0 // Double, 'd/D' not supported
 var j = 0
 
 fun withVariables() {
-	//i++ // Does not compile
+	// i++ // Does not compile
 	j++
 }
