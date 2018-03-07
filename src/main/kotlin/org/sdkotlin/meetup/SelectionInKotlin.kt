@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 	}
 
 	// Except they're expressions!
-	// As such no ternary operator
+	// As such, no ternary operator
 	val x = if (true) 1 else 0
 
 	// Instead of `switch-case` we have the more powerful and elegant `when`
