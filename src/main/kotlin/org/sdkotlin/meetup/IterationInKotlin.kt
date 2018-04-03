@@ -9,6 +9,8 @@ fun main(args: Array<String>) {
 
 	(1..5).forEach { i -> println("Again... $i") }
 
+	(1 until 5).forEach { i -> println("And again... $i") }
+
 	repeat(5) { i -> println("Yet again... $i") }
 
 	for (i in 5 downTo 1) {
