@@ -21,6 +21,9 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
+# Checkstyle (for now)
+.idea/checkstyle-idea.xml
+
 ### macOS template
 # General
 .DS_Store
