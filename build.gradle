@@ -11,8 +11,8 @@ buildscript {
 	}
 }
 
-group 'org.sdkotlin'
-version '1.0-SNAPSHOT'
+group = 'org.sdkotlin'
+version = '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
