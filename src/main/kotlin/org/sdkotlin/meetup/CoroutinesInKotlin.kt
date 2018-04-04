@@ -6,12 +6,10 @@ import kotlinx.coroutines.experimental.runBlocking
 
 fun main(args: Array<String>) = runBlocking {
 
-	val jobs = List(100_000) { // launch a lot of coroutines and list their jobs
-
+	// Launch a lot of coroutines!
+	val jobs = List(100_000) {
 		launch {
-
 			delay(1000L)
-
 			println(".")
 		}
 	}
