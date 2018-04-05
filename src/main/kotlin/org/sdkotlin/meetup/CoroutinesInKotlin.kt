@@ -4,8 +4,6 @@ import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
-import java.lang.System.gc
-import java.util.concurrent.atomic.AtomicInteger
 import kotlin.concurrent.thread
 
 fun main(args: Array<String>) {
