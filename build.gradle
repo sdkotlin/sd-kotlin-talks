@@ -1,5 +1,5 @@
 buildscript {
-	ext.kotlin_version = '1.2.31'
+	ext.kotlin_version = '1.2.41'
 	ext.kotlin_coroutines_version = '0.22.5'
 
 	repositories {
@@ -41,6 +41,6 @@ compileTestKotlin {
 }
 
 wrapper {
-	gradleVersion = '4.6'
+	gradleVersion = '4.7'
 	distributionType = Wrapper.DistributionType.ALL
 }
