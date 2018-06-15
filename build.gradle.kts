@@ -21,7 +21,7 @@ dependencies {
 	val junitVersion = "5.2.0"
 
 	implementation(kotlin("stdlib-jdk8"))
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.2")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.3")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 	testImplementation("org.assertj:assertj-core:3.10.0")
