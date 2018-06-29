@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("jvm") version "1.2.50"
-	id("com.github.ben-manes.versions") version "0.17.0"
+	id("com.github.ben-manes.versions") version "0.20.0"
 }
 
 group = "org.sdkotlin"
@@ -48,7 +48,7 @@ tasks {
 	}
 
 	"wrapper"(Wrapper::class) {
-		gradleVersion = "4.8"
+		gradleVersion = "4.8.1"
 		distributionType = DistributionType.ALL
 	}
 }
