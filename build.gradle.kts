@@ -32,22 +32,24 @@ java {
 	targetCompatibility = VERSION_1_8
 }
 
-kotlin.experimental.coroutines = Coroutines.ENABLE
-
-tasks.withType<KotlinCompile> {
-	kotlinOptions.jvmTarget = VERSION_1_8.toString()
+kotlin {
+	experimental.coroutines = Coroutines.ENABLE
 }
 
 tasks {
 
-	"test"(Test::class) {
+	withType<KotlinCompile> {
+		kotlinOptions.jvmTarget = VERSION_1_8.toString()
+	}
+
+	getByName<Test>("test") {
 		useJUnitPlatform()
 		testLogging {
 			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
 		}
 	}
 
-	"wrapper"(Wrapper::class) {
+	getByName<Wrapper>("wrapper") {
 		gradleVersion = "4.9"
 		distributionType = DistributionType.ALL
 	}
