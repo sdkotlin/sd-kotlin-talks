@@ -21,12 +21,14 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
-# Checkstyle (for now)
+# Checkstyle
 .idea/checkstyle-idea.xml
 
-### macOS template
-# General
-.DS_Store
+# SonarLint
+.idea/sonarlint
+
+# QAPlug
+.idea/qaplug_profiles.xml
 
 ### Gradle template
 .gradle
