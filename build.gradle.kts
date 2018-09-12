@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-	val junitVersion = "5.2.0"
+	val junitVersion = "5.3.1"
 
 	implementation(kotlin("stdlib-jdk8"))
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.24.0")
