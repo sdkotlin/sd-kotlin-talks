@@ -50,7 +50,7 @@ tasks {
 	}
 
 	getByName<Wrapper>("wrapper") {
-		gradleVersion = "4.9"
+		gradleVersion = "4.10.1"
 		distributionType = DistributionType.ALL
 	}
 }
