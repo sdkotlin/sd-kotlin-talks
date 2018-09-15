@@ -18,7 +18,7 @@ out/
 .idea/**/uiDesigner.xml
 
 # Gradle:
-/*.iml
+*.iml
 .idea/modules
 .idea/modules.xml
 .idea/**/gradle.xml
