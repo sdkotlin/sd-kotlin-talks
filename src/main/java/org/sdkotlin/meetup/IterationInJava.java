@@ -1,7 +1,7 @@
 package org.sdkotlin.meetup;
 
 public class IterationInJava {
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 
 		for (int i = 1; i <= 5; i++) {
 			System.out.println("Counting... " + i);
@@ -17,7 +17,7 @@ public class IterationInJava {
 
 		final char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-		for (char l : alphabet) {
+		for (final char l : alphabet) {
 			System.out.println("Letters... " + l);
 		}
 

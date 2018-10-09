@@ -2,7 +2,7 @@ package org.sdkotlin.meetup;
 
 class Singleton {
 
-	public static Singleton INSTANCE = new Singleton();
+	public static final Singleton INSTANCE = new Singleton();
 
 	private Singleton() {
 	}
@@ -13,9 +13,9 @@ class Singleton {
 }
 
 public class SingletonInJava {
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 
-		Singleton singleton;
+		final Singleton singleton;
 
 		// singleton = new Singleton(); // Does not compile.
 		singleton = Singleton.INSTANCE;

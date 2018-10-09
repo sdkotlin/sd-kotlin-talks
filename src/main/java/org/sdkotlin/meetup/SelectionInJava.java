@@ -1,7 +1,7 @@
 package org.sdkotlin.meetup;
 
 public class SelectionInJava {
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 
 		if (true) {
 			System.out.println(true);
@@ -11,7 +11,7 @@ public class SelectionInJava {
 			System.out.println("Huh?");
 		}
 
-		int x = (true) ? 1 : 0;
+		final int x = (true) ? 1 : 0;
 
 		switch (x) {
 			case 0:

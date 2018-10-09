@@ -3,8 +3,7 @@ package org.sdkotlin.meetup;
 import java.util.Objects;
 
 public class DataClassesInJava {
-	public static void main(String[] args) {
-
+	public static void main(final String[] args) {
 		System.out.println(new Person("Luke"));
 	}
 }
@@ -14,11 +13,11 @@ class Person {
 	private String name;
 	private String favoriteProgrammingLangauge;
 
-	public Person(String name) {
+	public Person(final String name) {
 		this(name, "Kotlin");
 	}
 
-	public Person(String name, String favoriteProgrammingLangauge) {
+	public Person(final String name, final String favoriteProgrammingLangauge) {
 		this.name = name;
 		this.favoriteProgrammingLangauge = favoriteProgrammingLangauge;
 	}
@@ -27,7 +26,7 @@ class Person {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -35,15 +34,15 @@ class Person {
 		return favoriteProgrammingLangauge;
 	}
 
-	public void setFavoriteProgrammingLangauge(String favoriteProgrammingLangauge) {
+	public void setFavoriteProgrammingLangauge(final String favoriteProgrammingLangauge) {
 		this.favoriteProgrammingLangauge = favoriteProgrammingLangauge;
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		Person person = (Person) o;
+		final Person person = (Person) o;
 		return Objects.equals(name, person.name) &&
 				Objects.equals(favoriteProgrammingLangauge, person.favoriteProgrammingLangauge);
 	}
@@ -55,7 +54,7 @@ class Person {
 
 	@Override
 	public String toString() {
-		final StringBuffer sb = new StringBuffer("Person{");
+		final StringBuilder sb = new StringBuilder("Person{");
 		sb.append("name='").append(name).append('\'');
 		sb.append(", favoriteProgrammingLangauge='").append(favoriteProgrammingLangauge).append('\'');
 		sb.append('}');
