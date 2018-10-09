@@ -19,7 +19,6 @@ fun main(args: Array<String>) {
 private fun lotsOfThreads() {
 
 	(1..ONE_MILLION).forEach {
-
 		try {
 			thread {
 				Thread.sleep(ONE_THOUSAND.toLong())
@@ -34,19 +33,15 @@ private fun lotsOfThreads() {
 private fun lotsOfCoroutines() {
 
 	val elapsedTime = measureTimeMillis {
-		// Launch a lot of coroutines!
-		val jobs = List(ONE_MILLION) {
-
-			GlobalScope.launch {
-				delay(ONE_THOUSAND)
-			}
-		}
-
 		runBlocking {
-
-			jobs.forEach { it.join() } // wait for all jobs to complete
+			// Launch a lot of coroutines!
+			val jobs = List(ONE_MILLION) {
+				GlobalScope.launch {
+					delay(ONE_THOUSAND.toLong())
+				}
+			}
+			jobs.joinAll()
 		}
-
 	}
 
 	println(
@@ -56,14 +51,12 @@ private fun lotsOfCoroutines() {
 private fun asyncSum() {
 
 	val elapsedTime = measureTimeMillis {
-
-		val deferredInts = List(ONE_MILLION) { i ->
-			GlobalScope.async {
-				i + 1
-			}
-		}
-
 		runBlocking {
+			val deferredInts = List(ONE_MILLION) { i ->
+				GlobalScope.async {
+					i + 1
+				}
+			}
 			deferredInts.awaitAll()
 		}
 	}

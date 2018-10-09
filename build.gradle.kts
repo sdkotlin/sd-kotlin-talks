@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "1.2.70"
+	kotlin("jvm") version "1.2.71"
 	id("com.github.ben-manes.versions") version "0.20.0"
 }
 
@@ -21,7 +21,7 @@ dependencies {
 	val junitVersion = "5.3.1"
 
 	implementation(kotlin("stdlib-jdk8"))
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.26.1")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.30.2")
 	testImplementation("org.assertj:assertj-core:3.11.1")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
