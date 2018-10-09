@@ -24,3 +24,10 @@ fun withVariables() {
 	// i++ // Does not compile
 	j++
 }
+
+fun main(args: Array<String>) {
+	println(
+		"Boolean: $bool, Byte: $b, Char: $c, Short: $s, Int: $i, Long: $l, Float: $f, Double: $d, variable Int j: $j")
+	withVariables()
+	println("variable Int j: $j")
+}

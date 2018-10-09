@@ -37,26 +37,38 @@ fun cantTouchThis(i: Int): Int {
 }
 
 // Parameters can have default values!
-fun defaultParams(x: Int = 0) {
-	println(x)
+fun defaultParams(x: Int = 0): Int {
+	return x
 }
 
 fun useDefaultParams() {
-	defaultParams() // Prints 0
-	defaultParams(1) // Prints 1
+	println(defaultParams()) // Prints 0
+	println(defaultParams(1)) // Prints 1
 }
 
 fun namedParams(
-	firstName: String = "",
-	lastName: String,
+	firstName: String = "John",
+	lastName: String = "Doe",
 	email: String,
 	favoriteProgrammingLanguage: String = "Kotlin"
 ) {
-	println(firstName + lastName + email + favoriteProgrammingLanguage)
+	println("$firstName $lastName $email $favoriteProgrammingLanguage")
 }
 
 // You can name function parameters to disambiguate default params,
 // or just to make function calls with large numbers of params more clear
 fun useNamedParams() {
 	namedParams(lastName = "Smith", email = "smith@smithery.com")
+}
+
+fun main(args: Array<String>) {
+
+	function()
+	println(add(2, 2))
+	println(subtract(3, 1))
+	println(multiply(3, 3))
+	println(voidish())
+	println(cantTouchThis(1))
+	useDefaultParams()
+	useNamedParams()
 }

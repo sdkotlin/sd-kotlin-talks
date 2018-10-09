@@ -13,6 +13,4 @@ fun main(args: Array<String>) {
 
 	val leia = luke.copy(name = "Leia")
 	println(leia.age)
-
-
 }

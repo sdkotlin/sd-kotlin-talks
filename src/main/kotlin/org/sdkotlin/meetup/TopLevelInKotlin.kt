@@ -9,3 +9,7 @@ fun printWeather() {
 		println("It's sunny!")
 	}
 }
+
+fun main(args: Array<String>) {
+	printWeather()
+}

@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
 	var name = "Ezra"
 	// name = null // Does not compile
 
-	var nullableName: String? = null
+	val nullableName: String? = null
 
 	println("Non-nullable name length: ${name.length}")
 
