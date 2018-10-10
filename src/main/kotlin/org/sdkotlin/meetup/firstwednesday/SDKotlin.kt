@@ -1,4 +1,4 @@
-package org.sdkotlin.meetup
+package org.sdkotlin.meetup.firstwednesday
 
 import java.time.DayOfWeek.*
 import java.time.LocalDate.*
