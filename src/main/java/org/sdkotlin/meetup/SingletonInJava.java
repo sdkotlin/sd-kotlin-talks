@@ -13,6 +13,7 @@ class Singleton {
 }
 
 public class SingletonInJava {
+
 	public static void main(final String[] args) {
 
 		final Singleton singleton;

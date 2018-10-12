@@ -1,6 +1,7 @@
 package org.sdkotlin.meetup;
 
 public class SelectionInJava {
+
 	public static void main(final String[] args) {
 
 		if (true) {

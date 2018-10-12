@@ -1,6 +1,7 @@
 package org.sdkotlin.meetup;
 
 public class VariablesAndTypesInJava {
+
 	boolean bool; // = false
 	Boolean Bool; // = null
 	byte b; // = 0

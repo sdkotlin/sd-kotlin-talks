@@ -1,6 +1,6 @@
 package org.sdkotlin.meetup
 
-import org.sdkotlin.meetup.StringsInJava.*
+import org.sdkotlin.meetup.StringsInJava.STRING
 
 fun main(args: Array<String>) {
 

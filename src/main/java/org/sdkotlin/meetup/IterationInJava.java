@@ -1,6 +1,7 @@
 package org.sdkotlin.meetup;
 
 public class IterationInJava {
+
 	public static void main(final String[] args) {
 
 		for (int i = 1; i <= 5; i++) {
@@ -27,7 +28,7 @@ public class IterationInJava {
 
 		int i = 1;
 
-		while(i <= 5) {
+		while (i <= 5) {
 			System.out.println("Counting between 1 and 5: " + i++);
 		}
 	}
