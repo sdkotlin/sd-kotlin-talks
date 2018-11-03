@@ -1,7 +1,6 @@
 import org.gradle.api.JavaVersion.*
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
-import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
