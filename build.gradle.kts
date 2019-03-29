@@ -1,11 +1,15 @@
-import org.gradle.api.JavaVersion.*
-import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+import org.gradle.api.JavaVersion.VERSION_1_8
+import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
+import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "1.3.10"
-	id("com.github.ben-manes.versions") version "0.20.0"
+	kotlin("jvm") version "1.3.21"
+	id("com.github.ben-manes.versions") version "0.21.0"
 }
 
 group = "org.sdkotlin"
@@ -17,11 +21,11 @@ repositories {
 }
 
 dependencies {
-	val junitVersion = "5.3.1"
+	val junitVersion = "5.4.1"
 
 	implementation(kotlin("stdlib-jdk8"))
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1")
-	testImplementation("org.assertj:assertj-core:3.11.1")
+	testImplementation("org.assertj:assertj-core:3.12.2")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
@@ -45,7 +49,7 @@ tasks {
 	}
 
 	getByName<Wrapper>("wrapper") {
-		gradleVersion = "4.10.2"
+		gradleVersion = "5.3.1"
 		distributionType = DistributionType.ALL
 	}
 }
