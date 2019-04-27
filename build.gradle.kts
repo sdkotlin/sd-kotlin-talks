@@ -8,7 +8,7 @@ import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "1.3.30"
+	kotlin("jvm") version "1.3.31"
 	id("com.github.ben-manes.versions") version "0.21.0"
 }
 
@@ -24,7 +24,7 @@ dependencies {
 	val junitVersion = "5.4.2"
 
 	implementation(kotlin("stdlib-jdk8"))
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1")
 	testImplementation("org.assertj:assertj-core:3.12.2")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
@@ -49,7 +49,7 @@ tasks {
 	}
 
 	getByName<Wrapper>("wrapper") {
-		gradleVersion = "5.3.1"
+		gradleVersion = "5.4.1"
 		distributionType = DistributionType.ALL
 	}
 }
