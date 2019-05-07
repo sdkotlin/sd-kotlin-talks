@@ -4,37 +4,14 @@
 out/
 
 # User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/misc.xml
-.idea/**/tasks.xml
-.idea/dictionaries
-
-# Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+.idea
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+!.idea/encodings.xml
 
 # Gradle:
 *.iml
-.idea/modules
-.idea/modules.xml
-.idea/**/gradle.xml
-.idea/**/libraries
-
-# Checkstyle
-.idea/checkstyle-idea.xml
-
-# SonarLint
-.idea/sonarlint
-
-# QAPlug
-.idea/qaplug_profiles.xml
 
 ### Gradle template
-
 .gradle
-/build/
+build/
