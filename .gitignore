@@ -1,9 +1,5 @@
 ### JetBrains template
 
-# IntelliJ
-out/
-
-# User-specific stuff:
 .idea/*
 !.idea/codeStyles/
 !.idea/inspectionProfiles/
@@ -11,6 +7,9 @@ out/
 
 # Gradle:
 *.iml
+
+# IntelliJ
+out/
 
 ### Gradle template
 .gradle
