@@ -1,6 +1,5 @@
 plugins {
 	`kotlin-project`
-	id("com.github.ben-manes.versions")
 }
 
 dependencies {

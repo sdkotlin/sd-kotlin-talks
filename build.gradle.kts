@@ -1,7 +1,9 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
 plugins {
-	id("com.github.ben-manes.versions") version "0.21.0" apply false
+	id("com.github.ben-manes.versions") version "0.21.0"
 }
 
 allprojects {
@@ -15,7 +17,24 @@ allprojects {
 }
 
 tasks {
-	getByName<Wrapper>("wrapper") {
+	named<DependencyUpdatesTask>("dependencyUpdates") {
+		revision = "release"
+		gradleReleaseChannel = GradleReleaseChannel.CURRENT.id
+		resolutionStrategy {
+			componentSelection {
+				all {
+					val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea").any { qualifier ->
+						candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
+					}
+					if (rejected) {
+						reject("Release candidate")
+					}
+				}
+			}
+		}
+	}
+
+	named<Wrapper>("wrapper") {
 		gradleVersion = "5.4.1"
 		distributionType = DistributionType.ALL
 	}
