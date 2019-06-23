@@ -20,6 +20,7 @@ tasks {
 	getByName<Test>("test") {
 		useJUnitPlatform()
 		testLogging {
+			showStandardStreams = true
 			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
 		}
 	}
