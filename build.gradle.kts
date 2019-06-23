@@ -1,5 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel
+import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.*
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
 plugins {
@@ -19,7 +19,7 @@ allprojects {
 tasks {
 	named<DependencyUpdatesTask>("dependencyUpdates") {
 		revision = "release"
-		gradleReleaseChannel = GradleReleaseChannel.CURRENT.id
+		gradleReleaseChannel = CURRENT.id
 		resolutionStrategy {
 			componentSelection {
 				all {
