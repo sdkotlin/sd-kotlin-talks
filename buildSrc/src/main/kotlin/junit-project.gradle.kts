@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-	val junitVersion = "5.4.2"
+	val junitVersion = "5.5.0"
 
 	testImplementation("org.assertj:assertj-core:3.12.2")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
