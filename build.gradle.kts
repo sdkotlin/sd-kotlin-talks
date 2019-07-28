@@ -24,7 +24,7 @@ tasks {
 			componentSelection {
 				all {
 					val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea").any { qualifier ->
-						candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
+						candidate.version.matches(Regex("(?i).*[.-]$qualifier.*"))
 					}
 					if (rejected) {
 						reject("Release candidate")
