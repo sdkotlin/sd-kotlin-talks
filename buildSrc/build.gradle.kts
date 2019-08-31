@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41")
+	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
 }
 
 kotlinDslPluginOptions {

@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.*
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
 plugins {
-	id("com.github.ben-manes.versions") version "0.21.0"
+	id("com.github.ben-manes.versions") version "0.23.0"
 }
 
 allprojects {
@@ -35,7 +35,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper") {
-		gradleVersion = "5.5"
+		gradleVersion = "5.6.1"
 		distributionType = DistributionType.ALL
 	}
 }
