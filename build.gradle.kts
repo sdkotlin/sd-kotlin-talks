@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.*
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
 plugins {
-	id("com.github.ben-manes.versions") version "0.23.0"
+	id("com.github.ben-manes.versions") version "0.24.0"
 }
 
 allprojects {

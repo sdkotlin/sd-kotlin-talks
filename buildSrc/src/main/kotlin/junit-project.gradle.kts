@@ -11,8 +11,8 @@ plugins {
 dependencies {
 	val junitVersion = "5.5.1"
 
-	testImplementation("org.assertj:assertj-core:3.13.2")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+	testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 

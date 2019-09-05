@@ -1,3 +1,3 @@
 rootProject.name = "sd-kotlin-talks"
 
-include("kotlin-for-java-devs", "effective-kotlin")
+include("kotlin-for-java-devs", "effective-kotlin", "tdd-in-kotlin")
