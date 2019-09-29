@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-	val junitVersion = "5.5.1"
+	val junitVersion = "5.5.2"
 
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
 	testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
@@ -17,7 +17,7 @@ dependencies {
 }
 
 tasks {
-	getByName<Test>("test") {
+	named<Test>("test") {
 		useJUnitPlatform()
 		testLogging {
 			showStandardStreams = true

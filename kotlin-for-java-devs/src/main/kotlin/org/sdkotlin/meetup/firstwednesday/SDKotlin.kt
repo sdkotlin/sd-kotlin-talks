@@ -7,7 +7,7 @@ import java.time.temporal.TemporalAdjusters.dayOfWeekInMonth
 fun firstWednesday() =
 	now() == now().with(dayOfWeekInMonth(1, WEDNESDAY))
 
-fun main(args: Array<String>) {
+fun main() {
 	when (firstWednesday()) {
 		true -> println("SD Kotlin time!")
 	}
