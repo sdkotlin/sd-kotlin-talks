@@ -11,7 +11,7 @@ class KotlinTestSortTest : StringSpec({
 
 	"should return elements in order for" {
 		val unsortedArrays = table(
-			headers("unsorted", "sortedArray"),
+			headers("actual", "expected"),
 			row(emptyArray(), emptyArray()),
 			row(arrayOf(1), arrayOf(1)),
 			row(arrayOf(1, 2), arrayOf(1, 2)),

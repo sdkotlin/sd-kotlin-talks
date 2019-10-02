@@ -2,6 +2,7 @@ package org.sdkotlin.tdd
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.Arguments.arguments
 import org.junit.jupiter.params.provider.MethodSource
 
@@ -10,7 +11,7 @@ class JUnit5ParameterizedSortTest {
 	companion object {
 		@JvmStatic
 		fun arrays() = listOf(
-			arguments(emptyArray<Int>(), emptyArray<Int>()),
+			Arguments.of(emptyArray<Int>(), emptyArray<Int>()),
 			arguments(arrayOf(1), arrayOf(1)),
 			arguments(arrayOf(1, 2), arrayOf(1, 2)),
 			arguments(arrayOf(2, 1), arrayOf(1, 2)),
@@ -21,7 +22,7 @@ class JUnit5ParameterizedSortTest {
 		)
 	}
 
-	@ParameterizedTest(name = "{arguments}")
+	@ParameterizedTest(name = "actual: {0}, expected {1}")
 	@MethodSource("arrays")
 	fun `test sort`(actual: Array<Int>, expected: Array<Int>) {
 		val sortedArray = sort(actual)
