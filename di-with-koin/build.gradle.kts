@@ -14,8 +14,9 @@ plugins {
 dependencies {
 
 	val koinVersion = "2.0.1"
-	compile("org.koin:koin-core:$koinVersion")
-	testCompile("org.koin:koin-test:$koinVersion")
+	implementation("org.koin:koin-core:$koinVersion")
+	testImplementation("org.koin:koin-test:$koinVersion")
+	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
 }
 
 testSets {

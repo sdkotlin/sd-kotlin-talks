@@ -5,7 +5,7 @@ import org.koin.core.inject
 
 class HelloApp : KoinComponent {
 
-	private val helloService: HelloService by inject()
+	private val helloController: HelloController by inject()
 
-	fun run() = println(helloService.sayHello())
+	fun run() = println(helloController.sayHello())
 }
