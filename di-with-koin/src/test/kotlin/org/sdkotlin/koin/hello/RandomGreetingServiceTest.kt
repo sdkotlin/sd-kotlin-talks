@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class RandomGreetingServiceTest {
 
 	@Test
-	fun `should return an random greeting`() {
+	fun `should return a random greeting`() {
 
 		val greetingService: GreetingService = RandomGreetingService()
 

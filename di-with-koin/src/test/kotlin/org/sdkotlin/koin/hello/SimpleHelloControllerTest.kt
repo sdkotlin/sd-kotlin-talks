@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test
 internal class SimpleHelloControllerTest {
 
 	@Test
-	fun `test say hello`() {
+	fun `should say hello`() {
 
-		val expectedGreeting = "Hi there!"
+		val expectedGreeting = "Hi!"
 
 		val helloService = mock<GreetingService> {
 			on { getGreeting() } doReturn expectedGreeting

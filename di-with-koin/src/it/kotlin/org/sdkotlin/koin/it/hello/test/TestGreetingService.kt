@@ -5,7 +5,7 @@ import org.sdkotlin.koin.hello.GreetingService
 internal class TestGreetingService : GreetingService {
 
 	companion object {
-		const val TEST_GREETING = "Howdy!"
+		const val TEST_GREETING = "Howdy, World!"
 	}
 
 	override fun getGreeting() = TEST_GREETING

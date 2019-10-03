@@ -3,7 +3,7 @@ package org.sdkotlin.koin.hello
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class HelloApp : KoinComponent {
+internal class HelloApp : KoinComponent {
 
 	private val helloController: HelloController by inject()
 
