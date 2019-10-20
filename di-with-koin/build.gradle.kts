@@ -8,7 +8,7 @@ plugins {
 	`kotlin-project`
 	`junit-project`
 	`assertj-project`
-	id("org.unbroken-dome.test-sets") version "2.2.0"
+	id("org.unbroken-dome.test-sets") version "2.2.1"
 }
 
 dependencies {
