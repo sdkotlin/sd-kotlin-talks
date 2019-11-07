@@ -8,8 +8,5 @@ fun firstWednesday() =
 	now() == now().with(dayOfWeekInMonth(1, WEDNESDAY))
 
 fun main() {
-	when (firstWednesday()) {
-		true -> println("SD Kotlin time!")
-	}
+	if (firstWednesday()) println("SD Kotlin time!")
 }
-
