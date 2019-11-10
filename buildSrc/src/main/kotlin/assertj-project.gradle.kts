@@ -1,7 +1,7 @@
 plugins {
-	java
+	`java-library`
 }
 
 dependencies {
-	testImplementation("org.assertj:assertj-core:3.13.2")
+	testImplementation("org.assertj:assertj-core:3.14.0")
 }
