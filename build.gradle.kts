@@ -1,6 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.*
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
+import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
 	id("com.github.ben-manes.versions") version "0.27.0"
@@ -35,7 +35,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper") {
-		gradleVersion = "6.0"
-		distributionType = DistributionType.ALL
+		gradleVersion = "6.0.1"
+		distributionType = ALL
 	}
 }
