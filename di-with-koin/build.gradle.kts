@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
 import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	`kotlin-project`
@@ -24,6 +25,11 @@ testSets {
 }
 
 tasks {
+
+	withType<KotlinCompile>().configureEach {
+		kotlinOptions.freeCompilerArgs += "-Xinline-classes"
+	}
+
 	named<Test>("integrationTest") {
 		useJUnitPlatform()
 		filter {

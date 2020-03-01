@@ -9,4 +9,8 @@ val helloModule = module {
 	single<GreetingService>(named<EnglishGreetingService>()) { EnglishGreetingService() }
 
 	single<HelloController> { SimpleHelloController(get()) }
+
+	single(named<ExternalComponent>()) { (externalComponent: ExternalComponent) -> externalComponent }
+
+	single(named<ExternalComponentContainer>()) { ExternalComponentContainer(get(named<ExternalComponent>())) }
 }

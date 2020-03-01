@@ -6,8 +6,13 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import org.koin.core.parameter.parametersOf
+import org.koin.core.qualifier.named
 import org.koin.test.KoinTest
+import org.koin.test.get
 import org.koin.test.inject
+import org.sdkotlin.koin.hello.ExternalComponent
+import org.sdkotlin.koin.hello.ExternalComponentContainer
 import org.sdkotlin.koin.hello.HelloController
 import org.sdkotlin.koin.hello.RandomGreetingService
 import org.sdkotlin.koin.hello.helloModule
@@ -34,5 +39,23 @@ internal class HelloModuleIT : KoinTest {
 		val response = helloController.sayHello()
 
 		assertThat(response).isIn(RandomGreetingService.GREETINGS)
+	}
+
+	@Test
+	fun `Integration test the external entity`() {
+
+		val expectedValue = "testing"
+
+		// "Reverse inject" the external component into the Koin module as an
+		// injection parameter for a singleton that is the parameter itself
+		get<ExternalComponent>(named<ExternalComponent>()) {
+			parametersOf(ExternalComponent(expectedValue))
+		}
+
+		// Get another component from Koin that depends on the external
+		// component having been injected into the module
+		val externalComponentContainer = get<ExternalComponentContainer>(named<ExternalComponentContainer>())
+
+		assertThat(externalComponentContainer.externalComponent.value).isEqualTo(expectedValue)
 	}
 }
