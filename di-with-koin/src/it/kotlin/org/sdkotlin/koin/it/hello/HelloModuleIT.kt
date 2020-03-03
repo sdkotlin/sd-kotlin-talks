@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatExceptionOfType
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -14,7 +13,6 @@ import org.koin.core.qualifier.named
 import org.koin.test.KoinTest
 import org.koin.test.get
 import org.koin.test.inject
-import org.koin.test.mock.declare
 import org.sdkotlin.koin.hello.DECLARED_COMPONENT
 import org.sdkotlin.koin.hello.DECLARED_COMPONENT_CONTAINER
 import org.sdkotlin.koin.hello.ExternalComponent
@@ -61,29 +59,6 @@ internal class HelloModuleIT : KoinTest {
 		val externalComponent = ExternalComponent(TESTING)
 
 		getKoin().declare(externalComponent, named(DECLARED_COMPONENT))
-
-		val externalComponentContainer = get<ExternalComponentContainer>(named(DECLARED_COMPONENT_CONTAINER))
-
-		assertThat(externalComponentContainer.externalComponent.value).isEqualTo(TESTING)
-	}
-
-	@Test
-	@Disabled
-	fun `test declaring an external component with the Koin Test DSL`() {
-
-		assertThatExceptionOfType(InstanceCreationException::class.java).isThrownBy {
-			get<ExternalComponentContainer>(named(DECLARED_COMPONENT_CONTAINER))
-		}
-
-		val externalComponent = ExternalComponent(TESTING)
-
-		declare {
-			/* Does not compile, receiver type mismatch...
-			single<ExternalComponent>(named(DECLARED_COMPONENT)) {
-				externalComponent
-			}
-			*/
-		}
 
 		val externalComponentContainer = get<ExternalComponentContainer>(named(DECLARED_COMPONENT_CONTAINER))
 
