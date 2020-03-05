@@ -9,6 +9,7 @@ plugins {
 	`kotlin-project`
 	`junit-project`
 	`assertj-project`
+	idea
 	id("org.unbroken-dome.test-sets") version "2.2.1"
 }
 
@@ -39,5 +40,12 @@ tasks {
 			showStandardStreams = true
 			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
 		}
+	}
+}
+
+idea {
+	module {
+		testSourceDirs.addAll(kotlin.sourceSets["integrationTest"].kotlin.srcDirs)
+		testResourceDirs.addAll(kotlin.sourceSets["integrationTest"].resources.srcDirs)
 	}
 }
