@@ -6,16 +6,16 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+	idea
 	`kotlin-project`
 	`junit-project`
 	`assertj-project`
-	idea
 	id("org.unbroken-dome.test-sets") version "2.2.1"
 }
 
 dependencies {
 
-	val koinVersion = "2.1.2"
+	val koinVersion = "2.1.3"
 	implementation("org.koin:koin-core:$koinVersion")
 	testImplementation("org.koin:koin-test:$koinVersion")
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
