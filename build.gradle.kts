@@ -1,5 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.*
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
