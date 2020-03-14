@@ -22,7 +22,9 @@ dependencies {
 }
 
 testSets {
-	create("integrationTest")
+	create("integrationTest") {
+		dirName = "it"
+	}
 }
 
 tasks {
