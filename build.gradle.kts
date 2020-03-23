@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
@@ -28,7 +29,7 @@ tasks {
 		rejectVersionIf {
 			isNonStable(candidate.version)
 		}
-		gradleReleaseChannel = "current"
+		gradleReleaseChannel = CURRENT.id
 	}
 
 	named<Wrapper>("wrapper") {
