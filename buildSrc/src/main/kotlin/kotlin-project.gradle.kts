@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
 	implementation(kotlin("stdlib-jdk8"))
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
 }
 
 java {
