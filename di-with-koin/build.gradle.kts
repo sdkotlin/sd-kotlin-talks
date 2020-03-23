@@ -21,8 +21,10 @@ dependencies {
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
 }
 
+val integrationTestSuiteName = "integrationTest"
+
 testSets {
-	create("integrationTest") {
+	create(integrationTestSuiteName) {
 		dirName = "it"
 	}
 }
@@ -33,7 +35,7 @@ tasks {
 		kotlinOptions.freeCompilerArgs += "-Xinline-classes"
 	}
 
-	named<Test>("integrationTest") {
+	named<Test>(integrationTestSuiteName) {
 		useJUnitPlatform()
 		filter {
 			includeTestsMatching("*IT")
@@ -42,12 +44,19 @@ tasks {
 			showStandardStreams = true
 			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
 		}
+		val test by existing
+		shouldRunAfter(test)
+	}
+
+	check {
+		val integrationTest by existing
+		dependsOn(integrationTest)
 	}
 }
 
 idea {
 	module {
-		testSourceDirs.addAll(kotlin.sourceSets["integrationTest"].kotlin.srcDirs)
-		testResourceDirs.addAll(kotlin.sourceSets["integrationTest"].resources.srcDirs)
+		testSourceDirs.addAll(kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs)
+		testResourceDirs.addAll(kotlin.sourceSets[integrationTestSuiteName].resources.srcDirs)
 	}
 }
