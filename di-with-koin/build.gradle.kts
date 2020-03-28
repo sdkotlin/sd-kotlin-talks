@@ -35,14 +35,17 @@ tasks {
 		kotlinOptions.freeCompilerArgs += "-Xinline-classes"
 	}
 
-	named<Test>(integrationTestSuiteName) {
+	withType<Test> {
 		useJUnitPlatform()
-		filter {
-			includeTestsMatching("*IT")
-		}
 		testLogging {
 			showStandardStreams = true
 			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
+		}
+	}
+
+	named<Test>(integrationTestSuiteName) {
+		filter {
+			includeTestsMatching("*IT")
 		}
 		val test by existing
 		shouldRunAfter(test)
