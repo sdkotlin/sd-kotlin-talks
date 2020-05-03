@@ -47,10 +47,10 @@ fun useDefaultParams() {
 }
 
 fun namedParams(
-	firstName: String = "John",
-	lastName: String = "Doe",
-	email: String,
-	favoriteProgrammingLanguage: String = "Kotlin"
+		firstName: String = "John",
+		lastName: String = "Doe",
+		email: String,
+		favoriteProgrammingLanguage: String = "Kotlin"
 ) {
 	println("$firstName $lastName $email $favoriteProgrammingLanguage")
 }

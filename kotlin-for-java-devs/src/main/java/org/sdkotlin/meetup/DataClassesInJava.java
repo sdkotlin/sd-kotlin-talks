@@ -45,7 +45,7 @@ class Person {
 		if (o == null || getClass() != o.getClass()) return false;
 		final Person person = (Person) o;
 		return Objects.equals(name, person.name) &&
-			Objects.equals(favoriteProgrammingLangauge, person.favoriteProgrammingLangauge);
+				Objects.equals(favoriteProgrammingLangauge, person.favoriteProgrammingLangauge);
 	}
 
 	@Override

@@ -29,7 +29,8 @@ fun main(args: Array<String>) {
 
 	try {
 		val requiredName =
-			nullableName ?: throw IllegalArgumentException("Or we could throw a better exception for missing arguments")
+				nullableName ?: throw IllegalArgumentException(
+						"Or we could throw a better exception for missing arguments")
 	} catch (e: IllegalArgumentException) {
 		println(e.message)
 	}
