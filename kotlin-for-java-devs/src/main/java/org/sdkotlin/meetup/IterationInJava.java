@@ -26,7 +26,7 @@ public class IterationInJava {
 			System.out.println("Letter " + (i + 1) + " of the alphabet is " + alphabet[i]);
 		}
 
-		int i = 1;
+		var i = 1;
 
 		while (i <= 5) {
 			System.out.println("Counting between 1 and 5: " + i++);

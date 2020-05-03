@@ -43,7 +43,7 @@ class Person {
 	public boolean equals(final Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		final Person person = (Person) o;
+		final var person = (Person) o;
 		return Objects.equals(name, person.name) &&
 				Objects.equals(favoriteProgrammingLangauge, person.favoriteProgrammingLangauge);
 	}
@@ -55,7 +55,7 @@ class Person {
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("Person{");
+		final var sb = new StringBuilder("Person{");
 		sb.append("name='").append(name).append('\'');
 		sb.append(", favoriteProgrammingLangauge='").append(favoriteProgrammingLangauge).append('\'');
 		sb.append('}');

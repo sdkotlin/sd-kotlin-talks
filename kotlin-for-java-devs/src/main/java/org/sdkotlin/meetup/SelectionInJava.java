@@ -12,7 +12,7 @@ public class SelectionInJava {
 			System.out.println("Huh?");
 		}
 
-		final int x = (true) ? 1 : 0;
+		final var x = (true) ? 1 : 0;
 
 		switch (x) {
 			case 0:
