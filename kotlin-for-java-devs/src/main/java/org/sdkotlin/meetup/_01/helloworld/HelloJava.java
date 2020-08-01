@@ -1,4 +1,4 @@
-package org.sdkotlin.meetup;
+package org.sdkotlin.meetup._01.helloworld;
 
 public class HelloJava {
 
