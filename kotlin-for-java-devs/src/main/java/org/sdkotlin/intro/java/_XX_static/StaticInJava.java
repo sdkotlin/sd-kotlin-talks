@@ -1,6 +1,6 @@
 package org.sdkotlin.intro.java._XX_static;
 
-import org.sdkotlin.intro.kotlin._XX_static.StaticInKotlin;
+import org.sdkotlin.intro.kotlin._13_static.StaticInKotlin;
 
 public class StaticInJava {
 
