@@ -6,6 +6,10 @@ plugins {
 	`assertj-project`
 }
 
+dependencies {
+	implementation(kotlin("reflect"))
+}
+
 tasks {
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions.freeCompilerArgs += "-Xinline-classes"

@@ -1,17 +1,21 @@
 package org.sdkotlin.intro.kotlin._08_functions
 
 // Functions are fun in Kotlin
+
 fun function() {}
 
 // As with variables, the return type comes second
+
 fun add(a: Int, b: Int): Int {
 	return a + b
 }
 
 // One-liners can be defined with "=" instead of curly braces
+
 fun subtract(a: Int, b: Int): Int = a - b
 
 // Return types for one-liners are optional when they can be inferred
+
 fun multiply(a: Int, b: Int) = a * b
 
 // The rough equivalent of void is "Unit".
@@ -19,9 +23,11 @@ fun multiply(a: Int, b: Int) = a * b
 // It is the default return type, so it can be omitted from the signature.
 // No return statement is required for functions that return Unit.
 // Kotlin is terse like that.
+
 fun voidish(): Unit {}
 
 // Function parameters are always val
+
 fun cantTouchThis(i: Int): Int {
 
 	// return ++i // Does not compile
@@ -35,17 +41,20 @@ fun cantTouchThis(i: Int): Int {
 	return i + 1
 }
 
-// Parameters can have default values!
-// This eliminates the need for method overloads in many cases!
+// Parameters can have default values.
+
 fun defaultParams(x: Int = 0): Int {
 	return x
 }
-
 
 fun useDefaultParams() {
 	println(defaultParams()) // Prints 0
 	println(defaultParams(1)) // Prints 1
 }
+
+// You can name function arguments to disambiguate defaulted params,
+// or just to make function calls with many arguments more clear.
+// Default arguments and named arguments eliminate the need for method overloads in most cases!
 
 fun namedParams(
 		firstName: String = "John",
@@ -56,14 +65,11 @@ fun namedParams(
 	println("$firstName $lastName $email $favoriteProgrammingLanguage")
 }
 
-// You can name function arguments to disambiguate defaulted params,
-// or just to make function calls with many arguments more clear.
 fun useNamedParams() {
 	namedParams(lastName = "Smith", email = "smith@smithery.com")
 }
 
 fun main() {
-
 	function()
 	println(add(2, 2))
 	println(subtract(3, 1))
