@@ -4,8 +4,12 @@ package org.sdkotlin.intro.kotlin._03_toplevel
 
 var sanDiego = true
 
+private var justHere = true
+
 fun printWeather() {
 	if (sanDiego) {
 		println("It's sunny!")
 	}
+
+	println(justHere)
 }

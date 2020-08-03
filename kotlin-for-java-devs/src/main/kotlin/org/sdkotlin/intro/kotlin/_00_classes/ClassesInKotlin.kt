@@ -8,6 +8,6 @@ class ClassesInKotlinExample {
 
 // Unlike Java, you can have multiple public classes in a source file.
 
-// Curly braces are optional.
+// Curly braces are optional for empty classes.
 
 class Class
