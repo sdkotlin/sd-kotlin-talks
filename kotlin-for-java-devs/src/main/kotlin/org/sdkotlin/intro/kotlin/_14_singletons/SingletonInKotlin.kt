@@ -14,13 +14,16 @@ object KotlinSingleton {
 fun main() {
 
 	// Singleton instances are available by their type name.
+
 	val singleton = KotlinSingleton
 
 	singleton.doIt()
 
 	// No need to assign them to a var.
+
 	println(KotlinSingleton.notQuitePi)
 
 	// Singletons do not have constructors.
+
 	//KotlinSingleton().doIt()
 }

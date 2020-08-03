@@ -2,6 +2,8 @@ package org.sdkotlin.intro.java._14_singletons;
 
 class Singleton {
 
+	// This is one of the ways to implement the singleton pattern in Java...
+
 	public static final Singleton INSTANCE = new Singleton();
 
 	private Singleton() {

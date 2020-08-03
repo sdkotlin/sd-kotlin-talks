@@ -6,8 +6,7 @@ class StaticInKotlin {
 
 	companion object {
 
-		@JvmField
-		val CONSTANT = "Unchanging"
+		const val CONSTANT = "Unchanging"
 
 		@JvmStatic
 		fun saySomething() {
