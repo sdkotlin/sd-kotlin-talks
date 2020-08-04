@@ -30,12 +30,12 @@ fun voidish(): Unit {}
 
 fun cantTouchThis(i: Int): Int {
 
-	// return ++i // Does not compile
+	// Val cannot be reassigned
+	//return ++i
 
-	/* You can assign their value to a mutable var
-	var j = i
-	return ++j
-	*/
+	//You can assign their value to a mutable var
+	//var j = i
+	//return ++j
 
 	// Or just try another approach
 	return i + 1

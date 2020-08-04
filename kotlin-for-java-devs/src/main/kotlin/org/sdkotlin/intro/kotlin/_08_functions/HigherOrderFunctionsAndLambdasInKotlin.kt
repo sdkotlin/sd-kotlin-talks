@@ -31,7 +31,7 @@ fun main() {
 	println(doMath(addFunction))
 	println(doMath(giveMeAnAddFunction()))
 
-	// If a function takes another function as it's last argument,
+	// If a function takes another function as its last argument,
 	// and the argument is given as a lambda, the function call can
 	// be made with the lambda placed outside the parenthesis.
 

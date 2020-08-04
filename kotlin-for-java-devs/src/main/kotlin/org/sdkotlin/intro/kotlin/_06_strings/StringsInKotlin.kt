@@ -11,7 +11,8 @@ fun main() {
 		val someString = "That gets you out of "
 				+ "concatenation-wrapping, and lets you use literal whitespace "
 				+ "instead of escape sequences such as \t, \n, etc."
-		You can put arbitrary expressions in string templates with curly braces. ${"\n".repeat(2)}
+		You can put arbitrary expressions in string templates with curly
+		braces. ${"\n".repeat(2)}
 		You can trim leading indentation.
 		""".trimIndent()
 
