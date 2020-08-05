@@ -1,5 +1,7 @@
 package org.sdkotlin.intro.kotlin._11_iteration
 
+import kotlin.random.Random.Default.nextBoolean as randomBoolean
+
 fun main() {
 
 	// Kotlin lacks the C-style for loop, preferring the for-each loop with
@@ -50,18 +52,16 @@ fun main() {
 		println("Letter ${i + 1} of the alphabet is ${alphabet[i]}")
 	}
 
-	// You can save a range to a variable.
+	// Kotlin also has while and do-while loops.
 
-	val oneToFive = 1..5
+	var keepGoing = true
 
-	// Ranges have other useful properties.
-
-	var i = oneToFive.first
-
-	while (i in oneToFive) {
-
-		// Unlike 'for' loops, the index in 'while' loops is mutable.
-
-		println("Counting between ${oneToFive.first} and ${oneToFive.last}: ${i++}")
+	while (keepGoing) {
+		println("Taking my chances!")
+		keepGoing = randomBoolean()
 	}
+
+	do {
+		println("Will it ever end?")
+	} while (randomBoolean())
 }
