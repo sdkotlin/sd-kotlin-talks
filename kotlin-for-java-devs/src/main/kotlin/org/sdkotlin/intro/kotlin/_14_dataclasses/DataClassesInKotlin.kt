@@ -1,8 +1,8 @@
 package org.sdkotlin.intro.kotlin._14_dataclasses
 
 // Kotlin supports 'data' classes.
-data class Person(var name: String, var favoriteLanguage: String = "Kotlin") {
 
+data class Person(var name: String, var favoriteLanguage: String = "Kotlin") {
 	var age: Int = 1
 }
 
@@ -23,6 +23,7 @@ fun main() {
 
 	// Properties defined outside the primary constructor are not included in
 	// the implementations of those overrides.
+
 	val olderDuke = Person("Duke", "Java")
 	olderDuke.age++
 
