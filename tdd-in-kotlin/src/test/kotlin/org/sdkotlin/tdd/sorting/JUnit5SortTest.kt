@@ -1,4 +1,4 @@
-package org.sdkotlin.tdd
+package org.sdkotlin.tdd.sorting
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
