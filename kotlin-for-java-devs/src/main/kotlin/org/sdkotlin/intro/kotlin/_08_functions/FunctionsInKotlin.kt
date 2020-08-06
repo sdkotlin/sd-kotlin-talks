@@ -22,7 +22,6 @@ fun multiply(a: Int, b: Int) = a * b
 // Unit is an actual object, a singleton.
 // It is the default return type, so it can be omitted from the signature.
 // No return statement is required for functions that return Unit.
-// Kotlin is terse like that.
 
 fun voidish(): Unit {}
 
@@ -48,34 +47,51 @@ fun defaultParams(x: Int = 0): Int {
 }
 
 fun useDefaultParams() {
-	println(defaultParams()) // Prints 0
-	println(defaultParams(1)) // Prints 1
+	println("Using default: ${defaultParams()}") // Prints 0
+	println("Overriding default: ${defaultParams(1)}") // Prints 1
 }
 
-// You can name function arguments to disambiguate defaulted params,
-// or just to make function calls with many arguments more clear.
-// Default arguments and named arguments eliminate the need for method overloads in most cases!
+fun moreDefaultedParams(
+		firstName: String,
+		lastName: String,
+		favoriteProgrammingLanguage: String = "Kotlin",
+		domain: String = "example.com",
 
-fun namedParams(
-		firstName: String = "John",
-		lastName: String = "Doe",
-		email: String,
-		favoriteProgrammingLanguage: String = "Kotlin"
-) {
+		// A default can refer to earlier arguments, whether they're defaulted
+		// or not.
+		email: String = "$firstName.$lastName@$domain") {
+
 	println("$firstName $lastName $email $favoriteProgrammingLanguage")
 }
 
 fun useNamedParams() {
-	namedParams(lastName = "Smith", email = "smith@smithery.com")
+
+	// You can name function call arguments to disambiguate defaulted params,
+	// or just to make function calls with many arguments more clear.
+
+	moreDefaultedParams(
+			firstName = "John",
+			lastName = "Smith",
+			domain = "smithery.com")
+
+	// You can mix positional and named arguments, but the positional ones all
+	// need to come first.
+
+	moreDefaultedParams(
+			"John",
+			lastName = "Smith")
+
+	// Default and named arguments eliminate the need for method overloads in
+	// many cases!
 }
 
 fun main() {
-	function()
-	println(add(2, 2))
-	println(subtract(3, 1))
-	println(multiply(3, 3))
-	println(voidish())
-	println(cantTouchThis(1))
+	function() // no-op
+	println("add(2, 2): ${add(2, 2)}")
+	println("subtract(3, 1): ${subtract(3, 1)}")
+	println("multiply(3, 3): ${multiply(3, 3)}")
+	println("voidish(): ${voidish()}")
+	println("cantTouchThis(1): ${cantTouchThis(1)}")
 	useDefaultParams()
 	useNamedParams()
 }
