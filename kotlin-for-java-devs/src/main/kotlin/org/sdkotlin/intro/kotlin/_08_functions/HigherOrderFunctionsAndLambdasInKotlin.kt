@@ -11,7 +11,50 @@ val theBossFunction: () -> String = ::theBoss
 
 // Function types can be instantiated with a lambda expression.
 
-val addFunction: (Int, Int) -> Int = { a, b -> a + b }
+// A lambda expression is a literal for a function, much like '1' is a
+// literal for an Int.
+
+val addFunction: (Int, Int) -> Int = { a: Int, b: Int -> a + b }
+
+// The parameter types are optional if they can be inferred.
+
+val subtractFunction: (Int, Int) -> Int = { a, b -> a + b }
+
+// You may want to use them so the function type can be inferred.
+
+val multiplyFunction = { a: Int, b: Int -> a + b }
+
+// Lambdas can be multiline. The result of the last expression in the lambda is
+// its return type. As this is somewhat invisible, it may be better to declare
+// function types explicitly.
+
+// In practice you're often writing lambda expressions at function call sites.
+// There the function type is already declared for you, so this tends not to
+// come up very often.
+
+val divideFunction = { a: Int, b:Int ->
+	a / b
+	println("Debugging HERE")
+} // '(Int, Int) -> Unit'!
+
+// If a function takes only one argument the parameter declaration for it,
+// including the arrow, can be omitted. Then the compiler gives the lambda an
+// implicit 'it' parameter.
+
+val incrementFunction: (Int) -> Int = { it + 1 }
+
+// Lambda's can access variables from the scope where they're declared
+
+val almostPi = 355/113
+
+val getPiApproximation = { almostPi }
+
+// If the outer variable is mutable, the lambda can change it and the change is
+// seen outside the lambda.
+
+var porridge = "Too hot!"
+
+val goldilocksFunction = { porridge = "Just right."}
 
 // Functions can take and return other functions, making them "higher-order
 // functions".
@@ -32,10 +75,17 @@ fun giveMeAnAddFunction(): (Int, Int) -> Int {
 
 fun main() {
 
-	println(theBossFunction)
-	println(theBossFunction())
-	println(doMath(2, 2, addFunction))
-	println(doMath(2, 3, giveMeAnAddFunction()))
+	println("The toString() for a function: \"$theBossFunction\"")
+	println("Invoking theBossFunction(): ${theBossFunction()}")
+	println("2+2: ${doMath(2, 2, addFunction)}")
+	println("2+3: ${doMath(2, 3, giveMeAnAddFunction())}")
+	println("2-2: ${doMath(2, 2, subtractFunction)}")
+	println("2*2: ${doMath(2, 2, multiplyFunction)}")
+	//println("2/2: ${doMath(2, 2, divideFunction)}")
+	println("1++: ${incrementFunction(1)}")
+	println("porridge before goldilocksFucntion(): $porridge")
+	goldilocksFunction()
+	println("porridge after goldilocksFucntion(): $porridge")
 
 	// If a function takes another function as its last argument, and the
 	// argument is given as a lambda, the function call can be made with the
