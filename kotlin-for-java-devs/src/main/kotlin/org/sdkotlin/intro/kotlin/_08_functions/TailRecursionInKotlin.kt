@@ -2,21 +2,21 @@ package org.sdkotlin.intro.kotlin._08_functions
 
 // Kotlin supports tail call elimination.
 
-// Take this standard recursive implementation of factorial(n):
+// Take this standard recursive implementation for the triangle number of 'n':
 
-fun factorial(n: Long): Long =
-		if (n == 0L) 1
-		else n * factorial(n - 1)
+fun triangleNumber(n: Int): Int =
+		if (n == 0) 0
+		else n + triangleNumber(n - 1)
 
 // Simple, but it will throw a stack overflow error if called with too big a
 // number.
 
 // We could fall back on an iterative implementation.
 
-fun iterativeFactorial(n: Long): Long {
-	var accumulator = 1L
-	for (i in 1..n + 1) {
-		accumulator *= i
+fun iterativeTriangleNumber(n: Int): Int {
+	var accumulator = 0
+	for (i in 1..n) {
+		accumulator += i
 	}
 	return accumulator
 }
@@ -30,16 +30,21 @@ fun iterativeFactorial(n: Long): Long {
 // "tail recursion", then the compiler can rewrite the recursion as a loop for
 // us (tail call elimination).
 
-tailrec fun tailFactorial(i: Long, accumulator: Long = 1): Long =
+tailrec fun tailTriangleNumber(i: Int, accumulator: Int = 0): Int =
 		if (i <= 0) accumulator
-		else tailFactorial(i - 1, i * accumulator)
+		else tailTriangleNumber(i - 1, i + accumulator)
 
-// For reference, here is a head-recursive implementation with an accumulator.
-// Kotlin can't do "head-call elimination", so the original version without the
-// accumulator is probably better.
+// The 'tailrec' keyword is not required for the compiler to do tail call
+// optimization, but it is useful in that it will produce a warning if the
+// function can't be tail call optimized, now or in the future.
 
-fun headFactorial(n: Long, accumulator: Long = 1): Long =
-		if (n > 0) headFactorial(n - 1, accumulator * n)
+// Here is a head-recursive implementation with an accumulator. It should stack
+// overflow as is, but you can add 'tailrec' to it without a warning because
+// the compiler can invert the if block, and then it can be tail call optimized.
+
+//tailrec
+fun headTriangleNumber(n: Int, accumulator: Int = 0): Int =
+		if (n > 0) headTriangleNumber(n - 1, accumulator + n)
 		else accumulator
 
 // Note that in the original implementation the recursive call was not fully in
@@ -53,10 +58,10 @@ fun headFactorial(n: Long, accumulator: Long = 1): Long =
 // Kotlin supports local functions, i.e. functions defined inside other
 // functions, which allows us to clean this up.
 
-fun cleanTailFactorial(n: Long): Long {
-	tailrec fun recurse(i: Long, accumulator: Long = 1): Long =
+fun cleanTailTriangleNumber(n: Int): Int {
+	tailrec fun recurse(i: Int, accumulator: Int = 0): Int =
 			if (i <= 0) accumulator
-			else recurse(i - 1, i * accumulator)
+			else recurse(i - 1, i + accumulator)
 	return recurse(n)
 }
 
@@ -68,24 +73,21 @@ fun getStackDepth(i: Int = 0): Int =
 		}
 
 fun main() {
-	println("Recursive 5!: ${factorial(5)}")
+	println("T5: ${triangleNumber(5)}")
 	val stackDepth = getStackDepth()
 	println("Stack depth: $stackDepth")
 	// TODO: Why does stack depth change and why does this not succeed?
-	// println("Recursive ${stackDepth - 1})!: ${factorial(stackDepth - 1)}")
-	val maxShort = Short.MAX_VALUE.toLong()
+	//println("Recursive T${stackDepth - 1}: ${triangleNumber(stackDepth - 1)}")
 	try {
-		factorial(maxShort)
+		println("Recursive T$stackDepth: ${triangleNumber(stackDepth)}")
 	} catch (e: StackOverflowError) {
-		println("Stack overflow error with factorial($maxShort)!")
+		println("Stack overflow error with recursive T$stackDepth!")
 	}
-	// Zero due to overflow, but, it doesn't overflow the stack!
-	println("Iterative factorial($maxShort): ${iterativeFactorial(maxShort+2)}")
+	println("Iterative T$stackDepth: ${iterativeTriangleNumber(stackDepth)}")
 	try {
-		headFactorial(maxShort)
+		println("Head recursive T$stackDepth: ${headTriangleNumber(stackDepth)}")
 	} catch (e: StackOverflowError) {
-		println("Stack overflow error with headFactorial($maxShort)!")
+		println("Stack overflow error with head call T$stackDepth!")
 	}
-	// Zero due to overflow, but, it doesn't overflow the stack!
-	println("Tail recursive factorial($maxShort): ${tailFactorial(maxShort)}")
+	println("Tail recursive T$stackDepth: ${tailTriangleNumber(stackDepth)}")
 }

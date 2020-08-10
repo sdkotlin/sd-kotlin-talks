@@ -32,7 +32,7 @@ val multiplyFunction = { a: Int, b: Int -> a + b }
 // There the function type is already declared for you, so this tends not to
 // come up very often.
 
-val divideFunction = { a: Int, b:Int ->
+val divideFunction = { a: Int, b: Int ->
 	a / b
 	println("Debugging HERE")
 } // '(Int, Int) -> Unit'!
@@ -50,7 +50,7 @@ val incrementFunction: (Int) -> Int = { it + 1 }
 
 // Lambda's can access variables from the scope where they're declared.
 
-val almostPi = 355/113
+val almostPi = 355 / 113
 
 val getPiApproximation = { almostPi }
 
@@ -59,7 +59,7 @@ val getPiApproximation = { almostPi }
 
 var porridge = "Too hot!"
 
-val goldilocksFunction = { porridge = "Just right."}
+val goldilocksFunction = { porridge = "Just right." }
 
 // Functions can take and return other functions, making them "higher-order
 // functions".
@@ -88,7 +88,6 @@ fun main() {
 	println("2*2: ${doMath(2, 2, multiplyFunction)}")
 	//println("2/2: ${doMath(2, 2, divideFunction)}")
 	println("1++: ${incrementFunction(1)}")
-	println("3!: ${factorial(3)}")
 
 	// Omitting the curly braces for a lambda in Kotlin is not allowed at the
 	// call site either.
