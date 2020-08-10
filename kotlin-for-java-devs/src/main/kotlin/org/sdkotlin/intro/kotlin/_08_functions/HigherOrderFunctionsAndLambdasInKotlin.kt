@@ -37,20 +37,25 @@ val divideFunction = { a: Int, b:Int ->
 	println("Debugging HERE")
 } // '(Int, Int) -> Unit'!
 
+// Unlike Java, lambdas in Kotlin must always be enclosed in curly braces.
+//val alienFunction: (Int) -> Int = a -> a % a
+
 // If a function takes only one argument the parameter declaration for it,
 // including the arrow, can be omitted. Then the compiler gives the lambda an
 // implicit 'it' parameter.
 
 val incrementFunction: (Int) -> Int = { it + 1 }
 
-// Lambda's can access variables from the scope where they're declared
+// When
+
+// Lambda's can access variables from the scope where they're declared.
 
 val almostPi = 355/113
 
 val getPiApproximation = { almostPi }
 
-// If the outer variable is mutable, the lambda can change it and the change is
-// seen outside the lambda.
+// If the outer variable is mutable, the lambda can change it, and the change
+// is seen outside the lambda.
 
 var porridge = "Too hot!"
 
@@ -83,23 +88,24 @@ fun main() {
 	println("2*2: ${doMath(2, 2, multiplyFunction)}")
 	//println("2/2: ${doMath(2, 2, divideFunction)}")
 	println("1++: ${incrementFunction(1)}")
+	println("3!: ${factorial(3)}")
+
+	// Omitting the curly braces for a lambda in Kotlin is not allowed at the
+	// call site either.
+	//doMath( (a, b) -> a / b )
+
 	println("porridge before goldilocksFucntion(): $porridge")
 	goldilocksFunction()
 	println("porridge after goldilocksFucntion(): $porridge")
 
 	// If a function takes another function as its last argument, and the
 	// argument is given as a lambda, the function call can be made with the
-	// lambda placed outside the parenthesis.
+	// lambda placed outside the parenthesis. This facilitates internal DSLs
+	// and LINQ-style code.
 
 	doMath(2, 4) { a, b -> a * b }
 
 	// And if there are no other arguments the parenthesis can be omitted.
 
 	doMath { a, b -> a / b }
-
-	// You can define functions inside functions, i.e. local functions.
-
-	fun garbageInGarbageOut(trash: String) = trash
-
-	println(garbageInGarbageOut("Hey!"))
 }
