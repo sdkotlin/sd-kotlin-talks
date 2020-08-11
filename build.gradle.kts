@@ -16,14 +16,6 @@ allprojects {
 	}
 }
 
-fun isNonStable(version: String): Boolean {
-	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
-	val unstableKeyword = listOf("""M\d+""").any { version.toUpperCase().contains(it.toRegex()) }
-	val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-	val isStable = (stableKeyword && !unstableKeyword) || regex.matches(version)
-	return isStable.not()
-}
-
 tasks {
 	withType<DependencyUpdatesTask> {
 		rejectVersionIf {
@@ -33,7 +25,15 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper") {
-		gradleVersion = "6.5.1"
+		gradleVersion = "6.6"
 		distributionType = ALL
 	}
+}
+
+fun isNonStable(version: String): Boolean {
+	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+	val unstableKeyword = listOf("""M\d+""").any { version.toUpperCase().contains(it.toRegex()) }
+	val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+	val isStable = (stableKeyword && !unstableKeyword) || regex.matches(version)
+	return isStable.not()
 }
