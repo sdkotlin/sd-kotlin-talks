@@ -11,6 +11,10 @@ fun main() {
 		println("Counting... $i")
 	}
 
+	//for (var i = 0; i <= 10; i++) {
+	//
+	//}
+
 	// We can also use the functional approach.
 
 	(1..5).forEach { i -> println("Again... $i") }

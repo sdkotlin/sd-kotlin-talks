@@ -18,11 +18,11 @@ val addFunction: (Int, Int) -> Int = { a: Int, b: Int -> a + b }
 
 // The parameter types are optional if they can be inferred.
 
-val subtractFunction: (Int, Int) -> Int = { a, b -> a + b }
+val subtractFunction: (Int, Int) -> Int = { a, b -> a - b }
 
 // You may want to use them so the function type can be inferred.
 
-val multiplyFunction = { a: Int, b: Int -> a + b }
+val multiplyFunction = { a: Int, b: Int -> a * b }
 
 // Lambdas can be multiline. The result of the last expression in the lambda is
 // its return type. As this is somewhat invisible, it may be better to declare
@@ -45,8 +45,6 @@ val divideFunction = { a: Int, b: Int ->
 // implicit 'it' parameter.
 
 val incrementFunction: (Int) -> Int = { it + 1 }
-
-// When
 
 // Lambda's can access variables from the scope where they're declared.
 
@@ -93,9 +91,9 @@ fun main() {
 	// call site either.
 	//doMath( (a, b) -> a / b )
 
-	println("porridge before goldilocksFucntion(): $porridge")
+	println("porridge before goldilocksFunction(): $porridge")
 	goldilocksFunction()
-	println("porridge after goldilocksFucntion(): $porridge")
+	println("porridge after goldilocksFunction(): $porridge")
 
 	// If a function takes another function as its last argument, and the
 	// argument is given as a lambda, the function call can be made with the
