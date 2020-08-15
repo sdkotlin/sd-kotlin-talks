@@ -1,8 +1,10 @@
 package org.sdkotlin.tdd.fizzbuzz
 
 fun main() {
+
 	println("Function-oriented...")
 	fizzBuzz1to100(::println)
+
 	println("Object-oriented...")
 	fizzBuzz1to100(ConsolePrinter())
 }

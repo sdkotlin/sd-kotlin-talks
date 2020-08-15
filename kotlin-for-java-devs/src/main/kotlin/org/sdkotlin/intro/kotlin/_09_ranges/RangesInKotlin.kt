@@ -6,7 +6,7 @@ fun main() {
 
 	// Kotlin supports ranges, which are start and end inclusive.
 
-	val oneThroughTen = 0..10
+	val oneThroughTen = 1..10
 
 	val longRange = 0L..10L
 
