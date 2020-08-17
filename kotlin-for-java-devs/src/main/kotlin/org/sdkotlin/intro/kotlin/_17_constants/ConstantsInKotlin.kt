@@ -35,8 +35,12 @@ class ConstantsInKotlinCompanion {
 
 	companion object {
 
+		// Unlike regular vals, const vals can be used in annotations.
+
+		@Deprecated(CONST_VAL)
 		val COMPANION_VAL = "val in companion object"
 
+		//@Deprecated(REGULAR_VAL)
 		const val COMPANION_CONST_VAL = "const val in companion object"
 	}
 }
