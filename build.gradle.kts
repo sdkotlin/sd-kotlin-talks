@@ -16,6 +16,15 @@ allprojects {
 	}
 }
 
+subprojects {
+	tasks {
+		register<DependencyReportTask>("allDependencies") {
+			description="Display dependencies report for all subprojects."
+			group = "help"
+		}
+	}
+}
+
 tasks {
 	withType<DependencyUpdatesTask> {
 		rejectVersionIf {
