@@ -2,13 +2,14 @@ package org.sdkotlin.intro.kotlin._18_inheritance
 
 class Class
 
-// "Effective Java, 3rd Edition. Item 19: Design and Document for Inheritance or Else Prohibit It"
+// "Effective Java, 3rd Edition. Item 19: Design and
+// Document for Inheritance or Else Prohibit It"
 
 // Classes are final by default in Kotlin (see bytecode)
 //class Subclass : Class()
 
 // You can "open" them like so...
-open class BaseClass {
+open class BaseClass(var name: String = "Cliff") {
 
 	// Functions are final by default in Kotlin as well
 	fun finalFunction() = println("Can't touch this!")
@@ -17,7 +18,9 @@ open class BaseClass {
 	open fun openFunction() = println("Base class implementation")
 }
 
-class Subclass : BaseClass() {
+// Subclasses must call the primary constructor of their superclass.
+
+class Subclass : BaseClass("Norm") {
 
 	// You can't override a final function
 	//override fun finalFunction() = println("nope!")

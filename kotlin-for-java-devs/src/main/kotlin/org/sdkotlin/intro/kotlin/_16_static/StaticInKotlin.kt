@@ -17,8 +17,8 @@ class StaticInKotlin {
 
 fun main() {
 
-	StaticInJava.saySomething()
 	StaticInKotlin.saySomething()
+	StaticInJava.saySomething()
 
 	// StaticInJava().saySomething() // Does not compile
 	// StaticInKotlin().saySomething() // Does not compile

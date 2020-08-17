@@ -12,12 +12,18 @@ infix fun Int.plusOrMinus(other: Int) =
 			this - other
 		}
 
-// Note that the function identifier naming constraints in Kotlin prevent us
-// from defining new symbolic operators.
+// Backticks can be used to escape nonstandard function names. This could be
+// combined with infix functions to simulate new operators, but backticks would
+// again be required at the call site.
+
+infix fun Int.`+-`(other: Int) = this.plusOrMinus(other)
 
 fun main() {
 
 	val result = 1 plusOrMinus 2
 
-	println("1 ± 2: $result")
+	val alternateResult = 1 `+-` 2
+
+	println("1 plusOrMinus 2: $result")
+	println("1 `+-` 2: $alternateResult")
 }
