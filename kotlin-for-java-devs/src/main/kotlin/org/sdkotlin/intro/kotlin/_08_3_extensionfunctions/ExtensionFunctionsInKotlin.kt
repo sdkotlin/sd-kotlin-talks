@@ -1,14 +1,26 @@
 package org.sdkotlin.intro.kotlin._08_3_extensionfunctions
 
+// Kotlin allows us to add functions to an existing class by prefixing the
+// function name with the type it's extending.
+
+// You can refer to the instance the extension is called on (the "receiver")
+// with the usual 'this' keyword.
+
+fun String.shuffled() = this.toList().shuffled().joinToString(separator = "")
+
+// This is handy for adding things to the stdlib or other libraries that you
+// feel are missing.
+
+fun String.bedazzled() = "***$this***"
+
 fun main() {
 
-	// Kotlin allows us to add functions to an existing class.
+	println("Alphabet.shuffled(): ${"Alphabet".shuffled()}")
 
-	fun String.shuffled() = this.toList().shuffled().joinToString(separator = "")
+	println("Snazzy.bedazzled(): ${"Snazzy".bedazzled()}")
 
-	println("Alphabet".shuffled())
-
-	// Extension functions are not polymorphic.
+	// Extension functions are resolved statically by the receiver's
+	// declared or inferred type. In other words, they are not polymorphic.
 
 	abstract class Animal
 
