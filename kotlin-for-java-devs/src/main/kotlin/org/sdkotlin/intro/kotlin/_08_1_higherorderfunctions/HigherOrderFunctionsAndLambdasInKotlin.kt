@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._08_functions
+package org.sdkotlin.intro.kotlin._08_1_higherorderfunctions
 
 // Functions are first-class types in Kotlin, as we we've seen with them being
 // defined top-level.
@@ -80,12 +80,21 @@ fun main() {
 
 	println("The toString() for a function: \"$theBossFunction\"")
 	println("Invoking theBossFunction(): ${theBossFunction()}")
-	println("2+2: ${doMath(2, 2, addFunction)}")
-	println("2+3: ${doMath(2, 3, giveMeAnAddFunction())}")
-	println("2-2: ${doMath(2, 2, subtractFunction)}")
-	println("2*2: ${doMath(2, 2, multiplyFunction)}")
+	println("2+2: ${doMath(
+			2, 2,
+			addFunction)}")
+	println("2+3: ${doMath(
+			2, 3,
+			giveMeAnAddFunction())}")
+	println("2-2: ${doMath(
+			2, 2,
+			subtractFunction)}")
+	println("2*2: ${doMath(
+			2, 2,
+			multiplyFunction)}")
 	//println("2/2: ${doMath(2, 2, divideFunction)}")
-	println("1++: ${incrementFunction(1)}")
+	println("1++: ${incrementFunction(
+			1)}")
 
 	// Omitting the curly braces for a lambda in Kotlin is not allowed at the
 	// call site either.
@@ -100,7 +109,8 @@ fun main() {
 	// lambda placed outside the parenthesis. This facilitates internal DSLs
 	// and LINQ-style code.
 
-	doMath(2, 4) { a, b -> a * b }
+	doMath(2,
+			4) { a, b -> a * b }
 
 	// And if there are no other arguments the parenthesis can be omitted.
 

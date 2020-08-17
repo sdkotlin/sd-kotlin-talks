@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._08_functions
+package org.sdkotlin.intro.kotlin._08_0_functions
 
 // Functions are fun in Kotlin
 

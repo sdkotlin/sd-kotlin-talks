@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._08_functions
+package org.sdkotlin.intro.kotlin._08_3_extensionfunctions
 
 // Kotlin allows us to add functions to extend an existing class.
 
