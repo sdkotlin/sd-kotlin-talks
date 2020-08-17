@@ -27,7 +27,7 @@ fun sendCard(person: Person) {
 	println("Sending a card to ${person.name} at $address")
 }
 
-fun main(args: Array<String>) {
+fun main() {
 
 	val sally = Person(name = "Sally")
 

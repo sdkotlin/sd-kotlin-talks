@@ -28,7 +28,7 @@ fun printMonthsAndWeekdays() {
 	}
 }
 
-fun main(args: Array<String>) {
+fun main() {
 	printOrigin()
 	printMonthsAndWeekdays()
 }

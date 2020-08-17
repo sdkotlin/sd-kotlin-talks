@@ -34,7 +34,7 @@ fun bad(triplets: OlympicTriplets) {
 	triplets.leila.age++
 }
 
-fun main(args: Array<String>) {
+fun main() {
 
 	good(OlympicTriplets)
 

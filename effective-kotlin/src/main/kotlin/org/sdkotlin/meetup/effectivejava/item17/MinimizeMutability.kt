@@ -17,7 +17,7 @@ data class ThreadSafe(val readOnly: String = "Can't touch this") {
 	}
 }
 
-fun main(args: Array<String>) {
+fun main() {
 
 	// FUGGETABOUTIT = "As if" // Doesn't compile
 	println(FUGGETABOUTIT)

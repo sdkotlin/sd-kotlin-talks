@@ -24,7 +24,7 @@ data class Programmer(val name: String) {
 		get() = "$field. 🙂"
 }
 
-fun main(args: Array<String>) {
+fun main() {
 
 	val programmer = Programmer("Jim")
 

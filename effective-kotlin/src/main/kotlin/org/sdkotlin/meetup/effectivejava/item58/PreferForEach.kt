@@ -6,7 +6,7 @@ Item 58: Prefer for-each loops to traditional for loops
 
 // Kotlin only has for-each loops!
 
-fun main(args: Array<String>) {
+fun main() {
 
 	val shapes = arrayOf("Circle", "Triangle", "Rectangle")
 

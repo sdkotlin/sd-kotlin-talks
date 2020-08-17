@@ -17,7 +17,7 @@ data class NutritionFacts(
 		val carbohydrate: Int = 0
 )
 
-fun main(args: Array<String>) {
+fun main() {
 
 	val sodaNutritionFacts =
 			NutritionFacts(servingSize = 12, servings = 2, calories = 180)

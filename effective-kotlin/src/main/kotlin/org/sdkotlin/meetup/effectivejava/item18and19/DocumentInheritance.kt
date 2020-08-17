@@ -24,7 +24,7 @@ class JeepWranglerRubicon: JeepWranglerSport() {
 	override fun howMuchFun() = "😃"
 }
 
-fun main(args: Array<String>) {
+fun main() {
 	val jeepWranglerSport = JeepWranglerSport()
 	val jeepWranglerRubicon = JeepWranglerRubicon()
 

@@ -20,7 +20,7 @@ object HelloSingleton {
 	}
 }
 
-fun main(args: Array<String>) {
+fun main() {
 
 	HelloSingleton.howYouDoin()
 }

@@ -30,7 +30,7 @@ fun parseJson(json: String): String {
 	}
 }
 
-fun main(args: Array<String>) {
+fun main() {
 
 	val boolean = true
 	val binary = toBinary(boolean)

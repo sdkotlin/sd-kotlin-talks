@@ -22,7 +22,7 @@ Item 1: Consider static factory methods instead of constructors
 // top-level functions can be used as powerful alternatives to Java's static
 // factory methods
 
-fun main(args: Array<String>) {
+fun main() {
 
 	// Java static factory usage
 	val charset = Charset.forName("ASCII")
