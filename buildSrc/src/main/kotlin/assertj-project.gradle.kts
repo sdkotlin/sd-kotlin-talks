@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-	testImplementation("org.assertj:assertj-core:3.16.1")
+	testImplementation("org.assertj:assertj-core:3.17.0")
 }
