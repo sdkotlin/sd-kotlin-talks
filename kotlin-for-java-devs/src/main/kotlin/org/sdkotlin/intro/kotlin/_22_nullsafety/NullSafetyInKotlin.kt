@@ -1,5 +1,7 @@
 package org.sdkotlin.intro.kotlin._22_nullsafety
 
+import org.sdkotlin.intro.java._22_nullsafety.NullSafetyInJava
+
 fun main() {
 
 	// Kotlin has separate nullable and non-nullable types.
@@ -34,11 +36,11 @@ fun main() {
 	val maybeAnything: Any? = null
 
 	if (anything is Any && anything is Any?) {
-		println("anything is an Any and an Any?")
+		println("anything is an `Any` and an `Any?`")
 	}
 
 	if (maybeAnything is Any? && maybeAnything !is Any) {
-		println("maybeAnything is an Any? but not an Any")
+		println("maybeAnything is an `Any?` but not an `Any`")
 	}
 
 	// It's an error if you try to dereference a property or function of a
@@ -86,5 +88,45 @@ fun main() {
 		nullableName!!.length
 	} catch (e: NullPointerException) {
 		println("Or we could just really love NullPointerExceptions!!")
+	}
+
+	// In order to pragmatically support interop with Java, which lacks
+	// non-nullable types, Kotlin has "platform types".
+	// Platform types are represented in type hints, runtime exception
+	// messages, etc. as the type name follow by `!`, for example `String!`.
+	// Platform types can't be declared in the source code.
+	// The compiler assumes they are not null.
+
+	val maybeNullFromJava = NullSafetyInJava.MAYBE_NULL
+
+	try {
+		maybeNullFromJava.trim()
+	} catch (e: NullPointerException) {
+		println("Platform types can bite!")
+	}
+
+	// The Kotlin compiler will leverage `@NotNull` and `@Nullable` annotations
+	// in Java to infer non-nullable and nullable types respectively instead of
+	// platform types.
+
+	val notNullFromJava = NullSafetyInJava.NOT_NULL
+	val nullableFromJava = NullSafetyInJava.NULL
+
+	if (notNullFromJava is String) {
+		println("A `@NotNull` String from Java is a `String`")
+	}
+
+	if (nullableFromJava is String?) {
+		println("A `@Nullable` String from Java is a `String?`")
+	}
+
+	val erroneouslyNotNullFromJava = NullSafetyInJava.SURPRISE
+
+	if (erroneouslyNotNullFromJava is String) {
+		try {
+			erroneouslyNotNullFromJava.trim()
+		} catch (e: NullPointerException) {
+			println("Hopefully things annotated `@NotNull` in Java truly are!")
+		}
 	}
 }
