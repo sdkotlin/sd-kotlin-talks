@@ -1,3 +1,3 @@
-package org.sdkotlin.intro.kotlin._25_arrays
+package org.sdkotlin.intro.kotlin._24_arrays
 
 // TODO: Add an example for arrays in Kotlin.
