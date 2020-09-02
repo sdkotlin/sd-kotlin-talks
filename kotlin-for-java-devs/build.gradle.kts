@@ -6,6 +6,10 @@ plugins {
 	`assertj-project`
 }
 
+dependencies {
+	compileOnly("org.jetbrains:annotations:20.1.0")
+}
+
 tasks {
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions.freeCompilerArgs += "-Xinline-classes"

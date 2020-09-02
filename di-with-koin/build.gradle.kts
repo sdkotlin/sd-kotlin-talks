@@ -14,9 +14,12 @@ plugins {
 }
 
 dependencies {
-
 	val koinVersion = "2.1.6"
+
 	implementation("org.koin:koin-core:$koinVersion")
+
+	compileOnly("org.jetbrains:annotations:20.1.0")
+
 	testImplementation("org.koin:koin-test:$koinVersion")
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
 }
