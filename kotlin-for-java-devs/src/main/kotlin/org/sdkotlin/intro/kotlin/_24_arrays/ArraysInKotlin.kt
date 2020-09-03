@@ -93,6 +93,8 @@ fun main() {
 
 	val arrayOfAnys = arrayOf(1, 2L, 3.0)
 
+	val arrayOfNullableInts = arrayOf(1, null, 3)
+
 	// Explicit type declaration can be used to guard against any funny
 	// business.
 
