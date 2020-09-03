@@ -13,8 +13,32 @@ fun main() {
 
 	val arrayOfInts = arrayOf(1, 2, 3)
 
-	// Alternatively, there is a constructor that takes a size and a factory
-	// function.
+	// Arrays in Kotlin are fixed size and mutable, as in Java.
+
+	// Unlike Java arrays, they have `get(Int)` and `set(Int, T)` functions,
+	// which are operator functions for the index operator `[]`.
+
+	println("arrayOfInts.get(0): ${arrayOfInts.get(0)}")
+	println("arrayOfInts[0]: ${arrayOfInts[0]}")
+
+	arrayOfInts.set(0, 100)
+	arrayOfInts[1] = 200
+	arrayOfInts[1 + 1] = 300
+
+	// Misuse results in the usual exception.
+
+	try {
+		arrayOfInts[-1]
+	} catch (e: ArrayIndexOutOfBoundsException) {
+		println(e)
+	}
+
+	// You can get the size of an array to help avoid that.
+
+	println("arrayOfInts.size: ${arrayOfInts.size}")
+
+	// As an alternative to the factory function, there is a constructor that
+	// takes a size and a value factory function.
 
 	val numerals = Array(size = 10) { index -> index.toString() }
 
@@ -22,13 +46,14 @@ fun main() {
 
 	val randomInts = Array(size = 10) { (1..100).random() }
 
-	// There's a factory function for the empty array.
+	// There's a factory function for the empty array, which requires the type
+	// prameter since none can be inferred.
 
 	val noInts = emptyArray<Int>()
 
 	val noStrings = emptyArray<String>()
 
-	// And for arrays of Nulls.
+	// We can also get a typed array of nulls of given size.
 
 	val nullInts = arrayOfNulls<Int>(size = 10)
 
@@ -39,10 +64,6 @@ fun main() {
 	// They can be asymmetrical as in Java.
 
 	val forgotV8 = arrayOf(arrayOf(1, 2), arrayOf(1, 2, 3))
-
-	// You can get the size of an array.
-
-	println("arrayOfInts.size: ${arrayOfInts.size}")
 
 	// You can print arrays with a handy extension function.
 
@@ -79,31 +100,13 @@ fun main() {
 
 	//val alsoNope: Array<String> = arrayOf("String", 1) // Does not compile.
 
-	// Arrays have `get(Int)` and `set(Int, T)` functions, which are operator
-	// overloaded with the index operator `[]`.
-
-	arrayOfInts.set(0, 100)
-	arrayOfInts[1] = 200
-	arrayOfInts[1 + 1] = 300
-
-	println("arrayOfInts.get(0): ${arrayOfInts.get(0)}")
-	println("arrayOfInts[0]: ${arrayOfInts[0]}")
-
-	// Misuse garners the usual exception.
-
-	try {
-		arrayOfInts[-1]
-	} catch (e: ArrayIndexOutOfBoundsException) {
-		e.printStackTrace()
-	}
-
-	// For interop with Java, or for performance sensitive code, there are
-	// factory functions for arrays of underlying primitive types.
+	// For interop with Java, or to avoid the boxing overhead, there are
+	// factory functions for arrays of primitive types.
 
 	val intArray = intArrayOf(1, 2, 3)
 	val booleanArray = booleanArrayOf(true, false, true)
 
-	// There multiple options for iterating over arrays.
+	// There are multiple options for iterating over arrays.
 
 	for (value in arrayOfInts) println("arrayOfInts: $value")
 
