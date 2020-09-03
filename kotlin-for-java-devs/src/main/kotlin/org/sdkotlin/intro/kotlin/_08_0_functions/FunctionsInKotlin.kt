@@ -52,14 +52,15 @@ fun useDefaultParams() {
 }
 
 fun moreDefaultedParams(
-		firstName: String,
-		lastName: String,
-		favoriteProgrammingLanguage: String = "Kotlin",
-		domain: String = "example.com",
+	firstName: String,
+	lastName: String,
+	favoriteProgrammingLanguage: String = "Kotlin",
+	domain: String = "example.com",
 
 		// A default can refer to earlier arguments, whether they're defaulted
 		// or not.
-		email: String = "$firstName.$lastName@$domain") {
+	email: String = "$firstName.$lastName@$domain"
+) {
 
 	println("$firstName $lastName $email $favoriteProgrammingLanguage")
 }

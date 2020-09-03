@@ -7,10 +7,20 @@ import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.SeatID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.Ticket
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.VenueID
 
-fun bookTicket(memberId: Long, venueId: Long, eventId: Long, seatId: Long): PrimitiveTicket =
-		PrimitiveTicket(
-				memberId, venueId, eventId, seatId)
+fun bookTicket(
+	memberId: Long,
+	venueId: Long,
+	eventId: Long,
+	seatId: Long
+): PrimitiveTicket =
+	PrimitiveTicket(
+			memberId, venueId, eventId, seatId)
 
-fun bookTicket(memberId: MemberID, venueId: VenueID, eventId: EventID, seatId: SeatID): Ticket =
-		Ticket(memberId,
-				venueId, eventId, seatId)
+fun bookTicket(
+	memberId: MemberID,
+	venueId: VenueID,
+	eventId: EventID,
+	seatId: SeatID
+): Ticket =
+	Ticket(memberId,
+			venueId, eventId, seatId)

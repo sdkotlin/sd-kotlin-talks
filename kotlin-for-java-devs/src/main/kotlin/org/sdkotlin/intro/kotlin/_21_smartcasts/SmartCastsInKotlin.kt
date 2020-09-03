@@ -1,7 +1,5 @@
 package org.sdkotlin.intro.kotlin._21_smartcasts
 
-import java.lang.ClassCastException
-
 var variableProperty: Any = 1 // To be used later.
 
 fun main() {

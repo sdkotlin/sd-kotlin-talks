@@ -63,9 +63,10 @@ val goldilocksFunction = { porridge = "Just right." }
 // functions".
 
 fun doMath(
-		a: Int = 1,
-		b: Int = 1,
-		operation: (Int, Int) -> Int): Int {
+	a: Int = 1,
+	b: Int = 1,
+	operation: (Int, Int) -> Int
+): Int {
 
 	// You call the passed in function by its parameter name.
 
@@ -80,21 +81,31 @@ fun main() {
 
 	println("The toString() for a function: \"$theBossFunction\"")
 	println("Invoking theBossFunction(): ${theBossFunction()}")
-	println("2+2: ${doMath(
-			2, 2,
-			addFunction)}")
-	println("2+3: ${doMath(
-			2, 3,
-			giveMeAnAddFunction())}")
-	println("2-2: ${doMath(
-			2, 2,
-			subtractFunction)}")
-	println("2*2: ${doMath(
-			2, 2,
-			multiplyFunction)}")
+	println("2+2: ${
+		doMath(
+				2, 2,
+				addFunction)
+	}")
+	println("2+3: ${
+		doMath(
+				2, 3,
+				giveMeAnAddFunction())
+	}")
+	println("2-2: ${
+		doMath(
+				2, 2,
+				subtractFunction)
+	}")
+	println("2*2: ${
+		doMath(
+				2, 2,
+				multiplyFunction)
+	}")
 	//println("2/2: ${doMath(2, 2, divideFunction)}")
-	println("1++: ${incrementFunction(
-			1)}")
+	println("1++: ${
+		incrementFunction(
+				1)
+	}")
 
 	// Omitting the curly braces for a lambda in Kotlin is not allowed at the
 	// call site either.

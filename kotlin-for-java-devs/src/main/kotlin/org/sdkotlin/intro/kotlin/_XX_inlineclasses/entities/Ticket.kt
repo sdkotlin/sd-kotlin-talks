@@ -1,7 +1,9 @@
 package org.sdkotlin.intro.kotlin._XX_inlineclasses.entities
 
-data class Ticket(val memberID: MemberID, val venueID: VenueID, val eventID: EventID,
-		val seatID: SeatID) {
+data class Ticket(
+	val memberID: MemberID, val venueID: VenueID, val eventID: EventID,
+	val seatID: SeatID
+) {
 
 	// Platform declaration clash.
 	// Per the KEEP, functions can be mangled, but constructors can not:
@@ -10,5 +12,7 @@ data class Ticket(val memberID: MemberID, val venueID: VenueID, val eventID: Eve
 //			this(MemberID(memberID), VenueID(venueID), EventID(eventID), SeatID(seatID))
 }
 
-data class PrimitiveTicket(val memberID: Long, val venueID: Long, val eventID: Long,
-		val seatID: Long)
+data class PrimitiveTicket(
+	val memberID: Long, val venueID: Long, val eventID: Long,
+	val seatID: Long
+)

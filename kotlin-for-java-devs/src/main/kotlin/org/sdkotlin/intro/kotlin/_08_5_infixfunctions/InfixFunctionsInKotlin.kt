@@ -6,11 +6,11 @@ import kotlin.random.Random
 // using infix notation.
 
 infix fun Int.plusOrMinus(other: Int) =
-		if (Random.nextBoolean()) {
-			this + other
-		} else {
-			this - other
-		}
+	if (Random.nextBoolean()) {
+		this + other
+	} else {
+		this - other
+	}
 
 // Backticks can be used to escape nonstandard function names. This could be
 // combined with infix functions to simulate new operators, but backticks would

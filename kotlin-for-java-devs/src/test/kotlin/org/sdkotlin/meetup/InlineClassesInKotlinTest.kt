@@ -2,13 +2,13 @@ package org.sdkotlin.meetup
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.bookTicket
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.EventID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.MemberID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.PrimitiveTicket
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.SeatID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.Ticket
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.VenueID
-import org.sdkotlin.intro.kotlin._XX_inlineclasses.bookTicket
 
 class InlineClassesInKotlinTest {
 
@@ -16,7 +16,7 @@ class InlineClassesInKotlinTest {
 	fun `test inline class`() {
 
 		val memberId =
-				MemberID(1)
+			MemberID(1)
 
 		assertThat(memberId.value).isEqualTo(1)
 	}
@@ -33,8 +33,8 @@ class InlineClassesInKotlinTest {
 
 		// See the bug?...
 		val ticket =
-				bookTicket(venueId,
-						memberId, eventId, seatId)
+			bookTicket(venueId,
+					memberId, eventId, seatId)
 
 		// And yet the test passes...
 		assertThat(ticket).isEqualTo(
@@ -46,19 +46,19 @@ class InlineClassesInKotlinTest {
 	fun `test bookTicket with inline classes`() {
 
 		val memberId =
-				MemberID(1)
+			MemberID(1)
 		val venueId =
-				VenueID(1)
+			VenueID(1)
 		val eventId =
-				EventID(1)
+			EventID(1)
 		val seatId =
-				SeatID(1)
+			SeatID(1)
 
 		println("   Inline class ticket info: $memberId, $venueId, $eventId, $seatId")
 
 		val ticket =
-				bookTicket(memberId,
-						venueId, eventId, seatId)
+			bookTicket(memberId,
+					venueId, eventId, seatId)
 
 		assertThat(ticket).isEqualTo(
 				Ticket(

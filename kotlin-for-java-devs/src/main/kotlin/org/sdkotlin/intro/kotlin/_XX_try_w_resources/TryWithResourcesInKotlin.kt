@@ -9,7 +9,7 @@ fun main() {
 
 	val classLoader = Thread.currentThread().contextClassLoader
 	val resource = classLoader.getResource("hello.txt")
-			?: throw IllegalArgumentException("File not found!")
+		?: throw IllegalArgumentException("File not found!")
 	val path = Paths.get(resource.toURI())
 
 	try {

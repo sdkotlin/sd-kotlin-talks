@@ -5,9 +5,9 @@ package org.sdkotlin.intro.kotlin._08_2_tailrecursivefunctions
 // Take this standard recursive implementation for the triangle number of 'n':
 
 fun triangleNumber(n: Int): Int =
-		if (n == 0) 0
-		else n + triangleNumber(
-				n - 1)
+	if (n == 0) 0
+	else n + triangleNumber(
+			n - 1)
 
 // Simple, but it will throw a stack overflow error if called with too big a
 // number.
@@ -32,9 +32,9 @@ fun iterativeTriangleNumber(n: Int): Int {
 // us (tail call elimination).
 
 tailrec fun tailTriangleNumber(i: Int, accumulator: Int = 0): Int =
-		if (i <= 0) accumulator
-		else tailTriangleNumber(
-				i - 1, i + accumulator)
+	if (i <= 0) accumulator
+	else tailTriangleNumber(
+			i - 1, i + accumulator)
 
 // The 'tailrec' keyword is not required for the compiler to do tail call
 // optimization, but it is useful in that it will produce a warning if the
@@ -46,9 +46,9 @@ tailrec fun tailTriangleNumber(i: Int, accumulator: Int = 0): Int =
 
 //tailrec
 fun headTriangleNumber(n: Int, accumulator: Int = 0): Int =
-		if (n > 0) headTriangleNumber(
-				n - 1, accumulator + n)
-		else accumulator
+	if (n > 0) headTriangleNumber(
+			n - 1, accumulator + n)
+	else accumulator
 
 // Note that in the original implementation the recursive call was not fully in
 // tail position because control had to be returned back up the stack for the
@@ -63,41 +63,51 @@ fun headTriangleNumber(n: Int, accumulator: Int = 0): Int =
 
 fun cleanTailTriangleNumber(n: Int): Int {
 	tailrec fun recurse(i: Int, accumulator: Int = 0): Int =
-			if (i <= 0) accumulator
-			else recurse(i - 1, i + accumulator)
+		if (i <= 0) accumulator
+		else recurse(i - 1, i + accumulator)
 	return recurse(n)
 }
 
 fun getStackDepth(i: Int = 0): Int =
-		try {
-			getStackDepth(
-					i + 1)
-		} catch (e: StackOverflowError) {
-			i
-		}
+	try {
+		getStackDepth(
+				i + 1)
+	} catch (e: StackOverflowError) {
+		i
+	}
 
 fun main() {
-	println("T5: ${triangleNumber(
-			5)}")
+	println("T5: ${
+		triangleNumber(
+				5)
+	}")
 	val stackDepth =
-			getStackDepth()
+		getStackDepth()
 	println("Stack depth: $stackDepth")
 	// TODO: Why does stack depth change and why does this not succeed?
 	//println("Recursive T${stackDepth - 1}: ${triangleNumber(stackDepth - 1)}")
 	try {
-		println("Recursive T$stackDepth: ${triangleNumber(
-				stackDepth)}")
+		println("Recursive T$stackDepth: ${
+			triangleNumber(
+					stackDepth)
+		}")
 	} catch (e: StackOverflowError) {
 		println("Stack overflow error with recursive T$stackDepth!")
 	}
-	println("Iterative T$stackDepth: ${iterativeTriangleNumber(
-			stackDepth)}")
+	println("Iterative T$stackDepth: ${
+		iterativeTriangleNumber(
+				stackDepth)
+	}")
 	try {
-		println("Head recursive T$stackDepth: ${headTriangleNumber(
-				stackDepth)}")
+		println("Head recursive T$stackDepth: ${
+			headTriangleNumber(
+					stackDepth)
+		}")
 	} catch (e: StackOverflowError) {
 		println("Stack overflow error with head call T$stackDepth!")
 	}
-	println("Tail recursive T$stackDepth: ${tailTriangleNumber(
-			stackDepth)}")
+	println("Tail recursive T$stackDepth: ${
+		tailTriangleNumber(
+				stackDepth)
+	}")
 }

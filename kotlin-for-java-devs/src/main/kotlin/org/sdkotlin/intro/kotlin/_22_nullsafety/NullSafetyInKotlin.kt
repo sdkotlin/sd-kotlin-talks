@@ -75,8 +75,8 @@ fun main() {
 
 	try {
 		val requiredName =
-				nullableName ?: throw IllegalArgumentException(
-						"More specific than a NPE.")
+			nullableName ?: throw IllegalArgumentException(
+					"More specific than a NPE.")
 	} catch (e: IllegalArgumentException) {
 		println(e.message)
 	}
