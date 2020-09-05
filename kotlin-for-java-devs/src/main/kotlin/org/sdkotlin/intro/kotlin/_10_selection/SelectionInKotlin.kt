@@ -2,6 +2,7 @@ package org.sdkotlin.intro.kotlin._10_selection
 
 import kotlin.random.Random.Default.nextBoolean as randomBoolean
 
+
 fun main() {
 
 	// If blocks in Kotlin are as in Java.
@@ -45,7 +46,7 @@ fun main() {
 	val mythRating = when (randomBoolean()) {
 		true -> "confirmed!"
 		false -> "busted!"
-		// Used as an expression, 'else' is required unless the compiler can
+		// Used as an expression, `else` is required unless the compiler can
 		// tell the conditions are exhaustive (e.g. both booleans, all
 		// constants of an Enum, or all types of a sealed class).
 	}
@@ -57,7 +58,26 @@ fun main() {
 	val isItANumber = when (randomBinaryInt) {
 		// All Ints are Numbers.
 		is Number -> true
-		// And yet the compiler still requires this 'else'.
+		// And yet the compiler still requires this `else`.
 		else -> false
 	}
+
+	// There is a feature request to support sealed `when`s in the case where
+	// it's only used for side effects:
+	// https://youtrack.jetbrains.com/issue/KT-12380
+
+	// In the meantime we can use a trivial utility function to force handling
+	// the `when` as an expression.
+
+	when (randomBoolean()) {
+		false -> println("0")
+		// Then if it's not exhaustive we'll get the desired compiler error.
+		true -> println("1")
+	}.sealed()
 }
+
+/**
+ * A utility extension function intended to be used to trigger the handling of
+ * `when` as an expression.
+ */
+fun Unit.sealed() = this
