@@ -6,7 +6,7 @@ import org.sdkotlin.intro.kotlin._XX_enums.TrafficLight.GO
 import org.sdkotlin.intro.kotlin._XX_enums.TrafficLight.STOP
 
 // Kotlin supports enum classes that provide a fixed set of singleton object
-// instances.
+// instances (constants).
 
 enum class State {
 	PENDING, STARTED, FINISHED
@@ -19,7 +19,7 @@ fun `with states`() {
 
 	var currentState = State.PENDING // Enum types are inferred.
 
-	// As a matter of style, enum instances are sometimes imported.
+	// As a matter of style, enum constants are sometimes imported.
 
 	currentState = STARTED
 
@@ -54,8 +54,8 @@ fun `while driving`(light: TrafficLight) {
 	// Do keep versioning in mind, particularly for enums used in API, as
 	// adding a new instance to the enum will break such expressions everywhere.
 
-	// Also be mindful of mutable enum properties, as they are global mutable
-	// state with all the thread safety implications entailed.
+	// Also be mindful of mutable enum properties. They are global mutable
+	// state, with all the thread safety implications entailed.
 
 	GO.lightTime = 40
 }
@@ -85,7 +85,30 @@ enum class Trio {
 
 // Enums can't extend classes, but they can implement interfaces.
 
-// TODO: Finish enums example.
+interface Dandy {
+	val dandy: Boolean
+}
+
+interface Inseparable {
+	val inseparable: Boolean
+}
+
+enum class ThreeMusketeer : Inseparable, Dandy  {
+	ATHOS {
+		override val dandy = false
+	},
+	PORTHOS {
+		override val dandy = true
+	},
+	ARAMIS {
+		override val dandy = false
+	};
+
+	// Interfaces can be implemented by each enum constant individually, or
+	// for the entire set.
+
+	override val inseparable = true
+}
 
 
 fun main() {
