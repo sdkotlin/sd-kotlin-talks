@@ -69,7 +69,7 @@ fun main() {
 
 	val rockStar = temp ?: "Elvis"
 
-	println("rockStar: $rockStar")
+	println("rockStar: ${rockStar.trim()}")
 
 	// The Elvis operator can be used to throw an exception for null values.
 

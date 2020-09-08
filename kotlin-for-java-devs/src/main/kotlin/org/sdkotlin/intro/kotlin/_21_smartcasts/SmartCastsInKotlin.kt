@@ -43,6 +43,7 @@ fun main() {
 	// by another thread in between the check and the usage.
 
 	if (variableProperty is Int) {
+		// Some other thread could `variableProperty = "Foo"` at this point.
 		//variableProperty.plus(1) // Does not compile
 	}
 
