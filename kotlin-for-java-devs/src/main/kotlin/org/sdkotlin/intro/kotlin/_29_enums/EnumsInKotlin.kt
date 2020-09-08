@@ -1,15 +1,15 @@
 package org.sdkotlin.intro.kotlin._29_enums
 
-import org.sdkotlin.intro.kotlin._29_enums.State.STARTED
+import org.sdkotlin.intro.kotlin._29_enums.State.DONE
 import org.sdkotlin.intro.kotlin._29_enums.TrafficLight.CAUTION
 import org.sdkotlin.intro.kotlin._29_enums.TrafficLight.GO
 import org.sdkotlin.intro.kotlin._29_enums.TrafficLight.STOP
 
-// Kotlin supports enum classes that provide a fixed set of singleton object
-// instances (constants).
+// Kotlin supports enum classes, which define a fixed set of instances
+// (enum constants) that implement the enum's type.
 
 enum class State {
-	PENDING, STARTED, FINISHED
+	NOT_DONE, DONE
 }
 
 fun `with states`() {
@@ -17,11 +17,11 @@ fun `with states`() {
 	// A variable of the enum type can be initialized to only one of those
 	// instances.
 
-	var currentState = State.PENDING // Enum types are inferred.
+	var currentState = State.NOT_DONE // Enum types are inferred.
 
 	// As a matter of style, enum constants are sometimes imported.
 
-	currentState = STARTED
+	currentState = DONE
 
 	// Nullability and type safety are enforced as usual.
 
