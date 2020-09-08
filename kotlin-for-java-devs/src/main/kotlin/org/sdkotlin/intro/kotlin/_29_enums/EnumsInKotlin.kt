@@ -1,9 +1,9 @@
-package org.sdkotlin.intro.kotlin._XX_enums
+package org.sdkotlin.intro.kotlin._29_enums
 
-import org.sdkotlin.intro.kotlin._XX_enums.State.STARTED
-import org.sdkotlin.intro.kotlin._XX_enums.TrafficLight.CAUTION
-import org.sdkotlin.intro.kotlin._XX_enums.TrafficLight.GO
-import org.sdkotlin.intro.kotlin._XX_enums.TrafficLight.STOP
+import org.sdkotlin.intro.kotlin._29_enums.State.STARTED
+import org.sdkotlin.intro.kotlin._29_enums.TrafficLight.CAUTION
+import org.sdkotlin.intro.kotlin._29_enums.TrafficLight.GO
+import org.sdkotlin.intro.kotlin._29_enums.TrafficLight.STOP
 
 // Kotlin supports enum classes that provide a fixed set of singleton object
 // instances (constants).

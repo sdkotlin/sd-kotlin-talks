@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._08_6_varargfunctions
+package org.sdkotlin.intro.kotlin._25_varargfunctions
 
 fun main() {
 
@@ -7,7 +7,7 @@ fun main() {
 
 	fun zeroOrMoreThings(vararg things: String) {
 
-		// The are passed as an Array of the declared parameter type.
+		// The are passed as an array of the declared parameter type.
 
 		println("things: ${things.contentDeepToString()}")
 	}

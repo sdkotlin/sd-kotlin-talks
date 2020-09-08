@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._25_collections
+package org.sdkotlin.intro.kotlin._26_collections
 
 import java.util.LinkedList
 import java.util.TreeMap
