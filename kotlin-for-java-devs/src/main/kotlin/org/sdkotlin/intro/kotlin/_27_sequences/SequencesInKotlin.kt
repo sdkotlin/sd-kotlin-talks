@@ -11,12 +11,30 @@ fun main() {
 
 	// Say we want to find the first even number greater than 50.
 
-	val bigEven = listOfInts.asSequence()
-			.filter { println("Filtering $it"); it.isEven() }
-			.find { println("Finding $it"); it > 50 }
-			?.toString() ?: "Not Found"
+	// Let's try this using collection operations first.
 
-	println("First even number over 50: $bigEven")
+	// We'll keep track of the number of operations.
+	var collectionFilters = 0
+	var collectionFinds = 0
+
+	val collectionBigEven = listOfInts
+			.filter { collectionFilters++; it.isEven() }
+			.find { collectionFinds++; it > 50 }
+
+	println("$collectionBigEven found with $collectionFilters filter and " +
+			"$collectionFinds find collection operations.")
+
+	// Now let's try with a sequence instead.
+
+	var sequenceFilters = 0
+	var sequenceFinds = 0
+
+	val sequenceBigEven = listOfInts.asSequence()
+			.filter { sequenceFilters++; it.isEven() }
+			.find { sequenceFinds++; it > 50 }
+
+	println("$sequenceBigEven found with $sequenceFilters filter and " +
+			"$sequenceFinds find sequence operations.")
 }
 
 fun Int.isEven() = this % 2 == 0
