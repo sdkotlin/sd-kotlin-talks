@@ -45,7 +45,7 @@ fun main() {
 	println("Flightless birds: ${sequenceOfFlightlessBirds.sorted().toList()}")
 
 	// You can create a sequence from an existing function or lambda. The
-	// sequence ends if and when the function returns null.
+	// sequence ends if and when the function returns `null`.
 
 	val moreRandomInts = generateSequence {
 		(0..10).random().takeIf { it != 0 }
@@ -64,8 +64,8 @@ fun main() {
 	println("Will it ever end? ${infiniteInts.take(5).toList()}")
 
 	// We haven't covered coroutines yet, but they're like lightweight threads.
-	// There is a `sequence` generator/`yield` suspending function for creating
-	// non-blocking sequence generators.
+	// There is a `sequence` generator/`yield()` suspending function for
+	// creating non-blocking sequence generators.
 
 	val fibonacciSequence = sequence {
 		var terms = Pair(0, 1)
