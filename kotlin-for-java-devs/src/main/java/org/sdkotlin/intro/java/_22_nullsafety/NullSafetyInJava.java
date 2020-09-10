@@ -15,4 +15,9 @@ public class NullSafetyInJava {
 
 	@NotNull
 	public static final String SURPRISE = null;
+
+	@NotNull
+	public static String surpriseMethod() {
+		return null;
+	}
 }

@@ -90,18 +90,32 @@ fun main() {
 		println("Or we could just really love NullPointerExceptions!!")
 	}
 
+	// Another way Kotlin defends against NPEs is that `Any?` and `String?`
+	// have a couple useful extension functions defined. No safe call operator
+	// is required.
+
+	val nullAnything: Any? = null
+
+	println("nullAnything.toString: ${nullAnything.toString()}")
+	println("nullAnything.hashCode: ${nullAnything.hashCode()}")
+
+	val nullString: String? = null
+
+	println("nullString.orEmpty(): \"${nullString.orEmpty()}\"")
+
 	// In order to pragmatically support interop with Java, which lacks
 	// non-nullable types, Kotlin has "platform types".
 	// Platform types are represented in type hints, runtime exception
 	// messages, etc. as the type name follow by `!`, for example `String!`.
 	// Platform types can't be declared in the source code.
 	// The compiler assumes they are not null.
+	// If it turns out they are null, an `IllegalStateException` is thrown.
 
 	val maybeNullFromJava = NullSafetyInJava.MAYBE_NULL
 
 	try {
 		maybeNullFromJava.trim()
-	} catch (e: NullPointerException) {
+	} catch (e: IllegalStateException) {
 		println("Platform types can bite!")
 	}
 
@@ -120,13 +134,20 @@ fun main() {
 		println("A `@Nullable` String from Java is a `String?`")
 	}
 
-	val erroneouslyNotNullFromJava = NullSafetyInJava.SURPRISE
+	// If a `@NotNull` annotated field or method return value ends up being
+	// null, an IllegalStateException is thrown when the value is referenced.
 
-	if (erroneouslyNotNullFromJava is String) {
-		try {
-			erroneouslyNotNullFromJava.trim()
-		} catch (e: NullPointerException) {
-			println("Hopefully things annotated `@NotNull` in Java truly are!")
-		}
+	try {
+		val erroneouslyNotNullFromJava = NullSafetyInJava.SURPRISE
+		println(erroneouslyNotNullFromJava) // Unreachable
+	} catch (e: IllegalStateException) {
+		println("Hopefully fields annotated `@NotNull` in Java truly are!")
+	}
+
+	try {
+		val erroneouslyNotNullFromJava = NullSafetyInJava.surpriseMethod()
+		println(erroneouslyNotNullFromJava) // Unreachable
+	} catch (e: IllegalStateException) {
+		println("Hopefully methods annotated `@NotNull` in Java truly are!")
 	}
 }
