@@ -169,7 +169,8 @@ fun `with producers`() {
 
 	// Huzzah! An immutable container ("producer") of `String` can safely be a
 	// subtype of an immutable container of `Any`, as `String` is a subtype of
-	// `Any`, so long as we let the compiler know via an `out` annotation.
+	// `Any`. We just have to let the compiler know the container is
+	// exclusively a producer via an `out` annotation.
 
 	// We say such producers are "covariant" because their inheritance
 	// relationship mirrors that of the types they produce:
@@ -177,12 +178,12 @@ fun `with producers`() {
 	// `Producer<Any>` <- `Producer<String>`
 	// `Any` <- `String`
 
-	// The compiler will prevent us from making the producer read-write, for
+	// The compiler will prevent us from making a producer read-write, for
 	// example by making the contents `var`.
 
 	//class InvalidProducer<out T>(var contents: T) // Does not compile.
 
-	// It'll catch function arguments as well as variable properties.
+	// It'll also catch function arguments.
 
 	class ConsumingProducer<out T> {
 		//fun nope(input: T) = println(input) // Does not compile.
