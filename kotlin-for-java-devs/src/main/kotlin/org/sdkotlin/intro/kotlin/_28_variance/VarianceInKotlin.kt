@@ -190,9 +190,84 @@ fun `with producers`() {
 	}
 }
 
+
+fun `with consumers`() {
+
+	// Let's look at the opposite case, classes that only consume but not
+	// produce instances of a generic type parameter:
+
+	class NaiveTester<T> {
+		fun test(input: T): Boolean = input.hashCode() > 5
+	}
+
+	// It's not mutable, so is a `NaiveTester<String>` a subclass of
+	// `NaiveTester<Any>`?
+
+	val naiveStringTester = NaiveTester<String>()
+
+	//val nope: NaiveTester<Any> = naiveStringTester // Does not compile.
+
+	// Not automatically, but Kotlin has an `in` type annotation that's like
+	// `out` for when a type parameter is only used in "in" position.
+
+	abstract class Tester<in T> {
+		abstract fun test(input: T): Boolean
+	}
+
+	val stringTester = object: Tester<String>() {
+		override fun test(input: String) = input.trim() == "Hello"
+	}
+
+	//val nope: Tester<Any> = stringTester // Does not compile.
+
+	// Uh oh, what happened? If `Any` <- `String`, why isn't an immutable
+	// `Tester<Any>` <- `Tester<String>`? To see why we can look at its
+	// use.
+	//
+	// If a `Tester<String>` "is a" `Tester<Any>`, then we should be able to
+	// use a `Tester<String>` wherever a `Tester<Any>` is expected, still
+	// having a correct program. Let's try it.
+
+	val anyTester = object: Tester<Any>() {
+		override fun test(input: Any) = input.hashCode() > 5
+	}
+
+	val any: Any = 1
+
+	val anyTest = anyTester.test(any)
+
+	//val otherAnyTest = stringTester.test(any) // Does not compile.
+
+	// Ah ha! Makes sense, an `Any` doesn't necessarily have all the API that
+	// a tester expecting a `String` would use.
+
+	// What about the other way around? Couldn't something expecting a
+	// `Tester<String>` also accept a `Tester<Any>`?
+
+	val string = "Hello"
+
+	val stringTest = stringTester.test(string)
+
+	val otherStringTest = anyTester.test(string)
+
+	// That works. Because a `String` "is an" `Any`, a `String` can be taken in
+	// and tested by a `Tester<String>` and a `Tester<Any>`.
+
+	// What we've seen here is that while a `Tester<String>` "is not a"
+	// `Tester<Any>`, a `Tester<Any>` "is a" `Tester<String>`.
+	//
+	// This is "contravariance". For a type parameter in "in" position, there
+	// is an inverse inheritance relationship for a consumer compared to the
+	// relationship of what it's consuming.
+	//
+	// `Any` <- `String`
+	// `Consumer<Any>` -> `Consumer<String>`
+}
+
 fun main() {
 	`with substitution`()
 	`with simple container variance`()
 	`with collection variance`()
 	`with producers`()
+	`with consumers`()
 }
