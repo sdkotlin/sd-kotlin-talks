@@ -53,7 +53,7 @@ fun `with simple container variance`() {
 	// Let's put a string in the container. That makes it a `Container<String>`
 	// via type inference.
 
-	val stringContainer = Container("Testing")
+	val stringContainer = Container("Hello")
 
 	// Now, if a `Container<String>` 'is a' `Container<Any>`, as a `String` 'is
 	// an' `Any`, we should be able to substitute an instance of a
@@ -100,7 +100,98 @@ fun `with simple container variance`() {
 	}
 }
 
+fun `with collection variance`() {
+
+	// Given the above, we might be able to guess that arrays in Kotlin are
+	// "invariant", meaning an `Array<Any>` is not a supertype of
+	// `Array<String>`.
+
+	val stringArray = arrayOf("Hello", "World")
+
+	//val nope: Array<Any> = stringArray // Does not compile
+
+	// Same for lists then, right?
+
+	val stringList = listOf("Hello", "World")
+
+	val anyList: List<Any> = stringList
+
+	// Whoa! Why does that work? Well, notice that all the trouble above seemed
+	// to come about because our string container was mutable, and hence
+	// through some ill-advised casting we were able to store an integer in it.
+	//
+	// The compiler did try to discourage us from doing that by preventing
+	// reassignment to an `Any` container unless we used the unsafe cast
+	// operator, aptly named given the trouble we got into with it.
+	//
+	// So why isn't it doing the same for our `List` here?
+	//
+	// A somewhat oversimplified simplified answer is because `List` in Kotlin
+	// is immutable, and `Array` is not. (We'll get to a more complete answer
+	// shortly.)
+	//
+	// Let's try the experiment again with a mutable list.
+
+	val mutableStringList = mutableListOf("Hello", "World")
+
+	//val mutableAnyList: MutableList<Any> = mutableStringList // Does not compile.
+
+	// Okay, that's more like it. Apples for apples, mutable arrays and lists
+	// are both invariant. But how did the compiler know? Did it exhaustively
+	// analyze the `List` API and determine there was no way to change change
+	// its contents after being instantiated?
+
+	// Well, let's see if it will do that for our simple container class if we
+	// make it immutable.
+
+	class ImmutableContainer<T>(val contents: T)
+
+	val immutableStringContainer = ImmutableContainer("Hello")
+
+	//val immutableAnyContainer: ImmutableContainer<Any> =
+	//	immutableStringContainer // Does not compile.
+
+	// Hmm, no such luck. Read on...
+}
+
+fun `with producers`() {
+
+	// It turns out the answer is that Kotlin has a type parameter annotation
+	// `out`, which we can use to say that a type is only every read, never
+	// written. To say it differently, we can declare when a type parameter is
+	// used for something that is only every output, never taken in.
+
+	class Producer<out T>(val contents: T)
+
+	val stringProducer = Producer("Hello")
+
+	val anyProducer: Producer<Any> = stringProducer
+
+	// Huzzah! An immutable container ("producer") of `String` can safely be a
+	// subtype of an immutable container of `Any`, as `String` is a subtype of
+	// `Any`, so long as we let the compiler know via an `out` annotation.
+
+	// We say such producers are "covariant" because their inheritance
+	// relationship mirrors that of the types they produce:
+	//
+	// `Producer<Any>` <- `Producer<String>`
+	// `Any` <- `String`
+
+	// The compiler will prevent us from making the producer read-write, for
+	// example by making the contents `var`.
+
+	//class InvalidProducer<out T>(var contents: T) // Does not compile.
+
+	// It'll catch function arguments as well as variable properties.
+
+	class ConsumingProducer<out T> {
+		//fun nope(input: T) = println(input) // Does not compile.
+	}
+}
+
 fun main() {
 	`with substitution`()
 	`with simple container variance`()
+	`with collection variance`()
+	`with producers`()
 }
