@@ -22,7 +22,8 @@ public class VarianceInJava {
 			System.out.println(e);
 		}
 
-		// In Java collections are invariant.
+		// Item 28 in the third edition of "Effective Java" is "Prefer Lists to
+		// Arrays" for this very reason. Collections are invariant in Java.
 
 		final List<String> listOfStrings = new ArrayList<>();
 

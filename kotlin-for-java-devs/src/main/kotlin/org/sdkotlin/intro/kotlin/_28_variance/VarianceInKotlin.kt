@@ -269,10 +269,14 @@ fun `with consumers`() {
 	//
 	// Producers can safely be covariant, and Kotlin supports declaring them as
 	// such by annotating type parameters at the declaration site with `out`.
-	// They call this declaration-site variance. Similarly, consumers can
-	// safely be contravariant, and declared with `in`. The compiler will
-	// prevent API that violates producer or consumer contracts respectively
-	// when doing so.
+	// They call this declaration-site variance.
+	//
+	// Similarly, consumers can safely be contravariant, and declared with
+	// `in`.
+	//
+	// The compiler will prevent you from adding API that violates producer or
+	// consumer contracts when annotating the type parameter with `out` or `in`
+	// respectively.
 
 	// How is any of this better than how variance is handled in Java?
 	// Let's see...
@@ -302,6 +306,11 @@ fun `with use-site variance`() {
 	//copy(anythings, strings) // Does not compile.
 
 	println("anythings: ${anythings.contentDeepToString()}")
+
+	// Kotlin refers to this as "type projection". An invariant class can be
+	// "projected" to a covariant class with `out` at the use site so long as
+	// you only read from it there. Similarly, it can be projected to be
+	// contravariant at the use site with `in` given you only write to it there.
 }
 
 fun main() {
