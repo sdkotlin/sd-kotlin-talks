@@ -2,7 +2,7 @@ package org.sdkotlin.intro.kotlin._28_variance
 
 // Kotlin has different facilities for type generic type variance than Java.
 
-// We say a `String` 'is an' `Any`. Is an `Array<String>` also an
+// We say a `String` 'is an' `Any?`. Is an `Array<String>` also an
 // `Array<Any>`? Is a `List<String>` a `List<Any>`? Let's find out...
 
 fun `with substitution`() {
@@ -186,10 +186,9 @@ fun `with producers`() {
 	// It'll also catch function arguments.
 
 	class ConsumingProducer<out T> {
-		//fun nope(input: T) = println(input) // Does not compile.
+		//fun nope( input: T) = println(input) // Does not compile.
 	}
 }
-
 
 fun `with consumers`() {
 
@@ -350,7 +349,7 @@ fun `with star projections`() {
 
 	// Kotlin offers another option called a star projection. It's the
 	// idiomatic equivalent to the unbounded wildcard `?` in Java (e.g.
-	// `Array<?>`).
+	// `Array<?>`, List<?>).
 
 	fun indices(array: Array<*>) = 0 until array.size
 

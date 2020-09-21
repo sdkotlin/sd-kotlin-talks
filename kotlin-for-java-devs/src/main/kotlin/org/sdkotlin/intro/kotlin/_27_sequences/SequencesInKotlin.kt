@@ -75,7 +75,7 @@ fun main() {
 		}
 	}
 
-	println("The Fibonacci sequance: ${fibonacciSequence.take(10).toList()}...")
+	println("The Fibonacci sequence: ${fibonacciSequence.take(10).toList()}...")
 
 	// There are some benefits to using the Kotlin sequence APIs over Java 8
 	// streams:

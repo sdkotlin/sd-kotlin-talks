@@ -17,7 +17,7 @@ public class VarianceInJava {
 		// type-safety is not ensured by the compiler.
 
 		try {
-			objects[1] = 1;
+			objects[0] = 1;
 		} catch (final ArrayStoreException e) {
 			System.out.println(e);
 		}
@@ -26,6 +26,7 @@ public class VarianceInJava {
 		// Arrays" for this very reason. Collections are invariant in Java.
 
 		final List<String> listOfStrings = new ArrayList<>();
+		listOfStrings.add("Hello");
 
 		//final List<Object> nope = listOfStrings; // Does not compile.
 
