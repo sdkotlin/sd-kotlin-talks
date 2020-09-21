@@ -28,11 +28,11 @@ public class VarianceInJava {
 
 		//final List<Object> nope = listOfStrings; // Does not compile.
 
-		// Unless a usage-site wildcard declaration is used.
+		// Unless a use-site wildcard declaration is used.
 
 		final List<? extends Object> listOfThings = listOfStrings;
 
-		// This is like List<out T> in Kotlin. It makes the list covariant
+		// This is like List<out T> in Kotlin. It makes the list a covariant
 		// producer.
 
 		// We can read objects from it.
@@ -43,7 +43,7 @@ public class VarianceInJava {
 
 		//listOfThings.add("Testing"); // Does not compile.
 
-		// We can declare a contravariant consumer as well.
+		// We can use-site declare a contravariant consumer as well.
 
 		final List<? super String> listOfStringyThings = new ArrayList<>();
 

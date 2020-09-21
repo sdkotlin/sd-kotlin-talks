@@ -268,12 +268,34 @@ fun `with consumers`() {
 	// just a particular generic collection, much like a `MutableList`.
 	//
 	// Producers can safely be covariant, and Kotlin supports declaring them as
-	// such at the declaration site with `out`. Consumers can be safely
-	// contravariant, and declared with `in`. The compiler will prevent API
-	// that violates producer or consumer contracts respectively when doing so.
+	// such by annotating type parameters at the declaration site with `out`.
+	// They call this declaration-site variance. Similarly, consumers can
+	// safely be contravariant, and declared with `in`. The compiler will
+	// prevent API that violates producer or consumer contracts respectively
+	// when doing so.
 
 	// How is any of this better than how variance is handled in Java?
 	// Let's see...
+}
+
+fun `with use-site variance`() {
+
+	// Kotlin does also support use-site declaration of type parameter variance.
+	// This is useful for making an otherwise invariant type covariant or
+	// contravariant on a case-by-case basis.
+
+	fun copy(src: Array<out Any>, dest: Array<in Any>) {
+		for (i in src.indices) {
+			dest[i] = src[i]
+		}
+	}
+
+	val strings = arrayOf("Hello", "World")
+	val anythings = arrayOfNulls<Any>(2)
+
+	copy(strings, anythings)
+
+	println("anythings: ${anythings.contentDeepToString()}")
 }
 
 fun main() {
@@ -282,4 +304,5 @@ fun main() {
 	`with array and collection variance`()
 	`with producers`()
 	`with consumers`()
+	`with use-site variance`()
 }
