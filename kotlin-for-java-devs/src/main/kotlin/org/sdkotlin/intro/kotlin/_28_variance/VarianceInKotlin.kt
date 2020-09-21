@@ -278,8 +278,15 @@ fun `with consumers`() {
 	// consumer contracts when annotating the type parameter with `out` or `in`
 	// respectively.
 
+	// We can distill these traits of covariance and contravariance down to a
+	// simple pair of rules:
+	//
+	// For a type to be a subtype it must:
+	//   1. Take in _at least_ the same set of types as its supertype
+	//   2. Output _at most_ the same set of types as its supertype
+
 	// How is any of this better than how variance is handled in Java?
-	// Let's see...
+	// See: VarianceInJava.java...
 }
 
 fun `with use-site variance`() {
@@ -313,6 +320,46 @@ fun `with use-site variance`() {
 	// contravariant at the use site with `in` given you only write to it there.
 }
 
+fun `with star projections`() {
+
+	// Sometimes you don't care what a type parameter is.
+	//
+	// For example, let's say we want to get a list of indices for an array.
+
+	// We could define it with a declaration-site out projection like:
+
+	fun indicesOfAny(array: Array<out Any?>) = 0 until array.size
+
+	// Or introduce a type parameter for the function:
+
+	fun <T> indicesOf(array: Array<T>) = 0 until array.size
+
+	// Either will work:
+
+	val arrayOfMaybeAny = arrayOf<Any?>(null, "Planet")
+	val arrayOfAny = arrayOf<Any>("Howdy", "Planet")
+	val arrayOfString = arrayOf("Hello", "World")
+
+	val indicesOfMaybeAnyAnythings = indicesOfAny(arrayOfMaybeAny)
+	val indicesOfAnyAnythings = indicesOfAny(arrayOfAny)
+	val indicesOfAnyStrings = indicesOfAny(arrayOfString)
+
+	val indicesOfMaybeEAnythings = indicesOf(arrayOfMaybeAny)
+	val indicesOfEAnythings = indicesOf(arrayOfAny)
+	val indicesOfEStrings = indicesOf(arrayOfString)
+
+	// Kotlin offers another option called a star projection. It's the
+	// idiomatic equivalent to the unbounded wildcard `?` in Java (e.g.
+	// `Array<?>`).
+
+	fun indices(array: Array<*>) = 0 until array.size
+
+	val indicesOfAnythings = indices(arrayOfAny)
+	val indicesOfStrings = indices(arrayOfString)
+
+	// It's a bit more concise way of saying "any Array".
+}
+
 fun main() {
 	`with substitution`()
 	`with simple container variance`()
@@ -320,4 +367,5 @@ fun main() {
 	`with producers`()
 	`with consumers`()
 	`with use-site variance`()
+	`with star projections`()
 }
