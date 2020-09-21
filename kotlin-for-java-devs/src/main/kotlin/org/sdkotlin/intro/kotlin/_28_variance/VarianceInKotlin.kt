@@ -284,16 +284,22 @@ fun `with use-site variance`() {
 	// This is useful for making an otherwise invariant type covariant or
 	// contravariant on a case-by-case basis.
 
-	fun copy(src: Array<out Any>, dest: Array<in Any>) {
+	// This is equivalent to
+	// `<T> void copy(Array<? extends T> src, Array<? super T> dest)`
+	// in Java, where `src` is covariant and `dest` is contravariant:
+
+	fun <T> copy(src: Array<out T>, dest: Array<in T>) {
 		for (i in src.indices) {
 			dest[i] = src[i]
 		}
 	}
 
 	val strings = arrayOf("Hello", "World")
-	val anythings = arrayOfNulls<Any>(2)
+	val anythings = arrayOf<Any>("Howdy", "Planet")
 
 	copy(strings, anythings)
+
+	//copy(anythings, strings) // Does not compile.
 
 	println("anythings: ${anythings.contentDeepToString()}")
 }
