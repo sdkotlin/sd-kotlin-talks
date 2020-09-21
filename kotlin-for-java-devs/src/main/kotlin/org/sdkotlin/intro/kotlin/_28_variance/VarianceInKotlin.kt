@@ -100,7 +100,7 @@ fun `with simple container variance`() {
 	}
 }
 
-fun `with collection variance`() {
+fun `with array and collection variance`() {
 
 	// Given the above, we might be able to guess that arrays in Kotlin are
 	// "invariant", meaning an `Array<Any>` is not a supertype of
@@ -262,12 +262,24 @@ fun `with consumers`() {
 	//
 	// `Any` <- `String`
 	// `Consumer<Any>` -> `Consumer<String>`
+
+	// To summarize, both arrays and collections in Kotlin are by default
+	// invariant. In fact, arrays aren't even special types in Kotlin, they're
+	// just a particular generic collection, much like a `MutableList`.
+	//
+	// Producers can safely be covariant, and Kotlin supports declaring them as
+	// such at the declaration site with `out`. Consumers can be safely
+	// contravariant, and declared with `in`. The compiler will prevent API
+	// that violates producer or consumer contracts respectively when doing so.
+
+	// How is any of this better than how variance is handled in Java?
+	// Let's see...
 }
 
 fun main() {
 	`with substitution`()
 	`with simple container variance`()
-	`with collection variance`()
+	`with array and collection variance`()
 	`with producers`()
 	`with consumers`()
 }
