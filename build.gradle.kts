@@ -20,7 +20,7 @@ allprojects {
 subprojects {
 	tasks {
 		register<DependencyReportTask>("allDependencies") {
-			description="Display dependencies report for all subprojects."
+			description = "Display dependencies report for all subprojects."
 			group = "help"
 		}
 	}
@@ -35,14 +35,19 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper") {
-		gradleVersion = "6.6.1"
+		gradleVersion =
+			"6.8-branch-eskatos_kotlin_embedded_1_4-20200922125722+0000"
 		distributionType = ALL
 	}
 }
 
 fun isNonStable(version: String): Boolean {
-	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
-	val unstableKeyword = listOf("""M\d+""").any { version.toUpperCase().contains(it.toRegex()) }
+	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
+		version.toUpperCase()
+				.contains(it)
+	}
+	val unstableKeyword =
+		listOf("""M\d+""").any { version.toUpperCase().contains(it.toRegex()) }
 	val regex = "^[0-9,.v-]+(-r)?$".toRegex()
 	val isStable = (stableKeyword && !unstableKeyword) || regex.matches(version)
 	return isStable.not()

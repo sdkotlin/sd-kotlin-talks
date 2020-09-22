@@ -6,11 +6,8 @@ plugins {
 }
 
 dependencies {
-	api(kotlin("stdlib"))
-	api(kotlin("stdlib-jdk7"))
-	api(kotlin("stdlib-jdk8"))
 	implementation(kotlin("reflect"))
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
 }
 
 java {
@@ -20,6 +17,10 @@ java {
 
 tasks {
 	withType<KotlinCompile> {
-		kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+		with(kotlinOptions) {
+			languageVersion = "1.4"
+			apiVersion = "1.4"
+			jvmTarget = JavaVersion.VERSION_11.toString()
+		}
 	}
 }
