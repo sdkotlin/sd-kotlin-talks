@@ -4,5 +4,5 @@ plugins {
 }
 
 dependencies {
-	testImplementation("io.mockk:mockk:1.10.0")
+	testImplementation("io.mockk:mockk:1.10.2")
 }
