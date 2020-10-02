@@ -2,13 +2,13 @@ package org.sdkotlin.meetup
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.sdkotlin.intro.kotlin._31_inlineclasses.bookTicket
-import org.sdkotlin.intro.kotlin._31_inlineclasses.entities.EventID
-import org.sdkotlin.intro.kotlin._31_inlineclasses.entities.MemberID
-import org.sdkotlin.intro.kotlin._31_inlineclasses.entities.PrimitiveTicket
-import org.sdkotlin.intro.kotlin._31_inlineclasses.entities.SeatID
-import org.sdkotlin.intro.kotlin._31_inlineclasses.entities.Ticket
-import org.sdkotlin.intro.kotlin._31_inlineclasses.entities.VenueID
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.bookTicket
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.EventID
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.MemberID
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.PrimitiveTicket
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.SeatID
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.Ticket
+import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.VenueID
 
 class InlineClassesInKotlinTest {
 
