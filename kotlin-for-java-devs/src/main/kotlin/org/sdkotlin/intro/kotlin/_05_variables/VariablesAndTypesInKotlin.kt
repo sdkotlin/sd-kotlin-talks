@@ -15,7 +15,7 @@ val otherByte = 0.toByte() // Alternatively, as literals are objects
 val character = 'c' // Char, can't be treated as a number
 val short = 0.toShort() // Short, no literal
 val integer = 0 // Int
-val Long = 0L // Long, lowercase 'l' not supported
+val long = 0L // Long, lowercase 'l' not supported
 val float = 0.0f // Float, 'F' also supported
 val double = 0.0 // Double, 'd/D' not supported
 
@@ -33,7 +33,7 @@ fun main() {
 	println("Char: " + character)
 	println("Short: " + short)
 	println("Int: " + integer)
-	println("Long: " + Long)
+	println("Long: " + long)
 	println("Float: " + float)
 	println("Double: " + double)
 	println("variable Int j: " + j)
