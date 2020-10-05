@@ -26,10 +26,45 @@ class JeepWranglerRubicon : JeepWranglerSport() {
 	override fun howMuchFun() = "😃"
 }
 
-fun main() {
+fun `with prohibiting or documenting for inheritance`() {
 	val jeepWranglerSport = JeepWranglerSport()
 	val jeepWranglerRubicon = JeepWranglerRubicon()
 
 	println("The ${jeepWranglerSport.name} is ${jeepWranglerSport.howMuchFun()}")
 	println("The ${jeepWranglerRubicon.name} is ${jeepWranglerRubicon.howMuchFun()}")
+}
+
+// Kotlin has built-on support for the Decorator pattern with delegates, which
+// in many cases can be used as a more loosely coupled alternative to
+// inheritance. It even works for closed classes!
+
+interface DoThings {
+	fun gitRDone()
+}
+
+class DoCoolThings : DoThings {
+	override fun gitRDone() {
+		println("Doin' cool things.")
+	}
+}
+
+class DoEvenCoolerThings(private val delegate: DoThings) :
+	DoThings by delegate {
+
+	override fun gitRDone() {
+		println("Doin' chill things.")
+		delegate.gitRDone()
+	}
+}
+
+fun `with decorators`() {
+	val doCoolThings: DoThings = DoCoolThings()
+	val doEvenCoolerThings: DoThings = DoEvenCoolerThings(doCoolThings)
+
+	doEvenCoolerThings.gitRDone()
+}
+
+fun main() {
+	`with prohibiting or documenting for inheritance`()
+	`with decorators`()
 }
