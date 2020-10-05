@@ -2,6 +2,7 @@ package org.sdkotlin.intro.kotlin._32_delegation
 
 import java.awt.Color
 import java.time.LocalDateTime
+import kotlin.DeprecationLevel.WARNING
 import kotlin.properties.Delegates.notNull
 import kotlin.properties.Delegates.observable
 import kotlin.properties.Delegates.vetoable
@@ -205,6 +206,24 @@ fun `creating property delegates`() {
 	println("youAndMeBoth: ${paranoid.youAndMeBoth}")
 }
 
+// Starting with Kotlin 1.4 we can delegate one property to another. This is
+// handy for dealing with deprecations.
+
+object Potterverse {
+
+	var topWitch = "TBD"
+
+	@Deprecated("Oops", ReplaceWith("topWitch"), WARNING)
+	var topWhich by ::topWitch
+}
+
+fun `with deprecated property delegation`() {
+
+	Potterverse.topWhich = "Hermione"
+
+	println("Which witch is which?: ${Potterverse.topWitch}")
+}
+
 fun main() {
 	`with delegates`()
 	`with the Lazy property delegate`()
@@ -214,4 +233,5 @@ fun main() {
 	`with the map-backed property delegate`()
 	`with the mutable map-backed property delegate`()
 	`creating property delegates`()
+	`with deprecated property delegation`()
 }
