@@ -93,7 +93,7 @@ interface Inseparable {
 	val inseparable: Boolean
 }
 
-enum class ThreeMusketeer : Inseparable, Dandy  {
+enum class ThreeMusketeer : Inseparable, Dandy {
 	ATHOS {
 		override val dandy = false
 	},
@@ -109,7 +109,6 @@ enum class ThreeMusketeer : Inseparable, Dandy  {
 
 	override val inseparable = true
 }
-
 
 fun main() {
 	`with states`()

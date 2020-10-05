@@ -162,7 +162,7 @@ fun `with the mutable map-backed property delegate`() {
 
 class SpyingVal<V>(private val value: V) : ReadOnlyProperty<Any?, V> {
 
-	override fun getValue(thisRef: Any?, property: KProperty<*>): V {
+	override operator fun getValue(thisRef: Any?, property: KProperty<*>): V {
 		println("Getting '${property.name}' from $thisRef as '$value'.")
 		return value
 	}

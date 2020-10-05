@@ -9,7 +9,7 @@ import kotlin.annotation.AnnotationTarget.FUNCTION
 @Suppress("unused")
 fun notUsed() = "YAGNI?"
 
-// Annotation arguments must be compile time constants.
+// Annotation arguments must be compile-time constants.
 
 const val unused = "unused"
 
