@@ -1,8 +1,11 @@
 package org.sdkotlin.meetup.effectivejava.item1
 
-import java.nio.charset.*
-import java.time.Month.*
-import java.util.*
+import java.nio.charset.Charset
+import java.time.Month.FEBRUARY
+import java.time.Month.JANUARY
+import java.time.Month.MARCH
+import java.util.SortedMap
+import java.util.TreeMap
 
 /* Effective Java
 Item 1: Consider static factory methods instead of constructors
@@ -39,6 +42,7 @@ abstract class AlienCharset {
 			else -> throw IllegalArgumentException("Unknown character set")
 		}
 	}
+
 	abstract fun name(): String
 }
 
@@ -75,7 +79,7 @@ fun `with Kotlin companion object extension factory functions`() {
 // We can also create top-level factory functions.
 
 fun <K, V> sortedMapOf(vararg pairs: Pair<K, V>): SortedMap<K, V> =
-		TreeMap<K, V>().apply { putAll(pairs) }
+	TreeMap<K, V>().apply { putAll(pairs) }
 
 fun `with Kotlin top-level factory functions`() {
 

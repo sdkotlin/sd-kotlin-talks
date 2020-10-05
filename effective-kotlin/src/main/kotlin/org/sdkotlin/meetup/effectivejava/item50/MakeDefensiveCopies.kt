@@ -4,7 +4,7 @@ package org.sdkotlin.meetup.effectivejava.item50
 Item 50: Make defensive copies when needed
  */
 
-// Kotlin data classes come with copy()
+// Kotlin data classes come with `copy()`.
 
 data class Person(val name: String, var age: Int)
 

@@ -2,9 +2,11 @@ package org.sdkotlin.meetup.idioms
 
 data class Person(val name: String, val address: Address? = null)
 
-data class Address(val street1: String, val street2: String? = null,
-		val city: String,
-		val state: String, val zipCode: String)
+data class Address(
+	val street1: String, val street2: String? = null,
+	val city: String,
+	val state: String, val zipCode: String
+)
 
 /**
  * Handle nulls in chained property accessor and method calls

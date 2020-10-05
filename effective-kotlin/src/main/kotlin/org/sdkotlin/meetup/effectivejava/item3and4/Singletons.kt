@@ -6,7 +6,7 @@ Item 4: Enforce noninstantiability with a private constructor
  */
 
 // Kotlin has the singleton pattern built into the language using `object`
-// definitions
+// definitions.
 
 object HelloSingleton {
 
