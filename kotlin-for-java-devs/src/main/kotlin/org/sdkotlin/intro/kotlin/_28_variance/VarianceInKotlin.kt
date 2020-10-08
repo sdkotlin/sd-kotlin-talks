@@ -1,6 +1,6 @@
 package org.sdkotlin.intro.kotlin._28_variance
 
-// Kotlin has different facilities for type generic type variance than Java.
+// Kotlin has different facilities for generic type variance than Java.
 
 // We say a `String` 'is an' `Any?`. Is an `Array<String>` also an
 // `Array<Any>`? Is a `List<String>` a `List<Any>`? Let's find out...
