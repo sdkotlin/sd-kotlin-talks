@@ -23,7 +23,7 @@ val immutableList = listOf("Not", "gonna", "do", "it", "!")
 
 fun main() {
 
-	// FUGGETABOUTIT = "As if" // Doesn't compile
+	//FUGGETABOUTIT = "As if" // Doesn't compile
 	println(FUGGETABOUTIT)
 
 	val threadSafe = ThreadSafe()

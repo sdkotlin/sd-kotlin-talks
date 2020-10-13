@@ -9,7 +9,7 @@ Item 19: Design and document for inheritance or else prohibit it
 
 class CantTouchThis
 
-// class HammerTime : CantTouchThis() // Doesn't compile
+//class HammerTime : CantTouchThis() // Doesn't compile
 
 // If you open them, the functions and properties that can be overridden must
 // also be documented.
