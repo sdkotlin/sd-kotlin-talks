@@ -36,8 +36,7 @@ tasks {
 
 	named<Wrapper>("wrapper") {
 		// https://github.com/gradle/gradle/issues/12660
-		gradleVersion =
-			"6.8-branch-eskatos_kotlin_embedded_1_4-20200929110025+0000"
+		gradleVersion = "6.8-20201015220041+0000"
 		distributionType = ALL
 	}
 }
