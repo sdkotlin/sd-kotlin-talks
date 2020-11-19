@@ -14,7 +14,7 @@ plugins {
 }
 
 dependencies {
-	val koinVersion = "2.1.6"
+	val koinVersion = "2.2.1"
 
 	implementation("org.koin:koin-core:$koinVersion")
 
