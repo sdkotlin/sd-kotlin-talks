@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
-	id("com.autonomousapps.dependency-analysis") version "0.61.0"
-	id("com.github.ben-manes.versions") version "0.33.0"
+	id("com.autonomousapps.dependency-analysis") version "0.65.0"
+	id("com.github.ben-manes.versions") version "0.36.0"
 }
 
 allprojects {
@@ -36,7 +36,7 @@ tasks {
 
 	named<Wrapper>("wrapper") {
 		// https://github.com/gradle/gradle/issues/12660
-		gradleVersion = "6.8-20201015220041+0000"
+		gradleVersion = "6.8-milestone-2"
 		distributionType = ALL
 	}
 }
