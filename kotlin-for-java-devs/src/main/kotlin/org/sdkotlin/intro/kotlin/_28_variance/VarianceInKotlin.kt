@@ -2,7 +2,7 @@ package org.sdkotlin.intro.kotlin._28_variance
 
 // Kotlin has different facilities for generic type variance than Java.
 
-// We say a `String` 'is an' `Any?`. Is an `Array<String>` also an
+// We say a `String` 'is an' `Any`. Is an `Array<String>` also an
 // `Array<Any>`? Is a `List<String>` a `List<Any>`? Let's find out...
 
 fun `with substitution`() {
@@ -112,7 +112,7 @@ fun `with array and collection variance`() {
 
 	// Same for lists then, right?
 
-	val stringList = listOf("Hello", "World")
+	val stringList: List<String> = listOf("Hello", "World")
 
 	val anyList: List<Any> = stringList
 
@@ -186,7 +186,7 @@ fun `with producers`() {
 	// It'll also catch function arguments.
 
 	class ConsumingProducer<out T> {
-		//fun nope( input: T) = println(input) // Does not compile.
+		//fun nope(input: T) = println(input) // Does not compile.
 	}
 }
 
