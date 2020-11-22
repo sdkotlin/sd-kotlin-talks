@@ -20,7 +20,7 @@ dependencies {
 
 	compileOnly("org.jetbrains:annotations:20.1.0")
 
-	testImplementation("org.koin:koin-test:$koinVersion")
+	testImplementation("org.koin:koin-test-junit5:$koinVersion")
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
 }
 
