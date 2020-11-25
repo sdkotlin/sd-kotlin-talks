@@ -1,3 +1,5 @@
+// TODO: https://youtrack.jetbrains.com/issue/KT-34102
+@file:Suppress("invisible_reference", "invisible_member")
 package org.sdkotlin.koin.it.hello
 
 import org.assertj.core.api.Assertions.assertThat
