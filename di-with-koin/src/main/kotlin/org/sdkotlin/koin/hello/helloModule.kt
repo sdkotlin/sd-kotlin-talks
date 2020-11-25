@@ -8,7 +8,7 @@ const val DECLARED_COMPONENT_CONTAINER = "declared component container"
 const val REVERSE_INJECTED_COMPONENT = "reverse injected component"
 const val REVERSE_INJECTED_COMPONENT_CONTAINER = "reverse injected component container"
 
-val helloModule = module {
+internal val helloModule = module {
 
 	single<GreetingService> { RandomGreetingService() }
 	single<GreetingService>(named<EnglishGreetingService>()) { EnglishGreetingService() }

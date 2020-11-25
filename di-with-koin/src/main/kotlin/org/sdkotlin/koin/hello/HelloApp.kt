@@ -4,7 +4,7 @@ import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-@KoinApiExtension
+@OptIn(KoinApiExtension::class)
 internal class HelloApp : KoinComponent {
 
 	private val helloController: HelloController by inject()
