@@ -63,7 +63,9 @@ tasks {
 
 idea {
 	module {
-		testSourceDirs.addAll(kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs)
-		testResourceDirs.addAll(kotlin.sourceSets[integrationTestSuiteName].resources.srcDirs)
+		testSourceDirs.addAll(
+				kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs)
+		testResourceDirs.addAll(
+				kotlin.sourceSets[integrationTestSuiteName].resources.srcDirs)
 	}
 }
