@@ -36,7 +36,7 @@ tasks {
 
 	named<Wrapper>("wrapper") {
 		// https://github.com/gradle/gradle/issues/12660
-		gradleVersion = "6.8-rc-1"
+		gradleVersion = "6.8-rc-3"
 		distributionType = ALL
 	}
 }
