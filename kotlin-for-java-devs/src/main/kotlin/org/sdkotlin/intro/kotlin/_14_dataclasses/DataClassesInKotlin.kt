@@ -2,9 +2,27 @@ package org.sdkotlin.intro.kotlin._14_dataclasses
 
 // Kotlin supports 'data' classes.
 
-data class Person(var name: String, var favoriteLanguage: String = "Kotlin") {
+data class ProgrammingLanguage(val name: String)
+
+data class Person(val name: String, val favoriteLanguage: String = "Kotlin") {
+
+	// Properties can be immutable `val` (yay!) or mutable `var` (booo!).
+
 	var age: Int = 1
+
+	// Properties declared in the class body instead of primary constructor are
+	// also included in the generated methods.
 }
+
+data class PolyglotPerson(
+	val name: String,
+	// All types are supported, including other data classes and collections.
+
+	// Mutable collections such as `Array` are discouraged as they call for
+	// equals and hashCode to be overridden.
+
+	val favoriteLanguages: List<ProgrammingLanguage>
+)
 
 fun main() {
 
