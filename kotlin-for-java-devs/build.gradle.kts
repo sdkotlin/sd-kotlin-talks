@@ -9,7 +9,7 @@ plugins {
 dependencies {
 	compileOnly("org.jetbrains:annotations:20.1.0")
 
-	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.5")
+	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.5.1")
 }
 
 tasks {
