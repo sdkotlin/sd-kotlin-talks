@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21-2")
+	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
 	implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:3.0.1")
 }
 
