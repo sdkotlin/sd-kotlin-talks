@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-	implementation("org.jetbrains.kotlin-deeplearning:api:0.1.0")
+	implementation("org.jetbrains.kotlin-deeplearning:api:0.1.1")
 }
