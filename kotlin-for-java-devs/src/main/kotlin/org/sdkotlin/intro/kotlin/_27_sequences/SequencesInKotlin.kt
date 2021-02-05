@@ -39,8 +39,7 @@ fun main() {
 	// If you're not starting with a collection, sequences can be created
 	// directly via a factory function.
 
-	val sequenceOfFlightlessBirds
-			= sequenceOf("Penguin", "Ostrich", "Kiwi", "Emu")
+	val sequenceOfFlightlessBirds = sequenceOf("Penguin", "Ostrich", "Kiwi", "Emu")
 
 	println("Flightless birds: ${sequenceOfFlightlessBirds.sorted().toList()}")
 

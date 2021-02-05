@@ -2,7 +2,6 @@ package org.sdkotlin.intro.kotlin._10_selection
 
 import kotlin.random.Random.Default.nextBoolean as randomBoolean
 
-
 fun main() {
 
 	// If blocks in Kotlin are as in Java.

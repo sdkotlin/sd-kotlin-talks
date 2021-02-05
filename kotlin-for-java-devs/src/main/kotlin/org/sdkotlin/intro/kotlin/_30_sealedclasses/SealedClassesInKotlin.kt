@@ -34,12 +34,11 @@ abstract class HumanPlayer(
 	open val topScore: Int = 0
 ) : Player(name, health)
 
-
 // Sealed classes work well with sealed `when`s and smart casting.
 
 fun topScore(player: Player) = when (player) {
-		is NPC -> "N/A"
-		is HumanPlayer -> player.topScore.toString()
+	is NPC -> "N/A"
+	is HumanPlayer -> player.topScore.toString()
 }
 
 // Adding a type to the sealed hierarchy later will be called out by the

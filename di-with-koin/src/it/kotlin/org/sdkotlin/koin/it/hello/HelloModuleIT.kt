@@ -1,5 +1,6 @@
 // TODO: https://youtrack.jetbrains.com/issue/KT-34102
 @file:Suppress("invisible_reference", "invisible_member")
+
 package org.sdkotlin.koin.it.hello
 
 import org.assertj.core.api.Assertions.assertThat
@@ -62,7 +63,8 @@ internal class HelloModuleIT : KoinTest {
 
 		getKoin().declare(externalComponent, named(DECLARED_COMPONENT))
 
-		val externalComponentContainer = get<ExternalComponentContainer>(named(DECLARED_COMPONENT_CONTAINER))
+		val externalComponentContainer =
+			get<ExternalComponentContainer>(named(DECLARED_COMPONENT_CONTAINER))
 
 		assertThat(externalComponentContainer.externalComponent.value).isEqualTo(TESTING)
 	}
@@ -82,7 +84,8 @@ internal class HelloModuleIT : KoinTest {
 
 		// Get another component from Koin that depends on the external
 		// component having been injected into the module
-		val externalComponentContainer = get<ExternalComponentContainer>(named(REVERSE_INJECTED_COMPONENT_CONTAINER))
+		val externalComponentContainer =
+			get<ExternalComponentContainer>(named(REVERSE_INJECTED_COMPONENT_CONTAINER))
 
 		assertThat(externalComponentContainer.externalComponent.value).isEqualTo(TESTING)
 	}

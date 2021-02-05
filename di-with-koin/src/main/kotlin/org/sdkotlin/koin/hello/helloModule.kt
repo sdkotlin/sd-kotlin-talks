@@ -23,8 +23,8 @@ internal val helloModule = module {
 	}
 
 	// A parameterized component where the parameter ends up being the component itself
-	single(named(REVERSE_INJECTED_COMPONENT)) {
-		(externalComponent: ExternalComponent) -> externalComponent
+	single(named(REVERSE_INJECTED_COMPONENT)) { (externalComponent: ExternalComponent) ->
+		externalComponent
 	}
 
 	// Injection will fail if REVERSE_INJECTED_COMPONENT isn't reverse injected prior

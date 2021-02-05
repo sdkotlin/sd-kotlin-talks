@@ -16,10 +16,10 @@ data class Person(val name: String, val favoriteLanguage: String = "Kotlin") {
 
 data class PolyglotPerson(
 	val name: String,
-	// All types are supported, including other data classes and collections.
+		// All types are supported, including other data classes and collections.
 
-	// Mutable collections such as `Array` are discouraged as they call for
-	// equals and hashCode to be overridden.
+		// Mutable collections such as `Array` are discouraged as they call for
+		// equals and hashCode to be overridden.
 
 	val favoriteLanguages: List<ProgrammingLanguage>
 )

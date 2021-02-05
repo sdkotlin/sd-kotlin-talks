@@ -213,7 +213,7 @@ fun `with consumers`() {
 		abstract fun test(input: T): Boolean
 	}
 
-	val stringTester = object: Tester<String>() {
+	val stringTester = object : Tester<String>() {
 		override fun test(input: String) = input.trim() == "Hello"
 	}
 
@@ -227,7 +227,7 @@ fun `with consumers`() {
 	// use a `Tester<String>` wherever a `Tester<Any>` is expected, still
 	// having a correct program. Let's try it.
 
-	val anyTester = object: Tester<Any>() {
+	val anyTester = object : Tester<Any>() {
 		override fun test(input: Any) = input.hashCode() > 5
 	}
 
