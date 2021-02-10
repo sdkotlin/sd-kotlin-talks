@@ -23,7 +23,7 @@ private const val NUM_LABELS = 10
 private const val NUM_CHANNELS = 1L
 private const val IMAGE_SIZE = 28L
 
-val model = Sequential.of(
+internal val model = Sequential.of(
 		Input(IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS),
 		Flatten(),
 		Dense(300),
