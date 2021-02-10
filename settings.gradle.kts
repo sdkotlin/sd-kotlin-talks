@@ -1,3 +1,12 @@
+dependencyResolutionManagement {
+	@Suppress("UnstableApiUsage")
+	repositories {
+		mavenCentral()
+		// https://github.com/InsertKoinIO/koin/issues/1004
+		jcenter()
+	}
+}
+
 rootProject.name = "sd-kotlin-talks"
 
 include("kotlin-for-java-devs")

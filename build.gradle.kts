@@ -10,11 +10,6 @@ plugins {
 allprojects {
 	group = "org.sdkotlin"
 	version = "1.0-SNAPSHOT"
-
-	repositories {
-		mavenCentral()
-		jcenter()
-	}
 }
 
 subprojects {

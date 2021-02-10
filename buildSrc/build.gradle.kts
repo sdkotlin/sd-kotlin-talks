@@ -2,12 +2,6 @@ plugins {
 	`kotlin-dsl`
 }
 
-repositories {
-	gradlePluginPortal()
-	mavenCentral()
-	jcenter()
-}
-
 dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
 	implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:3.0.1")
