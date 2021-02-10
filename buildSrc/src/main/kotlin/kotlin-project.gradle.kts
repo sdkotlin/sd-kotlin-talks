@@ -20,6 +20,7 @@ tasks {
 		with(kotlinOptions) {
 			languageVersion = "1.4"
 			apiVersion = "1.4"
+			useIR = true
 			jvmTarget = JavaVersion.VERSION_11.toString()
 		}
 	}
