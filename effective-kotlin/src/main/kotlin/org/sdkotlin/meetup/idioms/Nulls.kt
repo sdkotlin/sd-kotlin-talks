@@ -5,7 +5,7 @@ data class Person(val name: String, val address: Address? = null)
 data class Address(
 	val street1: String, val street2: String? = null,
 	val city: String,
-	val state: String, val zipCode: String
+	val state: String, val zipCode: String,
 )
 
 /**
@@ -24,7 +24,7 @@ fun whichState(person: Person?): String {
 fun sendCard(person: Person) {
 
 	val address = person.address ?: throw IllegalArgumentException(
-			"Can't send a card to a person if they don't have an address")
+		"Can't send a card to a person if they don't have an address")
 
 	println("Sending a card to ${person.name} at $address")
 }

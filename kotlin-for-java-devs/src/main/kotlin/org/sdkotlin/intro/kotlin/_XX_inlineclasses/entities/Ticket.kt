@@ -2,7 +2,7 @@ package org.sdkotlin.intro.kotlin._XX_inlineclasses.entities
 
 data class Ticket(
 	val memberID: MemberID, val venueID: VenueID, val eventID: EventID,
-	val seatID: SeatID
+	val seatID: SeatID,
 ) {
 
 	// Platform declaration clash.
@@ -14,5 +14,5 @@ data class Ticket(
 
 data class PrimitiveTicket(
 	val memberID: Long, val venueID: Long, val eventID: Long,
-	val seatID: Long
+	val seatID: Long,
 )

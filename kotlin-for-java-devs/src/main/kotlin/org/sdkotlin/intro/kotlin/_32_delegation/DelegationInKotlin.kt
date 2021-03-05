@@ -183,7 +183,7 @@ class SpyingVar<V>(private var value: V) : ReadWriteProperty<Any?, V> {
 	override operator fun setValue(
 		thisRef: Any?,
 		property: KProperty<*>,
-		value: V
+		value: V,
 	) {
 		this.value = value
 		println("Changing '${property.name}' in $thisRef to '$value'.")

@@ -11,14 +11,14 @@ class JUnit5ParameterizedSortTest {
 	companion object {
 		@JvmStatic
 		fun arrays() = listOf(
-				Arguments.of(emptyArray<Int>(), emptyArray<Int>()),
-				arguments(arrayOf(1), arrayOf(1)),
-				arguments(arrayOf(1, 2), arrayOf(1, 2)),
-				arguments(arrayOf(2, 1), arrayOf(1, 2)),
-				arguments(arrayOf(1, 2, 3), arrayOf(1, 2, 3)),
-				arguments(arrayOf(2, 1, 3), arrayOf(1, 2, 3)),
-				arguments(arrayOf(1, 3, 2), arrayOf(1, 2, 3)),
-				arguments(arrayOf(3, 2, 1), arrayOf(1, 2, 3))
+			Arguments.of(emptyArray<Int>(), emptyArray<Int>()),
+			arguments(arrayOf(1), arrayOf(1)),
+			arguments(arrayOf(1, 2), arrayOf(1, 2)),
+			arguments(arrayOf(2, 1), arrayOf(1, 2)),
+			arguments(arrayOf(1, 2, 3), arrayOf(1, 2, 3)),
+			arguments(arrayOf(2, 1, 3), arrayOf(1, 2, 3)),
+			arguments(arrayOf(1, 3, 2), arrayOf(1, 2, 3)),
+			arguments(arrayOf(3, 2, 1), arrayOf(1, 2, 3))
 		)
 	}
 

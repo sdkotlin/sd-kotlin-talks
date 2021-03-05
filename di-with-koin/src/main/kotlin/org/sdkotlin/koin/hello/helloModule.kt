@@ -18,7 +18,7 @@ internal val helloModule = module {
 	// Injection will fail if DECLARED_COMPONENT isn't externally declared prior, e.g. with getKoin().declare(...)
 	single(named(DECLARED_COMPONENT_CONTAINER)) {
 		ExternalComponentContainer(
-				get(named(DECLARED_COMPONENT))
+			get(named(DECLARED_COMPONENT))
 		)
 	}
 
@@ -30,7 +30,7 @@ internal val helloModule = module {
 	// Injection will fail if REVERSE_INJECTED_COMPONENT isn't reverse injected prior
 	single(named(REVERSE_INJECTED_COMPONENT_CONTAINER)) {
 		ExternalComponentContainer(
-				get(named(REVERSE_INJECTED_COMPONENT))
+			get(named(REVERSE_INJECTED_COMPONENT))
 		)
 	}
 }

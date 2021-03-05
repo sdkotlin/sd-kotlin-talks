@@ -87,7 +87,7 @@ interface Toable {
 class TaggedPresent<T>(
 	override val from: String,
 	override val to: String,
-	private val gift: T
+	private val gift: T,
 ) : Fromable, Toable {
 	fun unwrap(): T = gift
 }
@@ -95,7 +95,7 @@ class TaggedPresent<T>(
 class PhoneCall(
 	override val from: String,
 	override val to: String,
-	val message: String
+	val message: String,
 ) : Fromable, Toable
 
 // Let's say we only want to answer calls or open presents from Mom today. We

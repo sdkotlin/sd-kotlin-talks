@@ -33,13 +33,16 @@ class InlineClassesInKotlinTest {
 
 		// See the bug?...
 		val ticket =
-			bookTicket(venueId,
-					memberId, eventId, seatId)
+			bookTicket(
+				venueId, memberId, eventId, seatId
+			)
 
 		// And yet the test passes...
 		assertThat(ticket).isEqualTo(
-				PrimitiveTicket(
-						memberId, venueId, eventId, seatId))
+			PrimitiveTicket(
+				memberId, venueId, eventId, seatId
+			)
+		)
 	}
 
 	@Test
@@ -57,11 +60,14 @@ class InlineClassesInKotlinTest {
 		println("   Inline class ticket info: $memberId, $venueId, $eventId, $seatId")
 
 		val ticket =
-			bookTicket(memberId,
-					venueId, eventId, seatId)
+			bookTicket(
+				memberId, venueId, eventId, seatId
+			)
 
 		assertThat(ticket).isEqualTo(
-				Ticket(
-						memberId, venueId, eventId, seatId))
+			Ticket(
+				memberId, venueId, eventId, seatId
+			)
+		)
 	}
 }

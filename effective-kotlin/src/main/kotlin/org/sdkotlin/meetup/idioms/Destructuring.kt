@@ -5,7 +5,7 @@ package org.sdkotlin.meetup.idioms
 data class Point3D(
 	val x: Double = 0.0,
 	val y: Double = 0.0,
-	val z: Double = 0.0
+	val z: Double = 0.0,
 )
 
 fun getOrigin() = Point3D()

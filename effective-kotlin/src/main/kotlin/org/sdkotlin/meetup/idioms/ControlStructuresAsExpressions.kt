@@ -55,12 +55,6 @@ fun main() {
 
 	val partialJson = "'usergroup' : 'SD Kotlin'"
 	val completeJson = "{ $partialJson }"
-	println("Correct JSON parses to \"${
-		parseJson(
-				completeJson)
-	}\"")
-	println("Incorrect JSON parses to \"${
-		parseJson(
-				partialJson)
-	}\"")
+	println("Correct JSON parses to \"${parseJson(completeJson)}\"")
+	println("Incorrect JSON parses to \"${parseJson(partialJson)}\"")
 }

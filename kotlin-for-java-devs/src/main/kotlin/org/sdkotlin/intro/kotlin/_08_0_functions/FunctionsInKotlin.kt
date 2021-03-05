@@ -57,9 +57,9 @@ fun moreDefaultedParams(
 	favoriteProgrammingLanguage: String = "Kotlin",
 	domain: String = "example.com",
 
-		// A default can refer to earlier arguments, whether they're defaulted
-		// or not.
-	email: String = "$firstName.$lastName@$domain"
+	// A default can refer to earlier arguments, whether they're defaulted
+	// or not.
+	email: String = "$firstName.$lastName@$domain",
 ) {
 
 	println("$firstName $lastName $email $favoriteProgrammingLanguage")
@@ -71,16 +71,18 @@ fun useNamedParams() {
 	// or just to make function calls with many arguments more clear.
 
 	moreDefaultedParams(
-			firstName = "John",
-			lastName = "Smith",
-			domain = "smithery.com")
+		firstName = "John",
+		lastName = "Smith",
+		domain = "smithery.com"
+	)
 
 	// You can mix positional and named arguments, but the positional ones all
 	// need to come first.
 
 	moreDefaultedParams(
-			"John",
-			lastName = "Smith")
+		"John",
+		lastName = "Smith"
+	)
 
 	// Default and named arguments eliminate the need for method overloads in
 	// many cases!

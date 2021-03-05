@@ -39,8 +39,10 @@ private fun lotsOfCoroutines() = runBlocking {
 		// on the launched coroutines
 	}
 
-	println("Created $ONE_MILLION coroutines that sleep for $ONE_THOUSAND " +
-			"milliseconds in $elapsedTime total milliseconds!")
+	println(
+		"Created $ONE_MILLION coroutines that sleep for $ONE_THOUSAND " +
+				"milliseconds in $elapsedTime total milliseconds!"
+	)
 }
 
 private fun asyncSum() = runBlocking {
@@ -48,7 +50,8 @@ private fun asyncSum() = runBlocking {
 	val elapsedTime = measureTimeMillis {
 		coroutineScope {
 			val deferredInts = List(
-					ONE_MILLION) { i ->
+				ONE_MILLION
+			) { i ->
 				async {
 					i + 1
 				}
@@ -61,8 +64,10 @@ private fun asyncSum() = runBlocking {
 		}
 	}
 
-	println("The async initialization of a list with sequential numbers " +
-			"between 1 and $ONE_MILLION took $elapsedTime milliseconds.")
+	println(
+		"The async initialization of a list with sequential numbers " +
+				"between 1 and $ONE_MILLION took $elapsedTime milliseconds."
+	)
 }
 
 private fun lotsOfThreads() {

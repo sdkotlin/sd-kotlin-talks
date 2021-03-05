@@ -11,7 +11,7 @@ fun bookTicket(
 	memberId: Long,
 	venueId: Long,
 	eventId: Long,
-	seatId: Long
+	seatId: Long,
 ): PrimitiveTicket =
 	PrimitiveTicket(memberId, venueId, eventId, seatId)
 
@@ -19,6 +19,6 @@ fun bookTicket(
 	memberId: MemberID,
 	venueId: VenueID,
 	eventId: EventID,
-	seatId: SeatID
+	seatId: SeatID,
 ): Ticket =
 	Ticket(memberId, venueId, eventId, seatId)

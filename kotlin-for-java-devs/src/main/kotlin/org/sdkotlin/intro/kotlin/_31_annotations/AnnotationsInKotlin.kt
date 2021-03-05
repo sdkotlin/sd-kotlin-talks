@@ -22,9 +22,9 @@ fun alsoUnused() = "Dead code?"
 fun newSchool(why: String) = println(why)
 
 @Deprecated(
-		message = "Seek alternate route.",
-		replaceWith = ReplaceWith("newSchool(why)"),
-		level = WARNING // or ERROR, HIDDEN
+	message = "Seek alternate route.",
+	replaceWith = ReplaceWith("newSchool(why)"),
+	level = WARNING // or ERROR, HIDDEN
 )
 fun oldSchool(why: String) = println(why)
 

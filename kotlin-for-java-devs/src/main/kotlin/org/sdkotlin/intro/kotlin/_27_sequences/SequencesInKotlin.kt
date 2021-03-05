@@ -18,11 +18,13 @@ fun main() {
 	var collectionFinds = 0
 
 	val collectionBigEven = listOfRandomInts
-			.filter { collectionFilters++; it.isEven() }
-			.find { collectionFinds++; it > 50 }
+		.filter { collectionFilters++; it.isEven() }
+		.find { collectionFinds++; it > 50 }
 
-	println("$collectionBigEven found with $collectionFilters filter and " +
-			"$collectionFinds find collection operations.")
+	println(
+		"$collectionBigEven found with $collectionFilters filter and " +
+				"$collectionFinds find collection operations."
+	)
 
 	// Now let's try with a sequence instead.
 
@@ -30,11 +32,13 @@ fun main() {
 	var sequenceFinds = 0
 
 	val sequenceBigEven = listOfRandomInts.asSequence()
-			.filter { sequenceFilters++; it.isEven() }
-			.find { sequenceFinds++; it > 50 }
+		.filter { sequenceFilters++; it.isEven() }
+		.find { sequenceFinds++; it > 50 }
 
-	println("$sequenceBigEven found with $sequenceFilters filter and " +
-			"$sequenceFinds find sequence operations.")
+	println(
+		"$sequenceBigEven found with $sequenceFilters filter and " +
+				"$sequenceFinds find sequence operations."
+	)
 
 	// If you're not starting with a collection, sequences can be created
 	// directly via a factory function.
@@ -84,14 +88,14 @@ fun main() {
 	//     * Sequences can be reused, even the intermediaries
 
 	val streamBigEven = listOfRandomInts.stream()
-			.filter { it.isEven() }
-			// Additional intermediate operation instead of Kotlin's terminal
-			// `.find(Predicate)`
-			.filter { it > 100 }
-			.findFirst() // Returns an `Optional`
-			// The compiler doesn't force us to default the value with
-			// `orElse()` instead of `get()`
-			.orElse(null)
+		.filter { it.isEven() }
+		// Additional intermediate operation instead of Kotlin's terminal
+		// `.find(Predicate)`
+		.filter { it > 100 }
+		.findFirst() // Returns an `Optional`
+		// The compiler doesn't force us to default the value with
+		// `orElse()` instead of `get()`
+		.orElse(null)
 
 	// And even when using `Optional.orElse()`, we still end up with a platform
 	// type.

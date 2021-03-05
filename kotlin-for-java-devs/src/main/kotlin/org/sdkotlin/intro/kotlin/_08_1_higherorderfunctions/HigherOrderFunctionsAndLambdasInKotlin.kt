@@ -65,7 +65,7 @@ val goldilocksFunction = { porridge = "Just right." }
 fun doMath(
 	a: Int = 1,
 	b: Int = 1,
-	operation: (Int, Int) -> Int
+	operation: (Int, Int) -> Int,
 ): Int {
 
 	// You call the passed in function by its parameter name.
@@ -81,31 +81,46 @@ fun main() {
 
 	println("The toString() for a function: \"$theBossFunction\"")
 	println("Invoking theBossFunction(): ${theBossFunction()}")
-	println("2+2: ${
-		doMath(
+	println(
+		"2+2: ${
+			doMath(
 				2, 2,
-				addFunction)
-	}")
-	println("2+3: ${
-		doMath(
+				addFunction
+			)
+		}"
+	)
+	println(
+		"2+3: ${
+			doMath(
 				2, 3,
-				giveMeAnAddFunction())
-	}")
-	println("2-2: ${
-		doMath(
+				giveMeAnAddFunction()
+			)
+		}"
+	)
+	println(
+		"2-2: ${
+			doMath(
 				2, 2,
-				subtractFunction)
-	}")
-	println("2*2: ${
-		doMath(
+				subtractFunction
+			)
+		}"
+	)
+	println(
+		"2*2: ${
+			doMath(
 				2, 2,
-				multiplyFunction)
-	}")
+				multiplyFunction
+			)
+		}"
+	)
 	//println("2/2: ${doMath(2, 2, divideFunction)}")
-	println("1++: ${
-		incrementFunction(
-				1)
-	}")
+	println(
+		"1++: ${
+			incrementFunction(
+				1
+			)
+		}"
+	)
 
 	// Omitting the curly braces for a lambda in Kotlin is not allowed at the
 	// call site either.
@@ -120,8 +135,10 @@ fun main() {
 	// lambda placed outside the parenthesis. This facilitates internal DSLs
 	// and LINQ-style code.
 
-	doMath(2,
-			4) { a, b -> a * b }
+	doMath(
+		2,
+		4
+	) { a, b -> a * b }
 
 	// And if there are no other arguments the parenthesis can be omitted.
 

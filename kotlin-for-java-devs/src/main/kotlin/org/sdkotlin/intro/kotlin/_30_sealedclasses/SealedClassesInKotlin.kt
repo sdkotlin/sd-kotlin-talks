@@ -31,7 +31,7 @@ data class NPC(override val name: String, override var health: Int = 100) :
 abstract class HumanPlayer(
 	name: String,
 	health: Int = 100,
-	open val topScore: Int = 0
+	open val topScore: Int = 0,
 ) : Player(name, health)
 
 // Sealed classes work well with sealed `when`s and smart casting.

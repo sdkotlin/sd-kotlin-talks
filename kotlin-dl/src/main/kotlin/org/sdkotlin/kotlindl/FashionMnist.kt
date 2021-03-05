@@ -24,38 +24,38 @@ private const val NUM_CHANNELS = 1L
 private const val IMAGE_SIZE = 28L
 
 internal val model = Sequential.of(
-		Input(IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS),
-		Flatten(),
-		Dense(300),
-		Dense(100),
-		Dense(NUM_LABELS)
+	Input(IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS),
+	Flatten(),
+	Dense(300),
+	Dense(100),
+	Dense(NUM_LABELS)
 )
 
 fun main() {
 
 	val (train, test) = Dataset.createTrainAndTestDatasets(
-			trainFeaturesPath = FASHION_TRAIN_IMAGES_ARCHIVE,
-			trainLabelsPath = FASHION_TRAIN_LABELS_ARCHIVE,
-			testFeaturesPath = FASHION_TEST_IMAGES_ARCHIVE,
-			testLabelsPath = FASHION_TEST_LABELS_ARCHIVE,
-			numClasses = NUMBER_OF_CLASSES,
-			featuresExtractor = ::extractFashionImages,
-			labelExtractor = ::extractFashionLabels
+		trainFeaturesPath = FASHION_TRAIN_IMAGES_ARCHIVE,
+		trainLabelsPath = FASHION_TRAIN_LABELS_ARCHIVE,
+		testFeaturesPath = FASHION_TEST_IMAGES_ARCHIVE,
+		testLabelsPath = FASHION_TEST_LABELS_ARCHIVE,
+		numClasses = NUMBER_OF_CLASSES,
+		featuresExtractor = ::extractFashionImages,
+		labelExtractor = ::extractFashionLabels
 	)
 
 	model.use {
 
 		it.compile(
-				optimizer = Adam(),
-				loss = Losses.SOFT_MAX_CROSS_ENTROPY_WITH_LOGITS,
-				metric = Metrics.ACCURACY
+			optimizer = Adam(),
+			loss = Losses.SOFT_MAX_CROSS_ENTROPY_WITH_LOGITS,
+			metric = Metrics.ACCURACY
 		)
 
 		it.fit(dataset = train, epochs = EPOCHS,
-				batchSize = TRAINING_BATCH_SIZE)
+			batchSize = TRAINING_BATCH_SIZE)
 
 		val accuracy = it.evaluate(dataset = test,
-				batchSize = TEST_BATCH_SIZE).metrics[Metrics.ACCURACY]
+			batchSize = TEST_BATCH_SIZE).metrics[Metrics.ACCURACY]
 
 		println("Accuracy: $accuracy")
 	}

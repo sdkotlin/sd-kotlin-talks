@@ -76,13 +76,9 @@ fun main() {
 
 	// You can compare arrays for equality with another extension function.
 
-	println("arrayOfInts == arrayOfInts: ${
-		arrayOfInts.contentDeepEquals(arrayOfInts)
-	}")
+	println("arrayOfInts == arrayOfInts: ${arrayOfInts.contentDeepEquals(arrayOfInts)}")
 
-	println("arrayOfInts == twoDInts: ${
-		arrayOfInts.contentDeepEquals(twoDInts)
-	}")
+	println("arrayOfInts == twoDInts: ${arrayOfInts.contentDeepEquals(twoDInts)}")
 
 	// While we're at it, there's a deep hash code function too.
 

@@ -38,8 +38,10 @@ fun main() {
 
 	println("a in $charRange: ${'a' in charRange}")
 
-	println("2020-06-01 in $dateRange: "
-			+ (LocalDate.of(2020, 6, 1) in dateRange))
+	println(
+		"2020-06-01 in $dateRange: "
+				+ (LocalDate.of(2020, 6, 1) in dateRange)
+	)
 
 	// Integral, floating point, and comparable ranges have a useful
 	// 'equals(...)', 'hashcode()', and 'toString()' implementations.
