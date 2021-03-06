@@ -7,10 +7,8 @@ plugins {
 	id("com.github.ben-manes.versions") version "0.38.0"
 }
 
-allprojects {
-	group = "org.sdkotlin"
-	version = "1.0-SNAPSHOT"
-}
+group = "org.sdkotlin"
+version = "1.0-SNAPSHOT"
 
 subprojects {
 	tasks {

@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	`kotlin-project`
-	`junit-project`
-	`assertj-project`
+	id("org.sdkotlin.plugins.kotlin-project")
+	id("org.sdkotlin.plugins.junit-project")
+	id("org.sdkotlin.plugins.assertj-project")
 }
 
 dependencies {

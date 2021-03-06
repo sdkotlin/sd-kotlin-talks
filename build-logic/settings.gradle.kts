@@ -4,3 +4,7 @@ dependencyResolutionManagement {
 		gradlePluginPortal()
 	}
 }
+
+includeBuild("../platform")
+
+rootProject.name = "build-logic"

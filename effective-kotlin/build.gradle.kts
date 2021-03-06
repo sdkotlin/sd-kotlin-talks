@@ -1,5 +1,5 @@
 plugins {
-	`kotlin-project`
+	id("org.sdkotlin.plugins.kotlin-project")
 }
 
 dependencies {

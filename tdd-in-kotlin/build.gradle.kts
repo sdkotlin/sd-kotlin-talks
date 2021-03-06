@@ -1,9 +1,9 @@
 plugins {
-	`kotlin-project`
-	`junit-project`
-	`assertj-project`
-	`mockk-project`
-	`mockito-kotlin-project`
+	id("org.sdkotlin.plugins.kotlin-project")
+	id("org.sdkotlin.plugins.junit-project")
+	id("org.sdkotlin.plugins.assertj-project")
+	id("org.sdkotlin.plugins.mockk-project")
+	id("org.sdkotlin.plugins.mockito-kotlin-project")
 }
 
 dependencies {
