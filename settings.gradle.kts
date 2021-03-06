@@ -2,8 +2,6 @@ dependencyResolutionManagement {
 	@Suppress("UnstableApiUsage")
 	repositories {
 		mavenCentral()
-		// https://github.com/InsertKoinIO/koin/issues/1004
-		jcenter()
 	}
 }
 

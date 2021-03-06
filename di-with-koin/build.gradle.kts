@@ -9,13 +9,13 @@ plugins {
 }
 
 dependencies {
-	val koinVersion = "2.2.2"
+	val koinVersion = "3.0.1-beta-1"
 
-	implementation("org.koin:koin-core:$koinVersion")
+	implementation("io.insert-koin:koin-core:$koinVersion")
 
 	compileOnly("org.jetbrains:annotations:20.1.0")
 
-	testImplementation("org.koin:koin-test-junit5:$koinVersion")
+	testImplementation("io.insert-koin:koin-test-junit5:$koinVersion")
 }
 
 tasks {
