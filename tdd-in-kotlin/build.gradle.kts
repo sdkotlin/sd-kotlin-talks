@@ -1,5 +1,6 @@
 plugins {
 	`kotlin-project`
+	`detekt-project`
 	`junit-project`
 	`assertj-project`
 	`mockk-project`
