@@ -51,11 +51,16 @@ fun main() {
 			metric = Metrics.ACCURACY
 		)
 
-		it.fit(dataset = train, epochs = EPOCHS,
-			batchSize = TRAINING_BATCH_SIZE)
+		it.fit(
+			dataset = train,
+			epochs = EPOCHS,
+			batchSize = TRAINING_BATCH_SIZE
+		)
 
-		val accuracy = it.evaluate(dataset = test,
-			batchSize = TEST_BATCH_SIZE).metrics[Metrics.ACCURACY]
+		val accuracy = it.evaluate(
+			dataset = test,
+			batchSize = TEST_BATCH_SIZE
+		).metrics[Metrics.ACCURACY]
 
 		println("Accuracy: $accuracy")
 	}

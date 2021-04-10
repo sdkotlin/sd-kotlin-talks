@@ -24,7 +24,8 @@ fun whichState(person: Person?): String {
 fun sendCard(person: Person) {
 
 	val address = person.address ?: throw IllegalArgumentException(
-		"Can't send a card to a person if they don't have an address")
+		"Can't send a card to a person if they don't have an address"
+	)
 
 	println("Sending a card to ${person.name} at $address")
 }

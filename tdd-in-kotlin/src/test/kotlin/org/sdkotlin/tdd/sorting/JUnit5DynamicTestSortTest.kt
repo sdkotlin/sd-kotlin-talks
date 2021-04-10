@@ -22,7 +22,8 @@ class JUnit5DynamicTestSortTest {
 		// Run tests using: IntelliJ IDEA) to see test names in IntelliJ per
 		// https://github.com/gradle/gradle/issues/5975
 		dynamicTest(
-			"sort(${unsortedArray.contentToString()}) is ${expectedArray.contentToString()}") {
+			"sort(${unsortedArray.contentToString()}) is ${expectedArray.contentToString()}"
+		) {
 			val sortedArray = sort(unsortedArray)
 			Assertions.assertThat(sortedArray).isEqualTo(expectedArray).isNotSameAs(unsortedArray)
 		}
