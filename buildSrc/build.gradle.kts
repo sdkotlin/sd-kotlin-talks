@@ -1,3 +1,6 @@
+// Work around https://youtrack.jetbrains.com/issue/IDEA-248947
+System.setProperty("user.dir", projectDir.toString())
+
 plugins {
 	`kotlin-dsl`
 }
