@@ -17,9 +17,8 @@ java {
 tasks {
 	withType<KotlinCompile> {
 		with(kotlinOptions) {
-			languageVersion = "1.4"
-			apiVersion = "1.4"
-			useIR = true
+			languageVersion = "1.5"
+			apiVersion = "1.5"
 			jvmTarget = JavaVersion.VERSION_11.toString()
 		}
 	}

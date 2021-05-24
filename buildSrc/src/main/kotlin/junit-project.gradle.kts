@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-	val junitVersion = "5.7.1"
+	val junitVersion = "5.7.2"
 
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
 	testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
