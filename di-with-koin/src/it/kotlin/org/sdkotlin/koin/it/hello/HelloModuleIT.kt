@@ -35,6 +35,7 @@ internal class HelloModuleIT : KoinTest {
 	@BeforeEach
 	fun beforeEach() {
 		startKoin {
+			allowOverride(true)
 			modules(helloModule)
 		}
 	}

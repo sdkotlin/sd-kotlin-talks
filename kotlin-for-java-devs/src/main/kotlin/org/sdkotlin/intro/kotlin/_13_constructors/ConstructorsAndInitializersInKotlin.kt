@@ -24,7 +24,7 @@ class Ewok(name: String, var yubYub: Boolean = true) {
 	// arguments. Property initializers and initializer blocks are executed in
 	// the order the appear.
 
-	val name = name.toUpperCase()
+	val name = name.uppercase()
 
 	init {
 		println(this.name)

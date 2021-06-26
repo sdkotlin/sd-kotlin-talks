@@ -8,6 +8,13 @@ plugins {
 
 dependencies {
 
-	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
-	testRuntimeOnly("org.slf4j:slf4j-simple:1.7.30")
+	val kotlinTestVersion = "3.4.2"
+
+	testImplementation("io.mockk:mockk-dsl-jvm:1.11.0")
+
+	testImplementation("io.kotlintest:kotlintest-assertions:$kotlinTestVersion")
+	testImplementation("io.kotlintest:kotlintest-core:$kotlinTestVersion")
+	testImplementation("io.kotlintest:kotlintest-runner-junit5:$kotlinTestVersion")
+
+	testRuntimeOnly("org.slf4j:slf4j-simple:1.7.31")
 }

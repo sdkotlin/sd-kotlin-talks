@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
-	id("com.autonomousapps.dependency-analysis") version "0.73.0"
-	id("com.github.ben-manes.versions") version "0.38.0"
+	id("com.autonomousapps.dependency-analysis") version "0.74.0"
+	id("com.github.ben-manes.versions") version "0.39.0"
 }
 
 allprojects {
@@ -40,7 +40,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper") {
-		gradleVersion = "6.8.3"
+		gradleVersion = "7.1"
 		distributionType = ALL
 	}
 }

@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._05_variables
+package org.sdkotlin.intro.kotlin._05_0_variables_and_types
 
 // var's are mutable, val's are read only
 

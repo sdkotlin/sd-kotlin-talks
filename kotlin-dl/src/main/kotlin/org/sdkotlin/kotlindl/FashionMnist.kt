@@ -1,20 +1,13 @@
 package org.sdkotlin.kotlindl
 
 import org.jetbrains.kotlinx.dl.api.core.Sequential
-import org.jetbrains.kotlinx.dl.api.core.layer.Dense
-import org.jetbrains.kotlinx.dl.api.core.layer.Flatten
-import org.jetbrains.kotlinx.dl.api.core.layer.Input
+import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
+import org.jetbrains.kotlinx.dl.api.core.layer.core.Input
+import org.jetbrains.kotlinx.dl.api.core.layer.reshaping.Flatten
 import org.jetbrains.kotlinx.dl.api.core.loss.Losses
 import org.jetbrains.kotlinx.dl.api.core.metric.Metrics
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
-import org.jetbrains.kotlinx.dl.datasets.Dataset
-import org.jetbrains.kotlinx.dl.datasets.handlers.FASHION_TEST_IMAGES_ARCHIVE
-import org.jetbrains.kotlinx.dl.datasets.handlers.FASHION_TEST_LABELS_ARCHIVE
-import org.jetbrains.kotlinx.dl.datasets.handlers.FASHION_TRAIN_IMAGES_ARCHIVE
-import org.jetbrains.kotlinx.dl.datasets.handlers.FASHION_TRAIN_LABELS_ARCHIVE
-import org.jetbrains.kotlinx.dl.datasets.handlers.NUMBER_OF_CLASSES
-import org.jetbrains.kotlinx.dl.datasets.handlers.extractFashionImages
-import org.jetbrains.kotlinx.dl.datasets.handlers.extractFashionLabels
+import org.jetbrains.kotlinx.dl.dataset.fashionMnist
 
 private const val EPOCHS = 5
 private const val TRAINING_BATCH_SIZE = 100
@@ -33,15 +26,7 @@ internal val model = Sequential.of(
 
 fun main() {
 
-	val (train, test) = Dataset.createTrainAndTestDatasets(
-		trainFeaturesPath = FASHION_TRAIN_IMAGES_ARCHIVE,
-		trainLabelsPath = FASHION_TRAIN_LABELS_ARCHIVE,
-		testFeaturesPath = FASHION_TEST_IMAGES_ARCHIVE,
-		testLabelsPath = FASHION_TEST_LABELS_ARCHIVE,
-		numClasses = NUMBER_OF_CLASSES,
-		featuresExtractor = ::extractFashionImages,
-		labelExtractor = ::extractFashionLabels
-	)
+	val (train, test) = fashionMnist()
 
 	model.use {
 

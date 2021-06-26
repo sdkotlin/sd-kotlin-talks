@@ -16,7 +16,7 @@ object HelloSingleton {
 
 	fun howYouDoin() {
 		mood = "great"
-		println("${mood.capitalize()}, thanks for asking!")
+		println("${mood.replaceFirstChar { it.uppercase() }}, thanks for asking!")
 	}
 }
 

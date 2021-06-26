@@ -11,7 +11,7 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$kotlinxCoroutinesVersion")
 
-	compileOnly("org.jetbrains:annotations:20.1.0")
+	compileOnly("org.jetbrains:annotations:21.0.1")
 
 	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.6.1")
 }
