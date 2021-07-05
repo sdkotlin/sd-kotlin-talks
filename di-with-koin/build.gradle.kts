@@ -9,7 +9,8 @@ plugins {
 }
 
 dependencies {
-	val koinVersion = "3.1.1"
+
+	val koinVersion = "3.1.2"
 
 	api("io.insert-koin:koin-core-jvm:$koinVersion")
 
