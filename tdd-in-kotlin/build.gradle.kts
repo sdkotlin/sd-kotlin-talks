@@ -10,8 +10,6 @@ dependencies {
 
 	val kotlinTestVersion = "3.4.2"
 
-	testImplementation("io.mockk:mockk-dsl-jvm:1.11.0")
-
 	testImplementation("io.kotlintest:kotlintest-assertions:$kotlinTestVersion")
 	testImplementation("io.kotlintest:kotlintest-core:$kotlinTestVersion")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:$kotlinTestVersion")
