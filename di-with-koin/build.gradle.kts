@@ -18,7 +18,7 @@ dependencies {
 
 	compileOnly("org.jetbrains:annotations:21.0.1")
 
-	testImplementation("io.insert-koin:koin-test-junit5:$koinVersion")
+	"integrationTestImplementation"("io.insert-koin:koin-test-junit5:$koinVersion")
 }
 
 tasks {

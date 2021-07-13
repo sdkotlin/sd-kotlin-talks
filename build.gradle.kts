@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
-	id("com.autonomousapps.dependency-analysis") version "0.74.0"
+	id("com.autonomousapps.dependency-analysis") version "0.75.0"
 	id("com.github.ben-manes.versions") version "0.39.0"
 }
 
@@ -26,6 +26,12 @@ dependencyAnalysis {
 		all {
 			onAny {
 				severity("fail")
+			}
+			onUnusedDependencies {
+				exclude(
+					// JUnit Params added globally as a test dependency for convenience.
+					"org.junit.jupiter:junit-jupiter-params",
+				)
 			}
 		}
 	}
