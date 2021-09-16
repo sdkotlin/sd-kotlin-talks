@@ -7,13 +7,14 @@ plugins {
 }
 
 dependencies {
-	val kotlinxCoroutinesVersion = "1.5.1"
+	val kotlinxCoroutinesVersion = "1.5.2"
+
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$kotlinxCoroutinesVersion")
 
-	compileOnly("org.jetbrains:annotations:21.0.1")
+	compileOnly("org.jetbrains:annotations:22.0.0")
 
-	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.7")
+	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.7.1")
 }
 
 tasks {

@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-	api("org.jetbrains.kotlinx:kotlin-deeplearning-api:0.2.0")
+	implementation("org.jetbrains.kotlinx:kotlin-deeplearning-api:0.2.0")
 }

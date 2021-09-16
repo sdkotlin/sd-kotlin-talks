@@ -9,12 +9,13 @@ plugins {
 }
 
 dependencies {
-	val junitVersion = "5.7.2"
 
-	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-	testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
+	testImplementation(platform("org.junit:junit-bom:5.8.0"))
 
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("org.junit.jupiter:junit-jupiter-params")
+
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 tasks {

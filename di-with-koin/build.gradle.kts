@@ -12,11 +12,11 @@ dependencies {
 
 	val koinVersion = "3.1.2"
 
-	api("io.insert-koin:koin-core-jvm:$koinVersion")
+	implementation("io.insert-koin:koin-core-jvm:$koinVersion")
 
 	implementation("io.insert-koin:koin-core:$koinVersion")
 
-	compileOnly("org.jetbrains:annotations:21.0.1")
+	compileOnly("org.jetbrains:annotations:22.0.0")
 
 	"integrationTestImplementation"("io.insert-koin:koin-test-junit5:$koinVersion")
 }
