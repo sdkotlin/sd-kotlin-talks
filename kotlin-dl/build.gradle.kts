@@ -3,5 +3,8 @@ plugins {
 }
 
 dependencies {
-	implementation("org.jetbrains.kotlinx:kotlin-deeplearning-api:0.2.0")
+	val kotlinDlVersion = "0.3.0"
+
+	implementation("org.jetbrains.kotlinx:kotlin-deeplearning-api:$kotlinDlVersion")
+	implementation("org.jetbrains.kotlinx:kotlin-deeplearning-dataset:$kotlinDlVersion")
 }
