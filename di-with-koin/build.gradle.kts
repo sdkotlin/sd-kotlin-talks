@@ -15,7 +15,7 @@ dependencies {
 	implementation("io.insert-koin:koin-core:$koinVersion")
 	implementation("io.insert-koin:koin-core-jvm:$koinVersion")
 
-	compileOnly("org.jetbrains:annotations:22.0.0")
+	compileOnly("org.jetbrains:annotations:23.0.0")
 
 	"integrationTestImplementation"("io.insert-koin:koin-test-junit5:$koinVersion")
 }
