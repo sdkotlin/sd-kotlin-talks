@@ -1,6 +1,6 @@
 package org.sdkotlin.tdd.sorting
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
 
@@ -17,15 +17,11 @@ class JUnit5DynamicTestSortTest {
 		arrayOf(1, 3, 2) to arrayOf(1, 2, 3),
 		arrayOf(3, 2, 1) to arrayOf(1, 2, 3)
 	).map { (unsortedArray, expectedArray) ->
-		// Must run tests with IntelliJ instead of Gradle (Preferences >
-		// Build, Execution, Deployment > Build Tools > Gradle >
-		// Run tests using: IntelliJ IDEA) to see test names in IntelliJ per
-		// https://github.com/gradle/gradle/issues/5975
 		dynamicTest(
 			"sort(${unsortedArray.contentToString()}) is ${expectedArray.contentToString()}"
 		) {
 			val sortedArray = sort(unsortedArray)
-			Assertions.assertThat(sortedArray).isEqualTo(expectedArray).isNotSameAs(unsortedArray)
+			assertThat(sortedArray).isEqualTo(expectedArray).isNotSameAs(unsortedArray)
 		}
 	}
 }
