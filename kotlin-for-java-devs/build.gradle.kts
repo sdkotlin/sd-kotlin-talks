@@ -14,7 +14,7 @@ dependencies {
 
 	compileOnly("org.jetbrains:annotations:23.0.0")
 
-	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.8.1")
+	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.8.2")
 }
 
 tasks {

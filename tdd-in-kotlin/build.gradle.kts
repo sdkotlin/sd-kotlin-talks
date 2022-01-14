@@ -14,5 +14,5 @@ dependencies {
 	testImplementation("io.kotlintest:kotlintest-core:$kotlinTestVersion")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:$kotlinTestVersion")
 
-	testRuntimeOnly("org.slf4j:slf4j-simple:1.7.32")
+	testRuntimeOnly("org.slf4j:slf4j-simple:1.7.33")
 }
