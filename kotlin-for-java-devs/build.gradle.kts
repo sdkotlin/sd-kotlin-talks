@@ -16,9 +16,6 @@ dependencies {
 
 	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.9")
 }
-repositories {
-	mavenCentral()
-}
 
 tasks {
 	withType<KotlinCompile>().configureEach {
