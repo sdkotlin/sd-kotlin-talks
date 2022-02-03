@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
-	id("com.autonomousapps.dependency-analysis") version "0.79.0"
-	id("com.github.ben-manes.versions") version "0.39.0"
+	id("com.autonomousapps.dependency-analysis") version "0.80.0"
+	id("com.github.ben-manes.versions") version "0.41.0"
 }
 
 allprojects {
