@@ -1,6 +1,6 @@
-package org.sdkotlin.intro.kotlin._30_sealedclasses.otherpackage
+package org.sdkotlin.intro.kotlin._30_sealedtypes.otherpackage
 
-import org.sdkotlin.intro.kotlin._30_sealedclasses.HumanPlayer
+import org.sdkotlin.intro.kotlin._30_sealedtypes.HumanPlayer
 
 data class LocalPlayer(
 	override val name: String,

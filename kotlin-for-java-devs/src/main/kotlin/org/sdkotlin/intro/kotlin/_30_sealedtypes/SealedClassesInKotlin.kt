@@ -1,23 +1,39 @@
-package org.sdkotlin.intro.kotlin._30_sealedclasses
+package org.sdkotlin.intro.kotlin._30_sealedtypes
 
-import org.sdkotlin.intro.kotlin._30_sealedclasses.otherpackage.LocalPlayer
-import org.sdkotlin.intro.kotlin._30_sealedclasses.otherpackage.RemotePlayer
+import org.sdkotlin.intro.kotlin._30_sealedtypes.otherpackage.LocalPlayer
+import org.sdkotlin.intro.kotlin._30_sealedtypes.otherpackage.RemotePlayer
 
-// Kotlin has sealed classes to represent a restricted hierarchy of types.
+// Kotlin has sealed classes and interfaces to represent a restricted hierarchy
+// of types.
 
 sealed class Player(open val name: String, open var health: Int)
 
 // Sealed classes are similar to abstract classes. You can't directly
-// instantiate them. Any constructors are implicitly private.
+// instantiate them. Any constructors are implicitly protected.
 
 fun `not gonna do it`() {
 
-	//val player = Player("Timmy") // Does not compile.
+	//val player = Player("Timmy", 100) // Does not compile.
 }
 
-// All direct subclasses must be defined in the same file as the sealed class.
+// Direct subclasses of sealed classes, that are themselves not also sealed,
+// determine the exhaustively known part of that branch of the sealed type
+// hierarchy.
 
-// The can be data classes, which in turn makes them final.
+/**
+ * If the direct subclass is abstract or open, its subclasses can be defined in
+ * other packages or modules.
+ *
+ * @see [LocalPlayer]
+ * @see [RemotePlayer]
+ */
+abstract class HumanPlayer(
+	name: String,
+	health: Int = 100,
+	open val topScore: Int = 0,
+) : Player(name, health)
+
+// Alternatively they can be data classes, which in turn makes them final.
 
 data class NPC(override val name: String, override var health: Int = 100) :
 	Player(name, health) {
@@ -25,20 +41,12 @@ data class NPC(override val name: String, override var health: Int = 100) :
 	fun aiAttack() = "Coming to get ya"
 }
 
-// If a subclass is open, its subclasses can be defined in other files or
-// modules.
-
-abstract class HumanPlayer(
-	name: String,
-	health: Int = 100,
-	open val topScore: Int = 0,
-) : Player(name, health)
-
 // Sealed classes work well with sealed `when`s and smart casting.
 
 fun topScore(player: Player) = when (player) {
 	is NPC -> "N/A"
 	is HumanPlayer -> player.topScore.toString()
+	is OtherPlayerType -> "Unknown"
 }
 
 // Adding a type to the sealed hierarchy later will be called out by the
@@ -60,8 +68,9 @@ fun main() {
 			is NPC -> "${player.name}! ${player.aiAttack()} with " +
 					"${player.health} health!"
 			is RemotePlayer -> "${player.name} from ${player.ipAddress}! " +
-					"Top Score: ${player.topScore}."
+					"Top Score: ${topScore(player)}."
 			is HumanPlayer -> "${player.name}! Top Score: ${player.topScore}."
+			is OtherPlayerType -> "${player.name}! Health: ${player.health}."
 		}
 
 		println(action)
