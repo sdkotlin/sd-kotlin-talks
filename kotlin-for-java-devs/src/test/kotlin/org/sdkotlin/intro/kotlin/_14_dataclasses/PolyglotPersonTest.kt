@@ -1,12 +1,10 @@
-package org.sdkotlin.meetup._14_dataclasses
+package org.sdkotlin.intro.kotlin._14_dataclasses
 
 import nl.jqno.equalsverifier.EqualsVerifier
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.sdkotlin.intro.kotlin._14_dataclasses.PolyglotPerson
-import org.sdkotlin.intro.kotlin._14_dataclasses.ProgrammingLanguage
 
-class PolyglotPersonTest {
+internal class PolyglotPersonTest {
 
 	@Test
 	fun `test equals, hashCode, and toString`() {

@@ -1,8 +1,7 @@
-package org.sdkotlin.meetup
+package org.sdkotlin.intro.kotlin._XX_inlineclasses
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.sdkotlin.intro.kotlin._XX_inlineclasses.bookTicket
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.EventID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.MemberID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.PrimitiveTicket
@@ -10,7 +9,7 @@ import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.SeatID
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.Ticket
 import org.sdkotlin.intro.kotlin._XX_inlineclasses.entities.VenueID
 
-class InlineClassesInKotlinTest {
+internal class InlineClassesInKotlinTest {
 
 	@Test
 	fun `test inline class`() {
