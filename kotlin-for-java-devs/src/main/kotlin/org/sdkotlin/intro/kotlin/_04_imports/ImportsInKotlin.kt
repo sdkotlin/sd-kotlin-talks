@@ -2,11 +2,14 @@ package org.sdkotlin.intro.kotlin._04_imports
 
 // Imports in Kotlin are very similar to Java.
 
-// If there is a name collision the 'as' keyword can be used.
-
 import java.math.BigDecimal
 import kotlin.math.PI
+
+// If there is a name collision, the 'as' keyword can be used.
+
 import org.sdkotlin.intro.kotlin._04_imports.otherpackage.Thing1 as Thing2
+
+class Thing1
 
 var lawOfLargeNumbers = BigDecimal.TEN
 

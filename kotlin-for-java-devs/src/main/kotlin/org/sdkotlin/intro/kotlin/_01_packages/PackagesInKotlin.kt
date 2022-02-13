@@ -2,4 +2,4 @@
 
 package somewhere.over.the.rainbow // Also, no semicolon.
 
-// Semicolons are optional in Kotlin and rarely used.
+// Semicolons are optional in Kotlin, and rarely used.
