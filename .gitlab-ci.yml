@@ -1,4 +1,4 @@
-image: openjdk:11.0.7-jdk
+image: eclipse-temurin:17.0.2_8-jdk
 
 before_script:
   - export GRADLE_USER_HOME=./.gradle
