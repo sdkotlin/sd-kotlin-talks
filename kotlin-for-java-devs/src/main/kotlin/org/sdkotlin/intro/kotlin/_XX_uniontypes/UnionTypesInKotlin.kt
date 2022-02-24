@@ -76,6 +76,7 @@ fun withSealedClassesAndInterfaces() {
 
 	// We can exhaustively pattern match with a `when` expression (and a `when`
 	// statement in Kotlin 1.7).
+
 	val whatToDo = when (thing) {
 		is StuffedAnimal -> thing.play()
 		is Food -> thing.eat()
@@ -124,6 +125,7 @@ fun withEither() {
 
 	// Again, exhaustive pattern matching can (must) be used to handle the
 	// result.
+
 	val result = when (whatToDo) {
 		is Either.Left -> whatToDo.value.strike()
 		is Either.Right -> whatToDo.value.hit()
