@@ -4,6 +4,15 @@ import arrow.core.Either
 import kotlin.random.Random.Default.nextBoolean
 import kotlin.random.Random.Default.nextInt
 
+fun withMulticatch() {
+
+	// Unfortunately, Kotlin doesn't have support for union types in
+	// multicatch clauses, yet: https://youtrack.jetbrains.com/issue/KT-7128.
+
+	// They may resolve this with full support for union and intersection types:
+	// https://youtrack.jetbrains.com/issue/KT-13108.
+}
+
 fun withNullableTypes() {
 
 	// Kotlin has built in support for every type to be treated as a union type
@@ -14,8 +23,8 @@ fun withNullableTypes() {
 	// The compiler forces us to check which at compile-time if we want to
 	// use any of the API for that type.
 
-	val maybeReallyAwesome = maybeAwesome?.uppercase()
-	val alsoMaybeReallyAwesome = maybeAwesome ?: "Awesome default"
+	val maybeReallyAwesome: String? = maybeAwesome?.uppercase()
+	val alsoMaybeReallyAwesome: String = maybeAwesome ?: "Awesome default"
 
 	// It enforces exhaustive pattern matching in `when` expressions with
 	// smart casting.
@@ -30,15 +39,6 @@ fun withNullableTypes() {
 	println(maybeReallyAwesome)
 	println(alsoMaybeReallyAwesome)
 	println(theUtmostAwesomeness)
-}
-
-fun withMulticatch() {
-
-	// Unfortunately, Kotlin doesn't have support for union types in
-	// multicatch clauses, yet: https://youtrack.jetbrains.com/issue/KT-7128.
-
-	// They may resolve this with full support for union and intersection types:
-	// https://youtrack.jetbrains.com/issue/KT-13108.
 }
 
 // We can model union types of arbitrary arity with sealed type hierarchies in
@@ -118,7 +118,7 @@ fun withEither() {
 			Either.Right(Dodgeball)
 		}
 
-	val whatToDo = duck()
+	val whatToDo: Either<Wrench, Dodgeball> = duck()
 
 	// We can't unwrap the value without checking its type at compile time.
 	//val value = whatToDo.value // Does not compile

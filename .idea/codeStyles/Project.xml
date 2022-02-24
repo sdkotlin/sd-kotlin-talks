@@ -37,7 +37,7 @@
       <option name="BLOCK_COMMENT_AT_FIRST_COLUMN" value="false" />
       <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="1" />
       <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
-      <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />
+      <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1" />
       <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1" />
       <option name="TERNARY_OPERATION_WRAP" value="5" />
       <option name="TERNARY_OPERATION_SIGNS_ON_NEXT_LINE" value="true" />
@@ -47,7 +47,7 @@
       <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
       <option name="ASSIGNMENT_WRAP" value="1" />
       <option name="PARAMETER_ANNOTATION_WRAP" value="5" />
-      <option name="VARIABLE_ANNOTATION_WRAP" value="5" />
+      <option name="VARIABLE_ANNOTATION_WRAP" value="2" />
       <option name="ENUM_CONSTANTS_WRAP" value="5" />
       <option name="SOFT_MARGINS" value="80,100,120" />
       <indentOptions>

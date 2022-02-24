@@ -58,6 +58,7 @@ public class UnionTypesInJava {
 				// `AnException`.
 
 				System.out.println(anException.aMethod());
+
 			} else //noinspection ConstantConditions
 				if (e instanceof AnotherException anotherException) {
 
@@ -116,7 +117,7 @@ public class UnionTypesInJava {
 				random.nextBoolean() ? "Awesome" : null
 		);
 
-		System.out.println(maybeAwesome.orElse("Not awesome"));
+		System.out.println(maybeAwesome.orElse("Not as awesome"));
 
 		// Unfortunately, the `Optional` API also includes several methods
 		// that do result in runtime exceptions.
