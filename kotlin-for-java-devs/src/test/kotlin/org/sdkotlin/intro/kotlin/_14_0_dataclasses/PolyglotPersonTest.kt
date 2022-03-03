@@ -1,4 +1,4 @@
-package org.sdkotlin.intro.kotlin._14_dataclasses
+package org.sdkotlin.intro.kotlin._14_0_dataclasses
 
 import nl.jqno.equalsverifier.EqualsVerifier
 import org.assertj.core.api.Assertions.assertThat
