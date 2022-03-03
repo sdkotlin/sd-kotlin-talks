@@ -2,7 +2,7 @@ package org.sdkotlin.intro.kotlin._14_1_inlineclasses
 
 import java.math.BigDecimal
 
-// Kotlin 1.6 adds initial stable support for value classes, f.k.a.
+// Kotlin 1.5 adds initial stable support for value classes, f.k.a.
 // inline classes.
 
 // They can help us avoid the primitive obsession smell by efficiently
@@ -54,6 +54,14 @@ fun withValueClasses() {
 	// We can only call fullName(...) with the arguments in the correct order.
 
 	println(fullName(firstName, lastName))
+
+	println(lastName.greet())
+
+	try {
+		LastName("")
+	} catch (e: IllegalArgumentException) {
+		println(e)
+	}
 
 	//fullName(lastName, firstName) // Does not compile.
 
