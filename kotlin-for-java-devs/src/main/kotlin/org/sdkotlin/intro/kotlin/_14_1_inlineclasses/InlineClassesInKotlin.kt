@@ -9,27 +9,27 @@ import java.math.BigDecimal
 // declaring new user-defined types for single-value basic and primitive types.
 
 @JvmInline
-value class FirstName(val value: String)
+value class FirstName(val first: String)
 
 @JvmInline
-value class LastName(val value: String) {
+value class LastName(val last: String) {
 
 	// They can have init blocks.
 	init {
-		require(value.isNotEmpty()) {
+		require(last.isNotBlank()) {
 			"Last name must not be blank."
 		}
 	}
 
 	// And computed properties.
 	val length: Int
-		get() = value.length
+		get() = last.length
 
 	// But not properties with backing fields.
 	//val uppercased = value.uppercase() // Does not compile.
 
 	// They can have functions
-	fun greet() = "Hello, $value"
+	fun greet() = "Hello, $last"
 }
 
 // They allow for strongly-typed function signatures.
@@ -53,15 +53,7 @@ fun withValueClasses() {
 
 	// We can only call fullName(...) with the arguments in the correct order.
 
-	println(fullName(firstName, lastName))
-
-	println(lastName.greet())
-
-	try {
-		LastName("")
-	} catch (e: IllegalArgumentException) {
-		println(e)
-	}
+	fullName(firstName, lastName)
 
 	//fullName(lastName, firstName) // Does not compile.
 
@@ -70,8 +62,46 @@ fun withValueClasses() {
 	println(mixedUpFullName(firstNameAsString, lastNameAsString))
 	println(mixedUpFullName(lastNameAsString, firstNameAsString)) // Oops
 
+	// We can't substitute the unwrapped types.
+
+	//fullName(firstNameAsString, lastNameAsString) // Does not compile.
+
+	// We can access and use the API of the value class and the wrapped types.
+
+	println(lastName.greet())
+	println(lastName.last.isNotBlank())
+
+	// And see the init block in action.
+
+	try {
+		LastName("")
+	} catch (e: IllegalArgumentException) {
+		println(e)
+	}
+
 	// Local value classes are not supported.
 	//@JvmInline value class Local(val nope: String) // Does not compile.
+}
+
+// You can make value classes for any type, including generic collections,
+// other value classes, etc.
+
+@JvmInline
+value class Foo(val ey: List<Int>)
+
+@JvmInline
+value class Bar(val foo: Foo)
+
+@JvmInline
+value class Baz(val bar: Bar) // It's turtles all the way down.
+
+fun withValueClassesOfAnyType() {
+
+	val foo = Foo(listOf(1, 2, 3))
+	val bar = Bar(foo)
+	val baz = Baz(bar)
+
+	println("$foo, $bar, $baz")
 }
 
 // Value classes require immutable properties.
@@ -79,6 +109,24 @@ fun withValueClasses() {
 
 // Multiple properties aren't supported, yet.
 //@JvmInline value class FullName(val first: String, val last: String) // Does not compile.
+
+// Value classes can have private properties.
+
+@JvmInline
+value class Shh(private val secret: String) {
+
+	val catsOutOfTheBag: String
+		get() = secret
+}
+
+fun withValueClassEncapsulation() {
+
+	val shh = Shh("Don't tell.")
+
+	//println(shh.secret) // Does not compile.
+
+	println(shh.catsOutOfTheBag)
+}
 
 // Value classes can implement interfaces
 
@@ -137,6 +185,8 @@ fun withValueClassEquality() {
 
 fun main() {
 	withValueClasses()
+	withValueClassesOfAnyType()
+	withValueClassEncapsulation()
 	withValueClassComparability()
 	withValueClassEquality()
 }
