@@ -4,7 +4,3 @@ plugins {
 	`assertj-project`
 	`integration-test-suite`
 }
-
-dependencies {
-
-}
