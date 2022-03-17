@@ -26,7 +26,7 @@ value class LastName(val last: String) {
 		get() = last.length
 
 	// But not properties with backing fields.
-	//val uppercased = value.uppercase() // Does not compile.
+	//val uppercased = last.uppercase() // Does not compile.
 
 	// They can have functions
 	fun greet() = "Hello, $last"
