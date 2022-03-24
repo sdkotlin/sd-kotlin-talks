@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-	implementation("org.json:json:20211205")
+	implementation("org.json:json:20220320")
 }
