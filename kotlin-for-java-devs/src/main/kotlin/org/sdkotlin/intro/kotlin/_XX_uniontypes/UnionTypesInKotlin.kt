@@ -49,7 +49,7 @@ fun withNullableTypes() {
 sealed interface GarbageOrFoodOrStuffedAnimal // No API
 
 open class StuffedAnimal : GarbageOrFoodOrStuffedAnimal {
-	open fun play() = "Squeek"
+	open fun play() = "Squeak"
 }
 
 class Elmo : StuffedAnimal() {
@@ -92,52 +92,72 @@ fun withSealedClassesAndInterfaces() {
 // handling at compile-time. Also, we can use plain old classes for error
 // types, which are far more efficient to construct than exceptions.
 
-object Wrench {
-	fun strike() = "Ouch!"
-}
+sealed interface IoError
 
-object Dodgeball {
-	fun hit() = "Darn"
-}
+object FileNotFoundIoError : IoError
 
-fun withEither() {
+object EndOfStreamIoError : IoError
 
-	// ArrowKt offers a functional programming companion to the Kotlin standard
-	// library. It includes `Either<L, R>`, which is a generic "this or that"
-	// union type commonly used for error handling. By convention the "left"
-	// value is the erroneous result.
+sealed interface ErrorOrValue<out E, out V>
 
-	// Here we declare a function that returns _either_ a `Wrench` or a
-	// `Dodgeball`. This is an alternative to returning a `Dodgeball` or
-	// throwing an undeclared and unchecked `WrenchException`.
+class Error<out E>(val error: E) : ErrorOrValue<E, Nothing>
 
-	fun duck(): Either<Wrench, Dodgeball> =
-		if (nextBoolean()) {
-			Either.Left(Wrench)
-		} else {
-			Either.Right(Dodgeball)
-		}
+class Value<out V>(val value: V) : ErrorOrValue<Nothing, V>
 
-	val whatToDo: Either<Wrench, Dodgeball> = duck()
+fun read(): ErrorOrValue<IoError, Byte> = // i.e. fun read(): IoError | Byte
+	when (nextInt() % 3) {
+		0 -> Error(FileNotFoundIoError)
+		1 -> Error(EndOfStreamIoError)
+		else -> Value(127)
+	}
+
+fun withIo() {
+
+	val maybeByte: ErrorOrValue<IoError, Byte> = read()
 
 	// We can't unwrap the value without checking its type at compile time.
-	//val value = whatToDo.value // Does not compile
+	//val value = maybeByte.value // Does not compile
 
 	// Again, exhaustive pattern matching can (must) be used to handle the
 	// result.
 
-	val result = when (whatToDo) {
-		is Either.Left -> whatToDo.value.strike()
-		is Either.Right -> whatToDo.value.hit()
+	when (maybeByte) {
+		is Error -> when (val error = maybeByte.error) {
+			is FileNotFoundIoError -> println("Oh no! $error")
+			is EndOfStreamIoError ->
+				println("I suppose that's to be expected: $error")
+		}
+		is Value -> println("The read byte is ${maybeByte.value}")
+	}
+}
+
+// An alternative to rolling your own union type with an arity of two,
+// ArrowKt--a functional programming companion to the Kotlin standard
+// library--includes `Either<L, R>`. It's a generic "this or that"
+// union type. By convention the "left" value is the erroneous result.
+
+fun readEither(): Either<IoError, Byte> = // i.e. fun read(): IoError | Byte
+	when (nextInt() % 3) {
+		0 -> Either.Left(FileNotFoundIoError)
+		1 -> Either.Left(EndOfStreamIoError)
+		else -> Either.Right(127)
 	}
 
-	println(result)
-}
+fun withEither() =
+	when (val maybeByte = readEither()) {
+		is Either.Left -> when (val error = maybeByte.value) {
+			is FileNotFoundIoError -> println("Oh no! $error")
+			is EndOfStreamIoError ->
+				println("I suppose that's to be expected: $error")
+		}
+		is Either.Right -> println("The read byte is ${maybeByte.value}")
+	}
 
 fun main() {
 
 	withNullableTypes()
 	withMulticatch()
 	withSealedClassesAndInterfaces()
+	withIo()
 	withEither()
 }
