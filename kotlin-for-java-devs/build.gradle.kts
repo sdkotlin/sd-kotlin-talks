@@ -7,12 +7,14 @@ plugins {
 }
 
 dependencies {
+	val arrowKtVersion = "1.0.1"
 	val kotlinxCoroutinesVersion = "1.6.1"
+
+	api("io.arrow-kt:arrow-core:$arrowKtVersion")
+	api("io.arrow-kt:arrow-core-jvm:$arrowKtVersion")
 
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$kotlinxCoroutinesVersion")
-
-	implementation("io.arrow-kt:arrow-core:1.0.1")
 
 	compileOnly("org.jetbrains:annotations:23.0.0")
 
