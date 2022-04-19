@@ -7,7 +7,7 @@ plugins {
 }
 
 dependencies {
-	val kotlinxCoroutinesVersion = "1.6.0"
+	val kotlinxCoroutinesVersion = "1.6.1"
 
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$kotlinxCoroutinesVersion")
