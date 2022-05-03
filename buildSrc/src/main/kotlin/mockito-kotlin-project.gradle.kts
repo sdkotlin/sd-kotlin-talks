@@ -5,5 +5,5 @@ plugins {
 
 dependencies {
 	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-	testImplementation("org.mockito:mockito-core:4.4.0")
+	testImplementation("org.mockito:mockito-core:4.5.1")
 }
