@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-	implementation(kotlin("reflect"))
+	runtimeOnly(kotlin("reflect"))
 }
 
 java {
