@@ -25,6 +25,6 @@ tasks {
 
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions.freeCompilerArgs += "-Xinline-classes"
-		kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+		kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
 	}
 }
