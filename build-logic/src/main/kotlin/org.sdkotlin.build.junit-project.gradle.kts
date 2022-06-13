@@ -10,7 +10,7 @@ plugins {
 
 dependencies {
 
-	testImplementation(platform("org.junit:junit-bom:5.8.2"))
+	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
 	testImplementation("org.junit.jupiter:junit-jupiter-params")

@@ -1,9 +1,16 @@
+pluginManagement {
+	@Suppress("UnstableApiUsage")
+	includeBuild("build-logic")
+}
+
 dependencyResolutionManagement {
 	@Suppress("UnstableApiUsage")
 	repositories {
 		mavenCentral()
 	}
 }
+
+includeBuild("platforms")
 
 rootProject.name = "sd-kotlin-talks"
 

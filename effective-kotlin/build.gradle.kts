@@ -1,7 +1,10 @@
 plugins {
-	`kotlin-project`
+	id("org.sdkotlin.build.kotlin-project")
 }
 
 dependencies {
-	implementation("org.json:json:20220320")
+
+	implementation(platform("org.sdkotlin.platforms:app-platform"))
+
+	implementation(libs.org.json)
 }

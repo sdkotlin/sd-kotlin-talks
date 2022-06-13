@@ -1,0 +1,53 @@
+[versions]
+arrow = "1.1.2"
+assertj = "3.22.0"
+equalsverifier = "3.10"
+gradle-testsets-plugin = "4.0.0"
+jetbrains-annotations = "23.0.0"
+junit = "5.8.2"
+koin = "3.2.0"
+kotlin = "1.6.21"
+kotlintest = "3.4.2"
+kotlinx-coroutines = "1.6.2"
+kotlinx-dl = "0.3.0"
+mockito = "4.5.1"
+mockito-kotlin = "2.2.0"
+mockk = "1.12.3"
+org-json = "20220320"
+slf4j = "1.7.36"
+
+[libraries]
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+arrow-core-jvm = { module = "io.arrow-kt:arrow-core-jvm", version.ref = "arrow" }
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+equalsverifier = { module = "nl.jqno.equalsverifier:equalsverifier", version.ref = "equalsverifier" }
+gradle-testsets-plugin = { module = "org.unbroken-dome.gradle-plugins:gradle-testsets-plugin", version.ref = "gradle-testsets-plugin" }
+jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-core-jvm = { module = "io.insert-koin:koin-core-jvm", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koin-test-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlintest-assertions = { module = "io.kotlintest:kotlintest-assertions", version.ref = "kotlintest" }
+kotlintest-core = { module = "io.kotlintest:kotlintest-core", version.ref = "kotlintest" }
+kotlintest-runner-junit5 = { module = "io.kotlintest:kotlintest-runner-junit5", version.ref = "kotlintest" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines" }
+kotlinx-dl-api = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-api", version.ref = "kotlinx-dl" }
+kotlinx-dl-dataset = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-dataset", version.ref = "kotlinx-dl" }
+mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-kotlin = { module = "com.nhaarman.mockitokotlin2:mockito-kotlin", version.ref = "mockito-kotlin" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-dsl-jvm = { module = "io.mockk:mockk-dsl-jvm", version.ref = "mockk" }
+org-json = { module = "org.json:json", version.ref = "org-json" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+
+[bundles]
+arrow-jvm = ["arrow-core", "arrow-core-jvm"]
+koin-jvm = ["koin-core", "koin-core-jvm"]
+koin-test-junit5 = ["koin-test", "koin-test-junit5"]
+kotlintest-junit5 = ["kotlintest-assertions", "kotlintest-core", "kotlintest-runner-junit5"]
+kotlinx-dl = ["kotlinx-dl-api", "kotlinx-dl-dataset"]
+kotlinx-coroutines-jvm = ["kotlinx-coroutines-core", "kotlinx-coroutines-core-jvm"]
+mockk-jvm = ["mockk", "mockk-dsl-jvm"]
