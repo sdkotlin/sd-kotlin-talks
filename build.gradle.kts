@@ -12,6 +12,8 @@ import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 )
 plugins {
 	alias(libs.plugins.dependency.analysis.gradle.plugin)
+	// Needed for:
+	// https://github.com/autonomousapps/dependency-analysis-android-gradle-plugin/wiki/FAQ#typenotpresentexception-type-orgjetbrainskotlingradledslkotlinprojectextension-in-kotlin-jvm-library
 	alias(libs.plugins.kotlin.gradle.plugin) apply false
 	alias(libs.plugins.versions.gradle.plugin)
 }
