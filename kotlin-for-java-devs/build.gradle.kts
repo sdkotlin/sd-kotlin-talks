@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
 	val arrowKtVersion = "1.1.2"
-	val kotlinxCoroutinesVersion = "1.6.1"
+	val kotlinxCoroutinesVersion = "1.6.2"
 
 	api("io.arrow-kt:arrow-core:$arrowKtVersion")
 	api("io.arrow-kt:arrow-core-jvm:$arrowKtVersion")
