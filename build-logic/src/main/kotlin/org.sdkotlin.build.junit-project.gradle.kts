@@ -12,6 +12,9 @@ dependencies {
 
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
+	// Version catalog not available in precompiled script plugins:
+	// https://github.com/gradle/gradle/issues/15383
+
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
 	testImplementation("org.junit.jupiter:junit-jupiter-params")
 

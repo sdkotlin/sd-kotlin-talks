@@ -18,6 +18,7 @@ dependencies {
 
 	"integrationTestImplementation"(platform("org.sdkotlin.platforms:test-platform"))
 
+	@Suppress("UnstableApiUsage")
 	"integrationTestImplementation"(libs.bundles.koin.test.junit5)
 }
 

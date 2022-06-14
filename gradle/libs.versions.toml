@@ -1,8 +1,8 @@
 [versions]
 arrow = "1.1.2"
 assertj = "3.22.0"
+dependency-analysis-gradle-plugin = "1.5.0"
 equalsverifier = "3.10"
-gradle-testsets-plugin = "4.0.0"
 jetbrains-annotations = "23.0.0"
 junit = "5.8.2"
 koin = "3.2.0"
@@ -15,20 +15,22 @@ mockito-kotlin = "2.2.0"
 mockk = "1.12.3"
 org-json = "20220320"
 slf4j = "1.7.36"
+testsets-gradle-plugin = "4.0.0"
+versions-gradle-plugin = "0.42.0"
 
 [libraries]
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-core-jvm = { module = "io.arrow-kt:arrow-core-jvm", version.ref = "arrow" }
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+dependency-analysis-gradle-plugin-dependency = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependency-analysis-gradle-plugin" }
 equalsverifier = { module = "nl.jqno.equalsverifier:equalsverifier", version.ref = "equalsverifier" }
-gradle-testsets-plugin = { module = "org.unbroken-dome.gradle-plugins:gradle-testsets-plugin", version.ref = "gradle-testsets-plugin" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-core-jvm = { module = "io.insert-koin:koin-core-jvm", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koin-test-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-gradle-plugin-dependency = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlintest-assertions = { module = "io.kotlintest:kotlintest-assertions", version.ref = "kotlintest" }
 kotlintest-core = { module = "io.kotlintest:kotlintest-core", version.ref = "kotlintest" }
 kotlintest-runner-junit5 = { module = "io.kotlintest:kotlintest-runner-junit5", version.ref = "kotlintest" }
@@ -42,6 +44,7 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-dsl-jvm = { module = "io.mockk:mockk-dsl-jvm", version.ref = "mockk" }
 org-json = { module = "org.json:json", version.ref = "org-json" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+testsets-gradle-plugin-dependency = { module = "org.unbroken-dome.gradle-plugins:gradle-testsets-plugin", version.ref = "testsets-gradle-plugin" }
 
 [bundles]
 arrow-jvm = ["arrow-core", "arrow-core-jvm"]
@@ -51,3 +54,9 @@ kotlintest-junit5 = ["kotlintest-assertions", "kotlintest-core", "kotlintest-run
 kotlinx-dl = ["kotlinx-dl-api", "kotlinx-dl-dataset"]
 kotlinx-coroutines-jvm = ["kotlinx-coroutines-core", "kotlinx-coroutines-core-jvm"]
 mockk-jvm = ["mockk", "mockk-dsl-jvm"]
+
+[plugins]
+dependency-analysis-gradle-plugin = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependency-analysis-gradle-plugin" }
+kotlin-gradle-plugin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+testsets-gradle-plugin = { id = "org.unbroken-dome.test-sets", version.ref = "testsets-gradle-plugin" }
+versions-gradle-plugin = { id = "com.github.ben-manes.versions", version.ref = "versions-gradle-plugin" }

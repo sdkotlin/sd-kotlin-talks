@@ -2,9 +2,18 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
+// Without these suppressions this and version catalog usage in other build
+// are marked red by IntelliJ: https://youtrack.jetbrains.com/issue/KTIJ-19369.
+@Suppress(
+	"DSL_SCOPE_VIOLATION",
+	"MISSING_DEPENDENCY_CLASS",
+	"UNRESOLVED_REFERENCE_WRONG_RECEIVER",
+	"FUNCTION_CALL_EXPECTED"
+)
 plugins {
-	//id("com.autonomousapps.dependency-analysis") version "1.4.0"
-	id("com.github.ben-manes.versions") version "0.42.0"
+	alias(libs.plugins.dependency.analysis.gradle.plugin)
+	alias(libs.plugins.kotlin.gradle.plugin) apply false
+	alias(libs.plugins.versions.gradle.plugin)
 }
 
 allprojects {
@@ -21,23 +30,23 @@ subprojects {
 	}
 }
 
-//dependencyAnalysis {
-//	issues {
-//		all {
-//			onAny {
-//				severity("fail")
-//			}
-//			onUnusedDependencies {
-//				exclude(
-//					// Test dependencies added globally for convenience.
-//					"org.assertj:assertj-core",
-//					"org.junit.jupiter:junit-jupiter-api",
-//					"org.junit.jupiter:junit-jupiter-params",
-//				)
-//			}
-//		}
-//	}
-//}
+dependencyAnalysis {
+	issues {
+		all {
+			onAny {
+				severity("fail")
+			}
+			onUnusedDependencies {
+				exclude(
+					// Test dependencies added globally for convenience.
+					"org.assertj:assertj-core",
+					"org.junit.jupiter:junit-jupiter-api",
+					"org.junit.jupiter:junit-jupiter-params",
+				)
+			}
+		}
+	}
+}
 
 tasks {
 	withType<DependencyUpdatesTask> {

@@ -7,6 +7,9 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
 plugins {
 	idea
 	kotlin("jvm")
+	// Version catalog not available in precompiled script plugins:
+	// https://github.com/gradle/gradle/issues/15383
+	// alias(libs.plugins.testsets.gradle.plugin)
 	id("org.unbroken-dome.test-sets")
 }
 
