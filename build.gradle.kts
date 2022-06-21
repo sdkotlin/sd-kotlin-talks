@@ -2,8 +2,9 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
-// Without these suppressions this and version catalog usage in other build
-// are marked red by IntelliJ: https://youtrack.jetbrains.com/issue/KTIJ-19369.
+// Without these suppressions version catalog usage here and in other build
+// files is marked red by IntelliJ:
+// https://youtrack.jetbrains.com/issue/KTIJ-19369.
 @Suppress(
 	"DSL_SCOPE_VIOLATION",
 	"MISSING_DEPENDENCY_CLASS",
@@ -12,7 +13,9 @@ import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 )
 plugins {
 	alias(libs.plugins.dependency.analysis.gradle.plugin)
-	// Needed for:
+	// Kotlin plugin declaration needed here for the Dependency Analysis Plugin,
+	// but with `apply false` since the root project itself isn't a Kotlin
+	// project:
 	// https://github.com/autonomousapps/dependency-analysis-android-gradle-plugin/wiki/FAQ#typenotpresentexception-type-orgjetbrainskotlingradledslkotlinprojectextension-in-kotlin-jvm-library
 	alias(libs.plugins.kotlin.gradle.plugin) apply false
 	alias(libs.plugins.versions.gradle.plugin)
