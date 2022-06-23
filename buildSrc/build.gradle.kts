@@ -6,4 +6,5 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0")
 	implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
 	implementation("com.guardsquare:proguard-gradle:7.1.0")
+	implementation("com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin:1.7.0")
 }
