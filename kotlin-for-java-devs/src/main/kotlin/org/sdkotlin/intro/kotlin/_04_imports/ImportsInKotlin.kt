@@ -19,6 +19,6 @@ var thing2 = Thing2()
 fun main() {
 	println(PI)
 	println(lawOfLargeNumbers)
-	println("Thing1 type: " + thing1::class.simpleName)
-	println("Thing2 type: " + thing2::class.simpleName)
+	println("Thing1 type: " + thing1::class.qualifiedName)
+	println("Thing2 type: " + thing2::class.qualifiedName)
 }
