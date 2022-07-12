@@ -19,10 +19,11 @@ val long = 0L // Long, lowercase 'l' not supported
 val float = 0.0f // Float, 'F' also supported
 val double = 0.0 // Double, 'd/D' not supported
 
+val i = 0
 var j = 0
 
 fun withVariables() {
-	// i++ // Does not compile
+	//i++ // Does not compile
 	j++
 }
 
