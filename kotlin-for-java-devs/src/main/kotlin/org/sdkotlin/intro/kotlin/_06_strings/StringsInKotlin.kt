@@ -4,7 +4,18 @@ import org.sdkotlin.intro.java._06_strings.StringsInJava.STRING
 
 fun main() {
 
-	val template = "Kotlin supports $STRING templates!\n\n"
+	// Kotlin supports string templates.
+
+	val yay = "yay"
+
+	val template = "Kotlin supports $STRING templates, $yay!\n\n"
+
+	println(template)
+
+	val otherTemplate = "You can use arbitrary expressions if you" +
+			"add curly braces: ${1 + 1}"
+
+	println(otherTemplate)
 
 	val rawString = """
 		You can use "raw" strings for more substantial bodies of text.
@@ -13,13 +24,16 @@ fun main() {
 				+ "instead of escape sequences such as \t, \n, etc."
 		You can put arbitrary expressions in string templates with curly
 		braces. ${"\n".repeat(2)}
+		You can also do regular templates: $STRING
 		You can trim leading indentation.
+
 		""".trimIndent()
 
 	val prefixedRawString = """
 		> You can also trim to a prefix string,
 		> as with email-style quotations.
 		> The default prefix is "|" for `.trimMargin()`.
+		> > Trimming is not eager.
 		""".trimMargin("> ")
 
 	println(template + rawString + prefixedRawString)

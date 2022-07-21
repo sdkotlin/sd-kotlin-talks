@@ -73,7 +73,7 @@ fun useNamedParams() {
 	moreDefaultedParams(
 		firstName = "John",
 		lastName = "Smith",
-		domain = "smithery.com"
+		domain = "smithery.com",
 	)
 
 	// You can mix positional and named arguments, but the positional ones all
