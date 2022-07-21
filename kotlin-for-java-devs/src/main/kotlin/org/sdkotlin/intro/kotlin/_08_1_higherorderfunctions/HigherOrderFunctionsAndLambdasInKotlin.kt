@@ -1,13 +1,25 @@
 package org.sdkotlin.intro.kotlin._08_1_higherorderfunctions
 
-// Functions are first-class types in Kotlin, as we we've seen with them being
+// Functions are first-class types in Kotlin, as we've seen with them being
 // defined top-level.
 
 fun theBoss() = "I ain't got no class"
 
-// They have types and can be assigned to variables.
+// They have types, and can be assigned to variables by using a "::name"
+// function reference.
 
 val theBossFunction: () -> String = ::theBoss
+
+fun withFunctions() {
+
+	// Variables that are of function types can be invoked.
+	theBossFunction.invoke()
+
+	// Thanks to operator overloading (more on that later), ".invoke()" is
+	// synonymous with the "()" operator, and so variables of function types
+	// can be invoked with the same syntax as calls to a declared function are.
+	theBossFunction()
+}
 
 // Function types can be instantiated with a lambda expression.
 
@@ -50,7 +62,7 @@ val incrementFunction: (Int) -> Int = { it + 1 }
 
 val almostPi = 355 / 113
 
-val getPiApproximation = { almostPi }
+val getPiApproximation: () -> Int = { almostPi }
 
 // If the outer variable is mutable, the lambda can change it, and the change
 // is seen outside the lambda.
