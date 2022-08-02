@@ -31,5 +31,11 @@ public class IterationInJava {
 		while (i <= 5) {
 			System.out.println("Counting between 1 and 5: " + i++);
 		}
+
+		var j = 1;
+
+		do {
+			System.out.println("Counting between 1 and 5: " + j++);
+		} while (j <= 5);
 	}
 }

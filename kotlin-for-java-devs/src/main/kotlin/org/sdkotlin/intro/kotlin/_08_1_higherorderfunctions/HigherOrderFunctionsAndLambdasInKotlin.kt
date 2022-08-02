@@ -77,12 +77,12 @@ val goldilocksFunction = { porridge = "Just right." }
 fun doMath(
 	a: Int = 1,
 	b: Int = 1,
-	operation: (Int, Int) -> Int,
+	op: (Int, Int) -> Int,
 ): Int {
 
 	// You call the passed in function by its parameter name.
 
-	return operation(a, b)
+	return op(a, b)
 }
 
 fun giveMeAnAddFunction(): (Int, Int) -> Int {
