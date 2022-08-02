@@ -15,9 +15,13 @@ fun String.bedazzled() = "***$this***"
 
 fun main() {
 
-	println("Alphabet.shuffled(): ${"Alphabet".shuffled()}")
+	val shuffled = "Alphabet".shuffled()
 
-	println("Snazzy.bedazzled(): ${"Snazzy".bedazzled()}")
+	println("Alphabet.shuffled(): $shuffled")
+
+	val bedazzled = "Snazzy".bedazzled()
+
+	println("Snazzy.bedazzled(): $bedazzled")
 
 	// Extension functions are resolved statically by the receiver's
 	// declared or inferred type. In other words, they are not polymorphic.

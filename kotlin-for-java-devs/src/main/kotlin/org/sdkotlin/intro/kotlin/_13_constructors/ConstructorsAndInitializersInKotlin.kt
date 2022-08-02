@@ -4,15 +4,16 @@ package org.sdkotlin.intro.kotlin._13_constructors
 
 // Classes can have a primary constructor, that is declared on the same line.
 
-class Rebel internal constructor(val name: String, var jedi: Boolean)
+class Rebel constructor(val name: String, var jedi: Boolean)
 
 // If there are no access modifiers or annotations the constructor
+// keyword can be omitted.
 
 class Imperial(val name: String, var sith: Boolean)
 
 // Parameters with 'var' and 'val' automatically become class properties,
-// otherwise the parameters are just variables that can be used during the
-// initialization of the class.
+// otherwise the parameters are just constructor arguments variables that
+// can be used during the initialization of the class.
 
 class Ewok(name: String, var yubYub: Boolean = true) {
 
@@ -22,11 +23,12 @@ class Ewok(name: String, var yubYub: Boolean = true) {
 	// You can think of the body of the class being the primary constructor
 	// body, with property initializers and initializer blocks referencing the
 	// arguments. Property initializers and initializer blocks are executed in
-	// the order the appear.
+	// the order they appear.
 
 	val name = name.uppercase()
 
 	init {
+		println(name)
 		println(this.name)
 	}
 }

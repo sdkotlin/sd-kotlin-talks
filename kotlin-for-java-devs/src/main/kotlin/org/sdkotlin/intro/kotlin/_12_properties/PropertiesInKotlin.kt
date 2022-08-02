@@ -41,7 +41,7 @@ var readPrivateWrite = 1
 var width = 1
 var height = 1
 
-val area
+val area: Int
 	get() = width * height
 
 fun main() {
