@@ -5,13 +5,16 @@ plugins {
 	kotlin("jvm")
 }
 
+val javaTargetVersion = JavaVersion.VERSION_17
+val kotlinTargetVersion = "1.7"
+
 dependencies {
 	runtimeOnly(kotlin("reflect"))
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = javaTargetVersion
+	targetCompatibility = javaTargetVersion
 }
 
 tasks {
@@ -30,9 +33,9 @@ tasks {
 	withType<KotlinCompile> {
 		kotlinOptions {
 			freeCompilerArgs = listOf("-Xjsr305=strict")
-			languageVersion = "1.6"
-			apiVersion = "1.6"
-			jvmTarget = JavaVersion.VERSION_16.toString()
+			languageVersion = kotlinTargetVersion
+			apiVersion = kotlinTargetVersion
+			jvmTarget = javaTargetVersion.toString()
 		}
 	}
 }
