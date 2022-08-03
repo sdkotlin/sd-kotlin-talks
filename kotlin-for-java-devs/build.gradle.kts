@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
 	val arrowKtVersion = "1.1.2"
-	val kotlinxCoroutinesVersion = "1.6.3"
+	val kotlinxCoroutinesVersion = "1.6.4"
 
 	api("io.arrow-kt:arrow-core:$arrowKtVersion")
 	api("io.arrow-kt:arrow-core-jvm:$arrowKtVersion")
@@ -18,7 +18,7 @@ dependencies {
 
 	compileOnly("org.jetbrains:annotations:23.0.0")
 
-	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.10")
+	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.10.1")
 }
 
 tasks {
