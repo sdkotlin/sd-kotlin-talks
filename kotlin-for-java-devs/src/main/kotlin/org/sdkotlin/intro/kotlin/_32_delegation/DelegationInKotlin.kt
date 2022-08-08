@@ -224,6 +224,46 @@ fun `with deprecated property delegation`() {
 	println("Which witch is which?: ${Potterverse.topWitch}")
 }
 
+class LateInitExample {
+
+	lateinit var lateInitVar: String
+
+	var delegateLateInit: String by lateInit()
+}
+
+fun `with lateInit`() {
+
+	val lateInitInKotlin = LateInitExample()
+
+	try {
+		println(lateInitInKotlin.lateInitVar)
+	} catch (e: UninitializedPropertyAccessException) {
+		println("lateinit: Not yet... $e")
+	}
+
+	lateInitInKotlin.lateInitVar = "And now?"
+
+	println("lateinit: How about now... ${lateInitInKotlin.lateInitVar}")
+
+	lateInitInKotlin.lateInitVar = "And a reassign?"
+
+	try {
+		println(lateInitInKotlin.delegateLateInit)
+	} catch (e: IllegalStateException) {
+		println("delegate: not yet... $e")
+	}
+
+	lateInitInKotlin.delegateLateInit = "How about now?"
+
+	println("delegate: ${lateInitInKotlin.delegateLateInit}")
+
+	try {
+		lateInitInKotlin.delegateLateInit = "What about a re-assign?"
+	} catch (e: IllegalStateException) {
+		println("delegate: $e")
+	}
+}
+
 fun main() {
 	`with delegates`()
 	`with the Lazy property delegate`()
@@ -234,4 +274,5 @@ fun main() {
 	`with the mutable map-backed property delegate`()
 	`creating property delegates`()
 	`with deprecated property delegation`()
+	`with lateInit`()
 }
