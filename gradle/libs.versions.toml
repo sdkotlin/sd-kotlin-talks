@@ -1,7 +1,7 @@
 [versions]
 arrow = "1.1.2"
 assertj = "3.23.1"
-dependency-analysis-gradle-plugin = "1.9.0"
+dependency-analysis-gradle-plugin = "1.12.0"
 equalsverifier = "3.10"
 jetbrains-annotations = "23.0.0"
 junit = "5.8.2"
@@ -109,7 +109,7 @@ module = "nl.jqno.equalsverifier:equalsverifier"
 version.ref = "equalsverifier"
 
 [libraries.dependency-analysis-gradle-plugin-dependency]
-module = "com.autonomousapps:dependency-analysis-gradle-plugin"
+module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin"
 version.ref = "dependency-analysis-gradle-plugin"
 
 [libraries.assertj]
