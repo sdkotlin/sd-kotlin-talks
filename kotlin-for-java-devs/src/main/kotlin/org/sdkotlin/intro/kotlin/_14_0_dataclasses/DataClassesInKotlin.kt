@@ -75,13 +75,13 @@ fun `with data classes in the standard library`() {
 	// The standard library comes with two handy data classes, 'Pair' and
 	// 'Triple'. There is also a 'to' infix function for constructing Pairs.
 
-	val couple = duke to daisy
+	val couple: Pair<Person, Person> = duke to daisy
 
 	println("couple: $couple")
 
 	// For 'Triple' you just have to use the regular constructor.
 
-	val family = Triple(duke, daisy, doris)
+	val family: Triple<Person, Person, Person> = Triple(duke, daisy, doris)
 
 	println("family: $family")
 }

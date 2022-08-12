@@ -15,7 +15,7 @@ class Imperial(val name: String, var sith: Boolean)
 // otherwise the parameters are just constructor arguments variables that
 // can be used during the initialization of the class.
 
-class Ewok(name: String, var yubYub: Boolean = true) {
+class Ewok(nameArg: String, var yubYub: Boolean = true) {
 
 	// Note that properties can still be declared outside the primary
 	// constructor if they're not to be parameterized at construction time.
@@ -25,11 +25,16 @@ class Ewok(name: String, var yubYub: Boolean = true) {
 	// arguments. Property initializers and initializer blocks are executed in
 	// the order they appear.
 
-	val name = name.uppercase()
+	init {
+		println(nameArg)
+		println(yubYub)
+		//println(name) // Not declared yet; does not compile.
+	}
+
+	val name = nameArg.uppercase()
 
 	init {
 		println(name)
-		println(this.name)
 	}
 }
 
@@ -41,9 +46,11 @@ class Hutt(val name: String) {
 
 	var isJabba: Boolean = false
 
-	internal constructor(name: String, isJabba: Boolean) : this(name) {
+	constructor(name: String, isJabba: Boolean) : this(name) {
 		this.isJabba = isJabba
 	}
+
+	constructor(name: String, i: Int) : this(name, i == 1)
 }
 
 fun main() {
