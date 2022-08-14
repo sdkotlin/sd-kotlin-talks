@@ -1,18 +1,18 @@
 plugins {
-	`kotlin-project`
-	`junit-project`
-	`assertj-project`
-	`mockk-project`
-	`mockito-kotlin-project`
+	id("org.sdkotlin.build.kotlin-project")
+	id("org.sdkotlin.build.junit-project")
+	id("org.sdkotlin.build.assertj-project")
+	id("org.sdkotlin.build.mockk-project")
+	id("org.sdkotlin.build.mockito-kotlin-project")
 }
 
 dependencies {
 
-	val kotlinTestVersion = "3.4.2"
+	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
-	testImplementation("io.kotlintest:kotlintest-assertions:$kotlinTestVersion")
-	testImplementation("io.kotlintest:kotlintest-core:$kotlinTestVersion")
-	testImplementation("io.kotlintest:kotlintest-runner-junit5:$kotlinTestVersion")
+	testImplementation(libs.bundles.kotlintest.junit5)
 
-	testRuntimeOnly("org.slf4j:slf4j-simple:1.7.36")
+	testRuntimeOnly(platform("org.sdkotlin.platforms:app-platform"))
+
+	testRuntimeOnly(libs.slf4j.simple)
 }

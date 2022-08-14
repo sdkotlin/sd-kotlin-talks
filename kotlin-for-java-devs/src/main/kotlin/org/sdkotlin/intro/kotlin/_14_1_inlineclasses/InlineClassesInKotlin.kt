@@ -116,7 +116,7 @@ fun withValueClassesOfAnyType() {
 value class Shh(private val secret: String) {
 
 	val catsOutOfTheBag: String
-		get() = secret
+		get() = secret + "salt"
 }
 
 fun withValueClassEncapsulation() {

@@ -1,24 +1,24 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	`kotlin-project`
-	`junit-project`
-	`assertj-project`
+	id("org.sdkotlin.build.kotlin-project")
+	id("org.sdkotlin.build.junit-project")
+	id("org.sdkotlin.build.assertj-project")
 }
 
 dependencies {
-	val arrowKtVersion = "1.1.2"
-	val kotlinxCoroutinesVersion = "1.6.4"
 
-	api("io.arrow-kt:arrow-core:$arrowKtVersion")
-	api("io.arrow-kt:arrow-core-jvm:$arrowKtVersion")
+	api(platform("org.sdkotlin.platforms:app-platform"))
 
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$kotlinxCoroutinesVersion")
+	api(libs.bundles.arrow.jvm)
 
-	compileOnly("org.jetbrains:annotations:23.0.0")
+	implementation(libs.bundles.kotlinx.coroutines.jvm)
 
-	testImplementation("nl.jqno.equalsverifier:equalsverifier:3.10.1")
+	compileOnly(libs.jetbrains.annotations)
+
+	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
+
+	testImplementation(libs.equalsverifier)
 }
 
 tasks {

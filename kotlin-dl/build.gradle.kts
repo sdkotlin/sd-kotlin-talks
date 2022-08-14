@@ -1,10 +1,10 @@
 plugins {
-	`kotlin-project`
+	id("org.sdkotlin.build.kotlin-project")
 }
 
 dependencies {
-	val kotlinDlVersion = "0.4.0"
 
-	implementation("org.jetbrains.kotlinx:kotlin-deeplearning-api:$kotlinDlVersion")
-	implementation("org.jetbrains.kotlinx:kotlin-deeplearning-dataset:$kotlinDlVersion")
+	implementation(platform("org.sdkotlin.platforms:app-platform"))
+
+	implementation(libs.bundles.kotlinx.dl)
 }

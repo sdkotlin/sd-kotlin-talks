@@ -1,5 +1,5 @@
 plugins {
-	`kotlin-project`
-	`junit-project`
-	`assertj-project`
+	id("org.sdkotlin.build.kotlin-project")
+	id("org.sdkotlin.build.junit-project")
+	id("org.sdkotlin.build.assertj-project")
 }
