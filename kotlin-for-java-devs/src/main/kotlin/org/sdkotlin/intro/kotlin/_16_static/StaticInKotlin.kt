@@ -13,11 +13,18 @@ class StaticInKotlin {
 			println(CONSTANT)
 		}
 	}
+
+	val instanceProperty = "Hello"
+	fun instanceFunction() = "World"
 }
 
 fun main() {
 
 	StaticInKotlin.saySomething()
+	StaticInKotlin.CONSTANT
+
+	StaticInKotlin().instanceFunction()
+
 	StaticInJava.saySomething()
 
 	// StaticInJava().saySomething() // Does not compile

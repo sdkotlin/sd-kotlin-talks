@@ -39,7 +39,7 @@ fun main() {
 		is Int -> println("otherThing + 1: ${otherThing.plus(1)}")
 	}
 
-	// Smart casts don't work for variable properties, as the could be changed
+	// Smart casts don't work for variable properties, as they could be changed
 	// by another thread in between the check and the usage.
 
 	if (variableProperty is Int) {
@@ -62,7 +62,7 @@ fun main() {
 	// returns null if the cast fails at runtime instead of throwing an
 	// exception.
 
-	val maybeAnInteger = thing as? Int
+	val maybeAnInteger: Int? = thing as? Int
 
 	println("maybeAnInteger: $maybeAnInteger")
 }

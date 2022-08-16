@@ -21,6 +21,13 @@ interface Shape {
 
 	//const val CONSTANT = false
 
+	// Companion objects are, and you can put constants in those.
+
+	companion object {
+
+		const val COMPANION_CONSTANT = true
+	}
+
 	// Interfaces can't store state, so any non-abstract properties must be
 	// computed.
 
@@ -35,15 +42,25 @@ interface Shape {
 		set(value) = println("Hmm... $value")
 }
 
-class Circle(override val name: String) : Shape {
+class Circle(override val name: String) : Shape, Serializable {
 
-	override fun draw() {
-		println("O")
-	}
+	override fun draw() = println("O")
 
 	// Default methods can be overridden.
 
 	override fun describe() = println("I'm no square.")
+}
+
+// Multiple interface inheritance is supported as in Java.
+
+interface Serializable
+
+class Triangle : Shape, Serializable {
+
+	override fun draw() = println("▲")
+
+	override val name: String
+		get() = "Pointy"
 }
 
 fun main() {
