@@ -55,6 +55,10 @@ fun main() {
 
 	println("Safe nullable name length: ${nullableName?.length}")
 
+	// Equivalent to:
+	// val maybeLength: Int? =
+	//     if (nullableName == null) null else nullableName.length
+
 	// Smart casting works for nullable vs. non-nullable types as it does for
 	// standard type checks.
 
@@ -67,7 +71,7 @@ fun main() {
 
 	val temp: String? = null
 
-	val rockStar = temp ?: "Elvis"
+	val rockStar: String = temp ?: "Elvis"
 
 	println("rockStar: ${rockStar.trim()}")
 
@@ -75,9 +79,8 @@ fun main() {
 
 	try {
 		val requiredName =
-			nullableName ?: throw IllegalArgumentException(
-				"More specific than a NPE."
-			)
+			nullableName
+				?: throw IllegalArgumentException("More specific than a NPE.")
 	} catch (e: IllegalArgumentException) {
 		println(e.message)
 	}
@@ -124,8 +127,8 @@ fun main() {
 	// in Java to infer non-nullable and nullable types respectively instead of
 	// platform types.
 
-	val notNullFromJava = NullSafetyInJava.NOT_NULL
-	val nullableFromJava = NullSafetyInJava.NULL
+	val notNullFromJava: String = NullSafetyInJava.NOT_NULL
+	val nullableFromJava: String? = NullSafetyInJava.NULL
 
 	if (notNullFromJava is String) {
 		println("A `@NotNull` String from Java is a `String`")
