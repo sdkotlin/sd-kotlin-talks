@@ -21,6 +21,12 @@ testSets {
 	}
 }
 
+kotlin {
+	target.compilations.getByName(integrationTestSuiteName) {
+		associateWith(target.compilations.getByName("main"))
+	}
+}
+
 tasks {
 
 	withType<Test> {
