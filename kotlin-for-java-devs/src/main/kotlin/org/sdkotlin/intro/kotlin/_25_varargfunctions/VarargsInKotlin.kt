@@ -7,7 +7,7 @@ fun main() {
 
 	fun zeroOrMoreThings(vararg things: String) {
 
-		// The are passed as an array of the declared parameter type.
+		// They are passed as an array of the declared parameter type.
 
 		println("things: ${things.contentDeepToString()}")
 	}

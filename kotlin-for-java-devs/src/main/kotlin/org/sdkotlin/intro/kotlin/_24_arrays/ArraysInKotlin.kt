@@ -16,7 +16,7 @@ fun main() {
 	// Arrays in Kotlin are fixed size and mutable, as in Java.
 
 	// Unlike Java arrays, they have `get(Int)` and `set(Int, T)` functions,
-	// which are operator functions for the index operator `[]`.
+	// which are operator functions for the index operator `[n]`.
 
 	println("arrayOfInts.get(0): ${arrayOfInts.get(0)}")
 	println("arrayOfInts[0]: ${arrayOfInts[0]}")
@@ -87,9 +87,9 @@ fun main() {
 	// The factory functions and type inference work, or don't, as one would
 	// expect.
 
-	val arrayOfAnys = arrayOf(1, 2L, 3.0)
+	val arrayOfAnys: Array<*> = arrayOf(1, 2L, 3.0)
 
-	val arrayOfNullableInts = arrayOf(1, null, 3)
+	val arrayOfNullableInts: Array<Int?> = arrayOf(1, null, 3)
 
 	// Explicit type declaration can be used to guard against any funny
 	// business.
@@ -101,8 +101,8 @@ fun main() {
 	// For interop with Java, or to avoid the boxing overhead, there are
 	// factory functions for arrays of primitive types.
 
-	val intArray = intArrayOf(1, 2, 3)
-	val booleanArray = booleanArrayOf(true, false, true)
+	val intArray: IntArray = intArrayOf(1, 2, 3)
+	val booleanArray: BooleanArray = booleanArrayOf(true, false, true)
 
 	// There are multiple options for iterating over arrays.
 

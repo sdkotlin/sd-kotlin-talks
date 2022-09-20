@@ -1,6 +1,7 @@
 package org.sdkotlin.intro.kotlin._23_generics
 
 import org.sdkotlin.intro.kotlin._23_generics.util.itsYourBirthday
+import java.lang.Long.MAX_VALUE
 import kotlin.math.PI
 
 // Like Java, Kotlin supports type parameters for classes and functions.
@@ -18,7 +19,7 @@ fun `give and receive FAIL`() {
 
 	val present = LamePresent(PI)
 
-	val gift = present.unwrap()
+	val gift: Any = present.unwrap()
 
 	//val amountOfPie = gift * 36 // `gift` is an `Any`, so does not compile.
 }
@@ -64,8 +65,8 @@ fun `only open on your birthday`() {
 fun <T> T.asPresent() = SurprisePresent(this)
 
 fun `gift anything`() {
-	val yummyGift = PI
-	val generousGift = Long.MAX_VALUE
+	val yummyGift: Double = PI
+	val generousGift: Long = MAX_VALUE
 
 	val perishableSurprise = yummyGift.asPresent()
 	val largeSurprise = generousGift.asPresent()

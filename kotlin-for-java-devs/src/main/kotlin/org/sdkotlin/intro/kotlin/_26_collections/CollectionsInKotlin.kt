@@ -8,7 +8,7 @@ fun main() {
 
 	// As with arrays, collections in Kotlin are created with factory functions.
 
-	val listOfInts = listOf(1, 2, 3)
+	val listOfInts: List<Int> = listOf(1, 2, 3)
 
 	val setOfInts = setOf(1, 2, 3)
 
@@ -29,7 +29,7 @@ fun main() {
 
 	// There are factory functions for mutable collections.
 
-	val mutableListOfInts = mutableListOf(1, 2, 3)
+	val mutableListOfInts: MutableList<Int> = mutableListOf(1, 2, 3)
 
 	mutableListOfInts.set(0, 100)
 	mutableListOfInts[0] = 100
@@ -37,6 +37,7 @@ fun main() {
 	// You can also get a mutable copy of an immutable collection.
 
 	val mutableCopiedListOfInts = listOfInts.toMutableList()
+	val secondListOfInts = mutableCopiedListOfInts.toList()
 
 	// For lists there is a constructor that takes a value factory similar to
 	// that for Array.
@@ -55,10 +56,10 @@ fun main() {
 	// `mapOf(...)`, we can create a mutable map, initialize the keys and
 	// values directly, and then get an immutable reference to it.
 
-	val fastMap = mutableMapOf<Int, String>().apply {
-		this[1] = "1"
-		this[2] = "2"
-		this[3] = "3"
+	val fastMap = mutableMapOf<Int, String>().also {
+		it[1] = "1"
+		it[2] = "2"
+		it[3] = "3"
 	}.toMap()
 
 	// There are factory functions for common collection implementations.

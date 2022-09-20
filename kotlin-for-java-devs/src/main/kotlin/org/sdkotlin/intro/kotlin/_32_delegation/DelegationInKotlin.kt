@@ -13,19 +13,19 @@ import kotlin.reflect.KProperty
 // Kotlin has built-in support for the Decorator pattern.
 
 // Say we want a list that reports when items are retrieved. Rather than
-// extending a concrete list implementation, which would could use to that
+// extending a concrete list implementation, which would couple us to that
 // specific implementation, we can decorate any instantiated list with the
 // behavior we want.
 
 // We declare a class that takes a delegate list as a constructor argument, and
 // then declare that we implement the List API by way of that delegate.
 
-class GossipingList<E>(private val delegate: List<E>) : List<E> by delegate {
+class GossipingList<E>(private val wrappee: List<E>) : List<E> by wrappee {
 
 	// The compiler will generate all the requisite list API methods for us.
 
 	override fun get(index: Int): E {
-		val element = delegate[index]
+		val element = wrappee[index]
 		println("Someone is accessing \"$element\" at $index!")
 		return element
 	}

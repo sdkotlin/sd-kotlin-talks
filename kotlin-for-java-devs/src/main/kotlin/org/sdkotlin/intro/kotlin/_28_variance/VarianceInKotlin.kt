@@ -53,7 +53,7 @@ fun `with simple container variance`() {
 	// Let's put a string in the container. That makes it a `Container<String>`
 	// via type inference.
 
-	val stringContainer = Container("Hello")
+	val stringContainer: Container<String> = Container("Hello")
 
 	// Now, if a `Container<String>` 'is a' `Container<Any>`, as a `String` 'is
 	// an' `Any`, we should be able to substitute an instance of a
@@ -138,7 +138,7 @@ fun `with array and collection variance`() {
 
 	// Okay, that's more like it. Apples for apples, mutable arrays and lists
 	// are both invariant. But how did the compiler know? Did it exhaustively
-	// analyze the `List` API and determine there was no way to change change
+	// analyze the `List` API and determine there was no way to change
 	// its contents after being instantiated?
 
 	// Well, let's see if it will do that for our simple container class if we
@@ -325,13 +325,13 @@ fun `with star projections`() {
 	//
 	// For example, let's say we want to get a list of indices for an array.
 
-	// We could define it with a declaration-site out projection like:
+	// We could define it with a use-site out projection like:
 
-	fun indicesOfAny(array: Array<out Any?>) = 0 until array.size
+	fun indicesOfAny(array: Array<out Any?>): IntRange = 0 until array.size
 
 	// Or introduce a type parameter for the function:
 
-	fun <T> indicesOf(array: Array<T>) = 0 until array.size
+	fun <T> indicesOf(array: Array<T>): IntRange = 0 until array.size
 
 	// Either will work:
 
@@ -351,7 +351,7 @@ fun `with star projections`() {
 	// idiomatic equivalent to the unbounded wildcard `?` in Java (e.g.
 	// `Array<?>`, List<?>).
 
-	fun indices(array: Array<*>) = 0 until array.size
+	fun indices(array: Array<*>): IntRange = 0 until array.size
 
 	val indicesOfAnythings = indices(arrayOfAny)
 	val indicesOfStrings = indices(arrayOfString)

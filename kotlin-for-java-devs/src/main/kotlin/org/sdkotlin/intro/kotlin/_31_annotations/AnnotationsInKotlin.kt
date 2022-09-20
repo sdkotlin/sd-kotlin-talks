@@ -4,7 +4,7 @@ import kotlin.DeprecationLevel.WARNING
 import kotlin.annotation.AnnotationRetention.SOURCE
 import kotlin.annotation.AnnotationTarget.FUNCTION
 
-// We can use use annotations in Kotlin just as we do in Java.
+// We can use annotations in Kotlin just as we do in Java.
 
 @Suppress("unused")
 fun notUsed() = "YAGNI?"

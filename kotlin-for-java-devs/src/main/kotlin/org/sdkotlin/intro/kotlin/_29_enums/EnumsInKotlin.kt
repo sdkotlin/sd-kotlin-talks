@@ -34,7 +34,7 @@ fun `with states`() {
 enum class TrafficLight(val color: String, var lightTime: Int) {
 	GO("Green", 30),
 	CAUTION("Yellow", 5),
-	STOP("Red", 20)
+	STOP("Red", 20),
 }
 
 fun `while driving`(light: TrafficLight) {
