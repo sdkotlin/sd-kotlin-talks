@@ -10,6 +10,8 @@ dependencyResolutionManagement {
 	}
 }
 
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 includeBuild("platforms")
 
 rootProject.name = "sd-kotlin-talks"
