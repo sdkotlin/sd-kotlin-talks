@@ -54,14 +54,14 @@ dependencyAnalysis {
 }
 
 tasks {
-	withType<DependencyUpdatesTask> {
+	withType<DependencyUpdatesTask>().configureEach {
 		rejectVersionIf {
 			isNonStable(candidate.version)
 		}
 		gradleReleaseChannel = CURRENT.id
 	}
 
-	named<Wrapper>("wrapper") {
+	named<Wrapper>("wrapper").configure {
 		gradleVersion = "7.5.1"
 		distributionType = ALL
 	}

@@ -23,19 +23,19 @@ java {
 }
 
 tasks {
-	withType<JavaCompile> {
+	withType<JavaCompile>().configureEach {
 		options.compilerArgs.add("--enable-preview")
 	}
 
-	withType<Test> {
+	withType<Test>().configureEach {
 		jvmArgs("--enable-preview")
 	}
 
-	withType<JavaExec> {
+	withType<JavaExec>().configureEach {
 		jvmArgs("--enable-preview")
 	}
 
-	withType<KotlinCompile> {
+	withType<KotlinCompile>().configureEach {
 		kotlinOptions {
 			freeCompilerArgs = listOf("-Xjsr305=strict")
 			languageVersion = kotlinTargetVersion

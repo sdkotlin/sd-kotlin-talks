@@ -23,7 +23,7 @@ testSets {
 
 tasks {
 
-	withType<Test> {
+	withType<Test>().configureEach {
 		useJUnitPlatform()
 		testLogging {
 			showStandardStreams = true
@@ -31,7 +31,7 @@ tasks {
 		}
 	}
 
-	named<Test>(integrationTestSuiteName) {
+	named<Test>(integrationTestSuiteName).configure {
 		filter {
 			includeTestsMatching("*IT")
 		}
@@ -39,7 +39,7 @@ tasks {
 		shouldRunAfter(test)
 	}
 
-	named<Task>("check") {
+	named<Task>("check").configure {
 		val integrationTest by existing
 		dependsOn(integrationTest)
 	}

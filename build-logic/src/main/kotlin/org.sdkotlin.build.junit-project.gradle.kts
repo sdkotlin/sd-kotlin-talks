@@ -22,7 +22,7 @@ dependencies {
 }
 
 tasks {
-	named<Test>("test") {
+	named<Test>("test").configure {
 		useJUnitPlatform()
 		testLogging {
 			showStandardStreams = true
