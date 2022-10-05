@@ -104,6 +104,21 @@ fun withValueClassesOfAnyType() {
 	println("$foo, $bar, $baz")
 }
 
+// In Kotlin 1.8, value classes can be generic.
+
+@JvmInline
+value class LessPrimitive<T>(val value: T)
+
+fun withGenericValueClasses() {
+
+	val stringy = LessPrimitive("Stringy")
+
+	val inty = LessPrimitive(1)
+
+	println("stringy: $stringy")
+	println("inty: $inty")
+}
+
 // Value classes require immutable properties.
 //@JvmInline value class NameChange(var value: String) // Does not compile.
 
@@ -186,6 +201,7 @@ fun withValueClassEquality() {
 fun main() {
 	withValueClasses()
 	withValueClassesOfAnyType()
+	withGenericValueClasses()
 	withValueClassEncapsulation()
 	withValueClassComparability()
 	withValueClassEquality()

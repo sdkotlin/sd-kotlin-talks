@@ -10,7 +10,7 @@ plugins {
 }
 
 val javaTargetVersion = JavaVersion.VERSION_17
-val kotlinTargetVersion = "1.7"
+val kotlinTargetVersion = "1.8"
 
 dependencies {
 
@@ -37,9 +37,12 @@ tasks {
 
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions {
-			freeCompilerArgs = listOf("-Xjsr305=strict")
+			freeCompilerArgs = listOf(
+				"-Xjsr305=strict",
+				"-opt-in=kotlin.ExperimentalStdlibApi",
+			)
 			languageVersion = kotlinTargetVersion
-			apiVersion = kotlinTargetVersion
+			apiVersion = "1.7"
 			jvmTarget = javaTargetVersion.toString()
 		}
 	}

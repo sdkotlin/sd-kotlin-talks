@@ -55,13 +55,17 @@ fun main() {
 
 	// You can get an end-exclusive integral range with 'until'.
 
-	val exclusiveIntegralProgression = 0 until 10 // 0-9
+	val openEndedIntRange: IntRange = 0 until 10 // 0-9
+
+	// Kotlin 1.8 will bring a new open-ended range operator.
+
+	val openEndedIntRangeOperator: IntRange = 0..<10
 
 	// It doesn't work for floating point or generic comparable ranges as
 	// there is no inherent notion of what "one less" is for them.
 
-	//val exclusiveDoubleRange = 1.0 until 2.0
-	//val exclusiveDateRange =
+	//val openEndedDoubleRange = 1.0 until 2.0
+	//val openEndedDateRange =
 	//		LocalDate.of(2020, 1, 1) until LocalDate.of(2020, 12, 31)
 
 	// Integral ranges are also "Progressions".

@@ -11,6 +11,15 @@ object KotlinSingleton {
 	}
 }
 
+// Kotlin 1.8 will introduce data objects, which override toString().
+
+data object TooStringy {
+
+	// Properties aren't included in the toString.
+
+	val cheesy = "String Cheese"
+}
+
 fun main() {
 
 	// Singleton instances are available by their type name.
@@ -26,4 +35,12 @@ fun main() {
 	// Singletons do not have constructors.
 
 	//KotlinSingleton().doIt()
+
+	// Regular objects don't override toString().
+
+	println(KotlinSingleton)
+
+	// Data objects do.
+
+	println(TooStringy)
 }
