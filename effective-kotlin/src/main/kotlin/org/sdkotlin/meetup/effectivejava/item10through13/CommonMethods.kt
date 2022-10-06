@@ -33,7 +33,7 @@ fun `with data classes`() {
 	val people =
 		mapOf(sally.name to sally, sandy.name to sandy, suzzy.name to suzzy)
 
-	people.forEach { name, person ->
+	people.forEach { (name, person) ->
 		println("$name's hash code is: ${person.hashCode()}")
 	}
 }
