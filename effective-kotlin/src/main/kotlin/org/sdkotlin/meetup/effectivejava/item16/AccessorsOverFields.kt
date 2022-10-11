@@ -8,7 +8,7 @@ Item 16: In public classes, use accessor methods, not public fields
 // and private backing fields.
 
 data class Programmer(val name: String) {
-	var languages = "Kotlin"
+	var languages: String = "Kotlin"
 		set(value) {
 			when (value) {
 				"Kotlin", "Java" -> {

@@ -49,11 +49,17 @@ fun main() {
 		println("Letters... $l")
 	}
 
-	// You can enumerate the indices of a list and then access the list
+	// You can enumerate the indices of a list, and then access the list
 	// elements by index.
 
 	for (i in alphabet.indices) {
 		println("Letter ${i + 1} of the alphabet is ${alphabet[i]}")
+	}
+
+	// You can also enumerate the destructured index and value from a list.
+
+	for ((index, character) in alphabet.withIndex()) {
+		println("Letter $index of the alphabet is $character")
 	}
 
 	// Kotlin also has while and do-while loops.
