@@ -1,9 +1,3 @@
-import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
-import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
-
 plugins {
 	idea
 	kotlin("jvm")
@@ -22,14 +16,6 @@ testSets {
 }
 
 tasks {
-
-	withType<Test>().configureEach {
-		useJUnitPlatform()
-		testLogging {
-			showStandardStreams = true
-			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
-		}
-	}
 
 	named<Test>(integrationTestSuiteName).configure {
 		filter {

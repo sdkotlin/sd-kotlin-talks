@@ -16,10 +16,9 @@ dependencies {
 
 	compileOnly(libs.jetbrains.annotations)
 
-	"integrationTestImplementation"(platform("org.sdkotlin.platforms:test-platform"))
+	integrationTestImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
-	@Suppress("UnstableApiUsage")
-	"integrationTestImplementation"(libs.bundles.koin.test.junit5)
+	integrationTestImplementation(libs.bundles.koin.test.junit5)
 }
 
 tasks {
