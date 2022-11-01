@@ -6,28 +6,55 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
 
 plugins {
 	java
+	`jvm-test-suite`
 }
 
-dependencies {
+@Suppress("UnstableApiUsage")
+testing {
+	suites {
+		named<JvmTestSuite>("test") {
 
-	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
+			// Version catalog not available in precompiled script plugins:
+			// https://github.com/gradle/gradle/issues/15383
+			//val junitVersion = libs.version.junit
+			val junitVersion = "5.9.1"
 
-	// Version catalog not available in precompiled script plugins:
-	// https://github.com/gradle/gradle/issues/15383
+			useJUnitJupiter(junitVersion)
 
-	testImplementation("org.junit.jupiter:junit-jupiter-api")
-	testImplementation("org.junit.jupiter:junit-jupiter-params")
+			dependencies {
 
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-}
+				// Version catalog not available in precompiled script plugins:
+				// https://github.com/gradle/gradle/issues/15383
 
-tasks {
+				implementation(
+					project.dependencies.platform(
+						"org.sdkotlin.platforms:test-platform"
+					)
+				)
 
-	withType<Test>().configureEach {
-		useJUnitPlatform()
-		testLogging {
-			showStandardStreams = true
-			events(PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
+				//implementation(libs.assertj.core)
+				implementation("org.assertj:assertj-core")
+
+				//implementation(libs.bundles.junit)
+				implementation("org.junit.jupiter:junit-jupiter-params")
+			}
+
+			targets {
+				all {
+					testTask.configure {
+						testLogging {
+							showStandardStreams = true
+							events(
+								PASSED,
+								SKIPPED,
+								FAILED,
+								STANDARD_OUT,
+								STANDARD_ERROR
+							)
+						}
+					}
+				}
+			}
 		}
 	}
 }

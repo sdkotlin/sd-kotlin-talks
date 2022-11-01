@@ -1,29 +1,60 @@
 plugins {
 	idea
+	`jvm-test-suite`
 	kotlin("jvm")
-	// Version catalog not available in precompiled script plugins:
-	// https://github.com/gradle/gradle/issues/15383
-	// alias(libs.plugins.testsets.gradle.plugin)
-	id("org.unbroken-dome.test-sets")
+	id("org.sdkotlin.build.junit-project")
 }
 
 val integrationTestSuiteName = "integrationTest"
 
-testSets {
-	create(integrationTestSuiteName) {
-		dirName = "it"
+@Suppress("UnstableApiUsage")
+testing {
+	suites {
+
+		val test by getting(JvmTestSuite::class)
+
+		register<JvmTestSuite>(integrationTestSuiteName) {
+
+			dependencies {
+
+				// Version catalog not available in precompiled script plugins:
+				// https://github.com/gradle/gradle/issues/15383
+
+				implementation(project)
+
+				implementation(
+					project.dependencies.platform(
+						"org.sdkotlin.platforms:test-platform"
+					)
+				)
+
+				//implementation(libs.assertj.core)
+				implementation("org.assertj:assertj-core")
+			}
+
+			sources {
+				java {
+					setSrcDirs(listOf("src/it/java"))
+				}
+				kotlin {
+					setSrcDirs(listOf("src/it/kotlin"))
+				}
+			}
+			targets {
+				all {
+					testTask.configure {
+						filter {
+							includeTestsMatching("*IT")
+						}
+						shouldRunAfter(test)
+					}
+				}
+			}
+		}
 	}
 }
 
 tasks {
-
-	named<Test>(integrationTestSuiteName).configure {
-		filter {
-			includeTestsMatching("*IT")
-		}
-		val test by existing
-		shouldRunAfter(test)
-	}
 
 	named<Task>("check").configure {
 		val integrationTest by existing
