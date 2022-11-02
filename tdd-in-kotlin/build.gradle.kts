@@ -1,6 +1,6 @@
 plugins {
 	id("org.sdkotlin.build.kotlin-project")
-	id("org.sdkotlin.build.junit-project")
+	id("org.sdkotlin.build.test.unit-test-suite")
 	id("org.sdkotlin.build.mockk-project")
 	id("org.sdkotlin.build.mockito-kotlin-project")
 }

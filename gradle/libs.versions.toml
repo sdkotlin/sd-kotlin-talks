@@ -1,8 +1,9 @@
 [versions]
+
 arrow = "1.1.3"
 assertj = "3.23.1"
 dependency-analysis-gradle-plugin = "1.13.1"
-equalsverifier = "3.10.1"
+equalsverifier = "3.11"
 jetbrains-annotations = "23.0.0"
 junit = "5.9.1"
 koin = "3.2.2"
@@ -15,145 +16,143 @@ mockito-kotlin = "2.2.0"
 mockk = "1.13.2"
 org-json = "20220924"
 slf4j = "2.0.3"
-testsets-gradle-plugin = "4.0.0"
 versions-gradle-plugin = "0.43.0"
 
 [libraries]
 
-[libraries.testsets-gradle-plugin-dependency]
-module = "org.unbroken-dome.gradle-plugins:gradle-testsets-plugin"
-version.ref = "testsets-gradle-plugin"
+[libraries.arrow-core]
+module = "io.arrow-kt:arrow-core"
+version.ref = "arrow"
 
-[libraries.slf4j-simple]
-module = "org.slf4j:slf4j-simple"
-version.ref = "slf4j"
+[libraries.arrow-core-jvm]
+module = "io.arrow-kt:arrow-core-jvm"
+version.ref = "arrow"
 
-[libraries.org-json]
-module = "org.json:json"
-version.ref = "org-json"
+[libraries.assertj]
+module = "org.assertj:assertj-core"
+version.ref = "assertj"
 
-[libraries.mockk-dsl-jvm]
-module = "io.mockk:mockk-dsl-jvm"
-version.ref = "mockk"
+[libraries.dependency-analysis-gradle-plugin-dependency]
+module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin"
+version.ref = "dependency-analysis-gradle-plugin"
 
-[libraries.mockk]
-module = "io.mockk:mockk"
-version.ref = "mockk"
+[libraries.equalsverifier]
+module = "nl.jqno.equalsverifier:equalsverifier"
+version.ref = "equalsverifier"
 
-[libraries.mockito-kotlin]
-module = "com.nhaarman.mockitokotlin2:mockito-kotlin"
-version.ref = "mockito-kotlin"
+[libraries.jetbrains-annotations]
+module = "org.jetbrains:annotations"
+version.ref = "jetbrains-annotations"
 
-[libraries.mockito]
-module = "org.mockito:mockito-core"
-version.ref = "mockito"
+[libraries.junit-bom]
+module = "org.junit:junit-bom"
+version.ref = "junit"
 
-[libraries.kotlinx-dl-dataset]
-module = "org.jetbrains.kotlinx:kotlin-deeplearning-dataset"
-version.ref = "kotlinx-dl"
-
-[libraries.kotlinx-dl-api]
-module = "org.jetbrains.kotlinx:kotlin-deeplearning-api"
-version.ref = "kotlinx-dl"
-
-[libraries.kotlinx-coroutines-core-jvm]
-module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"
-version.ref = "kotlinx-coroutines"
-
-[libraries.kotlinx-coroutines-core]
-module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"
-version.ref = "kotlinx-coroutines"
-
-[libraries.kotlintest-runner-junit5]
-module = "io.kotlintest:kotlintest-runner-junit5"
-version.ref = "kotlintest"
-
-[libraries.kotlintest-core]
-module = "io.kotlintest:kotlintest-core"
-version.ref = "kotlintest"
-
-[libraries.kotlintest-assertions]
-module = "io.kotlintest:kotlintest-assertions"
-version.ref = "kotlintest"
-
-[libraries.kotlin-gradle-plugin-dependency]
-module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
-version.ref = "kotlin"
-
-[libraries.koin-test-junit5]
-module = "io.insert-koin:koin-test-junit5"
-version.ref = "koin"
-
-[libraries.koin-test]
-module = "io.insert-koin:koin-test"
+[libraries.koin-core]
+module = "io.insert-koin:koin-core"
 version.ref = "koin"
 
 [libraries.koin-core-jvm]
 module = "io.insert-koin:koin-core-jvm"
 version.ref = "koin"
 
-[libraries.koin-core]
-module = "io.insert-koin:koin-core"
+[libraries.koin-test]
+module = "io.insert-koin:koin-test"
 version.ref = "koin"
 
-[libraries.junit-bom]
-module = "org.junit:junit-bom"
-version.ref = "junit"
+[libraries.koin-test-junit5]
+module = "io.insert-koin:koin-test-junit5"
+version.ref = "koin"
 
-[libraries.jetbrains-annotations]
-module = "org.jetbrains:annotations"
-version.ref = "jetbrains-annotations"
+[libraries.kotlin-gradle-plugin-dependency]
+module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
+version.ref = "kotlin"
 
-[libraries.equalsverifier]
-module = "nl.jqno.equalsverifier:equalsverifier"
-version.ref = "equalsverifier"
+[libraries.kotlintest-assertions]
+module = "io.kotlintest:kotlintest-assertions"
+version.ref = "kotlintest"
 
-[libraries.dependency-analysis-gradle-plugin-dependency]
-module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin"
-version.ref = "dependency-analysis-gradle-plugin"
+[libraries.kotlintest-core]
+module = "io.kotlintest:kotlintest-core"
+version.ref = "kotlintest"
 
-[libraries.assertj]
-module = "org.assertj:assertj-core"
-version.ref = "assertj"
+[libraries.kotlintest-runner-junit5]
+module = "io.kotlintest:kotlintest-runner-junit5"
+version.ref = "kotlintest"
 
-[libraries.arrow-core-jvm]
-module = "io.arrow-kt:arrow-core-jvm"
-version.ref = "arrow"
+[libraries.kotlinx-coroutines-core]
+module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+version.ref = "kotlinx-coroutines"
 
-[libraries.arrow-core]
-module = "io.arrow-kt:arrow-core"
-version.ref = "arrow"
+[libraries.kotlinx-coroutines-core-jvm]
+module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"
+version.ref = "kotlinx-coroutines"
+
+[libraries.kotlinx-dl-api]
+module = "org.jetbrains.kotlinx:kotlin-deeplearning-api"
+version.ref = "kotlinx-dl"
+
+[libraries.kotlinx-dl-dataset]
+module = "org.jetbrains.kotlinx:kotlin-deeplearning-dataset"
+version.ref = "kotlinx-dl"
+
+[libraries.mockito]
+module = "org.mockito:mockito-core"
+version.ref = "mockito"
+
+[libraries.mockito-kotlin]
+module = "com.nhaarman.mockitokotlin2:mockito-kotlin"
+version.ref = "mockito-kotlin"
+
+[libraries.mockk]
+module = "io.mockk:mockk"
+version.ref = "mockk"
+
+[libraries.mockk-dsl-jvm]
+module = "io.mockk:mockk-dsl-jvm"
+version.ref = "mockk"
+
+[libraries.org-json]
+module = "org.json:json"
+version.ref = "org-json"
+
+[libraries.slf4j-simple]
+module = "org.slf4j:slf4j-simple"
+version.ref = "slf4j"
 
 [bundles]
+
 arrow-jvm = ["arrow-core", "arrow-core-jvm"]
+
 koin-jvm = ["koin-core", "koin-core-jvm"]
+
 koin-test-junit5 = ["koin-test", "koin-test-junit5"]
+
 kotlintest-junit5 = [
 	"kotlintest-assertions",
 	"kotlintest-core",
 	"kotlintest-runner-junit5"
 ]
-kotlinx-dl = ["kotlinx-dl-api", "kotlinx-dl-dataset"]
+
 kotlinx-coroutines-jvm = [
 	"kotlinx-coroutines-core",
 	"kotlinx-coroutines-core-jvm"
 ]
+
+kotlinx-dl = ["kotlinx-dl-api", "kotlinx-dl-dataset"]
+
 mockk-jvm = ["mockk", "mockk-dsl-jvm"]
 
 [plugins]
 
-[plugins.versions-gradle-plugin]
-id = "com.github.ben-manes.versions"
-version.ref = "versions-gradle-plugin"
-
-[plugins.testsets-gradle-plugin]
-id = "org.unbroken-dome.test-sets"
-version.ref = "testsets-gradle-plugin"
+[plugins.dependency-analysis-gradle-plugin]
+id = "com.autonomousapps.dependency-analysis"
+version.ref = "dependency-analysis-gradle-plugin"
 
 [plugins.kotlin-gradle-plugin]
 id = "org.jetbrains.kotlin.jvm"
 version.ref = "kotlin"
 
-[plugins.dependency-analysis-gradle-plugin]
-id = "com.autonomousapps.dependency-analysis"
-version.ref = "dependency-analysis-gradle-plugin"
+[plugins.versions-gradle-plugin]
+id = "com.github.ben-manes.versions"
+version.ref = "versions-gradle-plugin"

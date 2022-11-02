@@ -2,7 +2,7 @@ plugins {
 	idea
 	`jvm-test-suite`
 	kotlin("jvm")
-	id("org.sdkotlin.build.junit-project")
+	id("org.sdkotlin.build.test.unit-test-suite")
 }
 
 val integrationTestSuiteName = "integrationTest"
@@ -16,20 +16,7 @@ testing {
 		register<JvmTestSuite>(integrationTestSuiteName) {
 
 			dependencies {
-
-				// Version catalog not available in precompiled script plugins:
-				// https://github.com/gradle/gradle/issues/15383
-
 				implementation(project)
-
-				implementation(
-					project.dependencies.platform(
-						"org.sdkotlin.platforms:test-platform"
-					)
-				)
-
-				//implementation(libs.assertj.core)
-				implementation("org.assertj:assertj-core")
 			}
 
 			sources {
@@ -40,6 +27,7 @@ testing {
 					setSrcDirs(listOf("src/it/kotlin"))
 				}
 			}
+
 			targets {
 				all {
 					testTask.configure {
@@ -52,6 +40,19 @@ testing {
 			}
 		}
 	}
+}
+
+dependencies {
+
+	// Version catalog not available in precompiled script plugins:
+	// https://github.com/gradle/gradle/issues/15383
+
+	"integrationTestImplementation"(
+		platform("org.sdkotlin.platforms:test-platform")
+	)
+
+	//"integrationTestImplementation"(libs.assertj.core)
+	"integrationTestImplementation"("org.assertj:assertj-core")
 }
 
 tasks {

@@ -2,16 +2,16 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	id("org.sdkotlin.build.kotlin-project")
-	id("org.sdkotlin.build.junit-project")
+	id("org.sdkotlin.build.test.integration-test-suite")
+	id("org.sdkotlin.build.test.unit-test-suite")
 	id("org.sdkotlin.build.mockito-kotlin-project")
-	id("org.sdkotlin.build.integration-test-suite")
 }
 
 dependencies {
 
-	implementation(platform("org.sdkotlin.platforms:app-platform"))
+	api(platform("org.sdkotlin.platforms:app-platform"))
 
-	implementation(libs.bundles.koin.jvm)
+	api(libs.bundles.koin.jvm)
 
 	compileOnly(libs.jetbrains.annotations)
 

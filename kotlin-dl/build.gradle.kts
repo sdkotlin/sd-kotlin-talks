@@ -4,7 +4,9 @@ plugins {
 
 dependencies {
 
-	implementation(platform("org.sdkotlin.platforms:app-platform"))
+	api(platform("org.sdkotlin.platforms:app-platform"))
 
-	implementation(libs.bundles.kotlinx.dl)
+	api(libs.kotlinx.dl.api)
+
+	implementation(libs.kotlinx.dl.dataset)
 }

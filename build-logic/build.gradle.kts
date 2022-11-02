@@ -8,5 +8,4 @@ dependencies {
 
 	implementation(libs.dependency.analysis.gradle.plugin.dependency)
 	implementation(libs.kotlin.gradle.plugin.dependency)
-	implementation(libs.testsets.gradle.plugin.dependency)
 }
