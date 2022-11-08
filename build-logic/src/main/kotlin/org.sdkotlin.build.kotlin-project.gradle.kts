@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	java
+	`java-library`
 	kotlin("jvm")
 	// Version catalog not available in precompiled script plugins:
 	// https://github.com/gradle/gradle/issues/15383
@@ -9,7 +9,7 @@ plugins {
 	id("com.autonomousapps.dependency-analysis")
 }
 
-val javaTargetVersion = JavaVersion.VERSION_17
+val javaTargetVersion = JavaVersion.VERSION_17.toString()
 val kotlinTargetVersion = "1.8"
 
 dependencies {
@@ -17,14 +17,23 @@ dependencies {
 	runtimeOnly(kotlin("reflect"))
 }
 
-java {
-	sourceCompatibility = javaTargetVersion
-	targetCompatibility = javaTargetVersion
-}
-
 tasks {
 	withType<JavaCompile>().configureEach {
+		sourceCompatibility = javaTargetVersion
+		targetCompatibility = javaTargetVersion
 		options.compilerArgs.add("--enable-preview")
+	}
+
+	withType<KotlinCompile>().configureEach {
+		kotlinOptions {
+			languageVersion = kotlinTargetVersion
+			apiVersion = "1.7" // TODO: "1.8" not available yet.
+			jvmTarget = javaTargetVersion
+			freeCompilerArgs = listOf(
+				"-Xjsr305=strict",
+				"-opt-in=kotlin.ExperimentalStdlibApi",
+			)
+		}
 	}
 
 	withType<Test>().configureEach {
@@ -33,17 +42,5 @@ tasks {
 
 	withType<JavaExec>().configureEach {
 		jvmArgs("--enable-preview")
-	}
-
-	withType<KotlinCompile>().configureEach {
-		kotlinOptions {
-			freeCompilerArgs = listOf(
-				"-Xjsr305=strict",
-				"-opt-in=kotlin.ExperimentalStdlibApi",
-			)
-			languageVersion = kotlinTargetVersion
-			apiVersion = "1.7"
-			jvmTarget = javaTargetVersion.toString()
-		}
 	}
 }
