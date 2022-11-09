@@ -12,6 +12,12 @@ plugins {
 val javaTargetVersion = JavaVersion.VERSION_17.toString()
 val kotlinTargetVersion = "1.8"
 
+kotlin {
+	jvmToolchain {
+		languageVersion.set(JavaLanguageVersion.of(javaTargetVersion))
+	}
+}
+
 dependencies {
 
 	runtimeOnly(kotlin("reflect"))
