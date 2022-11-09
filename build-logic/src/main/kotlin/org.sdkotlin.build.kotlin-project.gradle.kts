@@ -27,7 +27,7 @@ tasks {
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions {
 			languageVersion = kotlinTargetVersion
-			apiVersion = "1.7" // TODO: "1.8" not available yet.
+			apiVersion = kotlinTargetVersion
 			jvmTarget = javaTargetVersion
 			freeCompilerArgs = listOf(
 				"-Xjsr305=strict",
