@@ -17,7 +17,7 @@ testing {
 		register<JvmTestSuite>(integrationTestSuiteName) {
 
 			dependencies {
-				implementation(project)
+				implementation(project())
 			}
 
 			sources {
@@ -66,10 +66,10 @@ tasks {
 
 idea {
 	module {
-		testSourceDirs.addAll(
+		testResources.from(
 			kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs
 		)
-		testResourceDirs.addAll(
+		testResources.from(
 			kotlin.sourceSets[integrationTestSuiteName].resources.srcDirs
 		)
 	}
