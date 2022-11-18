@@ -1,5 +1,5 @@
 plugins {
-	id("org.sdkotlin.build.kotlin-project")
+	id("org.sdkotlin.buildlogic.kotlin-project")
 }
 
 dependencies {

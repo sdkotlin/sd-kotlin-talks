@@ -3,7 +3,7 @@ plugins {
 	`java-library`
 	`jvm-test-suite`
 	kotlin("jvm")
-	id("org.sdkotlin.build.test.unit-test-suite")
+	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 }
 
 val integrationTestSuiteName = "integrationTest"

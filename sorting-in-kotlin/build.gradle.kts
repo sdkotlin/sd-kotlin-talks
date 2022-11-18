@@ -1,4 +1,4 @@
 plugins {
-	id("org.sdkotlin.build.kotlin-project")
-	id("org.sdkotlin.build.test.unit-test-suite")
+	id("org.sdkotlin.buildlogic.kotlin-project")
+	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 }
