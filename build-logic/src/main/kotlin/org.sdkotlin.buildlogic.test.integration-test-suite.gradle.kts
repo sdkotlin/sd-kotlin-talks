@@ -66,7 +66,7 @@ tasks {
 
 idea {
 	module {
-		testResources.from(
+		testSources.from(
 			kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs
 		)
 		testResources.from(
