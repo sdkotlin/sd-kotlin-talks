@@ -5,6 +5,10 @@ plugins {
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 }
 
+greeting {
+	message.set("Hello from project")
+}
+
 dependencies {
 
 	api(platform("org.sdkotlin.platforms:app-platform"))
