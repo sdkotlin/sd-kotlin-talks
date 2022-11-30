@@ -1,6 +1,5 @@
 plugins {
 	idea
-	`java-library`
 	`jvm-test-suite`
 	kotlin("jvm")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
@@ -66,7 +65,7 @@ tasks {
 
 idea {
 	module {
-		testResources.from(
+		testSources.from(
 			kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs
 		)
 		testResources.from(
