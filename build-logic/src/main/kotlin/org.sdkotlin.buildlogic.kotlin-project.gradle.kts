@@ -1,6 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.sdkotlin.buildlogic.GreetingPlugin
-import org.sdkotlin.buildlogic.GreetingPluginExtension
 
 plugins {
 	kotlin("jvm")
@@ -10,11 +8,11 @@ plugins {
 	id("com.autonomousapps.dependency-analysis")
 }
 
-apply<GreetingPlugin>()
-
-configure<GreetingPluginExtension> {
-	message.set("Hello from precompiled script plugin")
-}
+//apply<GreetingPlugin>()
+//
+//configure<GreetingPluginExtension> {
+//	message.set("Hello from precompiled script plugin")
+//}
 
 val javaTargetVersion = JavaVersion.VERSION_17.toString()
 val kotlinTargetVersion = "1.8"

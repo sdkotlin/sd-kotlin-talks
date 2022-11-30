@@ -1,5 +1,15 @@
 plugins {
 	`kotlin-dsl`
+	`java-gradle-plugin`
+}
+
+gradlePlugin {
+	plugins {
+		create("greetingPlugin") {
+			id = "org.sdkotlin.buildlogic.greeting"
+			implementationClass = "org.sdkotlin.buildlogic.GreetingPlugin"
+		}
+	}
 }
 
 dependencies {
