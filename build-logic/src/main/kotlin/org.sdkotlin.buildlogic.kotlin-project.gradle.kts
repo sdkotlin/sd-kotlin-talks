@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	`java-library`
 	kotlin("jvm")
 	// Version catalog not available in precompiled script plugins:
 	// https://github.com/gradle/gradle/issues/15383

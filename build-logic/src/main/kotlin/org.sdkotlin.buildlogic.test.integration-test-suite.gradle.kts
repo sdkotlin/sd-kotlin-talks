@@ -1,6 +1,5 @@
 plugins {
 	idea
-	`java-library`
 	`jvm-test-suite`
 	kotlin("jvm")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
