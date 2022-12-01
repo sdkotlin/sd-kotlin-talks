@@ -7,7 +7,7 @@ plugins {
 }
 
 greeting {
-	message.set("Hello from project")
+	message.set("Hello from project!")
 }
 
 dependencies {
@@ -27,10 +27,10 @@ dependencies {
 
 tasks {
 
-	register("currentOS") {
-		val currentOs = greeting.currentOs.get()
+	register("otherHello") {
+		val otherMessage = greeting.otherMessage.get()
 		doLast {
-			println(currentOs)
+			println(otherMessage)
 		}
 	}
 

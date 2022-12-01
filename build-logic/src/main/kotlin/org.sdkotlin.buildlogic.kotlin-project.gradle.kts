@@ -16,7 +16,7 @@ configure<GreetingExtension> {
 	message.set("Hello from precompiled script plugin")
 }
 
-val currentOs = the<GreetingExtension>().currentOs
+val otherMessage = the<GreetingExtension>().otherMessage
 
 val javaTargetVersion = JavaVersion.VERSION_17.toString()
 val kotlinTargetVersion = "1.8"

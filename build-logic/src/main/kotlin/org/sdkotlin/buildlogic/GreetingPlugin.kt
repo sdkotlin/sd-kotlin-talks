@@ -9,7 +9,7 @@ import org.gradle.kotlin.dsl.create
 import javax.inject.Inject
 
 abstract class GreetingExtension(
-	private val osDetectorCurrentOs: String,
+	private val _otherMessage: String,
 ) {
 
 	@get:Inject
@@ -17,23 +17,23 @@ abstract class GreetingExtension(
 
 	abstract val message: Property<String>
 
-	val currentOs: Provider<String>
-		get() = providerFactory.provider { osDetectorCurrentOs }
+	val otherMessage: Provider<String>
+		get() = providerFactory.provider { _otherMessage }
 }
 
 class GreetingPlugin : Plugin<Project> {
 
 	override fun apply(project: Project) {
 
-		val osDetectorCurrentOS = "SuperOS"
+		val otherMessage = "Hello, Other World!"
 
 		val greetingExtension = project.extensions.create(
 			name = "greeting",
 			type = GreetingExtension::class,
-			osDetectorCurrentOS
+			otherMessage
 		)
 
-		greetingExtension.message.convention("Hello from GreetingPlugin")
+		greetingExtension.message.convention("Hello from GreetingPlugin!")
 
 		project.task("hello") {
 			doLast {
