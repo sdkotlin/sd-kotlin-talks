@@ -3,25 +3,36 @@ package org.sdkotlin.buildlogic
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
+import org.gradle.api.provider.ProviderFactory
 import org.gradle.kotlin.dsl.create
+import javax.inject.Inject
 
-interface GreetingPluginExtension {
-	val message: Property<String>
+abstract class GreetingExtension {
+
+	@get:Inject
+	internal abstract val providerFactory: ProviderFactory
+
+	abstract val message: Property<String>
+
+	val currentOs: Provider<String>
+		get() = providerFactory.provider { "SuperOS" }
 }
 
 class GreetingPlugin : Plugin<Project> {
+
 	override fun apply(project: Project) {
 
-		val extension = project.extensions.create(
+		val greetingExtension = project.extensions.create(
 			name = "greeting",
-			type = GreetingPluginExtension::class,
+			type = GreetingExtension::class,
 		)
 
-		extension.message.convention("Hello from GreetingPlugin")
+		greetingExtension.message.convention("Hello from GreetingPlugin")
 
 		project.task("hello") {
 			doLast {
-				println(extension.message.get())
+				println(greetingExtension.message.get())
 			}
 		}
 	}

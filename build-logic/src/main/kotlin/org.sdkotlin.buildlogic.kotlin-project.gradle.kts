@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.sdkotlin.buildlogic.GreetingPlugin
-import org.sdkotlin.buildlogic.GreetingPluginExtension
+import org.sdkotlin.buildlogic.GreetingExtension
 
 plugins {
 	kotlin("jvm")
@@ -12,9 +12,11 @@ plugins {
 
 apply<GreetingPlugin>()
 
-configure<GreetingPluginExtension> {
+configure<GreetingExtension> {
 	message.set("Hello from precompiled script plugin")
 }
+
+val currentOs = the<GreetingExtension>().currentOs
 
 val javaTargetVersion = JavaVersion.VERSION_17.toString()
 val kotlinTargetVersion = "1.8"

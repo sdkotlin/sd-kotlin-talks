@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.sdkotlin.buildlogic.kotlin-project")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
+	id("org.sdkotlin.buildlogic.greeting")
 }
 
 greeting {
@@ -25,6 +26,14 @@ dependencies {
 }
 
 tasks {
+
+	register("currentOS") {
+		val currentOs = greeting.currentOs.get()
+		doLast {
+			println(currentOs)
+		}
+	}
+
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions.freeCompilerArgs += "-Xinline-classes"
 	}
