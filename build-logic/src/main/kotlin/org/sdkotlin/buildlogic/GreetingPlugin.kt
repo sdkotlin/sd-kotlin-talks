@@ -8,7 +8,9 @@ import org.gradle.api.provider.ProviderFactory
 import org.gradle.kotlin.dsl.create
 import javax.inject.Inject
 
-abstract class GreetingExtension {
+abstract class GreetingExtension(
+	private val osDetectorCurrentOs: String,
+) {
 
 	@get:Inject
 	internal abstract val providerFactory: ProviderFactory
@@ -16,16 +18,19 @@ abstract class GreetingExtension {
 	abstract val message: Property<String>
 
 	val currentOs: Provider<String>
-		get() = providerFactory.provider { "SuperOS" }
+		get() = providerFactory.provider { osDetectorCurrentOs }
 }
 
 class GreetingPlugin : Plugin<Project> {
 
 	override fun apply(project: Project) {
 
+		val osDetectorCurrentOS = "SuperOS"
+
 		val greetingExtension = project.extensions.create(
 			name = "greeting",
 			type = GreetingExtension::class,
+			osDetectorCurrentOS
 		)
 
 		greetingExtension.message.convention("Hello from GreetingPlugin")
