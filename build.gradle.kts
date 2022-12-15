@@ -4,7 +4,7 @@ import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 // Without these suppressions version catalog usage here and in other build
 // files is marked red by IntelliJ:
-// https://youtrack.jetbrains.com/issue/KTIJ-19369.
+// https://github.com/gradle/gradle/issues/22797.
 @Suppress(
 	"DSL_SCOPE_VIOLATION",
 	"MISSING_DEPENDENCY_CLASS",

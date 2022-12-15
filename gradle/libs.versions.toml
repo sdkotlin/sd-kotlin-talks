@@ -3,19 +3,19 @@
 arrow = "1.1.3"
 assertj = "3.23.1"
 dependency-analysis-gradle-plugin = "1.17.0"
-equalsverifier = "3.11.1"
-jetbrains-annotations = "23.0.0"
+equalsverifier = "3.12.3"
+jetbrains-annotations = "23.1.0"
 junit = "5.9.1"
-koin = "3.2.2"
-kotlin = "1.7.21"
+koin = "3.3.0"
+kotlin = "1.7.22"
 kotlintest = "3.4.2"
 kotlinx-coroutines = "1.6.4"
-kotlinx-dl = "0.4.0"
-mockito = "4.9.0"
+kotlinx-dl = "0.5.0"
+mockito = "4.10.0"
 mockito-kotlin = "2.2.0"
-mockk = "1.13.2"
+mockk = "1.13.3"
 org-json = "20220924"
-slf4j = "2.0.5"
+slf4j = "2.0.6"
 versions-gradle-plugin = "0.44.0"
 
 [libraries]
@@ -96,6 +96,14 @@ version.ref = "kotlinx-dl"
 module = "org.jetbrains.kotlinx:kotlin-deeplearning-dataset"
 version.ref = "kotlinx-dl"
 
+[libraries.kotlinx-dl-onnx]
+module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx"
+version.ref = "kotlinx-dl"
+
+[libraries.kotlinx-dl-tensorflow]
+module = "org.jetbrains.kotlinx:kotlin-deeplearning-tensorflow"
+version.ref = "kotlinx-dl"
+
 [libraries.mockito]
 module = "org.mockito:mockito-core"
 version.ref = "mockito"
@@ -139,7 +147,12 @@ kotlinx-coroutines-jvm = [
 	"kotlinx-coroutines-core-jvm"
 ]
 
-kotlinx-dl = ["kotlinx-dl-api", "kotlinx-dl-dataset"]
+kotlinx-dl = [
+	"kotlinx-dl-api",
+	"kotlinx-dl-dataset",
+	"kotlinx-dl-tensorflow",
+	"kotlinx-dl-onnx"
+]
 
 mockk-jvm = ["mockk", "mockk-dsl-jvm"]
 
