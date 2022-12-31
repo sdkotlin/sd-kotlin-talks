@@ -4,7 +4,7 @@ package org.sdkotlin.intro.kotlin._15_singletons
 
 object KotlinSingleton {
 
-	val notQuitePi = 3.14
+	const val notQuitePi = 3.14
 
 	fun doIt() {
 		println("The most wonderful thing about tiggers is I'm the only one!")
@@ -17,7 +17,7 @@ data object TooStringy {
 
 	// Properties aren't included in the toString.
 
-	val cheesy = "String Cheese"
+	const val cheesy = "String Cheese"
 }
 
 fun main() {
