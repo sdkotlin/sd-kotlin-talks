@@ -15,9 +15,13 @@ object KotlinSingleton {
 
 data object TooStringy {
 
-	// Properties aren't included in the toString.
-
 	const val cheesy = "String Cheese"
+
+	// Data objects override toString without including any properties, like:
+	//override fun toString() = "${TooStringy::class.simpleName}"
+
+	// You can still provide your own override to include them:
+	//override fun toString() = "${TooStringy::class.simpleName}[cheesy=$cheesy]"
 }
 
 fun main() {
