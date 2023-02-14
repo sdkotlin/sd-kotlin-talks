@@ -5,8 +5,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
 import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
 
 plugins {
-	`java-library`
-	`jvm-test-suite`
+	id("java-library")
+	id("jvm-test-suite")
 }
 
 @Suppress("UnstableApiUsage")
@@ -17,7 +17,7 @@ testing {
 			// Version catalog not available in precompiled script plugins:
 			// https://github.com/gradle/gradle/issues/15383
 			//val junitVersion = libs.version.junit
-			val junitVersion = "5.9.1"
+			val junitVersion = "5.9.2"
 
 			useJUnitJupiter(junitVersion)
 

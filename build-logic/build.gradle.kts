@@ -1,5 +1,17 @@
 plugins {
+	// Not using `id("kotlin-dsl")` per:
+	// https://github.com/gradle/gradle/issues/23884
 	`kotlin-dsl`
+}
+
+kotlin {
+	jvmToolchain {
+		languageVersion.set(
+			JavaLanguageVersion.of(
+				JavaVersion.VERSION_17.toString()
+			)
+		)
+	}
 }
 
 dependencies {

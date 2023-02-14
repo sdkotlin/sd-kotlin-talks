@@ -1,8 +1,8 @@
 plugins {
-	idea
-	`jvm-test-suite`
-	kotlin("jvm")
+	id("idea")
+	id("jvm-test-suite")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
+	kotlin("jvm")
 }
 
 val integrationTestSuiteName = "integrationTest"
