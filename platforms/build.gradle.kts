@@ -6,7 +6,7 @@ java {
 	toolchain {
 		languageVersion.set(
 			JavaLanguageVersion.of(
-				JavaVersion.VERSION_17.toString()
+				JavaVersion.VERSION_11.toString()
 			)
 		)
 	}
