@@ -1,7 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import java.util.Locale
 
 // Without these suppressions version catalog usage here and in other build
 // files is marked red by IntelliJ:
@@ -70,13 +69,10 @@ tasks {
 
 fun isNonStable(version: String): Boolean {
 	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
-		version.uppercase(Locale.getDefault())
-			.contains(it)
+		version.uppercase().contains(it)
 	}
 	val unstableKeyword =
-		listOf("""M\d+""").any {
-			version.uppercase(Locale.getDefault()).contains(it.toRegex())
-		}
+		version.uppercase().contains("""M\d+""".toRegex())
 	val regex = "^[0-9,.v-]+(-r)?$".toRegex()
 	val isStable = (stableKeyword && !unstableKeyword) || regex.matches(version)
 	return isStable.not()
