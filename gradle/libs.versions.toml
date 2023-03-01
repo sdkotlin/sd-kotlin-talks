@@ -3,7 +3,7 @@
 arrow = "1.1.5"
 assertj = "3.24.2"
 dependency-analysis-gradle-plugin = "1.19.0"
-equalsverifier = "3.13.2"
+equalsverifier = "3.14"
 jetbrains-annotations = "24.0.0"
 junit = "5.9.2" # Duplicated in unit-test-suite.gradle.kts.
 koin = "3.3.3"
@@ -14,7 +14,7 @@ kotlinx-dl = "0.5.1"
 mockito = "5.1.1"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.4"
-org-json = "20220924"
+org-json = "20230227"
 slf4j = "2.0.6"
 versions-gradle-plugin = "0.46.0"
 
