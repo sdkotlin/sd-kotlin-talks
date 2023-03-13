@@ -1,5 +1,4 @@
 plugins {
-	id("idea")
 	id("jvm-test-suite")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 	kotlin("jvm")
@@ -20,11 +19,15 @@ testing {
 			}
 
 			sources {
+				val sourcesRootDir = "src/it"
 				java {
-					setSrcDirs(listOf("src/it/java"))
+					setSrcDirs(listOf("$sourcesRootDir/java"))
 				}
 				kotlin {
-					setSrcDirs(listOf("src/it/kotlin"))
+					setSrcDirs(listOf("$sourcesRootDir/kotlin"))
+				}
+				resources {
+					setSrcDirs(listOf("$sourcesRootDir/resources"))
 				}
 			}
 
@@ -60,16 +63,5 @@ tasks {
 	named<Task>("check").configure {
 		val integrationTest by existing
 		dependsOn(integrationTest)
-	}
-}
-
-idea {
-	module {
-		testSources.from(
-			kotlin.sourceSets[integrationTestSuiteName].kotlin.srcDirs
-		)
-		testResources.from(
-			kotlin.sourceSets[integrationTestSuiteName].resources.srcDirs
-		)
 	}
 }
