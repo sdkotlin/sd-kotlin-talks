@@ -32,7 +32,7 @@ testing {
 				all {
 					testTask.configure {
 						filter {
-							includeTestsMatching("*IT")
+							includeTestsMatching("*IT*")
 						}
 						shouldRunAfter(test)
 					}
