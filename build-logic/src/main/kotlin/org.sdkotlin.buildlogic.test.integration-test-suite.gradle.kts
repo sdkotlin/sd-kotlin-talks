@@ -35,7 +35,10 @@ testing {
 				all {
 					testTask.configure {
 						filter {
-							includeTestsMatching("*IT*")
+							val testSuffix = "IT"
+							includeTestsMatching("*$testSuffix")
+							// Support JUnit @Nested tests
+							includeTestsMatching("*$testSuffix$*")
 						}
 						shouldRunAfter(test)
 					}
