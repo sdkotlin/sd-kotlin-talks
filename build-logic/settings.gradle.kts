@@ -1,3 +1,10 @@
+pluginManagement {
+	repositories {
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
 plugins {
 	id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
 }
@@ -5,9 +12,9 @@ plugins {
 dependencyResolutionManagement {
 	@Suppress("UnstableApiUsage")
 	repositories {
+		mavenCentral()
 		gradlePluginPortal()
 	}
-	@Suppress("UnstableApiUsage")
 	versionCatalogs {
 		create("libs") {
 			from(files("../gradle/libs.versions.toml"))
