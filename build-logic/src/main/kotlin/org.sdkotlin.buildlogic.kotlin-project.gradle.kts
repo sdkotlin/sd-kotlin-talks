@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -8,8 +9,8 @@ plugins {
 	kotlin("jvm")
 }
 
-val javaTargetVersion = JavaVersion.VERSION_17.toString()
-val kotlinTargetVersion = "1.9"
+val javaTargetVersion: String = JavaVersion.VERSION_17.toString()
+val kotlinTargetVersion: String = KotlinVersion.KOTLIN_1_9.version
 
 kotlin {
 	jvmToolchain {
