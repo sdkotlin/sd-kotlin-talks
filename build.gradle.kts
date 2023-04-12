@@ -2,15 +2,6 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
-// Without these suppressions version catalog usage here and in other build
-// files is marked red by IntelliJ:
-// https://github.com/gradle/gradle/issues/22797.
-@Suppress(
-	"DSL_SCOPE_VIOLATION",
-	"MISSING_DEPENDENCY_CLASS",
-	"UNRESOLVED_REFERENCE_WRONG_RECEIVER",
-	"FUNCTION_CALL_EXPECTED"
-)
 plugins {
 	alias(libs.plugins.dependency.analysis.gradle.plugin)
 	// Kotlin plugin declaration needed here for the Dependency Analysis Plugin,
@@ -62,7 +53,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper").configure {
-		gradleVersion = "8.0.2"
+		gradleVersion = "8.1"
 		distributionType = ALL
 	}
 }
