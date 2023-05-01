@@ -12,27 +12,29 @@ plugins {
 @Suppress("UnstableApiUsage")
 testing {
 	suites {
-		named<JvmTestSuite>("test") {
+		configureEach {
+			if (this is JvmTestSuite) {
 
-			// Version catalog not available in precompiled script plugins:
-			// https://github.com/gradle/gradle/issues/15383
-			//val junitVersion = libs.version.junit.get()
-			val junitVersion = "5.9.3" // Duplicated in libs.versions.toml.
+				// Version catalog not available in precompiled script plugins:
+				// https://github.com/gradle/gradle/issues/15383
+				//val junitVersion = libs.version.junit.get()
+				val junitVersion = "5.9.3" // Duplicated in libs.versions.toml.
 
-			useJUnitJupiter(junitVersion)
+				useJUnitJupiter(junitVersion)
 
-			targets {
-				all {
-					testTask.configure {
-						testLogging {
-							showStandardStreams = true
-							events(
-								PASSED,
-								SKIPPED,
-								FAILED,
-								STANDARD_OUT,
-								STANDARD_ERROR
-							)
+				targets {
+					all {
+						testTask.configure {
+							testLogging {
+								showStandardStreams = true
+								events(
+									PASSED,
+									SKIPPED,
+									FAILED,
+									STANDARD_OUT,
+									STANDARD_ERROR
+								)
+							}
 						}
 					}
 				}
