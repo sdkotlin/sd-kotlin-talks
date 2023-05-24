@@ -1,10 +1,8 @@
 plugins {
+	kotlin("jvm")
 	id("jvm-test-suite")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
-	kotlin("jvm")
 }
-
-val integrationTestSuiteName = "integrationTest"
 
 @Suppress("UnstableApiUsage")
 testing {
@@ -12,7 +10,7 @@ testing {
 
 		val test by getting(JvmTestSuite::class)
 
-		register<JvmTestSuite>(integrationTestSuiteName) {
+		register<JvmTestSuite>("integrationTest") {
 
 			dependencies {
 				implementation(project())
@@ -24,7 +22,12 @@ testing {
 					setSrcDirs(listOf("$sourcesRootDir/java"))
 				}
 				kotlin {
-					setSrcDirs(listOf("$sourcesRootDir/kotlin"))
+					setSrcDirs(
+						listOf(
+							"$sourcesRootDir/kotlin",
+							"$sourcesRootDir/java",
+						)
+					)
 				}
 				resources {
 					setSrcDirs(listOf("$sourcesRootDir/resources"))
