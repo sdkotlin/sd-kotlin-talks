@@ -15,7 +15,7 @@ kotlinx-dl = "0.5.2"
 mockito = "5.3.1"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.5"
-org-json = "20230227"
+org-json = "20230618"
 slf4j = "2.0.7"
 versions-gradle-plugin = "0.47.0"
 
