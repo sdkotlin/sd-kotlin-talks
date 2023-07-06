@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -10,7 +9,6 @@ plugins {
 }
 
 val javaTargetVersion: String = JavaVersion.VERSION_17.toString()
-val kotlinTargetVersion: String = KotlinVersion.KOTLIN_1_9.version
 
 kotlin {
 	jvmToolchain {
@@ -34,8 +32,6 @@ tasks {
 
 	withType<KotlinCompile>().configureEach {
 		kotlinOptions {
-			languageVersion = kotlinTargetVersion
-			apiVersion = kotlinTargetVersion
 			jvmTarget = javaTargetVersion
 			freeCompilerArgs = listOf(
 				"-Xjsr305=strict",
