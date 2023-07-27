@@ -18,7 +18,7 @@ testing {
 				// Version catalog not available in precompiled script plugins:
 				// https://github.com/gradle/gradle/issues/15383
 				//val junitVersion = libs.version.junit.get()
-				val junitVersion = "5.9.3" // Duplicated in libs.versions.toml.
+				val junitVersion = "5.10.0" // Duplicated in libs.versions.toml.
 
 				useJUnitJupiter(junitVersion)
 
