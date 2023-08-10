@@ -6,8 +6,7 @@ dependency-analysis-gradle-plugin = "1.20.0"
 equalsverifier = "3.15.1"
 jetbrains-annotations = "24.0.1"
 junit = "5.10.0" # Duplicated in unit-test-suite.gradle.kts.
-koin = "3.4.2"
-koin-test = "3.4.1"
+koin = "3.4.3"
 kotlin = "1.9.0" # See also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlintest = "3.4.2"
 kotlinx-coroutines = "1.7.3"
@@ -59,11 +58,11 @@ version.ref = "koin"
 
 [libraries.koin-test]
 module = "io.insert-koin:koin-test"
-version.ref = "koin-test"
+version.ref = "koin"
 
 [libraries.koin-test-junit5]
 module = "io.insert-koin:koin-test-junit5"
-version.ref = "koin-test"
+version.ref = "koin"
 
 [libraries.kotlin-gradle-plugin-dependency]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
