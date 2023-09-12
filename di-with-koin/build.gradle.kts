@@ -11,7 +11,7 @@ dependencies {
 
 	api(platform("org.sdkotlin.platforms:app-platform"))
 
-	implementation(libs.bundles.koin.jvm)
+	api(libs.bundles.koin.jvm)
 
 	compileOnly(libs.jetbrains.annotations)
 
