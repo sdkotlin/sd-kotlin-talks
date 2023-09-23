@@ -4,7 +4,14 @@ plugins {
 
 group = "org.sdkotlin.platforms"
 
+javaPlatform {
+	allowDependencies()
+}
+
 dependencies {
+
+	api(platform(libs.koin.bom))
+
 	constraints {
 		api(libs.bundles.arrow.jvm)
 		api(libs.jetbrains.annotations)
