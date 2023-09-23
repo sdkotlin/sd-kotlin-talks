@@ -8,7 +8,7 @@ jetbrains-annotations = "24.0.1"
 junit = "5.10.0" # Duplicated in unit-test-suite.gradle.kts.
 koin = "3.4.3"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
-kotlin = "1.9.20-Beta"
+kotlin = "1.9.20-Beta2"
 kotlintest = "3.4.2"
 kotlinx-coroutines = "1.7.3"
 kotlinx-dl = "0.5.2"
