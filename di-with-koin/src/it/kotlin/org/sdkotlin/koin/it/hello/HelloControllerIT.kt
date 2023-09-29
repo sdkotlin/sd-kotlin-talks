@@ -4,13 +4,11 @@
 package org.sdkotlin.koin.it.hello
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
+import org.junit.jupiter.api.extension.RegisterExtension
 import org.koin.test.KoinTest
 import org.koin.test.inject
+import org.koin.test.junit5.KoinTestExtension
 import org.sdkotlin.koin.hello.HelloController
 import org.sdkotlin.koin.hello.helloModule
 import org.sdkotlin.koin.it.hello.test.TestGreetingService
@@ -20,16 +18,10 @@ internal class HelloControllerIT : KoinTest {
 
 	private val helloController: HelloController by inject()
 
-	@BeforeEach
-	fun beforeEach() {
-		startKoin {
-			modules(listOf(helloModule, testHelloModule))
-		}
-	}
-
-	@AfterEach
-	fun afterEach() {
-		stopKoin()
+	@JvmField
+	@RegisterExtension
+	val koinTestExtension = KoinTestExtension.create {
+		modules(listOf(helloModule, testHelloModule))
 	}
 
 	@Test

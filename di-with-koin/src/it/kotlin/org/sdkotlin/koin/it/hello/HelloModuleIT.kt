@@ -5,17 +5,15 @@ package org.sdkotlin.koin.it.hello
 
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatExceptionOfType
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
+import org.junit.jupiter.api.extension.RegisterExtension
 import org.koin.core.error.InstanceCreationException
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 import org.koin.test.KoinTest
 import org.koin.test.get
 import org.koin.test.inject
+import org.koin.test.junit5.KoinTestExtension
 import org.sdkotlin.koin.hello.DECLARED_COMPONENT
 import org.sdkotlin.koin.hello.DECLARED_COMPONENT_CONTAINER
 import org.sdkotlin.koin.hello.ExternalComponent
@@ -32,17 +30,10 @@ internal class HelloModuleIT : KoinTest {
 
 	private val helloController: HelloController by inject()
 
-	@BeforeEach
-	fun beforeEach() {
-		startKoin {
-			allowOverride(true)
-			modules(helloModule)
-		}
-	}
-
-	@AfterEach
-	fun afterEach() {
-		stopKoin()
+	@JvmField
+	@RegisterExtension
+	val koinTestExtension = KoinTestExtension.create {
+		modules(helloModule)
 	}
 
 	@Test
@@ -67,15 +58,21 @@ internal class HelloModuleIT : KoinTest {
 		val externalComponentContainer =
 			get<ExternalComponentContainer>(named(DECLARED_COMPONENT_CONTAINER))
 
-		assertThat(externalComponentContainer.externalComponent.value).isEqualTo(TESTING)
+		assertThat(externalComponentContainer.externalComponent.value)
+			.isEqualTo(TESTING)
 	}
 
 	@Test
 	fun `test reverse injecting an external component`() {
 
-		assertThatExceptionOfType(InstanceCreationException::class.java).isThrownBy {
-			get<ExternalComponentContainer>(named(REVERSE_INJECTED_COMPONENT_CONTAINER))
-		}
+		assertThatExceptionOfType(InstanceCreationException::class.java)
+			.isThrownBy {
+				get<ExternalComponentContainer>(
+					named(
+						REVERSE_INJECTED_COMPONENT_CONTAINER
+					)
+				)
+			}
 
 		// "Reverse inject" the external component into the Koin module as an
 		// injection parameter for a singleton that is the parameter itself
@@ -86,8 +83,13 @@ internal class HelloModuleIT : KoinTest {
 		// Get another component from Koin that depends on the external
 		// component having been injected into the module
 		val externalComponentContainer =
-			get<ExternalComponentContainer>(named(REVERSE_INJECTED_COMPONENT_CONTAINER))
+			get<ExternalComponentContainer>(
+				named(
+					REVERSE_INJECTED_COMPONENT_CONTAINER
+				)
+			)
 
-		assertThat(externalComponentContainer.externalComponent.value).isEqualTo(TESTING)
+		assertThat(externalComponentContainer.externalComponent.value)
+			.isEqualTo(TESTING)
 	}
 }
