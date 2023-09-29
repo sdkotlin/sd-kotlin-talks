@@ -17,7 +17,7 @@ dependencies {
 
 	integrationTestImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
-	integrationTestImplementation(libs.bundles.koin.test.junit5)
+	integrationTestImplementation(libs.koin.test)
 }
 
 tasks {

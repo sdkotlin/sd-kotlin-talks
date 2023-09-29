@@ -50,10 +50,7 @@ dependencies {
 
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
-	//testImplementation(libs.bundles.junit)
+	testImplementation("org.assertj:assertj-core")
 	testImplementation("org.junit.jupiter:junit-jupiter-params")
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
-
-	//testImplementation(libs.assertj.core)
-	testImplementation("org.assertj:assertj-core")
 }
