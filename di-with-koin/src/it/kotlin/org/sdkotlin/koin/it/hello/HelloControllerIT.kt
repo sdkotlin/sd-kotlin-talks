@@ -1,4 +1,4 @@
-// TODO: https://youtrack.jetbrains.com/issue/KT-34102
+// TODO: Remove when https://youtrack.jetbrains.com/issue/KTIJ-23114 is fixed.
 @file:Suppress("invisible_reference", "invisible_member")
 
 package org.sdkotlin.koin.it.hello
