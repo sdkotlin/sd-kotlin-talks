@@ -10,6 +10,7 @@ dependencies {
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
 	testImplementation(libs.bundles.kotlintest.junit5)
+	testImplementation(libs.bundles.mockk.jvm)
 
 	testRuntimeOnly(platform("org.sdkotlin.platforms:app-platform"))
 
