@@ -4,20 +4,24 @@ plugins {
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 }
 
+val testSuiteName = "integrationTest"
+val testSuiteDirName = "it"
+val testSuiteTestSuffix = "IT"
+
 @Suppress("UnstableApiUsage")
 testing {
 	suites {
 
 		val test by getting(JvmTestSuite::class)
 
-		register<JvmTestSuite>("integrationTest") {
+		register<JvmTestSuite>(testSuiteName) {
 
 			dependencies {
 				implementation(project())
 			}
 
 			sources {
-				val sourcesRootDir = "src/it"
+				val sourcesRootDir = "src/$testSuiteDirName"
 				java {
 					setSrcDirs(listOf("$sourcesRootDir/java"))
 				}
@@ -38,10 +42,9 @@ testing {
 				all {
 					testTask.configure {
 						filter {
-							val testSuffix = "IT"
-							includeTestsMatching("*$testSuffix")
+							includeTestsMatching("*$testSuiteTestSuffix")
 							// Support JUnit @Nested tests
-							includeTestsMatching("*$testSuffix$*")
+							includeTestsMatching("*$testSuiteTestSuffix$*")
 						}
 						shouldRunAfter(test)
 					}
@@ -56,12 +59,11 @@ dependencies {
 	// Version catalog not available in precompiled script plugins:
 	// https://github.com/gradle/gradle/issues/15383
 
-	"integrationTestApi"(
+	"integrationTestImplementation"(
 		platform("org.sdkotlin.platforms:test-platform")
 	)
 
-	"integrationTestApi"("org.junit.jupiter:junit-jupiter-api")
-
+	"integrationTestImplementation"("org.junit.jupiter:junit-jupiter-api")
 	"integrationTestImplementation"("org.assertj:assertj-core")
 }
 
