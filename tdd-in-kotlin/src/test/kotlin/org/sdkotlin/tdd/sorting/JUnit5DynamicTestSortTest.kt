@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
 
-class JUnit5DynamicTestSortTest {
+internal class JUnit5DynamicTestSortTest {
 
 	@TestFactory
 	fun `test sort`() = listOf(
@@ -21,7 +21,8 @@ class JUnit5DynamicTestSortTest {
 			"sort(${unsortedArray.contentToString()}) is ${expectedArray.contentToString()}"
 		) {
 			val sortedArray = sort(unsortedArray)
-			assertThat(sortedArray).isEqualTo(expectedArray).isNotSameAs(unsortedArray)
+			assertThat(sortedArray).isEqualTo(expectedArray)
+				.isNotSameAs(unsortedArray)
 		}
 	}
 }

@@ -3,7 +3,7 @@ package org.sdkotlin.tdd.sorting
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class JUnit5SortTest {
+internal class JUnit5SortTest {
 
 	@Test
 	fun `test empty array`() {
@@ -61,4 +61,3 @@ class JUnit5SortTest {
 		assertThat(sort(unsortedArray)).isEqualTo(sortedArray)
 	}
 }
-

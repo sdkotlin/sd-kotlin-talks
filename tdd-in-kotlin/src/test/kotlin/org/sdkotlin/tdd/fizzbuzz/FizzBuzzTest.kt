@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
-class FizzBuzzTest {
+internal class FizzBuzzTest {
 
 	@TestFactory
 	fun testFizzBuzzOf() = listOf(

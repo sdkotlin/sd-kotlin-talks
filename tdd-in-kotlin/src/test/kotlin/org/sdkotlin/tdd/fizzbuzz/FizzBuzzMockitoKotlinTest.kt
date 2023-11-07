@@ -7,7 +7,7 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.jupiter.api.Test
 
-class FizzBuzzMockitoKotlinTest {
+internal class FizzBuzzMockitoKotlinTest {
 
 	@Test
 	fun `test fizzBuzz1To100() prints 100 FizzBuzzes with Mockito mock Printer`() {

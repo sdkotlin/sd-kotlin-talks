@@ -1,6 +1,6 @@
 package org.sdkotlin.tdd.fizzbuzz
 
-class TestPrinter : Printer {
+internal class TestPrinter : Printer {
 
 	val prints = mutableListOf<String>()
 

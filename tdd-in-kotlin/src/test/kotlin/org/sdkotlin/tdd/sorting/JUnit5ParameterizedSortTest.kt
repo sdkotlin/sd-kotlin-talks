@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.Arguments.arguments
 import org.junit.jupiter.params.provider.MethodSource
 
-class JUnit5ParameterizedSortTest {
+internal class JUnit5ParameterizedSortTest {
 
 	companion object {
 		@JvmStatic
@@ -25,6 +25,7 @@ class JUnit5ParameterizedSortTest {
 	@ParameterizedTest(name = "sort({0}) is {1}")
 	@MethodSource("arrays")
 	fun `test sort`(unsortedArray: Array<Int>, sortedArray: Array<Int>) {
-		assertThat(sort(unsortedArray)).isEqualTo(sortedArray).isNotSameAs(unsortedArray)
+		assertThat(sort(unsortedArray)).isEqualTo(sortedArray)
+			.isNotSameAs(unsortedArray)
 	}
 }

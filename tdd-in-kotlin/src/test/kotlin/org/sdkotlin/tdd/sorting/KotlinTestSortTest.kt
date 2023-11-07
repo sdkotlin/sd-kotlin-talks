@@ -7,7 +7,7 @@ import io.kotlintest.tables.headers
 import io.kotlintest.tables.row
 import io.kotlintest.tables.table
 
-class KotlinTestSortTest : StringSpec({
+internal class KotlinTestSortTest : StringSpec({
 
 	"should return elements in order for" {
 		val unsortedArrays = table(

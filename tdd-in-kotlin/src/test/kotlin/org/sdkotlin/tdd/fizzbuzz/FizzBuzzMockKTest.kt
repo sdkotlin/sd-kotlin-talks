@@ -5,7 +5,7 @@ import io.mockk.verify
 import io.mockk.verifyOrder
 import org.junit.jupiter.api.Test
 
-class FizzBuzzMockKTest {
+internal class FizzBuzzMockKTest {
 
 	@Test
 	fun `test fizzBuzz1To100() prints 100 FizzBuzzes with MockK Printer`() {
