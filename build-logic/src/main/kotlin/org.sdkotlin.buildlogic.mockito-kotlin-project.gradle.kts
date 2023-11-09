@@ -4,11 +4,12 @@ plugins {
 
 dependencies {
 
+	val versionCatalog = versionCatalogs.named("libs")
+
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
 	// Version catalog type-safe accessors not available in precompiled script
 	// plugins: https://github.com/gradle/gradle/issues/15383
 
-	testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin")
-	testImplementation("org.mockito:mockito-core")
+	testImplementation(versionCatalog.findBundle("mockito").get())
 }

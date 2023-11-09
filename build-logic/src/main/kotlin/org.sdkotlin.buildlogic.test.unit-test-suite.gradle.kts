@@ -9,6 +9,8 @@ plugins {
 	id("jvm-test-suite")
 }
 
+val versionCatalog = versionCatalogs.named("libs")
+
 @Suppress("UnstableApiUsage")
 testing {
 	suites {
@@ -18,8 +20,8 @@ testing {
 				// Version catalog type-safe accessors not available in
 				// precompiled script plugins:
 				// https://github.com/gradle/gradle/issues/15383
-				val junitVersion = versionCatalogs.named("libs")
-					.findVersion("junit").get().preferredVersion
+				val junitVersion = versionCatalog.findVersion("junit")
+					.get().preferredVersion
 
 				useJUnitJupiter(junitVersion)
 
@@ -51,7 +53,7 @@ dependencies {
 
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
-	testImplementation("org.assertj:assertj-core")
-	testImplementation("org.junit.jupiter:junit-jupiter-params")
-	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation(versionCatalog.findLibrary("assertj").get())
+	testImplementation(versionCatalog.findLibrary("junit-api").get())
+	testImplementation(versionCatalog.findLibrary("junit-params").get())
 }

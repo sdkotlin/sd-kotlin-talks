@@ -8,6 +8,8 @@ val testSuiteName = "integrationTest"
 val testSuiteDirName = "it"
 val testSuiteTestSuffix = "IT"
 
+val versionCatalog = versionCatalogs.named("libs")
+
 @Suppress("UnstableApiUsage")
 testing {
 	suites {
@@ -63,8 +65,12 @@ dependencies {
 		platform("org.sdkotlin.platforms:test-platform")
 	)
 
-	"integrationTestImplementation"("org.junit.jupiter:junit-jupiter-api")
-	"integrationTestImplementation"("org.assertj:assertj-core")
+	"integrationTestImplementation"(
+		versionCatalog.findLibrary("assertj").get()
+	)
+	"integrationTestImplementation"(
+		versionCatalog.findLibrary("junit-api").get()
+	)
 }
 
 tasks {

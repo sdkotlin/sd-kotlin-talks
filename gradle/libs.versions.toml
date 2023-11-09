@@ -45,8 +45,16 @@ version.ref = "equalsverifier"
 module = "org.jetbrains:annotations"
 version.ref = "jetbrains-annotations"
 
+[libraries.junit-api]
+module = "org.junit.jupiter:junit-jupiter-api"
+version.ref = "junit"
+
 [libraries.junit-bom]
 module = "org.junit:junit-bom"
+version.ref = "junit"
+
+[libraries.junit-params]
+module = "org.junit.jupiter:junit-jupiter-params"
 version.ref = "junit"
 
 [libraries.koin-bom]
@@ -161,6 +169,11 @@ kotlinx-dl = [
 	"kotlinx-dl-dataset",
 	"kotlinx-dl-tensorflow",
 	"kotlinx-dl-onnx"
+]
+
+mockito = [
+	"mockito",
+	"mockito-kotlin"
 ]
 
 mockk-jvm = [
