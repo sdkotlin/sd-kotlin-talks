@@ -56,8 +56,8 @@ testing {
 
 dependencies {
 
-	// Version catalog not available in precompiled script plugins:
-	// https://github.com/gradle/gradle/issues/15383
+	// Version catalog type-safe accessors not available in precompiled script
+	// plugins: https://github.com/gradle/gradle/issues/15383
 
 	"integrationTestImplementation"(
 		platform("org.sdkotlin.platforms:test-platform")

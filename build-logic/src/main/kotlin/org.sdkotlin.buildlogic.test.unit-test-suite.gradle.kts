@@ -15,10 +15,11 @@ testing {
 		configureEach {
 			if (this is JvmTestSuite) {
 
-				// Version catalog not available in precompiled script plugins:
+				// Version catalog type-safe accessors not available in
+				// precompiled script plugins:
 				// https://github.com/gradle/gradle/issues/15383
-				//val junitVersion = libs.version.junit.get()
-				val junitVersion = "5.10.0" // Duplicated in libs.versions.toml.
+				val junitVersion = versionCatalogs.named("libs")
+					.findVersion("junit").get().preferredVersion
 
 				useJUnitJupiter(junitVersion)
 
@@ -45,8 +46,8 @@ testing {
 
 dependencies {
 
-	// Version catalog not available in precompiled script plugins:
-	// https://github.com/gradle/gradle/issues/15383
+	// Version catalog type-safe accessors not available in precompiled script
+	// plugins: https://github.com/gradle/gradle/issues/15383
 
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 

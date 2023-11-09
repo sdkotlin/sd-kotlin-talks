@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("jvm")
-	// Version catalog not available in precompiled script plugins:
-	// https://github.com/gradle/gradle/issues/15383
+	// Version catalog type-safe accessors not available in precompiled script
+	// plugins: https://github.com/gradle/gradle/issues/15383
 	// alias(libs.plugins.dependency.analysis.gradle.plugin)
 	id("com.autonomousapps.dependency-analysis")
 }
