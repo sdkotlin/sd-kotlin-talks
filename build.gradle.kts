@@ -3,6 +3,7 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
+	id("base")
 	alias(libs.plugins.dependency.analysis.gradle.plugin)
 	// Kotlin plugin declaration needed here for the Dependency Analysis Plugin,
 	// but with `apply false` since the root project itself isn't a Kotlin
