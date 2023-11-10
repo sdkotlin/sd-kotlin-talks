@@ -8,5 +8,6 @@ dependencies {
 	constraints {
 		api(libs.dependency.analysis.gradle.plugin.dependency)
 		api(libs.kotlin.gradle.plugin.dependency)
+		api(libs.ksp.gradle.plugin.dependency)
 	}
 }

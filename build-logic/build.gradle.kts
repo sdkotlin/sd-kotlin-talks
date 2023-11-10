@@ -20,4 +20,5 @@ dependencies {
 
 	implementation(libs.dependency.analysis.gradle.plugin.dependency)
 	implementation(libs.kotlin.gradle.plugin.dependency)
+	implementation(libs.ksp.gradle.plugin.dependency)
 }

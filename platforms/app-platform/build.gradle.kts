@@ -18,6 +18,7 @@ dependencies {
 		api(libs.bundles.koin.jvm)
 		api(libs.bundles.kotlinx.coroutines.jvm)
 		api(libs.bundles.kotlinx.dl)
+		api(libs.ksp.api)
 		api(libs.org.json)
 		api(libs.slf4j.simple)
 	}
