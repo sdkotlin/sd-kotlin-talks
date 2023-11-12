@@ -9,6 +9,7 @@ junit = "5.10.1"
 koin = "3.5.0"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "1.9.20"
+kotlinpoet = "1.14.2"
 kotlintest = "3.4.2"
 kotlinx-coroutines = "1.7.3"
 kotlinx-dl = "0.5.2"
@@ -81,6 +82,14 @@ version.ref = "koin"
 [libraries.kotlin-gradle-plugin-dependency]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
 version.ref = "kotlin"
+
+[libraries.kotlinpoet]
+module = "com.squareup:kotlinpoet"
+version.ref = "kotlinpoet"
+
+[libraries.kotlinpoet-ksp]
+module = "com.squareup:kotlinpoet-ksp"
+version.ref = "kotlinpoet"
 
 [libraries.kotlintest-assertions]
 module = "io.kotlintest:kotlintest-assertions"
@@ -161,6 +170,11 @@ arrow-jvm = ["arrow-core", "arrow-core-jvm"]
 koin-jvm = ["koin-core", "koin-core-jvm"]
 
 koin-test-junit5 = ["koin-test", "koin-test-junit5"]
+
+kotlinpoet-ksp = [
+	"kotlinpoet",
+	"kotlinpoet-ksp"
+]
 
 kotlintest-junit5 = [
 	"kotlintest-assertions",

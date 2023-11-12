@@ -9,5 +9,8 @@ class BuilderGenSymbolProcessorProvider : SymbolProcessorProvider {
 	override fun create(
 		environment: SymbolProcessorEnvironment,
 	): SymbolProcessor =
-		BuilderGenSymbolProcessor()
+		BuilderGenSymbolProcessor(
+			environment.codeGenerator,
+			environment.logger,
+		)
 }
