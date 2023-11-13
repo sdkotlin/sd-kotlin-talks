@@ -4,5 +4,8 @@ import org.sdkotlin.buildergen.api.annotations.GeneratedBuilder
 
 @GeneratedBuilder
 data class TestEntity(
-	val testing: String,
+	val testInt: Int,
+	val testNullableInt: Int?,
+	val testString: String,
+	val testNullableString: String?,
 )

@@ -11,7 +11,8 @@ import com.google.devtools.ksp.symbol.KSVisitorVoid
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.KModifier.OVERRIDE
+import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
@@ -20,6 +21,7 @@ import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.toTypeName
 import com.squareup.kotlinpoet.ksp.writeTo
 import org.sdkotlin.buildergen.api.builder.Builder
+import kotlin.properties.Delegates
 
 internal class BuilderGenVisitor(
 	private val codeGenerator: CodeGenerator,
@@ -40,70 +42,94 @@ internal class BuilderGenVisitor(
 		val entityKSClassDeclaration: KSClassDeclaration =
 			function.parentDeclaration as KSClassDeclaration
 
-		val entityPackageName: String =
+		val entityPackageNameString: String =
 			entityKSClassDeclaration.containingFile!!.packageName.asString()
 
-		val entityClassName: String =
+		val entityClassNameString: String =
 			entityKSClassDeclaration.simpleName.asString()
 
-		val entityKPClassName: ClassName =
+		val entityClassName: ClassName =
 			entityKSClassDeclaration.toClassName()
 
-		val entityBuilderClassName = "${entityClassName}Builder"
+		val entityBuilderClassName =
+			ClassName(
+				entityPackageNameString,
+				"${entityClassNameString}Builder"
+			)
 
-		val entityBuilderKPClassName =
-			ClassName(entityPackageName, entityBuilderClassName)
-
-		val builderInterfaceKPClassName: ClassName =
+		val builderInterfaceClassName: ClassName =
 			Builder::class.asClassName()
 
 		val entityClassTypeSpecBuilder: TypeSpec.Builder =
-			TypeSpec.classBuilder(entityBuilderKPClassName)
+			TypeSpec.classBuilder(entityBuilderClassName)
 
 		entityClassTypeSpecBuilder
 			.addSuperinterface(
-				builderInterfaceKPClassName
-					.parameterizedBy(entityKPClassName)
+				builderInterfaceClassName
+					.parameterizedBy(entityClassName)
 			)
+
+		val buildMethodBodyStringBuilder: StringBuilder =
+			StringBuilder().apply {
+				appendLine("return %T(")
+			}
 
 		function.parameters.forEach { parameter: KSValueParameter ->
 
-			val parameterName: KSName = parameter.name!!
-			val parameterType: KSTypeReference = parameter.type
+			val parameterKSName: KSName = parameter.name!!
+			val parameterKSTypeReference: KSTypeReference = parameter.type
+
+			val entityBuilderPropertySpecBuilder: PropertySpec.Builder =
+				PropertySpec.builder(
+					parameterKSName.asString(),
+					parameterKSTypeReference.toTypeName()
+				).mutable(true)
+
+			if (parameterKSTypeReference.resolve().isMarkedNullable) {
+
+				entityBuilderPropertySpecBuilder.initializer("%L", null)
+
+			} else {
+
+				val notNullMemberName =
+					MemberName(Delegates::class.asClassName(), "notNull")
+
+				entityBuilderPropertySpecBuilder.delegate(
+					"%M()",
+					notNullMemberName
+				)
+			}
 
 			entityClassTypeSpecBuilder.addProperty(
-				PropertySpec.builder(
-					parameterName.asString(),
-					parameterType.toTypeName()
-				)
-					.mutable(true)
-					.addModifiers(KModifier.LATEINIT)
-					.build()
+				entityBuilderPropertySpecBuilder.build()
 			)
+
+			buildMethodBodyStringBuilder
+				.appendLine("${parameterKSName.asString()}, ")
 		}
+
+		buildMethodBodyStringBuilder.appendLine(")")
 
 		entityClassTypeSpecBuilder.addFunction(
 			FunSpec.builder("build")
-				.addModifiers(KModifier.OVERRIDE)
-				.returns(entityKPClassName)
-				// TODO: Complete builder implementation
-				.addStatement("TODO()")
+				.addModifiers(OVERRIDE)
+				.returns(entityClassName)
+				.addCode(
+					buildMethodBodyStringBuilder.toString(),
+					entityClassName
+				)
 				.build()
 		)
 
-		val entityBuilderTypeSpec: TypeSpec =
-			entityClassTypeSpecBuilder.build()
-
 		val entityBuilderFileSpecBuilder: FileSpec.Builder =
-			FileSpec.builder(entityBuilderKPClassName)
+			FileSpec.builder(entityBuilderClassName)
 
 		entityBuilderFileSpecBuilder.addType(
-			entityBuilderTypeSpec
+			entityClassTypeSpecBuilder.build()
 		)
 
 		val entityBuilderFileSpec: FileSpec =
-			entityBuilderFileSpecBuilder
-				.build()
+			entityBuilderFileSpecBuilder.build()
 
 		entityBuilderFileSpec.writeTo(codeGenerator, aggregating = false)
 	}
