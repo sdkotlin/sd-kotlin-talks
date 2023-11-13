@@ -23,7 +23,7 @@ internal class TestEntityBuilderTest {
 
 		assertThat(testEntityBuilder).isInstanceOf(Builder::class.java)
 
-		val testEntity = testEntityBuilder.build()
+		val testEntity: TestEntity = testEntityBuilder.build()
 
 		assertThat(testEntity.testInt).isEqualTo(TEST_INT)
 		assertThat(testEntity.testNullableInt).isNull()
