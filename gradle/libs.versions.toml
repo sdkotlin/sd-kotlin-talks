@@ -9,9 +9,11 @@ junit = "5.10.1"
 koin = "3.5.0"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "1.9.20"
+kotlinpoet = "1.14.2"
 kotlintest = "3.4.2"
 kotlinx-coroutines = "1.7.3"
 kotlinx-dl = "0.5.2"
+ksp = "1.9.20-1.0.14" # Must match Kotlin version above.
 mockito = "5.7.0"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.8"
@@ -45,8 +47,16 @@ version.ref = "equalsverifier"
 module = "org.jetbrains:annotations"
 version.ref = "jetbrains-annotations"
 
+[libraries.junit-api]
+module = "org.junit.jupiter:junit-jupiter-api"
+version.ref = "junit"
+
 [libraries.junit-bom]
 module = "org.junit:junit-bom"
+version.ref = "junit"
+
+[libraries.junit-params]
+module = "org.junit.jupiter:junit-jupiter-params"
 version.ref = "junit"
 
 [libraries.koin-bom]
@@ -72,6 +82,14 @@ version.ref = "koin"
 [libraries.kotlin-gradle-plugin-dependency]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
 version.ref = "kotlin"
+
+[libraries.kotlinpoet]
+module = "com.squareup:kotlinpoet"
+version.ref = "kotlinpoet"
+
+[libraries.kotlinpoet-ksp]
+module = "com.squareup:kotlinpoet-ksp"
+version.ref = "kotlinpoet"
 
 [libraries.kotlintest-assertions]
 module = "io.kotlintest:kotlintest-assertions"
@@ -109,6 +127,14 @@ version.ref = "kotlinx-dl"
 module = "org.jetbrains.kotlinx:kotlin-deeplearning-tensorflow"
 version.ref = "kotlinx-dl"
 
+[libraries.ksp-api]
+module = "com.google.devtools.ksp:symbol-processing-api"
+version.ref = "ksp"
+
+[libraries.ksp-gradle-plugin-dependency]
+module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin"
+version.ref = "ksp"
+
 [libraries.mockito]
 module = "org.mockito:mockito-core"
 version.ref = "mockito"
@@ -145,6 +171,11 @@ koin-jvm = ["koin-core", "koin-core-jvm"]
 
 koin-test-junit5 = ["koin-test", "koin-test-junit5"]
 
+kotlinpoet-ksp = [
+	"kotlinpoet",
+	"kotlinpoet-ksp"
+]
+
 kotlintest-junit5 = [
 	"kotlintest-assertions",
 	"kotlintest-core",
@@ -161,6 +192,11 @@ kotlinx-dl = [
 	"kotlinx-dl-dataset",
 	"kotlinx-dl-tensorflow",
 	"kotlinx-dl-onnx"
+]
+
+mockito = [
+	"mockito",
+	"mockito-kotlin"
 ]
 
 mockk-jvm = [
