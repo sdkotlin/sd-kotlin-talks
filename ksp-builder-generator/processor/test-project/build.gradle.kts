@@ -6,11 +6,8 @@ plugins {
 
 dependencies {
 
+	api(projects.kspBuilderGenerator.api.annotations)
 	api(projects.kspBuilderGenerator.api.builder)
 
-	implementation(projects.kspBuilderGenerator.api.annotations)
-
 	ksp(projects.kspBuilderGenerator.processor)
-
-	testImplementation(projects.kspBuilderGenerator.api.builder)
 }

@@ -9,5 +9,5 @@ dependencies {
 	// Version catalog type-safe accessors not available in precompiled script
 	// plugins: https://github.com/gradle/gradle/issues/15383
 
-	implementation(versionCatalog.findLibrary("ksp-api").get())
+	api(versionCatalog.findLibrary("ksp-api").get())
 }
