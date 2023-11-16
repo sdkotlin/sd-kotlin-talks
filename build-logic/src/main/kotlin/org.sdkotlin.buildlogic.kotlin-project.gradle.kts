@@ -46,6 +46,15 @@ tasks {
 	}
 
 	withType<JavaExec>().configureEach {
+
+		if (name.endsWith("main()")) {
+
+			// https://github.com/gradle/gradle/issues/21364
+			notCompatibleWithConfigurationCache("JavaExec created by IntelliJ")
+
+			args("Testing")
+		}
+
 		jvmArgs("--enable-preview")
 	}
 }

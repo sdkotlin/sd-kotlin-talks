@@ -4,5 +4,5 @@ package org.sdkotlin.intro.kotlin._02_helloworld.withargs
 
 fun main(args: Array<String>) {
 
-	println(args.contentToString())
+	println("args: ${args.contentToString()}")
 }
