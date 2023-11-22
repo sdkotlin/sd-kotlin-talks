@@ -18,10 +18,6 @@ testing {
 
 		register<JvmTestSuite>(testSuiteName) {
 
-			dependencies {
-				implementation(project())
-			}
-
 			sources {
 				val sourcesRootDir = "src/$testSuiteDirName"
 				java {
@@ -71,6 +67,14 @@ dependencies {
 	"integrationTestImplementation"(
 		versionCatalog.findLibrary("junit-api").get()
 	)
+}
+
+kotlin {
+	target {
+		// Workaround for https://youtrack.jetbrains.com/issue/KTIJ-23114.
+		compilations.getByName(testSuiteName)
+			.associateWith(compilations.getByName("main"))
+	}
 }
 
 tasks {

@@ -1,6 +1,3 @@
-// TODO: Remove when https://youtrack.jetbrains.com/issue/KTIJ-23114 is fixed.
-@file:Suppress("invisible_reference", "invisible_member")
-
 package org.sdkotlin.koin.it.hello
 
 import org.assertj.core.api.Assertions.assertThat
