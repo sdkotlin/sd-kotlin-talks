@@ -9,7 +9,7 @@ junit = "5.10.1"
 koin = "3.5.0"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "1.9.20"
-kotlinpoet = "1.14.2"
+kotlinpoet = "1.15.1"
 kotlintest = "3.4.2"
 kotlinx-coroutines = "1.7.3"
 kotlinx-dl = "0.5.2"
