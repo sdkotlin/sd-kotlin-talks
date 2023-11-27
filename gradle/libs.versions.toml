@@ -7,10 +7,10 @@ equalsverifier = "3.15.3"
 jetbrains-annotations = "24.1.0"
 junit = "5.10.1"
 koin = "3.5.0"
+kotest = "5.8.0"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "1.9.20"
 kotlinpoet = "1.15.1"
-kotlintest = "3.4.2"
 kotlinx-coroutines = "1.7.3"
 kotlinx-dl = "0.5.2"
 ksp = "1.9.20-1.0.14" # Must match Kotlin version above.
@@ -91,17 +91,21 @@ version.ref = "kotlinpoet"
 module = "com.squareup:kotlinpoet-ksp"
 version.ref = "kotlinpoet"
 
-[libraries.kotlintest-assertions]
-module = "io.kotlintest:kotlintest-assertions"
-version.ref = "kotlintest"
+[libraries.kotest-assertions-shared]
+module = "io.kotest:kotest-assertions-shared"
+version.ref = "kotest"
 
-[libraries.kotlintest-core]
-module = "io.kotlintest:kotlintest-core"
-version.ref = "kotlintest"
+[libraries.kotest-bom]
+module = "io.kotest:kotest-bom"
+version.ref = "kotest"
 
-[libraries.kotlintest-runner-junit5]
-module = "io.kotlintest:kotlintest-runner-junit5"
-version.ref = "kotlintest"
+[libraries.kotest-framework-api-jvm]
+module = "io.kotest:kotest-framework-api-jvm"
+version.ref = "kotest"
+
+[libraries.kotest-runner-junit5-jvm]
+module = "io.kotest:kotest-runner-junit5-jvm"
+version.ref = "kotest"
 
 [libraries.kotlinx-coroutines-core]
 module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"
@@ -174,12 +178,6 @@ koin-test-junit5 = ["koin-test", "koin-test-junit5"]
 kotlinpoet-ksp = [
 	"kotlinpoet",
 	"kotlinpoet-ksp"
-]
-
-kotlintest-junit5 = [
-	"kotlintest-assertions",
-	"kotlintest-core",
-	"kotlintest-runner-junit5"
 ]
 
 kotlinx-coroutines-jvm = [

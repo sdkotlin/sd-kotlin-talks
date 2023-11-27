@@ -9,10 +9,12 @@ dependencies {
 
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
-	testImplementation(libs.bundles.kotlintest.junit5)
+	testImplementation(libs.kotest.assertions.shared)
+	testImplementation(libs.kotest.framework.api.jvm)
 	testImplementation(libs.bundles.mockk.jvm)
 
 	testRuntimeOnly(platform("org.sdkotlin.platforms:app-platform"))
 
+	testRuntimeOnly(libs.kotest.runner.junit5.jvm)
 	testRuntimeOnly(libs.slf4j.simple)
 }
