@@ -1,5 +1,6 @@
 plugins {
 	id("org.sdkotlin.buildlogic.kotlin-project")
+	id("org.sdkotlin.buildlogic.test.test-fixtures-project")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 	id("org.sdkotlin.buildlogic.mockk-project")
 	id("org.sdkotlin.buildlogic.mockito-kotlin-project")
@@ -8,6 +9,8 @@ plugins {
 dependencies {
 
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
+
+	testImplementation(testFixtures(projects.tddInKotlin))
 
 	testImplementation(libs.kotest.assertions.shared)
 	testImplementation(libs.kotest.framework.api.jvm)
