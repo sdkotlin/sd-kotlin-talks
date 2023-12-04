@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -32,11 +33,17 @@ tasks {
 	}
 
 	withType<KotlinCompile>().configureEach {
-		kotlinOptions {
-			jvmTarget = javaTargetVersion
+		compilerOptions {
+			jvmTarget = JvmTarget.fromTarget(javaTargetVersion)
+			optIn = listOf(
+				"kotlin.ExperimentalStdlibApi",
+				"kotlin.contracts.ExperimentalContracts",
+			)
+			// Planned for deprecation:
+			// https://youtrack.jetbrains.com/issue/KT-61035/
 			freeCompilerArgs = listOf(
+				// https://youtrack.jetbrains.com/issue/KT-61410/
 				"-Xjsr305=strict",
-				"-opt-in=kotlin.ExperimentalStdlibApi",
 			)
 		}
 	}
