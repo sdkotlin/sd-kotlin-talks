@@ -1,7 +1,8 @@
+import com.autonomousapps.DependencyAnalysisSubExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinCompilation.Companion.MAIN_COMPILATION_NAME
 
 plugins {
-	kotlin("jvm")
+	id("org.sdkotlin.buildlogic.kotlin-project")
 	id("jvm-test-suite")
 	id("org.sdkotlin.buildlogic.test.unit-test-suite")
 }
@@ -69,6 +70,14 @@ dependencies {
 	"integrationTestImplementation"(
 		versionCatalog.findLibrary("junit-api").get()
 	)
+}
+
+configure<DependencyAnalysisSubExtension> {
+	abi {
+		exclusions {
+			excludeSourceSets(testSuiteName)
+		}
+	}
 }
 
 kotlin {
