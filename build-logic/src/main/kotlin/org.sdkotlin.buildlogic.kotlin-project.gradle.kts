@@ -29,7 +29,12 @@ tasks {
 	withType<JavaCompile>().configureEach {
 		sourceCompatibility = javaTargetVersion
 		targetCompatibility = javaTargetVersion
-		options.compilerArgs.add("--enable-preview")
+
+		with(options) {
+
+			isFork = true
+			compilerArgs.add("--enable-preview")
+		}
 	}
 
 	withType<KotlinCompile>().configureEach {
