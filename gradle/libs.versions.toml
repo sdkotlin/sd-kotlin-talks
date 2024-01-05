@@ -10,7 +10,7 @@ koin = "3.5.0"
 kotest = "5.8.0"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "1.9.22"
-kotlinpoet = "1.15.2"
+kotlinpoet = "1.15.3"
 kotlinx-coroutines = "1.7.3"
 kotlinx-dl = "0.5.2"
 ksp = "1.9.22-1.0.16" # Must match Kotlin version above.
