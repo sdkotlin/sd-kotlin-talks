@@ -5,7 +5,7 @@ assertj = "3.25.2"
 dependency-analysis-gradle-plugin = "1.29.0"
 equalsverifier = "3.15.6"
 jetbrains-annotations = "24.1.0"
-junit = "5.10.1"
+junit = "5.10.2"
 koin = "3.5.3"
 kotest = "5.8.0"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
