@@ -60,7 +60,7 @@ data class Food(val type: String) : GarbageOrFoodOrStuffedAnimal {
 	fun eat() = type
 }
 
-object Garbage : GarbageOrFoodOrStuffedAnimal {
+data object Garbage : GarbageOrFoodOrStuffedAnimal {
 	fun throwAway() = "Yuk"
 }
 
@@ -94,9 +94,9 @@ fun withSealedClassesAndInterfaces() {
 
 sealed interface IoError
 
-object FileNotFoundIoError : IoError
+data object FileNotFoundIoError : IoError
 
-object EndOfStreamIoError : IoError
+data object EndOfStreamIoError : IoError
 
 sealed interface ErrorOrValue<out E, out V>
 
