@@ -19,9 +19,3 @@ dependencies {
 
 	testImplementation(libs.equalsverifier)
 }
-
-tasks {
-	withType<KotlinCompile>().configureEach {
-		kotlinOptions.freeCompilerArgs += "-Xinline-classes"
-	}
-}
