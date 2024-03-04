@@ -1,26 +1,17 @@
-package org.sdkotlin.typederrors
+package org.sdkotlin.typederrors.either
 
 import arrow.core.Either
 import arrow.core.flatMap
 import arrow.core.left
 import arrow.core.raise.either
 import arrow.core.right
+import org.sdkotlin.typederrors.Error
+import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Error.BadFruitError
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
 import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
-
-sealed interface Fruit {
-	data class Apple(val hasWorm: Boolean) : Fruit
-	data class Banana(val microSieverts: Double) : Fruit
-	data class Grapes(val moreLikeRaisins: Boolean) : Fruit
-	data object Orange : Fruit
-}
-
-sealed interface Error {
-	data object BadFruitError : Error
-}
 
 /**
  * A fluent, mutation-free builder where some add methods may return errors.
@@ -185,8 +176,7 @@ fun goGroceryShopping(): Either<Error, FruitBasket> =
 		var fruitBasket: FruitBasket
 
 		// Can chain with `bind`.
-		fruitBasket = FruitBasket
-			.addApple(Apple(hasWorm = false)).bind()
+		fruitBasket = FruitBasket.addApple(Apple(hasWorm = false)).bind()
 			.addBanana(Banana(microSieverts = 1.0), microSievertsLimit).bind()
 			.addBanana(Banana(microSieverts = 2.2), microSievertsLimit).bind()
 
