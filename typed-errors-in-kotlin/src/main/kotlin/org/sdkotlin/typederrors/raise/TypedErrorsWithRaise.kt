@@ -1,9 +1,10 @@
 package org.sdkotlin.typederrors.raise
 
-import arrow.core.merge
+import arrow.core.Either
 import arrow.core.raise.Raise
 import arrow.core.raise.either
 import arrow.core.raise.ensure
+import arrow.core.raise.fold
 import arrow.core.raise.recover
 import org.sdkotlin.typederrors.Error
 import org.sdkotlin.typederrors.Error.BadFruitError
@@ -91,16 +92,28 @@ fun goGroceryShopping(): FruitBasket {
 
 fun main() {
 
-	val result: Any = either { goGroceryShopping() }.merge()
+	val eitherResult: Either<Error, FruitBasket> =
+		either {
+			goGroceryShopping()
+		}
 
-	println("Shopping result: $result")
+	eitherResult.fold(
+		ifRight = { println("Shopping result: $it") },
+		ifLeft = { println("Shopping error: $it") }
+	)
 
 	// Or...
 
-	val otherResult: Any = recover(
-		block = { goGroceryShopping() },
-		recover = { it }
+	recover(
+		block = { println("Shopping result: ${goGroceryShopping()}") },
+		recover = { println("Shopping error: $it") }
 	)
 
-	println("Shopping result: $otherResult")
+	// Or...
+
+	fold(
+		block = { goGroceryShopping() },
+		recover = { println("Shopping error: $it") },
+		transform = { println("Shopping result: $it") }
+	)
 }

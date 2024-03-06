@@ -22,8 +22,11 @@ class FruitBasketBuilder {
 
 	private val fruit: MutableList<Fruit> = mutableListOf()
 
+	private var failed: Boolean = false
+
 	fun addApple(apple: Apple): Either<Error, FruitBasketBuilder> =
 		if (apple.hasWorm) {
+			failed = true
 			BadFruitError.left()
 		} else {
 			fruit.add(apple)
@@ -35,6 +38,7 @@ class FruitBasketBuilder {
 		microSievertsLimit: Double,
 	): Either<Error, FruitBasketBuilder> =
 		if (banana.microSieverts >= microSievertsLimit) {
+			failed = true
 			BadFruitError.left()
 		} else {
 			fruit.add(banana)
@@ -43,6 +47,7 @@ class FruitBasketBuilder {
 
 	fun addGrapes(grapes: Grapes): Either<Error, FruitBasketBuilder> =
 		if (grapes.moreLikeRaisins) {
+			failed = true
 			BadFruitError.left()
 		} else {
 			fruit.add(grapes)
@@ -55,7 +60,13 @@ class FruitBasketBuilder {
 		return this
 	}
 
-	fun build(): FruitBasket = FruitBasketImpl(fruit)
+	fun build(): Either<Error, FruitBasket> =
+		// Use a staleness flag to ensure we can't ignore an earlier error
+		if (failed) {
+			BadFruitError.left()
+		} else {
+			FruitBasketImpl(fruit).right()
+		}
 }
 
 private data class FruitBasketImpl(
@@ -87,14 +98,15 @@ fun goGroceryShoppingWithNestedFlatMap(): Either<Error, FruitBasket> {
 					}
 				}
 		}
-		.onLeft { return it.left() } // If we forget this, we swallow any errors
+		// If we forget this, we may swallow or continue past any errors
+		.onLeft { return it.left() }
 
 	// Iterative adds via breaking the chain.
 	repeat(3) {
 		fruitBasketBuilder.addOrange(Orange)
 	}
 
-	return fruitBasketBuilder.build().right()
+	return fruitBasketBuilder.build()
 }
 
 fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
@@ -118,14 +130,15 @@ fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
 				it.right()
 			}
 		}
-		.onLeft { return it.left() } // If we forget this, we swallow any errors
+		// If we forget this, we may swallow or continue past any errors
+		.onLeft { return it.left() }
 
 	// Iterative adds via breaking the chain.
 	repeat(3) {
 		fruitBasketBuilder.addOrange(Orange)
 	}
 
-	return fruitBasketBuilder.build().right()
+	return fruitBasketBuilder.build()
 }
 
 // Using the builder with `.bind()` (i.e. "for-comprehension").
@@ -144,7 +157,8 @@ fun goGroceryShopping(): Either<Error, FruitBasket> = either {
 
 	// Conditional adds via breaking the chain.
 	if (isTuesday) {
-		// If we forget the `bind()`, we swallow any errors
+		// If we forget to `bind()` here, we may swallow or continue past any
+		// errors
 		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = false)).bind()
 	}
 
@@ -153,8 +167,8 @@ fun goGroceryShopping(): Either<Error, FruitBasket> = either {
 		fruitBasketBuilder.addOrange(Orange)
 	}
 
-	// Yield the `Either.Right` value.
-	fruitBasketBuilder.build()
+	// Yield instead of return the value.
+	fruitBasketBuilder.build().bind()
 }
 
 fun main() {
