@@ -7,17 +7,16 @@ import arrow.core.raise.ensure
 import arrow.core.raise.fold
 import arrow.core.raise.recover
 import org.sdkotlin.typederrors.Error
-import org.sdkotlin.typederrors.Error.BadFruitError
+import org.sdkotlin.typederrors.Error.BadFruitError.BadAppleError
+import org.sdkotlin.typederrors.Error.BadFruitError.RadioactiveBananaError
+import org.sdkotlin.typederrors.Error.BadFruitError.ShriveledGrapesError
 import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
 import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
-
-interface FruitBasket {
-
-	val fruit: List<Fruit>
-}
+import org.sdkotlin.typederrors.FruitBasket
+import org.sdkotlin.typederrors.FruitBasketImpl
 
 class FruitBasketBuilder {
 
@@ -26,7 +25,7 @@ class FruitBasketBuilder {
 	context(Raise<Error>)
 	fun addApple(apple: Apple): FruitBasketBuilder {
 
-		ensure(!apple.hasWorm) { BadFruitError }
+		ensure(!apple.hasWorm) { BadAppleError }
 		fruit.add(apple)
 		return this
 	}
@@ -37,7 +36,9 @@ class FruitBasketBuilder {
 		microSievertsLimit: Double,
 	): FruitBasketBuilder {
 
-		ensure(banana.microSieverts < microSievertsLimit) { BadFruitError }
+		ensure(banana.microSieverts <= microSievertsLimit) {
+			RadioactiveBananaError
+		}
 		fruit.add(banana)
 		return this
 	}
@@ -45,7 +46,7 @@ class FruitBasketBuilder {
 	context(Raise<Error>)
 	fun addGrapes(grapes: Grapes): FruitBasketBuilder {
 
-		ensure(!grapes.moreLikeRaisins) { BadFruitError }
+		ensure(!grapes.moreLikeRaisins) { ShriveledGrapesError }
 		fruit.add(grapes)
 		return this
 	}
@@ -58,10 +59,6 @@ class FruitBasketBuilder {
 
 	fun build(): FruitBasket = FruitBasketImpl(fruit)
 }
-
-private data class FruitBasketImpl(
-	override val fruit: List<Fruit> = emptyList(),
-) : FruitBasket
 
 context(Raise<Error>)
 fun goGroceryShopping(): FruitBasket {

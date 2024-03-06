@@ -4,19 +4,20 @@ import arrow.core.Either
 import arrow.core.flatMap
 import arrow.core.left
 import arrow.core.raise.either
+import arrow.core.raise.ensure
 import arrow.core.right
 import org.sdkotlin.typederrors.Error
-import org.sdkotlin.typederrors.Error.BadFruitError
+import org.sdkotlin.typederrors.Error.BadBasketError
+import org.sdkotlin.typederrors.Error.BadFruitError.BadAppleError
+import org.sdkotlin.typederrors.Error.BadFruitError.RadioactiveBananaError
+import org.sdkotlin.typederrors.Error.BadFruitError.ShriveledGrapesError
 import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
 import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
-
-interface FruitBasket {
-
-	val fruit: List<Fruit>
-}
+import org.sdkotlin.typederrors.FruitBasket
+import org.sdkotlin.typederrors.FruitBasketImpl
 
 class FruitBasketBuilder {
 
@@ -24,54 +25,47 @@ class FruitBasketBuilder {
 
 	private var failed: Boolean = false
 
-	fun addApple(apple: Apple): Either<Error, FruitBasketBuilder> =
-		if (apple.hasWorm) {
+	fun addApple(apple: Apple): Either<Error, FruitBasketBuilder> = either {
+		ensure(!apple.hasWorm) {
 			failed = true
-			BadFruitError.left()
-		} else {
-			fruit.add(apple)
-			this.right()
+			BadAppleError
 		}
+		fruit.add(apple)
+		this@FruitBasketBuilder
+	}
 
 	fun addBanana(
 		banana: Banana,
 		microSievertsLimit: Double,
-	): Either<Error, FruitBasketBuilder> =
-		if (banana.microSieverts >= microSievertsLimit) {
+	): Either<Error, FruitBasketBuilder> = either {
+		ensure(banana.microSieverts <= microSievertsLimit) {
 			failed = true
-			BadFruitError.left()
-		} else {
-			fruit.add(banana)
-			this.right()
+			RadioactiveBananaError
 		}
+		fruit.add(banana)
+		this@FruitBasketBuilder
+	}
 
-	fun addGrapes(grapes: Grapes): Either<Error, FruitBasketBuilder> =
-		if (grapes.moreLikeRaisins) {
+	fun addGrapes(grapes: Grapes): Either<Error, FruitBasketBuilder> = either {
+		ensure(!grapes.moreLikeRaisins) {
 			failed = true
-			BadFruitError.left()
-		} else {
-			fruit.add(grapes)
-			this.right()
+			ShriveledGrapesError
 		}
+		fruit.add(grapes)
+		this@FruitBasketBuilder
+	}
 
 	fun addOrange(orange: Orange): FruitBasketBuilder {
-
 		fruit.add(orange)
 		return this
 	}
 
-	fun build(): Either<Error, FruitBasket> =
+	fun build(): Either<Error, FruitBasket> = either {
 		// Use a staleness flag to ensure we can't ignore an earlier error
-		if (failed) {
-			BadFruitError.left()
-		} else {
-			FruitBasketImpl(fruit).right()
-		}
+		ensure(!failed) { BadBasketError }
+		FruitBasketImpl(fruit)
+	}
 }
-
-private data class FruitBasketImpl(
-	override val fruit: List<Fruit> = emptyList(),
-) : FruitBasket
 
 fun goGroceryShoppingWithNestedFlatMap(): Either<Error, FruitBasket> {
 
