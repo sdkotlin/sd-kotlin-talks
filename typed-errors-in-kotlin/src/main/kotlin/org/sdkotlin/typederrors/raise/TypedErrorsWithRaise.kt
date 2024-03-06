@@ -11,92 +11,54 @@ import org.sdkotlin.typederrors.Fruit.Banana
 import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
 
-/**
- * A fluent, mutation-free builder where some add methods may raise errors.
- */
-interface FruitBasketBuilder {
-
-	context(Raise<Error>)
-	fun addApple(apple: Apple): FruitBasket
-
-	context(Raise<Error>)
-	fun addBanana(banana: Banana, microSievertsLimit: Double): FruitBasket
-
-	context(Raise<Error>)
-	fun addGrapes(grapes: Grapes): FruitBasket
-
-	fun addOrange(orange: Orange): FruitBasket
-}
-
-/**
- * Also its own builder.
- */
-interface FruitBasket : FruitBasketBuilder {
-
-	/**
-	 * The companion object implements the builder interface to bootstrap
-	 * the fluent add chain.
-	 */
-	companion object : FruitBasketBuilder {
-
-		context(Raise<Error>)
-		override fun addApple(apple: Apple): FruitBasket =
-			FruitBasketImpl().addApple(apple)
-
-		context(Raise<Error>)
-		override fun addBanana(
-			banana: Banana,
-			microSievertsLimit: Double,
-		): FruitBasket =
-			FruitBasketImpl().addBanana(banana, microSievertsLimit)
-
-		context(Raise<Error>)
-		override fun addGrapes(grapes: Grapes): FruitBasket =
-			FruitBasketImpl().addGrapes(grapes)
-
-		override fun addOrange(orange: Orange): FruitBasket =
-			FruitBasketImpl().addOrange(orange)
-	}
+interface FruitBasket {
 
 	val fruit: List<Fruit>
-
-	private data class FruitBasketImpl(
-		override val fruit: List<Fruit> = emptyList(),
-	) : FruitBasket {
-
-		context(Raise<Error>)
-		override fun addApple(apple: Apple): FruitBasket {
-
-			ensure(!apple.hasWorm) { BadFruitError }
-
-			// All adds return an appended copy rather than mutate the
-			// original instance.
-			return FruitBasketImpl(fruit + apple)
-		}
-
-		context(Raise<Error>)
-		override fun addBanana(
-			banana: Banana,
-			microSievertsLimit: Double,
-		): FruitBasket {
-
-			ensure(banana.microSieverts < microSievertsLimit) { BadFruitError }
-
-			return FruitBasketImpl(fruit + banana)
-		}
-
-		context(Raise<Error>)
-		override fun addGrapes(grapes: Grapes): FruitBasket {
-
-			ensure(!grapes.moreLikeRaisins) { BadFruitError }
-
-			return FruitBasketImpl(fruit + grapes)
-		}
-
-		override fun addOrange(orange: Orange): FruitBasket =
-			FruitBasketImpl(fruit + orange)
-	}
 }
+
+class FruitBasketBuilder {
+
+	private val fruit: MutableList<Fruit> = mutableListOf()
+
+	context(Raise<Error>)
+	fun addApple(apple: Apple): FruitBasketBuilder {
+
+		ensure(!apple.hasWorm) { BadFruitError }
+		fruit.add(apple)
+		return this
+	}
+
+	context(Raise<Error>)
+	fun addBanana(
+		banana: Banana,
+		microSievertsLimit: Double,
+	): FruitBasketBuilder {
+
+		ensure(banana.microSieverts < microSievertsLimit) { BadFruitError }
+		fruit.add(banana)
+		return this
+	}
+
+	context(Raise<Error>)
+	fun addGrapes(grapes: Grapes): FruitBasketBuilder {
+
+		ensure(!grapes.moreLikeRaisins) { BadFruitError }
+		fruit.add(grapes)
+		return this
+	}
+
+	fun addOrange(orange: Orange): FruitBasketBuilder {
+
+		fruit.add(orange)
+		return this
+	}
+
+	fun build(): FruitBasket = FruitBasketImpl(fruit)
+}
+
+private data class FruitBasketImpl(
+	override val fruit: List<Fruit> = emptyList(),
+) : FruitBasket
 
 context(Raise<Error>)
 fun goGroceryShopping(): FruitBasket {
@@ -104,28 +66,25 @@ fun goGroceryShopping(): FruitBasket {
 	val isTuesday = true
 	val microSievertsLimit = 5.0
 
-	// Needs to be a `var` since we can't chain iteration, and it seems to
-	// be the most natural way to do conditional adds.
-	var fruitBasket: FruitBasket
+	val fruitBasketBuilder = FruitBasketBuilder()
 
 	// Can chain.
-	fruitBasket = FruitBasket
+	fruitBasketBuilder
 		.addApple(Apple(hasWorm = false))
-		.addBanana(Banana(microSieverts = 1.0), microSievertsLimit)
+		.addBanana(Banana(microSieverts = 1.1), microSievertsLimit)
 		.addBanana(Banana(microSieverts = 2.2), microSievertsLimit)
 
 	// Conditional adds via breaking the chain.
 	if (isTuesday) {
-		fruitBasket =
-			fruitBasket.addGrapes(Grapes(moreLikeRaisins = false))
+		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = false))
 	}
 
 	// Iterative adds via breaking the chain.
 	repeat(3) {
-		fruitBasket = fruitBasket.addOrange(Orange)
+		fruitBasketBuilder.addOrange(Orange)
 	}
 
-	return fruitBasket
+	return fruitBasketBuilder.build()
 }
 
 fun main() {

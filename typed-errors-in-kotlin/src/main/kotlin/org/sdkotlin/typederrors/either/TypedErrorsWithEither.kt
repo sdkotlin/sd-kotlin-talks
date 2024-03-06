@@ -6,101 +6,70 @@ import arrow.core.left
 import arrow.core.raise.either
 import arrow.core.right
 import org.sdkotlin.typederrors.Error
-import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Error.BadFruitError
+import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
 import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
 
-/**
- * A fluent, mutation-free builder where some add methods may return errors.
- */
-interface FruitBasketBuilder {
-
-	fun addApple(apple: Apple): Either<Error, FruitBasket>
-
-	fun addBanana(banana: Banana, microSievertsLimit: Double):
-		Either<Error, FruitBasket>
-
-	fun addGrapes(grapes: Grapes): Either<Error, FruitBasket>
-
-	fun addOrange(orange: Orange): FruitBasket
-}
-
-/**
- * The type is also its own builder.
- */
-interface FruitBasket : FruitBasketBuilder {
-
-	/**
-	 * The companion object implements the builder interface to bootstrap
-	 * the fluent add chain.
-	 */
-	companion object : FruitBasketBuilder {
-
-		override fun addApple(apple: Apple): Either<Error, FruitBasket> =
-			FruitBasketImpl().addApple(apple)
-
-		override fun addBanana(
-			banana: Banana,
-			microSievertsLimit: Double,
-		): Either<Error, FruitBasket> =
-			FruitBasketImpl().addBanana(banana, microSievertsLimit)
-
-		override fun addGrapes(grapes: Grapes): Either<Error, FruitBasket> =
-			FruitBasketImpl().addGrapes(grapes)
-
-		override fun addOrange(orange: Orange): FruitBasket =
-			FruitBasketImpl().addOrange(orange)
-	}
+interface FruitBasket {
 
 	val fruit: List<Fruit>
-
-	private data class FruitBasketImpl(
-		override val fruit: List<Fruit> = emptyList(),
-	) : FruitBasket {
-
-		override fun addApple(apple: Apple): Either<Error, FruitBasket> =
-			if (apple.hasWorm) {
-				BadFruitError.left()
-			} else {
-				// All adds return an appended copy rather than mutate the
-				// original instance.
-				FruitBasketImpl(fruit + apple).right()
-			}
-
-		override fun addBanana(
-			banana: Banana,
-			microSievertsLimit: Double,
-		): Either<Error, FruitBasket> =
-			if (banana.microSieverts >= microSievertsLimit) {
-				BadFruitError.left()
-			} else {
-				FruitBasketImpl(fruit + banana).right()
-			}
-
-		override fun addGrapes(grapes: Grapes): Either<Error, FruitBasket> =
-			if (grapes.moreLikeRaisins) {
-				BadFruitError.left()
-			} else {
-				FruitBasketImpl(fruit + grapes).right()
-			}
-
-		override fun addOrange(orange: Orange): FruitBasket =
-			FruitBasketImpl(fruit + orange)
-	}
 }
+
+class FruitBasketBuilder {
+
+	private val fruit: MutableList<Fruit> = mutableListOf()
+
+	fun addApple(apple: Apple): Either<Error, FruitBasketBuilder> =
+		if (apple.hasWorm) {
+			BadFruitError.left()
+		} else {
+			fruit.add(apple)
+			this.right()
+		}
+
+	fun addBanana(
+		banana: Banana,
+		microSievertsLimit: Double,
+	): Either<Error, FruitBasketBuilder> =
+		if (banana.microSieverts >= microSievertsLimit) {
+			BadFruitError.left()
+		} else {
+			fruit.add(banana)
+			this.right()
+		}
+
+	fun addGrapes(grapes: Grapes): Either<Error, FruitBasketBuilder> =
+		if (grapes.moreLikeRaisins) {
+			BadFruitError.left()
+		} else {
+			fruit.add(grapes)
+			this.right()
+		}
+
+	fun addOrange(orange: Orange): FruitBasketBuilder {
+
+		fruit.add(orange)
+		return this
+	}
+
+	fun build(): FruitBasket = FruitBasketImpl(fruit)
+}
+
+private data class FruitBasketImpl(
+	override val fruit: List<Fruit> = emptyList(),
+) : FruitBasket
 
 fun goGroceryShoppingWithNestedFlatMap(): Either<Error, FruitBasket> {
 
 	val isTuesday = true
 	val microSievertsLimit = 5.0
 
-	// Needs to be a `var` since we can't chain iteration.
-	var fruitBasket: Either<Error, FruitBasket>
+	val fruitBasketBuilder = FruitBasketBuilder()
 
-	fruitBasket = FruitBasket.addApple(Apple(hasWorm = false))
+	fruitBasketBuilder.addApple(Apple(hasWorm = false))
 		.flatMap {
 			it.addBanana(Banana(microSieverts = 1.1), microSievertsLimit)
 				.flatMap {
@@ -118,17 +87,14 @@ fun goGroceryShoppingWithNestedFlatMap(): Either<Error, FruitBasket> {
 					}
 				}
 		}
+		.onLeft { return it.left() } // If we forget this, we swallow any errors
 
-	// Iterative flatMap.
-	// There doesn't seem to be any way to perform iterative nested flatMaps,
-	// so we break out of the nesting and chain instead.
+	// Iterative adds via breaking the chain.
 	repeat(3) {
-		fruitBasket = fruitBasket.flatMap {
-			it.addOrange(Orange).right()
-		}
+		fruitBasketBuilder.addOrange(Orange)
 	}
 
-	return fruitBasket
+	return fruitBasketBuilder.build().right()
 }
 
 fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
@@ -136,10 +102,10 @@ fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
 	val isTuesday = true
 	val microSievertsLimit = 5.0
 
-	// Needs to be a `var` since we can't chain iteration.
-	var fruitBasket: Either<Error, FruitBasket>
+	val fruitBasketBuilder = FruitBasketBuilder()
 
-	fruitBasket = FruitBasket.addApple(Apple(hasWorm = false))
+	fruitBasketBuilder
+		.addApple(Apple(hasWorm = false))
 		.flatMap {
 			it.addBanana(Banana(microSieverts = 1.1), microSievertsLimit)
 		}.flatMap {
@@ -152,48 +118,44 @@ fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
 				it.right()
 			}
 		}
+		.onLeft { return it.left() } // If we forget this, we swallow any errors
 
-	// Iterative flatMap.
-	// There doesn't seem to be any way to perform iterative flatMaps without
-	// breaking the chain.
+	// Iterative adds via breaking the chain.
 	repeat(3) {
-		fruitBasket = fruitBasket.flatMap {
-			it.addOrange(Orange).right()
-		}
+		fruitBasketBuilder.addOrange(Orange)
 	}
 
-	return fruitBasket
+	return fruitBasketBuilder.build().right()
 }
 
-fun goGroceryShopping(): Either<Error, FruitBasket> =
-	either { // Using the builder with `.bind()` (i.e. "for-comprehension").
+// Using the builder with `.bind()` (i.e. "for-comprehension").
+fun goGroceryShopping(): Either<Error, FruitBasket> = either {
 
-		val isTuesday = true
-		val microSievertsLimit = 5.0
+	val isTuesday = true
+	val microSievertsLimit = 5.0
 
-		// Needs to be a `var` since we can't chain iteration, and it seems to
-		// be the most natural way to do conditional adds.
-		var fruitBasket: FruitBasket
+	val fruitBasketBuilder = FruitBasketBuilder()
 
-		// Can chain with `bind`.
-		fruitBasket = FruitBasket.addApple(Apple(hasWorm = false)).bind()
-			.addBanana(Banana(microSieverts = 1.0), microSievertsLimit).bind()
-			.addBanana(Banana(microSieverts = 2.2), microSievertsLimit).bind()
+	// Can chain with `bind()`.
+	fruitBasketBuilder
+		.addApple(Apple(hasWorm = false)).bind()
+		.addBanana(Banana(microSieverts = 1.1), microSievertsLimit).bind()
+		.addBanana(Banana(microSieverts = 2.2), microSievertsLimit).bind()
 
-		// Conditional adds via breaking the chain.
-		if (isTuesday) {
-			fruitBasket =
-				fruitBasket.addGrapes(Grapes(moreLikeRaisins = false)).bind()
-		}
-
-		// Iterative adds via breaking the chain.
-		repeat(3) {
-			fruitBasket = fruitBasket.addOrange(Orange)
-		}
-
-		// Yield the "Right" value.
-		fruitBasket
+	// Conditional adds via breaking the chain.
+	if (isTuesday) {
+		// If we forget the `bind()`, we swallow any errors
+		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = false)).bind()
 	}
+
+	// Iterative adds via breaking the chain.
+	repeat(3) {
+		fruitBasketBuilder.addOrange(Orange)
+	}
+
+	// Yield the `Either.Right` value.
+	fruitBasketBuilder.build()
+}
 
 fun main() {
 
