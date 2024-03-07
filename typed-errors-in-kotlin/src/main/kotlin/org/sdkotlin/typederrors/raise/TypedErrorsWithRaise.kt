@@ -99,6 +99,13 @@ fun main() {
 		ifLeft = { println("Shopping error: $it") }
 	)
 
+	// Or ...
+
+	when (eitherResult) {
+		is Either.Right -> {}
+		is Either.Left -> {}
+	}
+
 	// Or...
 
 	recover(
