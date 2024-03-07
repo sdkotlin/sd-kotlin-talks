@@ -102,8 +102,12 @@ fun main() {
 	// Or ...
 
 	when (eitherResult) {
-		is Either.Right -> {}
-		is Either.Left -> {}
+		is Either.Right -> {
+			println("Shopping result: $eitherResult")
+		}
+		is Either.Left -> {
+			println("Shopping error: $eitherResult")
+		}
 	}
 
 	// Or...
