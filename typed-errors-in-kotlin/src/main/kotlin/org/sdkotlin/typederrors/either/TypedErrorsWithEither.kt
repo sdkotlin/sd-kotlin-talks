@@ -6,11 +6,6 @@ import arrow.core.left
 import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.right
-import org.sdkotlin.typederrors.Error
-import org.sdkotlin.typederrors.Error.BadBasketError
-import org.sdkotlin.typederrors.Error.BadFruitError.BadAppleError
-import org.sdkotlin.typederrors.Error.BadFruitError.RadioactiveBananaError
-import org.sdkotlin.typederrors.Error.BadFruitError.ShriveledGrapesError
 import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
@@ -18,6 +13,11 @@ import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
 import org.sdkotlin.typederrors.FruitBasket
 import org.sdkotlin.typederrors.FruitBasketImpl
+import org.sdkotlin.typederrors.TypedError
+import org.sdkotlin.typederrors.TypedError.BadBasketTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.BadAppleTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.RadioactiveBananaTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.ShriveledGrapesTypedError
 
 class FruitBasketBuilder {
 
@@ -25,49 +25,52 @@ class FruitBasketBuilder {
 
 	private var failed: Boolean = false
 
-	fun addApple(apple: Apple): Either<Error, FruitBasketBuilder> = either {
-		ensure(!apple.hasWorm) {
-			failed = true
-			BadAppleError
+	fun addApple(apple: Apple): Either<TypedError, FruitBasketBuilder> =
+		either {
+			ensure(!apple.hasWorm) {
+				failed = true
+				BadAppleTypedError
+			}
+			fruit.add(apple)
+			this@FruitBasketBuilder
 		}
-		fruit.add(apple)
-		this@FruitBasketBuilder
-	}
 
 	fun addBanana(
 		banana: Banana,
 		microSievertsLimit: Double,
-	): Either<Error, FruitBasketBuilder> = either {
+	): Either<TypedError, FruitBasketBuilder> = either {
 		ensure(banana.microSieverts <= microSievertsLimit) {
 			failed = true
-			RadioactiveBananaError
+			RadioactiveBananaTypedError
 		}
 		fruit.add(banana)
 		this@FruitBasketBuilder
 	}
 
-	fun addGrapes(grapes: Grapes): Either<Error, FruitBasketBuilder> = either {
-		ensure(!grapes.moreLikeRaisins) {
-			failed = true
-			ShriveledGrapesError
+	fun addGrapes(grapes: Grapes): Either<TypedError, FruitBasketBuilder> =
+		either {
+			ensure(!grapes.moreLikeRaisins) {
+				failed = true
+				ShriveledGrapesTypedError
+			}
+			fruit.add(grapes)
+			this@FruitBasketBuilder
 		}
-		fruit.add(grapes)
-		this@FruitBasketBuilder
-	}
 
 	fun addOrange(orange: Orange): FruitBasketBuilder {
 		fruit.add(orange)
 		return this
 	}
 
-	fun build(): Either<Error, FruitBasket> = either {
-		// Use a staleness flag to ensure we can't ignore an earlier error
-		ensure(!failed) { BadBasketError }
-		FruitBasketImpl(fruit)
-	}
+	fun build(): Either<TypedError, FruitBasket> =
+		either {
+			// Use a staleness flag to ensure we can't ignore an earlier error
+			ensure(!failed) { BadBasketTypedError }
+			FruitBasketImpl(fruit)
+		}
 }
 
-fun goGroceryShoppingWithNestedFlatMap(): Either<Error, FruitBasket> {
+fun goGroceryShoppingWithNestedFlatMap(): Either<TypedError, FruitBasket> {
 
 	val isTuesday = true
 	val microSievertsLimit = 5.0
@@ -103,7 +106,7 @@ fun goGroceryShoppingWithNestedFlatMap(): Either<Error, FruitBasket> {
 	return fruitBasketBuilder.build()
 }
 
-fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
+fun goGroceryShoppingWithChainedFlatMap(): Either<TypedError, FruitBasket> {
 
 	val isTuesday = true
 	val microSievertsLimit = 5.0
@@ -136,7 +139,7 @@ fun goGroceryShoppingWithChainedFlatMap(): Either<Error, FruitBasket> {
 }
 
 // Using the builder with `.bind()` (i.e. "for-comprehension").
-fun goGroceryShopping(): Either<Error, FruitBasket> = either {
+fun goGroceryShopping(): Either<TypedError, FruitBasket> = either {
 
 	val isTuesday = true
 	val microSievertsLimit = 5.0

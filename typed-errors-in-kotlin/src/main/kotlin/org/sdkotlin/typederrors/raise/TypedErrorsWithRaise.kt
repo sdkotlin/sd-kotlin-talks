@@ -6,10 +6,10 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.fold
 import arrow.core.raise.recover
-import org.sdkotlin.typederrors.Error
-import org.sdkotlin.typederrors.Error.BadFruitError.BadAppleError
-import org.sdkotlin.typederrors.Error.BadFruitError.RadioactiveBananaError
-import org.sdkotlin.typederrors.Error.BadFruitError.ShriveledGrapesError
+import org.sdkotlin.typederrors.TypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.BadAppleTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.RadioactiveBananaTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.ShriveledGrapesTypedError
 import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
@@ -22,31 +22,31 @@ class FruitBasketBuilder {
 
 	private val fruit: MutableList<Fruit> = mutableListOf()
 
-	context(Raise<Error>)
+	context(Raise<TypedError>)
 	fun addApple(apple: Apple): FruitBasketBuilder {
 
-		ensure(!apple.hasWorm) { BadAppleError }
+		ensure(!apple.hasWorm) { BadAppleTypedError }
 		fruit.add(apple)
 		return this
 	}
 
-	context(Raise<Error>)
+	context(Raise<TypedError>)
 	fun addBanana(
 		banana: Banana,
 		microSievertsLimit: Double,
 	): FruitBasketBuilder {
 
 		ensure(banana.microSieverts <= microSievertsLimit) {
-			RadioactiveBananaError
+			RadioactiveBananaTypedError
 		}
 		fruit.add(banana)
 		return this
 	}
 
-	context(Raise<Error>)
+	context(Raise<TypedError>)
 	fun addGrapes(grapes: Grapes): FruitBasketBuilder {
 
-		ensure(!grapes.moreLikeRaisins) { ShriveledGrapesError }
+		ensure(!grapes.moreLikeRaisins) { ShriveledGrapesTypedError }
 		fruit.add(grapes)
 		return this
 	}
@@ -60,7 +60,7 @@ class FruitBasketBuilder {
 	fun build(): FruitBasket = FruitBasketImpl(fruit)
 }
 
-context(Raise<Error>)
+context(Raise<TypedError>)
 fun goGroceryShopping(): FruitBasket {
 
 	val isTuesday = true
@@ -89,7 +89,7 @@ fun goGroceryShopping(): FruitBasket {
 
 fun main() {
 
-	val eitherResult: Either<Error, FruitBasket> =
+	val eitherResult: Either<TypedError, FruitBasket> =
 		either {
 			goGroceryShopping()
 		}
