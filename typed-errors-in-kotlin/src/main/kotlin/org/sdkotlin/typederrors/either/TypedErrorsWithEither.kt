@@ -156,7 +156,7 @@ fun goGroceryShopping(): Either<TypedError, FruitBasket> = either {
 	if (isTuesday) {
 		// If we forget to `bind()` here, we may swallow or continue past any
 		// errors
-		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = false)).bind()
+		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = true)).bind()
 	}
 
 	// Iterative adds via breaking the chain.

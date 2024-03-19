@@ -10,6 +10,10 @@ fun main() {
 
 	val listOfInts: List<Int> = listOf(1, 2, 3)
 
+	val otherList: List<Int> = List(3) { index -> index + 1}
+
+	println(otherList)
+
 	val setOfInts = setOf(1, 2, 3)
 
 	// The map factory function takes `Pair`s, which can be constructed with

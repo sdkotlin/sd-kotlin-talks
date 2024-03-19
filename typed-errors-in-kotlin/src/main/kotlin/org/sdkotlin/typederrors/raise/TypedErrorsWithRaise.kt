@@ -76,7 +76,7 @@ fun goGroceryShopping(): FruitBasket {
 
 	// Conditional adds via breaking the chain.
 	if (isTuesday) {
-		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = false))
+		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = true))
 	}
 
 	// Iterative adds via breaking the chain.
