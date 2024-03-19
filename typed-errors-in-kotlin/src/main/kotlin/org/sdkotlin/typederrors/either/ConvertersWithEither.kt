@@ -13,7 +13,7 @@ fun interface EitherConverter<out E, in I, out O> {
 	operator fun invoke(input: I): Either<E, O>
 }
 
-// A `Converter` is an `EitherConverter` that's always a `Right`.
+// A `Converter` is an `EitherConverter` that's always a `Right`
 fun interface Converter<in I, out O> : EitherConverter<Nothing, I, O> {
 	override operator fun invoke(input: I): Right<O>
 }
@@ -35,7 +35,7 @@ object IntToStringConverter : Converter<Int, String> {
 		Right(input.toString())
 }
 
-// We can generalize over the `EitherConverter` supertype...
+// We can generalize over the `EitherConverter` supertype
 fun <E, I, O> withEitherConverter(
 	input: I,
 	converter: EitherConverter<E, I, O>,
@@ -49,6 +49,7 @@ fun main() {
 	}
 
 	println(
+		// Is an Either.Right<Int>
 		"withContextConverter(\"1\", StringToIntConverter): $stringToIntSuccess"
 	)
 
@@ -57,21 +58,26 @@ fun main() {
 	}
 
 	println(
+		// Is an Either.Left<ConverterError>
 		"withContextConverter(\"Nope\", StringToIntConverter): $stringToIntFailure"
 	)
 
 	val intToStringSuccess = either<ConverterError, String> {
-		// The `Converter` subtype is substitutable...
+		// The `Converter` subtype is substitutable
 		withEitherConverter(1, IntToStringConverter).bind()
 	}
 
 	println(
+		// Is an Either.Right<String>.
 		"withContextConverter(1, IntToStringConverter): $intToStringSuccess"
 	)
 
-	// To definitively get the String we still need to resolve the `Either`.
+	// To definitively get the String we still need to resolve the `Either`
 	val intToStringDirect: String = IntToStringConverter(1)
 		.getOrElse { throw RuntimeException("This should never happen.") }
 
-	println("direct IntToStringConverter(1): $intToStringDirect")
+	println(
+		// Is a String
+		"direct IntToStringConverter(1): $intToStringDirect"
+	)
 }

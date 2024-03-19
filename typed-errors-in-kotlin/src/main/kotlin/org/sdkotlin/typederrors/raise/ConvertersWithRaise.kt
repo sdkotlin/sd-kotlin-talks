@@ -12,7 +12,7 @@ fun interface ContextConverter<C, in I, out O> {
 	operator fun invoke(input: I): O
 }
 
-// A `Converter` is `ContextConverter` with anything in context.
+// A `Converter` is `ContextConverter` with anything in context
 fun interface Converter<in I, out O> : ContextConverter<Any?, I, O>
 
 object StringToIntConverter :
@@ -32,15 +32,12 @@ object IntToStringConverter : Converter<Int, String> {
 	override fun invoke(input: Int): String = input.toString()
 }
 
-// We can generalize over the `ContextConverter` supertype...
+// We can generalize over the `ContextConverter` supertype
 context(C)
 fun <C, I, O> withContextConverter(
 	input: I,
 	converter: ContextConverter<C, I, O>,
-): O {
-
-	return converter(input)
-}
+): O = converter(input)
 
 fun main() {
 
@@ -60,8 +57,9 @@ fun main() {
 		"withContextConverter(\"Nope\", StringToIntConverter): $stringToIntFailure"
 	)
 
+	// "Not enough information to infer type variable Error"...
 	val intToStringSuccess = either<ConverterError, String> {
-		// The `Converter` subtype is substitutable...
+		// The `Converter` subtype is substitutable
 		withContextConverter(1, IntToStringConverter)
 	}
 
@@ -69,8 +67,9 @@ fun main() {
 		"withContextConverter(1, IntToStringConverter): $intToStringSuccess"
 	)
 
-	// We can call the `Converter` subtype with anything being in context.
-	with(Unit) {
+	// Direct call to the `Converter` subtype seems to require a `with` for
+	// `null` or any object (e.g `Unit`)
+	with(null) {
 		println("direct IntToStringConverter(1): " + IntToStringConverter(1))
 	}
 }
