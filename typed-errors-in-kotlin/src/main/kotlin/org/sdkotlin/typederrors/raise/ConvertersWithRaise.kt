@@ -9,7 +9,7 @@ data class ConverterError(
 
 fun interface ContextConverter<C, in I, out O> {
 	context(C)
-	operator fun invoke(input: I): O
+	fun convert(input: I): O
 }
 
 // A `Converter` is `ContextConverter` with anything in context
@@ -19,7 +19,7 @@ object StringToIntConverter :
 	ContextConverter<Raise<ConverterError>, String, Int> {
 
 	context(Raise<ConverterError>)
-	override fun invoke(input: String): Int =
+	override fun convert(input: String): Int =
 		try {
 			input.toInt()
 		} catch (e: NumberFormatException) {
@@ -29,7 +29,7 @@ object StringToIntConverter :
 
 object IntToStringConverter : Converter<Int, String> {
 	context(Any?)
-	override fun invoke(input: Int): String = input.toString()
+	override fun convert(input: Int): String = input.toString()
 }
 
 // We can generalize over the `ContextConverter` supertype
@@ -37,7 +37,7 @@ context(C)
 fun <C, I, O> withContextConverter(
 	input: I,
 	converter: ContextConverter<C, I, O>,
-): O = converter(input)
+): O = converter.convert(input)
 
 fun main() {
 
@@ -68,8 +68,10 @@ fun main() {
 	)
 
 	// Direct call to the `Converter` subtype seems to require a `with` for
-	// `null` or any object (e.g `Unit`)
+	// `null` or any object (e.g `Unit`). Otherwise, "No required context
+	// receiver found".
 	with(null) {
-		println("direct IntToStringConverter(1): " + IntToStringConverter(1))
+		val directIntToStringSuccess = IntToStringConverter.convert(1)
+		println("direct IntToStringConverter(1): $directIntToStringSuccess")
 	}
 }
