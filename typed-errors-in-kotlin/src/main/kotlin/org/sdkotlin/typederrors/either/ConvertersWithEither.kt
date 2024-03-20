@@ -1,27 +1,19 @@
 package org.sdkotlin.typederrors.either
 
 import arrow.core.Either
-import arrow.core.Either.Right
-import arrow.core.getOrElse
 import arrow.core.raise.either
 
 data class ConverterError(
 	val e: Exception,
 )
 
-fun interface EitherConverter<out E, in I, out O> {
-	operator fun invoke(input: I): Either<E, O>
+fun interface Converter<in I, out O> {
+	fun convert(input: I): O
 }
 
-// A `Converter` is an `EitherConverter` that's always a `Right`
-fun interface Converter<in I, out O> : EitherConverter<Nothing, I, O> {
-	override operator fun invoke(input: I): Right<O>
-}
+object StringToIntConverter : Converter<String, Either<ConverterError, Int>> {
 
-object StringToIntConverter :
-	EitherConverter<ConverterError, String, Int> {
-
-	override fun invoke(input: String): Either<ConverterError, Int> = either {
+	override fun convert(input: String): Either<ConverterError, Int> = either {
 		try {
 			input.toInt()
 		} catch (e: NumberFormatException) {
@@ -31,53 +23,74 @@ object StringToIntConverter :
 }
 
 object IntToStringConverter : Converter<Int, String> {
-	override fun invoke(input: Int): Right<String> =
-		Right(input.toString())
+	override fun convert(input: Int): String =
+		input.toString()
 }
 
-// We can generalize over the `EitherConverter` supertype
-fun <E, I, O> withEitherConverter(
+// We can generalize over the `Converter` type
+fun <I, O> withConverter(
 	input: I,
-	converter: EitherConverter<E, I, O>,
-): Either<E, O> =
-	converter(input)
+	converter: Converter<I, O>,
+): O =
+	converter.convert(input)
 
 fun main() {
 
-	val stringToIntSuccess = either {
-		withEitherConverter("1", StringToIntConverter).bind()
+	// We can directly call an `Either`-returning `Converter` if we use the
+	// `either` builder and `bind()`
+	val directStringToIntSuccess = either {
+		StringToIntConverter.convert("1").bind()
 	}
 
 	println(
-		// Is an Either.Right<Int>
-		"withContextConverter(\"1\", StringToIntConverter): $stringToIntSuccess"
+		// Is an `Either.Right<Int>`
+		"StringToIntConverter.convert(\"1\"): $directStringToIntSuccess"
+	)
+
+	val directStringToIntFailure = either {
+		StringToIntConverter.convert("Nope").bind()
+	}
+
+	println(
+		// Is an `Either.Left<ConverterError>`
+		"StringToIntConverter.convert(\"Nope\"): $directStringToIntFailure"
+	)
+
+	// We can pass an `Either`-returning `Converter` to `withConverter` if we
+	// use the `either` builder and `bind()`
+	val stringToIntSuccess = either {
+		withConverter("1", StringToIntConverter).bind()
+	}
+
+	println(
+		// Is an `Either.Right<Int>`
+		"withConverter(\"1\", StringToIntConverter): $stringToIntSuccess"
 	)
 
 	val stringToIntFailure = either {
-		withEitherConverter("Nope", StringToIntConverter).bind()
+		withConverter("Nope", StringToIntConverter).bind()
 	}
 
 	println(
-		// Is an Either.Left<ConverterError>
-		"withContextConverter(\"Nope\", StringToIntConverter): $stringToIntFailure"
+		// Is an `Either.Left<ConverterError>`
+		"withConverter(\"Nope\", StringToIntConverter): $stringToIntFailure"
 	)
 
-	val intToStringSuccess = either<ConverterError, String> {
-		// The `Converter` subtype is substitutable
-		withEitherConverter(1, IntToStringConverter).bind()
-	}
+	// We can directly call `withConverter` with a non-`Either`-returning
+	// `Converter`
+	val intToStringSuccess =
+		withConverter(1, IntToStringConverter)
 
 	println(
-		// Is an Either.Right<String>.
-		"withContextConverter(1, IntToStringConverter): $intToStringSuccess"
+		// Is a String.
+		"withConverter(1, IntToStringConverter): $intToStringSuccess"
 	)
 
-	// To definitively get the String we still need to resolve the `Either`
-	val intToStringDirect: String = IntToStringConverter(1)
-		.getOrElse { throw RuntimeException("This should never happen.") }
+	// We can also directly call a non-`Either`-returning `Converter`
+	val directIntToStringSuccess: String = IntToStringConverter.convert(1)
 
 	println(
 		// Is a String
-		"direct IntToStringConverter(1): $intToStringDirect"
+		"IntToStringConverter.convert(1): $directIntToStringSuccess"
 	)
 }
