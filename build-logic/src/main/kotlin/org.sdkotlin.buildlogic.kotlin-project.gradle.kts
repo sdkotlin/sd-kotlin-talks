@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -10,7 +9,7 @@ plugins {
 	id("com.autonomousapps.dependency-analysis")
 }
 
-val javaTargetVersion: String = JavaVersion.VERSION_17.toString()
+val javaTargetVersion: String = JavaVersion.VERSION_21.toString()
 
 kotlin {
 	jvmToolchain {
@@ -27,19 +26,15 @@ dependencies {
 
 tasks {
 	withType<JavaCompile>().configureEach {
-		sourceCompatibility = javaTargetVersion
-		targetCompatibility = javaTargetVersion
 
 		with(options) {
-
+			release = javaTargetVersion.toInt()
 			isFork = true
-			compilerArgs.add("--enable-preview")
 		}
 	}
 
 	withType<KotlinCompile>().configureEach {
 		compilerOptions {
-			jvmTarget = JvmTarget.fromTarget(javaTargetVersion)
 			optIn = listOf(
 				"kotlin.ExperimentalStdlibApi",
 				"kotlin.contracts.ExperimentalContracts",
@@ -49,12 +44,10 @@ tasks {
 			freeCompilerArgs = listOf(
 				// https://youtrack.jetbrains.com/issue/KT-61410/
 				"-Xjsr305=strict",
+				// https://youtrack.jetbrains.com/issue/KT-49746/
+				"-Xjdk-release=$javaTargetVersion"
 			)
 		}
-	}
-
-	withType<Test>().configureEach {
-		jvmArgs("--enable-preview")
 	}
 
 	withType<JavaExec>().configureEach {
@@ -63,10 +56,6 @@ tasks {
 
 			// https://github.com/gradle/gradle/issues/21364
 			notCompatibleWithConfigurationCache("JavaExec created by IntelliJ")
-
-			args("Testing")
 		}
-
-		jvmArgs("--enable-preview")
 	}
 }
