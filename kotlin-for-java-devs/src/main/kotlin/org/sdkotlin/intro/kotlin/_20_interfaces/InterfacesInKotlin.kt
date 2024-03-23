@@ -34,7 +34,7 @@ interface Shape {
 	val abstractName
 		get() = "Shape"
 
-	// They can be var given a side-effect setter. Maybe this could be
+	// They can be var given a side effect setter. Maybe this could be
 	// exploited when creating internal DSLs.
 
 	var hmm
@@ -51,7 +51,7 @@ class Circle(override val name: String) : Shape, Serializable {
 	override fun describe() = println("I'm no square.")
 }
 
-// Multiple interface inheritance is supported as in Java.
+// Multiple interface inheritance is supported, as in Java.
 
 interface Serializable
 
@@ -61,6 +61,22 @@ class Triangle : Shape, Serializable {
 
 	override val name: String
 		get() = "Pointy"
+}
+
+// If an interface declares only a single abstract method (SAM), it can be
+// declared as a functional interface:
+
+fun interface ToStringConverter {
+	fun convert(a: Any?): String
+}
+
+// Then is can be initialized with a lambda via a SAM conversion
+
+fun withFunctionalInterfaces() {
+
+	val intToStringConverter = ToStringConverter { it.toString() }
+
+	println(intToStringConverter.convert(1))
 }
 
 fun main() {
@@ -77,4 +93,6 @@ fun main() {
 	println("circle.hmm: ${circle.hmm}")
 	print("circle.hmm = ")
 	circle.hmm = "For DSLs maybe?"
+
+	withFunctionalInterfaces()
 }

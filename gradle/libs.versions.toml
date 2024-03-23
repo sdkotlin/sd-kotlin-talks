@@ -1,23 +1,23 @@
 [versions]
 
-arrow = "1.2.1"
+arrow = "1.2.3"
 assertj = "3.25.3"
 dependency-analysis-gradle-plugin = "1.30.0"
-equalsverifier = "3.15.7"
+equalsverifier = "3.16"
 jetbrains-annotations = "24.1.0"
 junit = "5.10.2"
 koin = "3.5.3"
-kotest = "5.8.0"
+kotest = "5.8.1"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "2.0.0-Beta4"
 kotlinpoet = "1.16.0"
 kotlinx-coroutines = "1.8.0"
 kotlinx-dl = "0.5.2"
 ksp = "2.0.0-Beta4-1.0.17" # Must match Kotlin version above.
-mockito = "5.10.0"
+mockito = "5.11.0"
 mockito-kotlin = "2.2.0"
-mockk = "1.13.9"
-org-json = "20240205"
+mockk = "1.13.10"
+org-json = "20240303"
 slf4j = "2.0.12"
 versions-gradle-plugin = "0.51.0"
 
