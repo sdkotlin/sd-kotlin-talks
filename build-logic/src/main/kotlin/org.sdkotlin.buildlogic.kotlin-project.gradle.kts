@@ -11,14 +11,6 @@ plugins {
 
 val javaTargetVersion: String = JavaVersion.VERSION_21.toString()
 
-kotlin {
-	jvmToolchain {
-		languageVersion.set(
-			JavaLanguageVersion.of(javaTargetVersion)
-		)
-	}
-}
-
 dependencies {
 
 	runtimeOnly(kotlin("reflect"))
