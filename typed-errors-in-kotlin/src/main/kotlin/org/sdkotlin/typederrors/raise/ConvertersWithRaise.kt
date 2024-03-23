@@ -39,39 +39,41 @@ fun <C, I, O> withContextConverter(
 	converter: ContextConverter<C, I, O>,
 ): O = converter.convert(input)
 
-fun main() {
+// Only compiles with K1 currently...
 
-	val stringToIntSuccess = either {
-		withContextConverter("1", StringToIntConverter)
-	}
-
-	println(
-		"withContextConverter(\"1\", StringToIntConverter): $stringToIntSuccess"
-	)
-
-	val stringToIntFailure = either {
-		withContextConverter("Nope", StringToIntConverter)
-	}
-
-	println(
-		"withContextConverter(\"Nope\", StringToIntConverter): $stringToIntFailure"
-	)
-
-	// "Not enough information to infer type variable Error"...
-	val intToStringSuccess = either<ConverterError, String> {
-		// The `Converter` subtype is substitutable
-		withContextConverter(1, IntToStringConverter)
-	}
-
-	println(
-		"withContextConverter(1, IntToStringConverter): $intToStringSuccess"
-	)
-
-	// Direct call to the `Converter` subtype seems to require a `with` for
-	// `null` or any object (e.g `Unit`). Otherwise, "No required context
-	// receiver found".
-	with(null) {
-		val directIntToStringSuccess = IntToStringConverter.convert(1)
-		println("direct IntToStringConverter(1): $directIntToStringSuccess")
-	}
-}
+//fun main() {
+//
+//	val stringToIntSuccess = either {
+//		withContextConverter("1", StringToIntConverter)
+//	}
+//
+//	println(
+//		"withContextConverter(\"1\", StringToIntConverter): $stringToIntSuccess"
+//	)
+//
+//	val stringToIntFailure = either {
+//		withContextConverter("Nope", StringToIntConverter)
+//	}
+//
+//	println(
+//		"withContextConverter(\"Nope\", StringToIntConverter): $stringToIntFailure"
+//	)
+//
+//	// "Not enough information to infer type variable Error"...
+//	val intToStringSuccess = either<ConverterError, String> {
+//		// The `Converter` subtype is substitutable
+//		withContextConverter(1, IntToStringConverter)
+//	}
+//
+//	println(
+//		"withContextConverter(1, IntToStringConverter): $intToStringSuccess"
+//	)
+//
+//	// Direct call to the `Converter` subtype seems to require a `with` for
+//	// `null` or any object (e.g `Unit`). Otherwise, "No required context
+//	// receiver found".
+//	with(null) {
+//		val directIntToStringSuccess = IntToStringConverter.convert(1)
+//		println("direct IntToStringConverter(1): $directIntToStringSuccess")
+//	}
+//}

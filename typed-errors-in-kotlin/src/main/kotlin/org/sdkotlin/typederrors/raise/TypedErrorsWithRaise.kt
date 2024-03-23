@@ -112,16 +112,18 @@ fun main() {
 
 	// Or...
 
-	recover(
-		block = { println("Shopping result: ${goGroceryShopping()}") },
-		recover = { println("Shopping error: $it") }
-	)
+	// Only compiles with K1 currently...
+
+	//recover(
+	//	block = { println("Shopping result: ${goGroceryShopping()}") },
+	//	recover = { println("Shopping error: $it") }
+	//)
 
 	// Or...
 
-	fold(
-		block = { goGroceryShopping() },
-		recover = { println("Shopping error: $it") },
-		transform = { println("Shopping result: $it") }
-	)
+	//fold(
+	//	block = { goGroceryShopping() },
+	//	recover = { println("Shopping error: $it") },
+	//	transform = { println("Shopping result: $it") }
+	//)
 }
