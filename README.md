@@ -1,4 +1,4 @@
-![Build Status](https://github.com/sdkotlin/sd-kotlin-talks/actions/workflows/gradle.yml/badge.svg)
+[![Build Status](https://github.com/sdkotlin/sd-kotlin-talks/actions/workflows/gradle.yml/badge.svg)](https://github.com/sdkotlin/sd-kotlin-talks/actions/workflows/gradle.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sdkotlin_sd-kotlin-talks&metric=alert_status)](https://sonarcloud.io/dashboard?id=sdkotlin_sd-kotlin-talks)
 
 # San Diego Kotlin User Group Talks
