@@ -31,9 +31,9 @@ gradleEnterprise {
 	}
 }
 
-includeBuild("platforms")
-
 rootProject.name = "sd-kotlin-talks"
+
+includeBuild("platforms")
 
 include("di-with-koin")
 include("effective-kotlin")
