@@ -1,5 +1,6 @@
 import com.autonomousapps.DependencyAnalysisSubExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinCompilation.Companion.MAIN_COMPILATION_NAME
+import org.sdkotlin.buildlogic.test.Compilations.TEST_FIXTURES_COMPILATION_NAME
 
 plugins {
 	id("org.sdkotlin.buildlogic.kotlin-project")
@@ -85,6 +86,9 @@ kotlin {
 		// Workaround for https://youtrack.jetbrains.com/issue/KTIJ-23114.
 		compilations.getByName(testSuiteName)
 			.associateWith(compilations.getByName(MAIN_COMPILATION_NAME))
+		compilations.findByName(TEST_FIXTURES_COMPILATION_NAME)?.let {
+			compilations.getByName(testSuiteName).associateWith(it)
+		}
 	}
 }
 
