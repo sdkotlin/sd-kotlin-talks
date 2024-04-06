@@ -6,7 +6,7 @@ dependency-analysis-gradle-plugin = "1.30.0"
 equalsverifier = "3.16"
 jetbrains-annotations = "24.1.0"
 junit = "5.10.2"
-koin = "3.5.3"
+koin = "3.5.4"
 kotest = "5.8.1"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "1.9.23"
