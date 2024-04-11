@@ -4,16 +4,6 @@ plugins {
 	`kotlin-dsl`
 }
 
-kotlin {
-	jvmToolchain {
-		languageVersion.set(
-			JavaLanguageVersion.of(
-				JavaVersion.VERSION_17.toString()
-			)
-		)
-	}
-}
-
 dependencies {
 
 	implementation(platform("org.sdkotlin.platforms:plugins-platform"))

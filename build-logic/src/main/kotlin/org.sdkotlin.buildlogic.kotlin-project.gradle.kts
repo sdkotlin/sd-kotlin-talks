@@ -11,14 +11,6 @@ plugins {
 
 val javaTargetVersion: String = JavaVersion.VERSION_21.toString()
 
-kotlin {
-	jvmToolchain {
-		languageVersion.set(
-			JavaLanguageVersion.of(javaTargetVersion)
-		)
-	}
-}
-
 dependencies {
 
 	runtimeOnly(kotlin("reflect"))
@@ -47,15 +39,6 @@ tasks {
 				// https://youtrack.jetbrains.com/issue/KT-49746/
 				"-Xjdk-release=$javaTargetVersion"
 			)
-		}
-	}
-
-	withType<JavaExec>().configureEach {
-
-		if (name.endsWith("main()")) {
-
-			// https://github.com/gradle/gradle/issues/21364
-			notCompatibleWithConfigurationCache("JavaExec created by IntelliJ")
 		}
 	}
 }

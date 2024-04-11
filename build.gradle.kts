@@ -41,6 +41,11 @@ dependencyAnalysis {
 					"org.junit.jupiter:junit-jupiter-params",
 				)
 			}
+			onIncorrectConfiguration {
+				// https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/1059
+				severity("warn")
+				exclude("org.jetbrains.kotlin:kotlin-stdlib")
+			}
 		}
 	}
 }

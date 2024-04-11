@@ -7,7 +7,7 @@ data class ConverterError(
 	val e: Exception,
 )
 
-fun interface ContextConverter<C, in I, out O> {
+fun interface ContextConverter<in C, in I, out O> {
 	context(C)
 	fun convert(input: I): O
 }
