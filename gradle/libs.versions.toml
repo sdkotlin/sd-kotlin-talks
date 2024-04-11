@@ -9,11 +9,11 @@ junit = "5.10.2"
 koin = "3.5.5"
 kotest = "5.8.1"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
-kotlin = "2.0.0-Beta5"
+kotlin = "2.0.0-RC1"
 kotlinpoet = "1.16.0"
 kotlinx-coroutines = "1.8.0"
 kotlinx-dl = "0.5.2"
-ksp = "2.0.0-Beta5-1.0.19" # Must match Kotlin version above.
+ksp = "2.0.0-RC1-1.0.20" # Must match Kotlin version above.
 mockito = "5.11.0"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.10"

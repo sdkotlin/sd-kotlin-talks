@@ -6,10 +6,6 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.fold
 import arrow.core.raise.recover
-import org.sdkotlin.typederrors.TypedError
-import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.BadAppleTypedError
-import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.RadioactiveBananaTypedError
-import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.ShriveledGrapesTypedError
 import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
@@ -17,6 +13,10 @@ import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
 import org.sdkotlin.typederrors.FruitBasket
 import org.sdkotlin.typederrors.FruitBasketImpl
+import org.sdkotlin.typederrors.TypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.BadAppleTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.RadioactiveBananaTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.ShriveledGrapesTypedError
 
 class FruitBasketBuilder {
 
@@ -76,7 +76,7 @@ fun goGroceryShopping(): FruitBasket {
 
 	// Conditional adds via breaking the chain.
 	if (isTuesday) {
-		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = true))
+		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = false))
 	}
 
 	// Iterative adds via breaking the chain.
@@ -112,18 +112,20 @@ fun main() {
 
 	// Or...
 
-	// Only compiles with K1 currently...
-
-	//recover(
-	//	block = { println("Shopping result: ${goGroceryShopping()}") },
-	//	recover = { println("Shopping error: $it") }
-	//)
+	// "Not enough information to infer type argument for 'Error'"
+	@Suppress("RemoveExplicitTypeArguments")
+	recover<TypedError, Unit>(
+		block = { println("Shopping result: ${goGroceryShopping()}") },
+		recover = { println("Shopping error: $it") }
+	)
 
 	// Or...
 
-	//fold(
-	//	block = { goGroceryShopping() },
-	//	recover = { println("Shopping error: $it") },
-	//	transform = { println("Shopping result: $it") }
-	//)
+	// "Not enough information to infer type argument for 'Error'"
+	@Suppress("RemoveExplicitTypeArguments")
+	fold<TypedError, FruitBasket, Unit>(
+		block = { goGroceryShopping() },
+		recover = { println("Shopping error: $it") },
+		transform = { println("Shopping result: $it") }
+	)
 }
