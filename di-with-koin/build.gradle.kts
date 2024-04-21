@@ -23,6 +23,8 @@ dependencies {
 tasks {
 
 	withType<KotlinCompile>().configureEach {
-		kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+		compilerOptions {
+			optIn.add("kotlin.RequiresOptIn")
+		}
 	}
 }

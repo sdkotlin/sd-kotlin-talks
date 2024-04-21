@@ -27,17 +27,17 @@ tasks {
 
 	withType<KotlinCompile>().configureEach {
 		compilerOptions {
-			optIn = listOf(
+			optIn.addAll(
 				"kotlin.ExperimentalStdlibApi",
 				"kotlin.contracts.ExperimentalContracts",
 			)
 			// Planned for deprecation:
 			// https://youtrack.jetbrains.com/issue/KT-61035/
-			freeCompilerArgs = listOf(
+			freeCompilerArgs.addAll(
 				// https://youtrack.jetbrains.com/issue/KT-61410/
 				"-Xjsr305=strict",
 				// https://youtrack.jetbrains.com/issue/KT-49746/
-				"-Xjdk-release=$javaTargetVersion"
+				"-Xjdk-release=$javaTargetVersion",
 			)
 		}
 	}
