@@ -7,7 +7,7 @@ equalsverifier = "3.16.1"
 jetbrains-annotations = "24.1.0"
 junit = "5.10.2"
 koin = "3.5.6"
-kotest = "5.9.0"
+kotest = "5.9.1"
 # Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
 kotlin = "2.0.0"
 kotlinpoet = "1.17.0"
