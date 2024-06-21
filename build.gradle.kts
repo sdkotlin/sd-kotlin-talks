@@ -65,7 +65,7 @@ tasks {
 }
 
 fun isNonStable(version: String): Boolean {
-	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
+	val stableKeyword = listOf("RELEASE", "FINAL", "GA", "BETA").any {
 		version.uppercase().contains(it)
 	}
 	val unstableKeyword =
