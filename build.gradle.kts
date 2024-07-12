@@ -53,7 +53,7 @@ dependencyAnalysis {
 tasks {
 	withType<DependencyUpdatesTask>().configureEach {
 		rejectVersionIf {
-			isNonStable(candidate.version)
+			isNonStable(candidate.version) && !isNonStable(currentVersion)
 		}
 		gradleReleaseChannel = CURRENT.id
 	}
@@ -68,9 +68,7 @@ fun isNonStable(version: String): Boolean {
 	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
 		version.uppercase().contains(it)
 	}
-	val unstableKeyword =
-		version.uppercase().contains("""M\d+""".toRegex())
 	val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-	val isStable = (stableKeyword && !unstableKeyword) || regex.matches(version)
+	val isStable = stableKeyword || regex.matches(version)
 	return isStable.not()
 }
