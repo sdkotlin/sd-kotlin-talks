@@ -43,7 +43,7 @@ dependencyAnalysis {
 			}
 			onIncorrectConfiguration {
 				// https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/1059
-				severity("warn")
+				severity("fail")
 				exclude("org.jetbrains.kotlin:kotlin-stdlib")
 			}
 		}
