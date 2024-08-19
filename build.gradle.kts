@@ -37,6 +37,7 @@ dependencyAnalysis {
 				exclude(
 					// Test dependencies added globally for convenience.
 					"org.assertj:assertj-core",
+					"org.jetbrains.kotlin:kotlin-stdlib",
 					"org.junit.jupiter:junit-jupiter-api",
 					"org.junit.jupiter:junit-jupiter-params",
 				)
