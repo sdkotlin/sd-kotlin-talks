@@ -16,6 +16,7 @@ dependencies {
 
 	constraints {
 		api(libs.assertj)
+		api(libs.equalsverifier)
 		api(libs.mockito)
 		api(libs.mockito.kotlin)
 		api(libs.bundles.mockk.jvm)

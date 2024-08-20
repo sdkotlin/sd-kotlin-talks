@@ -8,8 +8,7 @@ jetbrains-annotations = "24.1.0"
 junit = "5.11.0"
 koin = "3.5.6"
 kotest = "5.9.1"
-# Consider also `kotlinTargetVersion` in kotlin-project.gradle.kts.
-kotlin = "2.0.10"
+kotlin = "2.0.10"  # Must match KSP version below.
 kotlinpoet = "1.18.1"
 kotlinx-coroutines = "1.8.1"
 kotlinx-dl = "0.5.2"
