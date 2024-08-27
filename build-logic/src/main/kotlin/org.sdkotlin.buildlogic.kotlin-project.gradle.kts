@@ -9,7 +9,7 @@ plugins {
 	id("com.autonomousapps.dependency-analysis")
 }
 
-val javaTargetVersion: String = JavaVersion.VERSION_21.toString()
+val javaTargetVersion: String = JavaVersion.VERSION_17.toString()
 
 dependencies {
 
@@ -22,6 +22,7 @@ tasks {
 		with(options) {
 			release = javaTargetVersion.toInt()
 			isFork = true
+			compilerArgs.add("--enable-preview")
 		}
 	}
 
@@ -40,5 +41,20 @@ tasks {
 				"-Xjdk-release=$javaTargetVersion",
 			)
 		}
+	}
+
+	withType<Test>().configureEach {
+		jvmArgs("--enable-preview")
+	}
+
+	withType<JavaExec>().configureEach {
+
+		if (name.endsWith("main()")) {
+
+			// https://github.com/gradle/gradle/issues/21364
+			notCompatibleWithConfigurationCache("JavaExec created by IntelliJ")
+		}
+
+		jvmArgs("--enable-preview")
 	}
 }
