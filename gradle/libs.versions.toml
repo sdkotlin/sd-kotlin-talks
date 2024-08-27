@@ -207,8 +207,8 @@ mockk-jvm = [
 id = "com.autonomousapps.dependency-analysis"
 version.ref = "dependency-analysis-gradle-plugin"
 
-[plugins.jvm-dependency-conflict-resolution-gradle-plugin]
-id = "org.gradlex.jvm-dependency-conflict-resolution"
+[plugins.jvm-dependency-conflict-detection-gradle-plugin]
+id = "org.gradlex.jvm-dependency-conflict-detection"
 version.ref = "jvm-dependency-conflict-resolution"
 
 [plugins.kotlin-gradle-plugin]
