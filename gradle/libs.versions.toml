@@ -6,9 +6,10 @@ dependency-analysis-gradle-plugin = "1.33.0"
 equalsverifier = "3.16.2"
 jetbrains-annotations = "24.1.0"
 junit = "5.11.0"
+jvm-dependency-conflict-resolution = "2.1.2"
 koin = "3.5.6"
 kotest = "5.9.1"
-kotlin = "2.0.10"  # Must match KSP version below.
+kotlin = "2.0.10" # Must match KSP version below.
 kotlinpoet = "1.18.1"
 kotlinx-coroutines = "1.8.1"
 kotlinx-dl = "0.5.2"
@@ -55,6 +56,10 @@ version.ref = "junit"
 
 [libraries.junit-params]
 module = "org.junit.jupiter:junit-jupiter-params"
+
+[libraries.jvm-dependency-conflict-resolution-gradle-plugin-dependency]
+module = "org.gradlex:jvm-dependency-conflict-resolution"
+version.ref = "jvm-dependency-conflict-resolution"
 
 [libraries.koin-bom]
 module = "io.insert-koin:koin-bom"
@@ -201,6 +206,10 @@ mockk-jvm = [
 [plugins.dependency-analysis-gradle-plugin]
 id = "com.autonomousapps.dependency-analysis"
 version.ref = "dependency-analysis-gradle-plugin"
+
+[plugins.jvm-dependency-conflict-resolution-gradle-plugin]
+id = "org.gradlex.jvm-dependency-conflict-resolution"
+version.ref = "jvm-dependency-conflict-resolution"
 
 [plugins.kotlin-gradle-plugin]
 id = "org.jetbrains.kotlin.jvm"

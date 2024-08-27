@@ -9,6 +9,7 @@ dependencies {
 	implementation(platform("org.sdkotlin.platforms:plugins-platform"))
 
 	implementation(libs.dependency.analysis.gradle.plugin.dependency)
+	implementation(libs.jvm.dependency.conflict.resolution.gradle.plugin.dependency)
 	implementation(libs.kotlin.gradle.plugin.dependency)
 	implementation(libs.ksp.gradle.plugin.dependency)
 }

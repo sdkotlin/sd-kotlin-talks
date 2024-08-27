@@ -7,6 +7,7 @@ plugins {
 	// https://github.com/gradle/gradle/issues/15383
 	// alias(libs.plugins.dependency.analysis.gradle.plugin)
 	id("com.autonomousapps.dependency-analysis")
+	id("org.gradlex.jvm-dependency-conflict-resolution")
 }
 
 val javaTargetVersion: String = JavaVersion.VERSION_21.toString()

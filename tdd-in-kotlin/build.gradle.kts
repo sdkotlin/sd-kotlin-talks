@@ -17,7 +17,7 @@ dependencies {
 
 	testImplementation(libs.kotest.assertions.shared)
 	testImplementation(libs.kotest.framework.api.jvm)
-	testImplementation(libs.bundles.mockk.jvm)
+	testImplementation(libs.mockk)
 
 	testRuntimeOnly(platform("org.sdkotlin.platforms:app-platform"))
 
