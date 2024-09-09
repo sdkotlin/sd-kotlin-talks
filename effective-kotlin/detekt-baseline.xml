@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+	<ManuallySuppressedIssues></ManuallySuppressedIssues>
+	<CurrentIssues>
+		<ID>FunctionNaming:CommonMethods.kt$fun `with data classes`()</ID>
+		<ID>FunctionNaming:ConsiderStaticFactoryMethods.kt$fun `with Java static factory functions`()</ID>
+		<ID>FunctionNaming:ConsiderStaticFactoryMethods.kt$fun `with Kotlin companion object extension factory functions`()</ID>
+		<ID>FunctionNaming:ConsiderStaticFactoryMethods.kt$fun `with Kotlin companion object factory functions`()</ID>
+		<ID>FunctionNaming:ConsiderStaticFactoryMethods.kt$fun `with Kotlin top-level factory functions`()</ID>
+		<ID>FunctionNaming:FavorComposition.kt$fun `with decorators`()</ID>
+		<ID>FunctionNaming:FavorComposition.kt$fun `with prohibiting or documenting for inheritance`()</ID>
+		<ID>MagicNumber:CommonMethods.kt$22</ID>
+		<ID>MagicNumber:CommonMethods.kt$32</ID>
+		<ID>MagicNumber:ConsiderStaticFactoryMethods.kt$3</ID>
+		<ID>MagicNumber:ControlStructuresAsExpressions.kt$3</ID>
+		<ID>MagicNumber:ControlStructuresAsExpressions.kt$4</ID>
+		<ID>MagicNumber:Destructuring.kt$3</ID>
+		<ID>MagicNumber:MakeDefensiveCopies.kt$OlympicTriplets$33</ID>
+		<ID>MatchingDeclarationName:AccessorsOverFields.kt$Programmer</ID>
+		<ID>MatchingDeclarationName:AvoidStrings.kt$EmailAddress</ID>
+		<ID>MatchingDeclarationName:CommonMethods.kt$Person</ID>
+		<ID>MatchingDeclarationName:ConsiderBuilders.kt$NutritionFacts</ID>
+		<ID>MatchingDeclarationName:Destructuring.kt$Point3D</ID>
+		<ID>MatchingDeclarationName:Singletons.kt$HelloSingleton</ID>
+		<ID>SwallowedException:ControlStructuresAsExpressions.kt$e: JSONException</ID>
+	</CurrentIssues>
+</SmellBaseline>

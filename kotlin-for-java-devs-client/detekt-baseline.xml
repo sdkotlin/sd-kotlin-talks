@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+	<ManuallySuppressedIssues></ManuallySuppressedIssues>
+	<CurrentIssues>
+		<ID>MagicNumber:OtherModuleAndPackageNPC.kt$OtherModuleAndPackageNPC$100</ID>
+		<ID>PackageNaming:OtherModuleAndPackageNPC.kt$package org.sdkotlin.intro.kotlin._30_sealedtypes.otherpackage</ID>
+		<ID>PackageNaming:OtherModulePlayer.kt$package org.sdkotlin.intro.kotlin._30_sealedtypes</ID>
+		<ID>PackageNaming:SealedTypeSmartCastFromOtherModule.kt$package org.sdkotlin.intro.kotlin._30_sealedtypes</ID>
+	</CurrentIssues>
+</SmellBaseline>

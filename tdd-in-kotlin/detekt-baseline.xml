@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+	<ManuallySuppressedIssues></ManuallySuppressedIssues>
+	<CurrentIssues>
+		<ID>ForEachOnRange:FizzBuzz.kt$1..100</ID>
+		<ID>MagicNumber:FizzBuzz.kt$100</ID>
+		<ID>MagicNumber:FizzBuzz.kt$15</ID>
+		<ID>MagicNumber:FizzBuzz.kt$3</ID>
+		<ID>MagicNumber:FizzBuzz.kt$5</ID>
+		<ID>ReturnCount:FizzBuzz.kt$internal fun fizzBuzzOf(n: Int): String</ID>
+	</CurrentIssues>
+</SmellBaseline>

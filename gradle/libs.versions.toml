@@ -3,6 +3,7 @@
 arrow = "1.2.4"
 assertj = "3.26.3"
 dependency-analysis-gradle-plugin = "2.0.0"
+detekt = "1.23.7"
 equalsverifier = "3.16.2"
 jetbrains-annotations = "24.1.0"
 junit = "5.11.0"
@@ -38,6 +39,10 @@ version.ref = "assertj"
 [libraries.dependency-analysis-gradle-plugin-dependency]
 module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin"
 version.ref = "dependency-analysis-gradle-plugin"
+
+[libraries.detekt-gradle-plugin-dependency]
+module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
+version.ref = "detekt"
 
 [libraries.equalsverifier]
 module = "nl.jqno.equalsverifier:equalsverifier"
@@ -206,6 +211,10 @@ mockk-jvm = [
 [plugins.dependency-analysis-gradle-plugin]
 id = "com.autonomousapps.dependency-analysis"
 version.ref = "dependency-analysis-gradle-plugin"
+
+[plugins.detekt-gradle-plugin]
+id = "io.gitlab.arturbosch.detekt"
+version.ref = "detekt"
 
 [plugins.jvm-dependency-conflict-detection-gradle-plugin]
 id = "org.gradlex.jvm-dependency-conflict-detection"

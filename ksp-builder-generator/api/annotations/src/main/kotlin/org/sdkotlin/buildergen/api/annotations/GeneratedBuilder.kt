@@ -1,3 +1,3 @@
 package org.sdkotlin.buildergen.api.annotations
 
-annotation class GeneratedBuilder()
+annotation class GeneratedBuilder
