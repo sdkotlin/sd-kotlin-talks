@@ -19,8 +19,8 @@ dependencies {
 }
 
 tasks {
-	withType<JavaCompile>().configureEach {
 
+	withType<JavaCompile>().configureEach {
 		with(options) {
 			release = javaTargetVersion.toInt()
 			isFork = true
