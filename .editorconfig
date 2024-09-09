@@ -7,7 +7,7 @@ insert_final_newline = true
 indent_style = tab
 tab_width = 4
 
-[**/detekt-baseline.xml]
+[detekt-baseline.xml]
 max_line_length = off
 
 [{.idea/**/*.xml,*.iml}]
