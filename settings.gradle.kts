@@ -8,7 +8,7 @@ pluginManagement {
 }
 
 plugins {
-	id("com.gradle.enterprise") version "3.16.2"
+	id("com.gradle.develocity") version "3.18"
 }
 
 dependencyResolutionManagement {
@@ -21,13 +21,11 @@ dependencyResolutionManagement {
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-gradleEnterprise {
-	if (System.getenv("CI") != null) {
-		buildScan {
-			publishAlways()
-			termsOfServiceUrl = "https://gradle.com/terms-of-service"
-			termsOfServiceAgree = "yes"
-		}
+develocity {
+	buildScan {
+		publishing.onlyIf { !System.getenv("CI").isNullOrEmpty() }
+		termsOfUseUrl.set("https://gradle.com/help/legal-terms-of-use")
+		termsOfUseAgree.set("yes")
 	}
 }
 
