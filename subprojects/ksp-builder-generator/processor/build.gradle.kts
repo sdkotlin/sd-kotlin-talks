@@ -6,8 +6,8 @@ plugins {
 
 dependencies {
 
-	implementation(projects.kspBuilderGenerator.api.annotations)
-	implementation(projects.kspBuilderGenerator.api.builder)
+	implementation(projects.subprojects.kspBuilderGenerator.api.annotations)
+	implementation(projects.subprojects.kspBuilderGenerator.api.builder)
 
 	implementation(libs.bundles.kotlinpoet.ksp)
 }
