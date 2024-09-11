@@ -19,6 +19,5 @@ dependencyResolutionManagement {
 }
 
 includeBuild("../platforms")
-includeBuild("../detekt-rules")
 
-rootProject.name = "build-logic"
+rootProject.name = "detekt-rules"

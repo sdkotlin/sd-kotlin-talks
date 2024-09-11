@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<SmellBaseline>
-	<ManuallySuppressedIssues></ManuallySuppressedIssues>
-	<CurrentIssues>
-		<ID>MagicNumber:FashionMnist.kt$100</ID>
-		<ID>MagicNumber:FashionMnist.kt$300</ID>
-	</CurrentIssues>
-</SmellBaseline>

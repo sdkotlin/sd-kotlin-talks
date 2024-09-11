@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<SmellBaseline>
-	<ManuallySuppressedIssues></ManuallySuppressedIssues>
-	<CurrentIssues>
-		<ID>LongMethod:BuilderGenVisitor.kt$BuilderGenVisitor$override fun visitFunctionDeclaration( function: KSFunctionDeclaration, data: Unit, )</ID>
-		<ID>UnusedPrivateProperty:BuilderGenVisitor.kt$BuilderGenVisitor$private val logger: KSPLogger</ID>
-	</CurrentIssues>
-</SmellBaseline>

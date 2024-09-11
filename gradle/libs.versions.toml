@@ -40,8 +40,16 @@ version.ref = "assertj"
 module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin"
 version.ref = "dependency-analysis-gradle-plugin"
 
+[libraries.detekt-api]
+module = "io.gitlab.arturbosch.detekt:detekt-api"
+version.ref = "detekt"
+
 [libraries.detekt-gradle-plugin-dependency]
 module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
+version.ref = "detekt"
+
+[libraries.detekt-test]
+module = "io.gitlab.arturbosch.detekt:detekt-test"
 version.ref = "detekt"
 
 [libraries.equalsverifier]
