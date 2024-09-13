@@ -15,7 +15,7 @@ internal class JUnit5DynamicTestSortTest {
 		arrayOf(1, 2, 3) to arrayOf(1, 2, 3),
 		arrayOf(2, 1, 3) to arrayOf(1, 2, 3),
 		arrayOf(1, 3, 2) to arrayOf(1, 2, 3),
-		arrayOf(3, 2, 1) to arrayOf(1, 2, 3)
+		arrayOf(3, 2, 1) to arrayOf(1, 2, 3),
 	).map { (unsortedArray, expectedArray) ->
 		dynamicTest(
 			"sort(${unsortedArray.contentToString()}) is ${expectedArray.contentToString()}"
