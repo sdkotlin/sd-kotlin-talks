@@ -14,6 +14,11 @@ import org.jetbrains.kotlin.resolve.descriptorUtil.fqNameOrNull
 import org.jetbrains.kotlin.types.KotlinType
 import org.jetbrains.kotlin.types.typeUtil.supertypes
 
+/**
+ * A Detekt rule for ensuring
+ * [JUnit 5 Dynamic Tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-dynamic-tests)
+ * hava a valid inferred return type.
+ */
 @RequiresTypeResolution
 class InvalidTestFactoryReturnType(config: Config) : Rule(config) {
 
