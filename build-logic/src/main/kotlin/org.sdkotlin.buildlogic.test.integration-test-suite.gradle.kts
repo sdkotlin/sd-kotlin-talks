@@ -79,6 +79,11 @@ configure<DependencyAnalysisSubExtension> {
 			excludeSourceSets(testSuiteName)
 		}
 	}
+	issues {
+		// Ignore test source set to work around
+		// https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/1239.
+		ignoreSourceSet(testSuiteName)
+	}
 }
 
 kotlin {
