@@ -2,8 +2,6 @@ plugins {
 	id("java-platform")
 }
 
-group = "org.sdkotlin.platforms"
-
 dependencies {
 	constraints {
 		api(libs.dependency.analysis.gradle.plugin.dependency)
