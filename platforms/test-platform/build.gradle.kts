@@ -2,8 +2,6 @@ plugins {
 	id("java-platform")
 }
 
-group = "org.sdkotlin.platforms"
-
 javaPlatform {
 	allowDependencies()
 }

@@ -4,6 +4,9 @@ plugins {
 	`kotlin-dsl`
 }
 
+group = "org.sdkotlin.buildlogic"
+version = "1.0.0-SNAPSHOT"
+
 dependencies {
 
 	implementation(platform("org.sdkotlin.platforms:plugins-platform"))

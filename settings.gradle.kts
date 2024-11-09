@@ -33,6 +33,12 @@ rootProject.name = "sd-kotlin-talks"
 
 includeBuild("platforms")
 
+gradle.beforeProject {
+	// Set group and version properties for all projects
+	group = "org.sdkotlin"
+	version = "1.0.0-SNAPSHOT"
+}
+
 include("subprojects:di-with-koin")
 include("subprojects:effective-kotlin")
 include("subprojects:kotlin-dl")

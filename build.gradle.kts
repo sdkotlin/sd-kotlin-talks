@@ -13,20 +13,6 @@ plugins {
 	alias(libs.plugins.versions.gradle.plugin)
 }
 
-allprojects {
-	group = "org.sdkotlin"
-	version = "1.0-SNAPSHOT"
-}
-
-subprojects {
-	tasks {
-		register<DependencyReportTask>("allDependencies") {
-			description = "Display dependencies report for all subprojects."
-			group = "help"
-		}
-	}
-}
-
 dependencyAnalysis {
 	issues {
 		all {
