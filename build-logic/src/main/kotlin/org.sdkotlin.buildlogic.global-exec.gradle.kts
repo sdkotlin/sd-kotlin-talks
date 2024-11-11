@@ -58,7 +58,7 @@ gradle.sharedServices.registerIfAbsent(
 	BuildScopedGreetingService.SERVICE_NAME,
 	BuildScopedGreetingService::class.java
 ) {
-	parameters.greeting.set("Doctor");
+	parameters.greeting.set("Doctor")
 }
 
 tasks.register<ProjectScopedGreetingTask>("greetings")
