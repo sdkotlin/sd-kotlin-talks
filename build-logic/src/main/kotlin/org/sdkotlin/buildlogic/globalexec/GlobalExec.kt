@@ -39,6 +39,7 @@ abstract class BuildScopedGreetingService :
 }
 
 abstract class ProjectScopedGreetingTask : DefaultTask() {
+
 	init {
 		group = "demo"
 		description = "A project-scoped exec task that depends on a " +
