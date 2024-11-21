@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 abstract class BuildScopedGreetingService :
 	BuildService<BuildScopedGreetingService.Params> {
+
 	interface Params : BuildServiceParameters {
 		val greeting: Property<String>
 	}
@@ -32,11 +33,13 @@ abstract class BuildScopedGreetingService :
 				)
 			)
 			standardOutput = System.out
+			errorOutput = System.err
 		}.exitValue
 	}
 }
 
 abstract class ProjectScopedGreetingTask : DefaultTask() {
+
 	init {
 		group = "demo"
 		description = "A project-scoped exec task that depends on a " +
@@ -71,11 +74,12 @@ abstract class ProjectScopedGreetingTask : DefaultTask() {
 				buildCurrentOsCommand("echo", greeting)
 			)
 			standardOutput = System.out
+			errorOutput = System.err
 		}
 	}
 }
 
-fun buildCurrentOsCommand(vararg arguments: String): List<String> =
+private fun buildCurrentOsCommand(vararg arguments: String): List<String> =
 	buildList {
 		val isWindows = System.getProperty("os.name")
 			.contains("windows", ignoreCase = true)
