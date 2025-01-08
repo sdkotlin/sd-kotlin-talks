@@ -18,7 +18,7 @@ ksp = "2.1.0-1.0.29" # Must match Kotlin version above.
 mockito = "5.15.2"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.14"
-org-json = "20240303"
+org-json = "20250107"
 slf4j = "2.0.16"
 versions-gradle-plugin = "0.51.0"
 
