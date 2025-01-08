@@ -1,7 +1,7 @@
 [versions]
 
 arrow = "1.2.4"
-assertj = "3.26.3"
+assertj = "3.27.2"
 dependency-analysis-gradle-plugin = "2.6.1"
 detekt = "1.23.7"
 equalsverifier = "3.17.4"
