@@ -20,7 +20,7 @@ mockito-kotlin = "2.2.0"
 mockk = "1.13.16"
 org-json = "20250107"
 slf4j = "2.0.16"
-versions-gradle-plugin = "0.51.0"
+versions-gradle-plugin = "0.52.0"
 
 [libraries]
 
