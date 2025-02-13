@@ -18,6 +18,7 @@ ksp = "2.1.10-1.0.29" # Must match Kotlin version above.
 mockito = "5.15.2"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.16"
+mokkery = "2.6.1"
 org-json = "20250107"
 slf4j = "2.0.16"
 versions-gradle-plugin = "0.52.0"
@@ -170,6 +171,14 @@ version.ref = "mockk"
 module = "io.mockk:mockk-dsl-jvm"
 version.ref = "mockk"
 
+[libraries.mokkery-core]
+module = "dev.mokkery:mokkery-core"
+version.ref = "mokkery"
+
+[libraries.mokkery-gradle-plugin-dependency]
+module = "dev.mokkery:mokkery-gradle"
+version.ref = "mokkery"
+
 [libraries.org-json]
 module = "org.json:json"
 version.ref = "org-json"
@@ -231,6 +240,10 @@ version.ref = "jvm-dependency-conflict-resolution"
 [plugins.kotlin-gradle-plugin]
 id = "org.jetbrains.kotlin.jvm"
 version.ref = "kotlin"
+
+[plugins.mokkery-gradle-plugin]
+id = "dev.mokkery"
+version.ref = "mokkery"
 
 [plugins.versions-gradle-plugin]
 id = "com.github.ben-manes.versions"

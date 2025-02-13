@@ -17,6 +17,7 @@ dependencies {
 		api(libs.equalsverifier)
 		api(libs.mockito)
 		api(libs.mockito.kotlin)
+		api(libs.mokkery.core)
 		api(libs.bundles.mockk.jvm)
 	}
 }
