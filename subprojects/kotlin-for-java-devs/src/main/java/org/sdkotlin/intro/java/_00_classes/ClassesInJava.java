@@ -7,7 +7,7 @@ public class ClassesInJava {
 }
 
 // You can have multiple classes in a file, but only one public class,
-// and curly braces required.
+// and curly braces are required.
 
 class Class {
 

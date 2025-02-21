@@ -21,13 +21,6 @@ dependencies {
 
 tasks {
 
-	withType<JavaCompile>().configureEach {
-		with(options) {
-			release = javaTargetVersion.toInt()
-			isFork = true
-		}
-	}
-
 	withType<KotlinCompile>().configureEach {
 		compilerOptions {
 			optIn.addAll(
@@ -43,5 +36,21 @@ tasks {
 				"-Xjdk-release=$javaTargetVersion",
 			)
 		}
+	}
+
+	withType<JavaCompile>().configureEach {
+		with(options) {
+			release = javaTargetVersion.toInt()
+			compilerArgs.add("--enable-preview")
+			isFork = true
+		}
+	}
+
+	withType<Test>().configureEach {
+		jvmArgs("--enable-preview")
+	}
+
+	withType<JavaExec>().configureEach {
+		jvmArgs("--enable-preview")
 	}
 }

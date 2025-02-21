@@ -1,14 +1,14 @@
 [versions]
 
-arrow = "2.0.0"
-assertj = "3.27.2"
-dependency-analysis-gradle-plugin = "2.7.0"
+arrow = "2.0.1"
+assertj = "3.27.3"
+dependency-analysis-gradle-plugin = "2.10.0"
 detekt = "1.23.7"
-equalsverifier = "3.18.1"
-jetbrains-annotations = "26.0.1"
+equalsverifier = "3.19.1"
+jetbrains-annotations = "26.0.2"
 junit = "5.11.4"
 jvm-dependency-conflict-resolution = "2.1.2"
-koin = "4.0.1"
+koin = "4.0.2"
 kotest = "5.9.1"
 kotlin = "2.1.20-Beta1" # Must match KSP version below.
 kotlinpoet = "2.0.0"
@@ -18,9 +18,10 @@ ksp = "2.1.20-Beta1-1.0.29" # Must match Kotlin version above.
 mockito = "5.15.2"
 mockito-kotlin = "2.2.0"
 mockk = "1.13.16"
+mokkery = "2.7.0"
 org-json = "20250107"
 slf4j = "2.0.16"
-versions-gradle-plugin = "0.51.0"
+versions-gradle-plugin = "0.52.0"
 
 [libraries]
 
@@ -170,6 +171,14 @@ version.ref = "mockk"
 module = "io.mockk:mockk-dsl-jvm"
 version.ref = "mockk"
 
+[libraries.mokkery-core]
+module = "dev.mokkery:mokkery-core"
+version.ref = "mokkery"
+
+[libraries.mokkery-gradle-plugin-dependency]
+module = "dev.mokkery:mokkery-gradle"
+version.ref = "mokkery"
+
 [libraries.org-json]
 module = "org.json:json"
 version.ref = "org-json"
@@ -231,6 +240,10 @@ version.ref = "jvm-dependency-conflict-resolution"
 [plugins.kotlin-gradle-plugin]
 id = "org.jetbrains.kotlin.jvm"
 version.ref = "kotlin"
+
+[plugins.mokkery-gradle-plugin]
+id = "dev.mokkery"
+version.ref = "mokkery"
 
 [plugins.versions-gradle-plugin]
 id = "com.github.ben-manes.versions"
