@@ -39,6 +39,8 @@ gradle.beforeProject {
 	version = "1.0.0-SNAPSHOT"
 }
 
+include("subprojects:constant-dependencies:constant-consumer")
+include("subprojects:constant-dependencies:constant-producer")
 include("subprojects:di-with-koin")
 include("subprojects:effective-kotlin")
 include("subprojects:kotlin-dl")
