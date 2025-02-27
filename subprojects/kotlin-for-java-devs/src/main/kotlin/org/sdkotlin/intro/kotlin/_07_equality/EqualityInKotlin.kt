@@ -8,6 +8,8 @@ fun main() {
 	// Equivalent to "=="
 	println("foo".equals("foo"))
 
+	// TODO: Research and explain why this prints "true"...
 	println("fo" + "o" === "foo")
+
 	println("foo" == "foo")
 }

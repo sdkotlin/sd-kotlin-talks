@@ -3,7 +3,7 @@ package org.sdkotlin.intro.kotlin._05_0_variables_and_types
 // var's are mutable, val's are read only
 
 // Pascal notation is used: name first, then, optionally or as needed, the type
-// after a colon (Same as Scala, Swift, Go, Rust, etc.)
+// after a colon (Same as Pascal, Scala, Swift, Go, Rust, etc.)
 
 // Variables aren't defaulted, and must be initialized
 
