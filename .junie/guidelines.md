@@ -41,8 +41,10 @@ purposes, there are no tagged releases or published build output.
 - The project uses Gradle as the build system
 - Build and verify the project (includes unit and integration tests):
   `./gradlew build`
-- Verify dependency configuration: `./gradlew buildHealth`
-- Check for potential dependency updates: `./gradlew dependencyUpdates`
+- Verify dependency configuration:
+  `./gradlew buildHealth`
+- Check for potential dependency updates:
+  `./gradlew dependencyUpdates`
 
 ## Testing
 
@@ -51,6 +53,7 @@ purposes, there are no tagged releases or published build output.
 - Tests are organized into unit and integration suites
 - Run unit tests: `./gradlew test`
 - Run integration tests: `./gradlew integrationTest`
+- Run all tests: `./gradlew check`
 - JUnit 5's `@DynamicTest` feature is used for test parameterization
 
 ## Version Control
