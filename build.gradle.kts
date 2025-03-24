@@ -38,7 +38,7 @@ dependencyAnalysis {
 }
 
 tasks {
-	withType<DependencyUpdatesTask>().configureEach {
+	named<DependencyUpdatesTask>("dependencyUpdates").configure {
 		rejectVersionIf {
 			isNonStable(candidate.version) && !isNonStable(currentVersion)
 		}
