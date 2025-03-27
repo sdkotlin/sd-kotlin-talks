@@ -8,7 +8,7 @@ fun main() {
 
 	val yay = "yay"
 
-	val template = "Kotlin supports $STRING templates, $yay!\n\n"
+	val template = "Kotlin supports String templates, $yay!\n\n"
 
 	println(template)
 
@@ -22,11 +22,11 @@ fun main() {
 		val someString = "That gets you out of "
 				+ "concatenation-wrapping, and lets you use literal whitespace "
 				+ "instead of escape sequences such as \t, \n, etc."
-		You can put arbitrary expressions in string templates with curly
-		braces. ${"\n".repeat(2)}
-		You can also do regular templates: $STRING
-		You can trim leading indentation.
+		You can still use string templates in raw strings: $STRING
+		You can still put arbitrary expressions in those string templates with
+		curly braces. ${"\n".repeat(2)}
 
+		You can trim leading indentation.
 		""".trimIndent()
 
 	val prefixedRawString = """

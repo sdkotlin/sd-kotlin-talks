@@ -2,7 +2,8 @@ package org.sdkotlin.intro.kotlin._08_2_tailrecursivefunctions
 
 // Kotlin supports tail call elimination.
 
-// Take this standard recursive implementation for the triangle number of 'n':
+// Take this standard recursive implementation for the
+// [triangle number](https://en.wikipedia.org/wiki/Triangular_number) of 'n':
 
 fun triangleNumber(n: Int): Int =
 	if (n == 0) 0
