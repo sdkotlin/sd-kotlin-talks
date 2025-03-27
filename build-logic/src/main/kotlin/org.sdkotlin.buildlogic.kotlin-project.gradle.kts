@@ -14,11 +14,6 @@ plugins {
 
 val javaTargetVersion: String = JavaVersion.VERSION_21.toString()
 
-dependencies {
-
-	runtimeOnly(kotlin("reflect"))
-}
-
 tasks {
 
 	withType<KotlinCompile>().configureEach {
