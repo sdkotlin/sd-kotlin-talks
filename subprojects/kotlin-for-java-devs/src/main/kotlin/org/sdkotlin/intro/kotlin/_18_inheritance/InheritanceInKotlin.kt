@@ -11,6 +11,8 @@ class Class
 // You can "open" them like so...
 open class BaseClass(var name: String = "Cliff") {
 
+	constructor(nameAsInt: Int) : this(name = nameAsInt.toString())
+
 	// Functions are final by default in Kotlin as well
 	fun finalFunction() = println("Can't touch this!")
 
@@ -18,9 +20,8 @@ open class BaseClass(var name: String = "Cliff") {
 	open fun openFunction() = println("Base class implementation")
 }
 
-// Subclasses must call the primary constructor of their superclass.
-
-class Subclass : BaseClass("Norm") {
+// Subclasses must call a constructor of their superclass.
+class Subclass : BaseClass(nameAsInt = 1) {
 
 	// You can't override a final function
 	//override fun finalFunction() = println("nope!")
