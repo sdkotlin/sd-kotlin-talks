@@ -52,15 +52,6 @@ fun main() {
 
 	println("The myth is $mythRating")
 
-	// Testing for exhaustiveness is limited.
-
-	val isItANumber = when (randomBinaryInt) {
-		// All Ints are Numbers.
-		is Number -> true
-		// And yet the compiler still requires this `else`.
-		else -> false
-	}
-
 	// There is a feature request to support sealed `when`s in the case where
 	// it's only used for side effects:
 	// https://youtrack.jetbrains.com/issue/KT-12380
