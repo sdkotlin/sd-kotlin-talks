@@ -40,7 +40,7 @@ val multiplyFunction = { a: Int, b: Int -> a * b }
 // its return type. As this is somewhat invisible, it may be better to declare
 // function types explicitly.
 
-// In practice you're often writing lambda expressions at function call sites.
+// In practice, you're often writing lambda expressions at function call sites.
 // There the function type is already declared for you, so this tends not to
 // come up very often.
 
