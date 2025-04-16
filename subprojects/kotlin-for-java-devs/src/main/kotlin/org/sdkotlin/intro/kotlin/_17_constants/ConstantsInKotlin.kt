@@ -22,13 +22,13 @@ const val CONST_VAL = "const val"
 
 //const val CONST_NON_PRIMITIVE_VAL = BigInteger.ONE
 
+// This includes primitive Arrays.
+
+//const val CONST_PRIMITIVE_ARRAY_VAL = intArrayOf(1)
+
 // The unsigned types are now considered primitives.
 
 const val U_CONST = 1u
-
-// This included primitive Arrays.
-
-//const val CONST_PRIMITIVE_ARRAY_VAL = intArrayOf(1)
 
 class ConstantsInKotlinCompanion {
 
