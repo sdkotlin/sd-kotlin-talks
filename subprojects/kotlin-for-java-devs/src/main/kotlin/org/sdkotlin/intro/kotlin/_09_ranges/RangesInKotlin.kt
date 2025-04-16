@@ -6,21 +6,21 @@ fun main() {
 
 	// Kotlin supports ranges, which are start and end inclusive.
 
-	val oneThroughTen = 1..10
+	val oneThroughTen: IntRange = 1..10
 
-	val longRange = 0L..10L
+	val longRange: LongRange = 0L..10L
 
-	val charRange = 'a'..'z'
+	val charRange: CharRange = 'a'..'z'
 
-	val floatRange = 1.0f..10.5f
+	val floatRange: ClosedFloatingPointRange<Float> = 1.0f..10.5f
 
-	val doubleRange = 1.0..10.5
+	val doubleRange: ClosedFloatingPointRange<Double> = 1.0..10.5
 
 	// Ranges implement the 'ClosedRange<T: Comparable<T>>' interface.
 
 	// Any type that implements 'Comparable' can be ranged.
 
-	val dateRange = LocalDate.of(2020, 1, 1)..LocalDate.of(2020, 12, 31)
+	val dateRange: ClosedRange<LocalDate> = LocalDate.of(2020, 1, 1)..LocalDate.of(2020, 12, 31)
 
 	// You can get the start and end of a range, and whether it is empty.
 
@@ -57,7 +57,7 @@ fun main() {
 
 	val openEndedIntRange: IntRange = 0 until 10 // 0-9
 
-	// Kotlin 1.8 will bring a new open-ended range operator.
+	// Kotlin 1.8 did bring a new open-ended range operator.
 
 	val openEndedIntRangeOperator: IntRange = 0..<10
 
