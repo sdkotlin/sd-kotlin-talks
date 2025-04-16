@@ -86,11 +86,11 @@ fun `with data classes in the standard library`() {
 	println("family: $family")
 }
 
-// Data classes can have private constructors.
+// Data classes can have private constructors. You do need to decide whether
+// the copy function should have consistent visibility via annotations.
 
-// But they expose equivalent construction via the generate copy method:
-// https://youtrack.jetbrains.com/issue/KT-11914
-@Suppress("DataClassPrivateConstructor")
+@ConsistentCopyVisibility
+//@ExposedCopyVisibility
 data class ControlledInitialization private constructor(val onlyICanSetThis: String) {
 	companion object {
 		fun staticFactoryMethod(): ControlledInitialization =
@@ -104,9 +104,9 @@ fun `with private data class constructor`() {
 
 	println(controlledInit)
 
-	val uncontrolledInit = controlledInit.copy(onlyICanSetThis = "...or not")
-
-	println(uncontrolledInit)
+	// Doesn't compile with consistent copy visibility...
+	//val uncontrolledInit = controlledInit.copy(onlyICanSetThis = "...or not")
+	//println(uncontrolledInit)
 }
 
 fun main() {
