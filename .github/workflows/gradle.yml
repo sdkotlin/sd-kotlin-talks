@@ -36,5 +36,9 @@ jobs:
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
           build-scan-terms-of-use-agree: "yes"
 
-      - name: Build with Gradle Wrapper
-        run: ./gradlew buildHealth build
+      # Useful for observing eager configuration
+      - name: Run Gradle Help
+        run: ./gradlew help
+
+      - name: Run Gradle Build
+        run: ./gradlew build
