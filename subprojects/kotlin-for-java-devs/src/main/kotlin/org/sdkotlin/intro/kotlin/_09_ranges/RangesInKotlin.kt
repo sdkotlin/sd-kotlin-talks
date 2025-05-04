@@ -20,7 +20,8 @@ fun main() {
 
 	// Any type that implements 'Comparable' can be ranged.
 
-	val dateRange: ClosedRange<LocalDate> = LocalDate.of(2020, 1, 1)..LocalDate.of(2020, 12, 31)
+	val dateRange: ClosedRange<LocalDate> =
+		LocalDate.of(2020, 1, 1)..LocalDate.of(2020, 12, 31)
 
 	// You can get the start and end of a range, and whether it is empty.
 
@@ -40,7 +41,7 @@ fun main() {
 
 	println(
 		"2020-06-01 in $dateRange: "
-				+ (LocalDate.of(2020, 6, 1) in dateRange)
+			+ (LocalDate.of(2020, 6, 1) in dateRange)
 	)
 
 	// Integral, floating point, and comparable ranges have a useful

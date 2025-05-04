@@ -45,7 +45,7 @@ class Person {
 		if (o == null || getClass() != o.getClass()) return false;
 		final var person = (Person) o;
 		return Objects.equals(name, person.name) &&
-				Objects.equals(favoriteProgrammingLanguage, person.favoriteProgrammingLanguage);
+			Objects.equals(favoriteProgrammingLanguage, person.favoriteProgrammingLanguage);
 	}
 
 	@Override

@@ -84,9 +84,9 @@ fun main() {
 
 		val intro = when (player) {
 			is NPC -> "${player.name}! ${player.attack()} with " +
-					"${player.health} health!"
+				"${player.health} health!"
 			is RemotePlayer -> "${player.name} from ${player.ipAddress}! " +
-					"Top Score: ${topScore(player)}."
+				"Top Score: ${topScore(player)}."
 			is HumanPlayer -> "${player.name}! Top Score: ${player.topScore}."
 			is UnknownPlayer -> "${player.name}! Health: ${player.health}."
 		}

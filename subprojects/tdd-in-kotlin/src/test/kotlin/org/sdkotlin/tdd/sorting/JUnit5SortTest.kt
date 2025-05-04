@@ -5,21 +5,21 @@ import org.junit.jupiter.api.Test
 
 internal class JUnit5SortTest {
 
-@Test
-fun `test empty array`() {
+	@Test
+	fun `test empty array`() {
 
-	// Assemble
-	val unsortedArray = emptyArray<Int>()
-	val sortedArray = emptyArray<Int>()
+		// Assemble
+		val unsortedArray = emptyArray<Int>()
+		val sortedArray = emptyArray<Int>()
 
-	// Act
-	val sortResult = sort(unsortedArray)
+		// Act
+		val sortResult = sort(unsortedArray)
 
-	// Assert
-	assertThat(sortResult)
-		.isEqualTo(sortedArray)
-		.isNotSameAs(unsortedArray)
-}
+		// Assert
+		assertThat(sortResult)
+			.isEqualTo(sortedArray)
+			.isNotSameAs(unsortedArray)
+	}
 
 	@Test
 	fun `test single element array`() {
@@ -87,14 +87,14 @@ fun `test empty array`() {
 		assertThat(sortResult).isEqualTo(sortedArray)
 	}
 
-@Test
-fun `test three element reversed array`() {
+	@Test
+	fun `test three element reversed array`() {
 
-	val unsortedArray = arrayOf(3, 2, 1)
-	val sortedArray = arrayOf(1, 2, 3)
+		val unsortedArray = arrayOf(3, 2, 1)
+		val sortedArray = arrayOf(1, 2, 3)
 
-	val sortResult = sort(unsortedArray)
+		val sortResult = sort(unsortedArray)
 
-	assertThat(sortResult).isEqualTo(sortedArray)
-}
+		assertThat(sortResult).isEqualTo(sortedArray)
+	}
 }

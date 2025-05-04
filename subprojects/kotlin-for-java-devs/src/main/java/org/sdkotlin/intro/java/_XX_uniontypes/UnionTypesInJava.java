@@ -88,7 +88,8 @@ public class UnionTypesInJava {
 
 			switch (e) {
 				case AnException an -> System.out.println(an.aMethod());
-				case AnotherException another -> System.out.println(another.anotherMethod());
+				case AnotherException another ->
+					System.out.println(another.anotherMethod());
 
 				// Unfortunately, at least in preview the compiler isn't smart
 				// enough to understand exhaustive cases for multicatch union
@@ -114,7 +115,7 @@ public class UnionTypesInJava {
 		// value.
 
 		final Optional<String> maybeAwesome = Optional.ofNullable(
-				random.nextBoolean() ? "Awesome" : null
+			random.nextBoolean() ? "Awesome" : null
 		);
 
 		System.out.println(maybeAwesome.orElse("Not as awesome"));
@@ -165,8 +166,8 @@ public class UnionTypesInJava {
 	private EitherIntegerOrFloat getIntegerOrFloat() {
 
 		return random.nextBoolean()
-				? new IntegerWrapper()
-				: new FloatWrapper();
+			? new IntegerWrapper()
+			: new FloatWrapper();
 	}
 
 	void withSealedClassesAndInterfaces() {

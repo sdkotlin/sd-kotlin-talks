@@ -41,7 +41,7 @@ private fun lotsOfCoroutines() = runBlocking {
 
 	println(
 		"Created $ONE_MILLION coroutines that sleep for $ONE_THOUSAND " +
-				"milliseconds in $elapsedTime total milliseconds!"
+			"milliseconds in $elapsedTime total milliseconds!"
 	)
 }
 
@@ -66,7 +66,7 @@ private fun asyncSum() = runBlocking {
 
 	println(
 		"The async initialization of a list with sequential numbers " +
-				"between 1 and $ONE_MILLION took $elapsedTime milliseconds."
+			"between 1 and $ONE_MILLION took $elapsedTime milliseconds."
 	)
 }
 

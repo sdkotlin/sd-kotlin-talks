@@ -2,8 +2,6 @@
 
 package org.sdkotlin.intro.kotlin._30_sealedtypes.otherpackage
 
-import org.sdkotlin.intro.kotlin._30_sealedtypes.Player
-
 // Direct subtypes of sealed types can't be in other packages.
 
 // Does not compile...

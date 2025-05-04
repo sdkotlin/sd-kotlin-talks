@@ -10,7 +10,7 @@ fun main() {
 
 	val listOfInts: List<Int> = listOf(1, 2, 3)
 
-	val otherList: List<Int> = List(3) { index -> index + 1}
+	val otherList: List<Int> = List(3) { index -> index + 1 }
 
 	println(otherList)
 

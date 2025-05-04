@@ -6,10 +6,6 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.fold
 import arrow.core.raise.recover
-import org.sdkotlin.typederrors.TypedError
-import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.BadAppleTypedError
-import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.RadioactiveBananaTypedError
-import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.ShriveledGrapesTypedError
 import org.sdkotlin.typederrors.Fruit
 import org.sdkotlin.typederrors.Fruit.Apple
 import org.sdkotlin.typederrors.Fruit.Banana
@@ -17,6 +13,10 @@ import org.sdkotlin.typederrors.Fruit.Grapes
 import org.sdkotlin.typederrors.Fruit.Orange
 import org.sdkotlin.typederrors.FruitBasket
 import org.sdkotlin.typederrors.FruitBasketImpl
+import org.sdkotlin.typederrors.TypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.BadAppleTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.RadioactiveBananaTypedError
+import org.sdkotlin.typederrors.TypedError.BadFruitTypedError.ShriveledGrapesTypedError
 
 class FruitBasketBuilder {
 

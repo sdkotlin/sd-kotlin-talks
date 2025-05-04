@@ -135,8 +135,7 @@ fun `only from Mom`() {
 // clause.
 
 fun <FT> onlyFromTo(from: String, to: String, thing: FT): FT?
-		where FT : Fromable,
-		      FT : Toable =
+	where FT : Fromable, FT : Toable =
 	if (from == thing.from && to == thing.to) thing else null
 
 // Here we know `FT` has a `from` and `to` property regardless of whatever else

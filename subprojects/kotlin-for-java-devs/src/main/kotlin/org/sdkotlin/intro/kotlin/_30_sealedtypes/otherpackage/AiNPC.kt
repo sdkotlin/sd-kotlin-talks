@@ -7,7 +7,7 @@ import org.sdkotlin.intro.kotlin._30_sealedtypes.NPC
 
 data class AiNPC(
 	override val name: String,
-	override var health: Int = 100
+	override var health: Int = 100,
 ) : NPC() {
 
 	override fun attack() = "AI is coming to get ya!"

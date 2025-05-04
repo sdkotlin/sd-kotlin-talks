@@ -1,39 +1,39 @@
 build:
-    maxIssues: 0
-    excludeCorrectable: false
+  maxIssues: 0
+  excludeCorrectable: false
 
 config:
-    validation: true
-    warningsAsErrors: true
-    checkExhaustiveness: false
-    # when writing own rules with new properties,
-    # exclude the property path e.g.: 'my_rule_set,.*>.*>[my_property]'
-    excludes: ''
+  validation: true
+  warningsAsErrors: true
+  checkExhaustiveness: false
+  # when writing own rules with new properties,
+  # exclude the property path e.g.: 'my_rule_set,.*>.*>[my_property]'
+  excludes: ''
 
 processors:
-    active: true
-    exclude:
-        - 'DetektProgressListener'
+  active: true
+  exclude:
+    - 'DetektProgressListener'
 
 console-reports:
-    active: true
-    exclude:
-        - 'ProjectStatisticsReport'
-        - 'ComplexityReport'
-        - 'NotificationReport'
-        #- 'FindingsReport'
-        - 'FileBasedFindingsReport'
+  active: true
+  exclude:
+    - 'ProjectStatisticsReport'
+    - 'ComplexityReport'
+    - 'NotificationReport'
+    #- 'FindingsReport'
+    - 'FileBasedFindingsReport'
 
 output-reports:
-    active: true
-    exclude:
-        - 'HtmlOutputReport'
-        - 'TxtOutputReport'
-        - 'XmlOutputReport'
-        - 'SarifOutputReport'
-        #- 'MdOutputReport'
+  active: true
+  exclude:
+    - 'HtmlOutputReport'
+    - 'TxtOutputReport'
+    - 'XmlOutputReport'
+    - 'SarifOutputReport'
+    #- 'MdOutputReport'
 
 junit:
+  active: true
+  InvalidTestFactoryReturnType:
     active: true
-    InvalidTestFactoryReturnType:
-        active: true

@@ -23,7 +23,7 @@ fun main() {
 
 	println(
 		"$collectionBigEven found with $collectionFilters filter and " +
-				"$collectionFinds find collection operations."
+			"$collectionFinds find collection operations."
 	)
 
 	// Now let's try with a sequence instead.
@@ -37,13 +37,14 @@ fun main() {
 
 	println(
 		"$sequenceBigEven found with $sequenceFilters filter and " +
-				"$sequenceFinds find sequence operations."
+			"$sequenceFinds find sequence operations."
 	)
 
 	// If you're not starting with a collection, sequences can be created
 	// directly via a factory function.
 
-	val sequenceOfFlightlessBirds = sequenceOf("Penguin", "Ostrich", "Kiwi", "Emu")
+	val sequenceOfFlightlessBirds =
+		sequenceOf("Penguin", "Ostrich", "Kiwi", "Emu")
 
 	println("Flightless birds: ${sequenceOfFlightlessBirds.sorted().toList()}")
 

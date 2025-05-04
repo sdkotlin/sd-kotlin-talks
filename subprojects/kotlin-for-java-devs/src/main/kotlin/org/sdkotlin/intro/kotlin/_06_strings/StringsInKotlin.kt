@@ -13,7 +13,7 @@ fun main() {
 	println(template)
 
 	val otherTemplate = "You can use arbitrary expressions if you" +
-			"add curly braces: ${1 + 1}"
+		"add curly braces: ${1 + 1}"
 
 	println(otherTemplate)
 

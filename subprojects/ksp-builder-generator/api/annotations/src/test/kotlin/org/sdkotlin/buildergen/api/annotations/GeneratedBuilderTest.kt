@@ -7,7 +7,7 @@ internal class GeneratedBuilderTest {
 
 	@GeneratedBuilder
 	data class TestEntity(
-		val b: Boolean
+		val b: Boolean,
 	)
 
 	@Test

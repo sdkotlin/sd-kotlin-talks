@@ -50,7 +50,9 @@ purposes, there are no tagged releases or published build outputs.
 - AssertJ is used for fluent assertions
 - Mockk is available for mocking
 - Prefer plain Kotlin mocks
-- Use Gradle [test fixtures](https://docs.gradle.org/current/userguide/java_testing.html#sec:java_test_fixtures) for shared test doubles and utilities
+- Use
+  Gradle [test fixtures](https://docs.gradle.org/current/userguide/java_testing.html#sec:java_test_fixtures)
+  for shared test doubles and utilities
 - Tests are organized into unit (`src/test`) and integration (`src/it`) suites
 - JUnit 5's `@DynamicTest` feature is used for test parameterization
 - Run unit tests: `./gradlew test`
