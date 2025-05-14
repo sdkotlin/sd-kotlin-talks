@@ -11,10 +11,10 @@ dependencies {
 
 	implementation(platform("org.sdkotlin.platforms:plugins-platform"))
 
-	implementation(libs.dependency.analysis.gradle.plugin.dependency)
-	implementation(libs.detekt.gradle.plugin.dependency)
-	implementation(libs.jvm.dependency.conflict.resolution.gradle.plugin.dependency)
-	implementation(libs.kotlin.gradle.plugin.dependency)
-	implementation(libs.ksp.gradle.plugin.dependency)
-	implementation(libs.mokkery.gradle.plugin.dependency)
+	implementation(libs.dependencyAnalysis.gradlePluginDependency)
+	implementation(libs.detekt.gradlePluginDependency)
+	implementation(libs.jvmDependencyConflictResolution.gradlePluginDependency)
+	implementation(libs.kotlin.gradlePluginDependency)
+	implementation(libs.ksp.gradlePluginDependency)
+	implementation(libs.mokkery.gradlePluginDependency)
 }

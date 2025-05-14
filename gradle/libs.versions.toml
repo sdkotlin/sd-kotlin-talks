@@ -2,12 +2,12 @@
 
 arrow = "2.1.1"
 assertj = "3.27.3"
-dependency-analysis-gradle-plugin = "2.17.0"
+dependencyAnalysis-gradlePlugin = "2.17.0"
 detekt = "1.23.7"
 equalsverifier = "4.0"
 jetbrains-annotations = "26.0.2"
 junit = "5.12.2"
-jvm-dependency-conflict-resolution = "2.1.2"
+jvmDependencyConflictResolution-gradlePlugin = "2.1.2"
 koin = "4.0.4"
 kotest = "5.9.1"
 kotlin = "2.1.21" # Must match KSP version below.
@@ -21,7 +21,7 @@ mockk = "1.14.2"
 mokkery = "2.7.2"
 org-json = "20250107"
 slf4j = "2.0.17"
-versions-gradle-plugin = "0.52.0"
+versionsCheck-gradlePlugin = "0.52.0"
 
 [libraries]
 
@@ -37,15 +37,15 @@ version.ref = "arrow"
 module = "org.assertj:assertj-core"
 version.ref = "assertj"
 
-[libraries.dependency-analysis-gradle-plugin-dependency]
+[libraries.dependencyAnalysis-gradlePluginDependency]
 module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-analysis.gradle.plugin"
-version.ref = "dependency-analysis-gradle-plugin"
+version.ref = "dependencyAnalysis-gradlePlugin"
 
 [libraries.detekt-api]
 module = "io.gitlab.arturbosch.detekt:detekt-api"
 version.ref = "detekt"
 
-[libraries.detekt-gradle-plugin-dependency]
+[libraries.detekt-gradlePluginDependency]
 module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
 version.ref = "detekt"
 
@@ -71,9 +71,9 @@ version.ref = "junit"
 [libraries.junit-params]
 module = "org.junit.jupiter:junit-jupiter-params"
 
-[libraries.jvm-dependency-conflict-resolution-gradle-plugin-dependency]
+[libraries.jvmDependencyConflictResolution-gradlePluginDependency]
 module = "org.gradlex:jvm-dependency-conflict-resolution"
-version.ref = "jvm-dependency-conflict-resolution"
+version.ref = "jvmDependencyConflictResolution-gradlePlugin"
 
 [libraries.koin-bom]
 module = "io.insert-koin:koin-bom"
@@ -91,7 +91,7 @@ module = "io.insert-koin:koin-test"
 [libraries.koin-test-junit5]
 module = "io.insert-koin:koin-test-junit5"
 
-[libraries.kotlin-gradle-plugin-dependency]
+[libraries.kotlin-gradlePluginDependency]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
 version.ref = "kotlin"
 
@@ -147,7 +147,7 @@ version.ref = "kotlinx-dl"
 module = "com.google.devtools.ksp:symbol-processing-api"
 version.ref = "ksp"
 
-[libraries.ksp-gradle-plugin-dependency]
+[libraries.ksp-gradlePluginDependency]
 module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin"
 version.ref = "ksp"
 
@@ -175,7 +175,7 @@ version.ref = "mockk"
 module = "dev.mokkery:mokkery-core"
 version.ref = "mokkery"
 
-[libraries.mokkery-gradle-plugin-dependency]
+[libraries.mokkery-gradlePluginDependency]
 module = "dev.mokkery:mokkery-gradle"
 version.ref = "mokkery"
 
@@ -225,26 +225,30 @@ mockk-jvm = [
 
 [plugins]
 
-[plugins.dependency-analysis-gradle-plugin]
+[plugins.dependencyAnalysis-gradlePlugin]
 id = "com.autonomousapps.dependency-analysis"
-version.ref = "dependency-analysis-gradle-plugin"
+version.ref = "dependencyAnalysis-gradlePlugin"
 
-[plugins.detekt-gradle-plugin]
+[plugins.detekt-gradlePlugin]
 id = "io.gitlab.arturbosch.detekt"
 version.ref = "detekt"
 
-[plugins.jvm-dependency-conflict-detection-gradle-plugin]
+[plugins.jvmDependencyConflictDetection-gradlePlugin]
 id = "org.gradlex.jvm-dependency-conflict-detection"
-version.ref = "jvm-dependency-conflict-resolution"
+version.ref = "jvmDependencyConflictResolution-gradlePlugin"
 
-[plugins.kotlin-gradle-plugin]
+[plugins.jvmDependencyConflictResolution-gradlePlugin]
+id = "org.gradlex.jvm-dependency-conflict-resolution"
+version.ref = "jvmDependencyConflictResolution-gradlePlugin"
+
+[plugins.kotlin-gradlePlugin]
 id = "org.jetbrains.kotlin.jvm"
 version.ref = "kotlin"
 
-[plugins.mokkery-gradle-plugin]
+[plugins.mokkery-gradlePlugin]
 id = "dev.mokkery"
 version.ref = "mokkery"
 
-[plugins.versions-gradle-plugin]
+[plugins.versionsCheck-gradlePlugin]
 id = "com.github.ben-manes.versions"
-version.ref = "versions-gradle-plugin"
+version.ref = "versionsCheck-gradlePlugin"

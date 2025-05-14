@@ -4,13 +4,21 @@ import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
 	id("base")
-	alias(libs.plugins.dependency.analysis.gradle.plugin)
+	alias(libs.plugins.dependencyAnalysis.gradlePlugin)
+	// Declare with `apply false` to include in Versions Gradle Plugin checks.
+	alias(libs.plugins.detekt.gradlePlugin) apply false
+	// Declare with `apply false` to include in Versions Gradle Plugin checks.
+	alias(libs.plugins.jvmDependencyConflictDetection.gradlePlugin) apply false
+	// Declare with `apply false` to include in Versions Gradle Plugin checks.
+	alias(libs.plugins.jvmDependencyConflictResolution.gradlePlugin) apply false
 	// Kotlin plugin declaration needed here for the Dependency Analysis Plugin,
 	// but with `apply false` since the root project itself isn't a Kotlin
 	// project:
 	// https://github.com/autonomousapps/dependency-analysis-android-gradle-plugin/wiki/FAQ#typenotpresentexception-type-orgjetbrainskotlingradledslkotlinprojectextension-in-kotlin-jvm-library
-	alias(libs.plugins.kotlin.gradle.plugin) apply false
-	alias(libs.plugins.versions.gradle.plugin)
+	alias(libs.plugins.kotlin.gradlePlugin) apply false
+	// Declare with `apply false` to include in Versions Gradle Plugin checks.
+	alias(libs.plugins.mokkery.gradlePlugin) apply false
+	alias(libs.plugins.versionsCheck.gradlePlugin)
 }
 
 dependencyAnalysis {
