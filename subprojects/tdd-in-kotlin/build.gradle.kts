@@ -13,9 +13,6 @@ dependencies {
 
 	testImplementation(testFixtures(projects.subprojects.tddInKotlin))
 
-	// Work around https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/972.
-	testImplementation(projects.subprojects.tddInKotlin)
-
 	testImplementation(libs.kotest.assertions.shared)
 	testImplementation(libs.kotest.framework.api.jvm)
 	testImplementation(libs.mockk)
