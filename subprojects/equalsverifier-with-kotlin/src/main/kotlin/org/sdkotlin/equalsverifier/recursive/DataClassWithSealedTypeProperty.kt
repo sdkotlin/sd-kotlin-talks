@@ -1,4 +1,4 @@
-package org.sdkotlin.equalsverifier.recusive
+package org.sdkotlin.equalsverifier.recursive
 
 data class DataClassWithSealedTypeProperty(
 	val foo: Foo,

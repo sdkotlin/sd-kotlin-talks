@@ -1,4 +1,4 @@
-package org.sdkotlin.equalsverifier.recusive
+package org.sdkotlin.equalsverifier.recursive
 
 import nl.jqno.equalsverifier.EqualsVerifier
 import org.junit.jupiter.api.Test
