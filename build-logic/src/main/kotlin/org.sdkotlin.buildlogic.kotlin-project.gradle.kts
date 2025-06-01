@@ -42,7 +42,12 @@ tasks {
 	}
 
 	withType<Test>().configureEach {
-		jvmArgs("--enable-preview")
+		jvmArgs(
+			"--enable-preview",
+			// For Mockito:
+			// https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+			"-XX:+EnableDynamicAgentLoading",
+		)
 	}
 
 	withType<JavaExec>().configureEach {
