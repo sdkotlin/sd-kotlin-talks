@@ -12,6 +12,8 @@ value class SignedIntegral(private val i: Int) : Integral<SignedIntegral> {
 		val ZERO: SignedIntegral = SignedIntegral(0)
 
 		val ONE: SignedIntegral = SignedIntegral(1)
+
+		val NEGATIVE_ONE: SignedIntegral = SignedIntegral(-1)
 	}
 
 	override val minValue: SignedIntegral
@@ -46,4 +48,9 @@ value class SignedIntegral(private val i: Int) : Integral<SignedIntegral> {
 
 	operator fun rangeUntil(other: SignedIntegral): OpenEndRange<SignedIntegral> =
 		IntegralRange(this, other - ONE)
+
+	override fun toString(): String = i.toString()
 }
+
+infix fun SignedIntegral.downTo(to: SignedIntegral): IntegralProgression<SignedIntegral> =
+	IntegralProgression.fromClosedRange(this, to, SignedIntegral.NEGATIVE_ONE)

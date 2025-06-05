@@ -15,7 +15,7 @@ class IntegralRange<I : Integral<I>>(
 	override val endInclusive: I = last
 
 	override val endExclusive: I by lazy {
-		check(endInclusive == start.maxValue) {
+		check(endInclusive != endInclusive.maxValue) {
 			"Cannot return the exclusive upper bound of a range that includes MAX_VALUE."
 		}
 		endInclusive + endInclusive.one

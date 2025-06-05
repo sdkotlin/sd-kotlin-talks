@@ -40,7 +40,7 @@ value class UOctal internal constructor(
 	override fun compareTo(other: UOctal): Int =
 		data.compareTo(other.data)
 
-	operator fun rangeTo(other: UOctal): OpenEndRange<UOctal> =
+	operator fun rangeTo(other: UOctal): ClosedRange<UOctal> =
 		IntegralRange(this, other)
 
 	operator fun rangeUntil(other: UOctal): OpenEndRange<UOctal> =
