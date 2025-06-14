@@ -2,15 +2,18 @@ package org.sdkotlin.equalsverifier.delegation
 
 import nl.jqno.equalsverifier.EqualsVerifier
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class FooBarImplTest {
 
 	@Test
-	@Disabled("https://github.com/jqno/equalsverifier/issues/1083")
 	fun `test equals, hashCode, and toString`() {
-		EqualsVerifier.forClass(FooBarImpl::class.java).verify()
+
+		EqualsVerifier.forClass(FooBarImpl::class.java)
+			.withIgnoredFields(Foo::foo.name)
+			// Required per https://github.com/jqno/equalsverifier/issues/1083.
+			.withPrefabValues(BarImpl::class.java, BarImpl(1), BarImpl(2))
+			.verify()
 	}
 
 	@Test
