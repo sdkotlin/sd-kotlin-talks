@@ -60,7 +60,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper").configure {
-		gradleVersion = "8.14.1"
+		gradleVersion = "8.14.2"
 		distributionType = ALL
 	}
 }
