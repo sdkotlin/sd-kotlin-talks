@@ -1,6 +1,7 @@
 package org.sdkotlin.equalsverifier.delegation
 
 import nl.jqno.equalsverifier.EqualsVerifier
+import nl.jqno.equalsverifier.Mode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -11,8 +12,10 @@ class FooBarImplTest {
 
 		EqualsVerifier.forClass(FooBarImpl::class.java)
 			.withIgnoredFields(Foo::foo.name)
-			// Required per https://github.com/jqno/equalsverifier/issues/1083.
-			.withPrefabValues(BarImpl::class.java, BarImpl(1), BarImpl(2))
+			// Mockito skip or prefab values required per
+			// https://github.com/jqno/equalsverifier/issues/1083.
+			.set(Mode.skipMockito())
+			//.withPrefabValues(BarImpl::class.java, BarImpl(1), BarImpl(2))
 			.verify()
 	}
 
