@@ -8,9 +8,9 @@ class LazyEqualsImplTest {
 	@Test
 	fun `test equals, hashCode, and toString`() {
 
-		EqualsVerifier.forClass(LazyEqualsImpl::class.java)
+		EqualsVerifier
 			// Required per https://github.com/jqno/equalsverifier/issues/1097
-			.withPrefabValues(Lazy::class.java, lazy { 1 }, lazy { 2 })
+			.forExamples(LazyEqualsImpl(1, "red"), LazyEqualsImpl(2, "blue"))
 			.verify()
 	}
 }
