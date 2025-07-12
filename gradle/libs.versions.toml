@@ -2,7 +2,7 @@
 
 arrow = "2.1.2"
 assertj = "3.27.3"
-dependencyAnalysis-gradlePlugin = "2.18.0"
+dependencyAnalysis-gradlePlugin = "2.19.0"
 detekt = "1.23.8"
 equalsverifier = "4.0.2"
 jetbrains-annotations = "26.0.2"
@@ -10,15 +10,15 @@ junit = "5.13.1"
 jvmDependencyConflictResolution-gradlePlugin = "2.4"
 koin = "4.1.0"
 kotest = "5.9.1"
-kotlin = "2.1.21" # Must match KSP version below.
+kotlin = "2.2.0" # Must match KSP version below.
 kotlinpoet = "2.2.0"
 kotlinx-coroutines = "1.10.2"
 kotlinx-dl = "0.5.2"
-ksp = "2.1.21-2.0.2" # Must match Kotlin version above.
+ksp = "2.2.0-2.0.2" # Must match Kotlin version above.
 mockito = "5.18.0"
 mockito-kotlin = "2.2.0"
 mockk = "1.14.2"
-mokkery = "2.8.0"
+mokkery = "2.9.0"
 org-json = "20250517"
 slf4j = "2.0.17"
 versionsCheck-gradlePlugin = "0.52.0"
