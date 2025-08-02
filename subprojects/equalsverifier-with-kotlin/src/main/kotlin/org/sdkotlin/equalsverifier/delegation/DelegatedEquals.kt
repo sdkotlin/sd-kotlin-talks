@@ -23,3 +23,9 @@ class FooBarImpl(barValue: Int) : Foo, Bar by BarImpl(barValue) {
 	override fun hashCode(): Int = bar
 	override fun toString(): String = "FooBarImpl(foo=$bar)"
 }
+
+interface Baz {
+	val bar: Bar
+}
+
+data class BazImpl(override val bar: Bar) : Baz
