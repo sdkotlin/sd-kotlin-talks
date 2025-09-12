@@ -9,7 +9,7 @@ jetbrains-annotations = "26.0.2"
 junit = "5.13.4"
 jvmDependencyConflictResolution-gradlePlugin = "2.4"
 koin = "4.1.1"
-kotest = "5.9.1"
+kotest = "6.0.3"
 kotlin = "2.2.20" # Must match KSP version below.
 kotlinpoet = "2.2.0"
 kotlinx-coroutines = "1.10.2"
@@ -111,11 +111,14 @@ version.ref = "kotest"
 module = "io.kotest:kotest-bom"
 version.ref = "kotest"
 
-[libraries.kotest-framework-api-jvm]
-module = "io.kotest:kotest-framework-api-jvm"
+[libraries.kotest-assertions-core-jvm]
+module = "io.kotest:kotest-assertions-core-jvm"
 
-[libraries.kotest-runner-junit5-jvm]
-module = "io.kotest:kotest-runner-junit5-jvm"
+[libraries.kotest-assertions-table-jvm]
+module = "io.kotest:kotest-assertions-table-jvm"
+
+[libraries.kotest-runner-junit5]
+module = "io.kotest:kotest-runner-junit5"
 
 [libraries.kotlinx-coroutines-bom]
 module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom"

@@ -13,12 +13,12 @@ dependencies {
 
 	testImplementation(testFixtures(projects.subprojects.tddInKotlin))
 
-	testImplementation(libs.kotest.assertions.shared)
-	testImplementation(libs.kotest.framework.api.jvm)
+	testImplementation(libs.kotest.assertions.core.jvm)
+	testImplementation(libs.kotest.assertions.table.jvm)
+	testImplementation(libs.kotest.runner.junit5)
 	testImplementation(libs.mockk)
 
 	testRuntimeOnly(platform("org.sdkotlin.platforms:app-platform"))
 
-	testRuntimeOnly(libs.kotest.runner.junit5.jvm)
 	testRuntimeOnly(libs.slf4j.simple)
 }
