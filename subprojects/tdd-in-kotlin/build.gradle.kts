@@ -15,6 +15,7 @@ dependencies {
 
 	testImplementation(libs.kotest.assertions.core.jvm)
 	testImplementation(libs.kotest.assertions.table.jvm)
+	testImplementation(libs.kotest.framework.engine)
 	testImplementation(libs.kotest.runner.junit5)
 	testImplementation(libs.mockk)
 

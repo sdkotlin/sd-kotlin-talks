@@ -103,19 +103,18 @@ version.ref = "kotlinpoet"
 module = "com.squareup:kotlinpoet-ksp"
 version.ref = "kotlinpoet"
 
-[libraries.kotest-assertions-shared]
-module = "io.kotest:kotest-assertions-shared"
-version.ref = "kotest"
-
-[libraries.kotest-bom]
-module = "io.kotest:kotest-bom"
-version.ref = "kotest"
-
 [libraries.kotest-assertions-core-jvm]
 module = "io.kotest:kotest-assertions-core-jvm"
 
 [libraries.kotest-assertions-table-jvm]
 module = "io.kotest:kotest-assertions-table-jvm"
+
+[libraries.kotest-bom]
+module = "io.kotest:kotest-bom"
+version.ref = "kotest"
+
+[libraries.kotest-framework-engine]
+module = "io.kotest:kotest-framework-engine"
 
 [libraries.kotest-runner-junit5]
 module = "io.kotest:kotest-runner-junit5"
