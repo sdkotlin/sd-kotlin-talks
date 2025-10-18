@@ -13,4 +13,5 @@ dependencies {
 	testRuntimeOnly(libs.mockito) {
 		because("Used by EqualsVerifier for prefab value generation.")
 	}
+	testRuntimeOnly(kotlin("reflect"))
 }

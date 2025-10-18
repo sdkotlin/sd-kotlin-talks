@@ -10,7 +10,7 @@ class IntegralRangeTest {
 	fun `test equals, hashCode, and toString`() {
 
 		EqualsVerifier.forClass(IntegralRange::class.java)
-			.withIgnoredFields($$"endExclusive$delegate", $$$"$$delegate_0")
+			.withIgnoredFields("endExclusive", $$$"$$delegate_0")
 			// Required per https://github.com/jqno/equalsverifier/issues/1082.
 			.withPrefabValues(
 				Integral::class.java,
@@ -30,7 +30,7 @@ class IntegralRangeTest {
 		val blue: ClosedRange<SignedIntegral> = one..two
 
 		EqualsVerifier.forExamples(red, blue)
-			.withIgnoredFields($$"endExclusive$delegate", $$$"$$delegate_0")
+			.withIgnoredFields("endExclusive", $$$"$$delegate_0")
 			.verify()
 	}
 }
