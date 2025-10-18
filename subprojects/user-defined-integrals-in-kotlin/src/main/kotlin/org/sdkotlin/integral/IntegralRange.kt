@@ -22,7 +22,7 @@ class IntegralRange<I : Integral<I>>(
 	}
 
 	override fun contains(value: I): Boolean =
-		start <= value && value <= endInclusive
+		value in start..endInclusive
 
 	override fun isEmpty(): Boolean = start > endInclusive
 
