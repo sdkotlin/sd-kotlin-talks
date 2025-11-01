@@ -150,7 +150,7 @@ module = "com.google.devtools.ksp:symbol-processing-api"
 version.ref = "ksp"
 
 [libraries.ksp-gradlePluginDependency]
-module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin"
+module = "com.google.devtools.ksp:symbol-processing-gradle-plugin"
 version.ref = "ksp"
 
 [libraries.mockito]
