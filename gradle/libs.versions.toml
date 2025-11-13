@@ -1,6 +1,6 @@
 [versions]
 
-arrow = "2.1.2"
+arrow = "2.2.0"
 assertj = "3.27.6"
 dependencyAnalysis-gradlePlugin = "3.4.1"
 detekt = "1.23.8"
