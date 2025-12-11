@@ -15,7 +15,11 @@ data class NutritionFacts(
 	val fat: Int = 0,
 	val sodium: Int = 0,
 	val carbohydrate: Int = 0,
-)
+) {
+	init {
+		require(servingSize > 0) { "servingSize must be greater than 0" }
+	}
+}
 
 fun main() {
 

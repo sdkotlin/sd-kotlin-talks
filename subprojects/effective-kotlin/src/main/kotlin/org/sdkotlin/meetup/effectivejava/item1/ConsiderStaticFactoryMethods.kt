@@ -63,15 +63,27 @@ fun `with Kotlin companion object factory functions`() {
 
 // We can add such a static factory as a companion object extension function.
 
-fun String.Companion.valueOf(groot: Groot) = groot.toString()
-
 class Groot {
 	override fun toString() = "I am Groot"
 }
 
+fun String.Companion.valueOf(groot: Groot) = groot.toString()
+
 fun `with Kotlin companion object extension factory functions`() {
 
 	val grootSays = String.valueOf(Groot())
+
+	println("Groot says, \"$grootSays\"")
+}
+
+object Grooter {
+
+	fun valueOf(groot: Groot): String = groot.toString()
+}
+
+fun `with Kotlin object factory functions`() {
+
+	val grootSays = Grooter.valueOf(Groot())
 
 	println("Groot says, \"$grootSays\"")
 }
@@ -93,5 +105,6 @@ fun main() {
 	`with Java static factory functions`()
 	`with Kotlin companion object factory functions`()
 	`with Kotlin companion object extension factory functions`()
+	`with Kotlin object factory functions`()
 	`with Kotlin top-level factory functions`()
 }

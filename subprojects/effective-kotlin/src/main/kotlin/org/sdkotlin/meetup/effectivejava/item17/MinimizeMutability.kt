@@ -19,7 +19,7 @@ data class ThreadSafe(val readOnly: String = "Can't touch this") {
 
 // The base collection APIs are immutable by default in Kotlin.
 
-val immutableList = listOf("Not", "gonna", "do", "it", "!")
+val immutableList: List<String> = listOf("Not", "gonna", "do", "it", "!")
 
 fun main() {
 
