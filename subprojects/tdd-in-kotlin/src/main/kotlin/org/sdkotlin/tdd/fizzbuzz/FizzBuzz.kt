@@ -9,11 +9,15 @@ fun main() {
 	fizzBuzz1to100(ConsolePrinter())
 }
 
-internal fun fizzBuzz1to100(printFunction: (String) -> Unit) {
+fun fizzBuzz1to100() {
+	(1..100).forEach { println(fizzBuzzOf(it)) }
+}
+
+fun fizzBuzz1to100(printFunction: (String) -> Unit) {
 	(1..100).forEach { printFunction(fizzBuzzOf(it)) }
 }
 
-internal fun fizzBuzz1to100(printer: Printer) {
+fun fizzBuzz1to100(printer: Printer) {
 	fizzBuzz1to100 { fizzBuzz -> printer.print(fizzBuzz) }
 }
 
