@@ -2,6 +2,9 @@ package org.sdkotlin.tdd.fizzbuzz
 
 fun main() {
 
+	println("Hard-coded...")
+	fizzBuzz1to100()
+
 	println("Function-oriented...")
 	fizzBuzz1to100(::println)
 
