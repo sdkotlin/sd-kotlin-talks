@@ -2,7 +2,7 @@
 
 arrow = "2.2.0"
 assertj = "3.27.6"
-dependencyAnalysis-gradlePlugin = "3.4.1"
+dependencyAnalysis-gradlePlugin = "3.5.1"
 detekt = "1.23.8"
 equalsverifier = "4.2.2"
 jetbrains-annotations = "26.0.2-1"
