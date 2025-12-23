@@ -1,15 +1,19 @@
 ### JetBrains template
 
+# IntelliJ
+
 .idea/*
 !.idea/codeStyles/
 !.idea/inspectionProfiles/
 !.idea/encodings.xml
 
-# Gradle:
 *.iml
 
-# IntelliJ
 out/
+
+# AI
+/.junie
+/.output.txt
 
 ### Gradle template
 .gradle
