@@ -2,6 +2,7 @@ package org.sdkotlin.intro.kotlin._24_arrays
 
 // Kotlin supports arrays, with some differences compared to Java.
 
+@Suppress("UnusedVariable", "unused")
 fun main() {
 
 	// All arrays are instances of kotlin.Array<T>.
@@ -18,9 +19,11 @@ fun main() {
 	// Unlike Java arrays, they have `get(Int)` and `set(Int, T)` functions,
 	// which are operator functions for the index operator `[n]`.
 
+	@Suppress("ReplaceGetOrSet")
 	println("arrayOfInts.get(0): ${arrayOfInts.get(0)}")
 	println("arrayOfInts[0]: ${arrayOfInts[0]}")
 
+	@Suppress("ReplaceGetOrSet")
 	arrayOfInts.set(0, 100)
 	arrayOfInts[1] = 200
 	arrayOfInts[1 + 1] = 300
@@ -28,6 +31,7 @@ fun main() {
 	// Misuse results in the usual exception.
 
 	try {
+		@Suppress("KotlinConstantConditions")
 		arrayOfInts[-1]
 	} catch (e: ArrayIndexOutOfBoundsException) {
 		println(e)
@@ -76,7 +80,13 @@ fun main() {
 
 	// You can compare arrays for equality with another extension function.
 
-	println("arrayOfInts == arrayOfInts: ${arrayOfInts.contentDeepEquals(arrayOfInts)}")
+	println(
+		"arrayOfInts == arrayOfInts: ${
+			arrayOfInts.contentDeepEquals(
+				arrayOfInts
+			)
+		}"
+	)
 
 	println("arrayOfInts == twoDInts: ${arrayOfInts.contentDeepEquals(twoDInts)}")
 
@@ -87,7 +97,7 @@ fun main() {
 	// The factory functions and type inference work, or don't, as one would
 	// expect.
 
-	val arrayOfAnys: Array<*> = arrayOf(1, 2L, 3.0)
+	val arrayOfAnys: Array<Any> = arrayOf(1, 2L, 3.0)
 
 	val arrayOfNullableInts: Array<Int?> = arrayOf(1, null, 3)
 
