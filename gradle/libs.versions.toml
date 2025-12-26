@@ -1,25 +1,25 @@
 [versions]
 
-arrow = "2.2.0"
+arrow = "2.2.1.1"
 assertj = "3.27.6"
 dependencyAnalysis-gradlePlugin = "3.5.1"
-detekt = "1.23.8"
-equalsverifier = "4.2.2"
+detekt = "2.0.0-alpha.1"
+equalsverifier = "4.2.5"
 jetbrains-annotations = "26.0.2-1"
 junit = "6.0.1"
-jvmDependencyConflictResolution-gradlePlugin = "2.4"
+jvmDependencyConflictResolution-gradlePlugin = "2.5"
 koin = "4.1.1"
-kotest = "6.0.4"
-kotlin = "2.2.21"
+kotest = "6.0.7"
+kotlin = "2.3.0"
 kotlinpoet = "2.2.0"
 kotlinx-coroutines = "1.10.2"
 kotlinx-dl = "0.5.2"
-ksp = "2.3.2"
-mockito = "5.20.0"
+ksp = "2.3.4"
+mockito = "5.21.0"
 mockito-kotlin = "2.2.0"
-mockk = "1.14.6"
-mokkery = "2.10.2"
-org-json = "20250517"
+mockk = "1.14.7"
+mokkery = "3.1.1"
+org-json = "20251224"
 slf4j = "2.0.17"
 versionsCheck-gradlePlugin = "0.53.0"
 
@@ -33,6 +33,10 @@ version.ref = "arrow"
 module = "io.arrow-kt:arrow-core-jvm"
 version.ref = "arrow"
 
+[libraries.arrow-exception-utils]
+module = "io.arrow-kt:arrow-exception-utils"
+version.ref = "arrow"
+
 [libraries.assertj]
 module = "org.assertj:assertj-core"
 version.ref = "assertj"
@@ -42,15 +46,15 @@ module = "com.autonomousapps.dependency-analysis:com.autonomousapps.dependency-a
 version.ref = "dependencyAnalysis-gradlePlugin"
 
 [libraries.detekt-api]
-module = "io.gitlab.arturbosch.detekt:detekt-api"
+module = "dev.detekt:detekt-api"
 version.ref = "detekt"
 
 [libraries.detekt-gradlePluginDependency]
-module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
+module = "dev.detekt:detekt-gradle-plugin"
 version.ref = "detekt"
 
 [libraries.detekt-test]
-module = "io.gitlab.arturbosch.detekt:detekt-test"
+module = "dev.detekt:detekt-test"
 version.ref = "detekt"
 
 [libraries.equalsverifier]
@@ -191,7 +195,7 @@ version.ref = "slf4j"
 
 [bundles]
 
-arrow-jvm = ["arrow-core", "arrow-core-jvm"]
+arrow-jvm = ["arrow-core", "arrow-core-jvm", "arrow-exception-utils"]
 
 koin-jvm = ["koin-core", "koin-core-jvm"]
 
@@ -232,7 +236,7 @@ id = "com.autonomousapps.dependency-analysis"
 version.ref = "dependencyAnalysis-gradlePlugin"
 
 [plugins.detekt-gradlePlugin]
-id = "io.gitlab.arturbosch.detekt"
+id = "dev.detekt"
 version.ref = "detekt"
 
 [plugins.jvmDependencyConflictDetection-gradlePlugin]

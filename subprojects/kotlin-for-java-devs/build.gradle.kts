@@ -8,7 +8,7 @@ dependencies {
 
 	api(platform("org.sdkotlin.platforms:app-platform"))
 
-	api(libs.bundles.arrow.jvm)
+	api(libs.arrow.core.jvm)
 
 	implementation(libs.bundles.kotlinx.coroutines.jvm)
 

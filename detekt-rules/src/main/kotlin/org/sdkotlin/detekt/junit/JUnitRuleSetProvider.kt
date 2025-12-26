@@ -1,18 +1,22 @@
 package org.sdkotlin.detekt.junit
 
-import io.gitlab.arturbosch.detekt.api.Config
-import io.gitlab.arturbosch.detekt.api.RuleSet
-import io.gitlab.arturbosch.detekt.api.RuleSetProvider
+import dev.detekt.api.RuleName
+import dev.detekt.api.RuleSet
+import dev.detekt.api.RuleSetProvider
 
 class JUnitRuleSetProvider : RuleSetProvider {
 
-	override val ruleSetId: String = "junit"
+	override val ruleSetId: RuleSet.Id = RuleSet.Id("junit")
 
-	override fun instance(config: Config): RuleSet =
+	override fun instance(): RuleSet =
 		RuleSet(
 			ruleSetId,
-			listOf(
-				InvalidTestFactoryReturnType(config),
+			mapOf(
+				RuleName("InvalidTestFactoryReturnType") to {
+					InvalidTestFactoryReturnType(
+						it
+					)
+				},
 			),
 		)
 }

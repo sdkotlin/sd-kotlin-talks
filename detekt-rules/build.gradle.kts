@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.sdkotlin.detekt"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 
 dependencies {
 

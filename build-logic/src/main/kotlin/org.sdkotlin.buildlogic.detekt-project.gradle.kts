@@ -4,12 +4,11 @@ plugins {
 	// plugins block of precompiled script plugins:
 	// https://github.com/gradle/gradle/issues/15383
 	// alias(libs.plugins.detekt.gradle.plugin)
-	id("io.gitlab.arturbosch.detekt")
+	id("dev.detekt")
 }
 
 dependencies {
-
-	detektPlugins("org.sdkotlin.detekt:detekt-rules:1.0-SNAPSHOT")
+	detektPlugins("org.sdkotlin.detekt:detekt-rules:1.0.1-SNAPSHOT")
 }
 
 tasks {

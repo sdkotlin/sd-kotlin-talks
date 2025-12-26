@@ -1,103 +1,102 @@
 package org.sdkotlin.detekt.junit
 
-import io.gitlab.arturbosch.detekt.api.CodeSmell
-import io.gitlab.arturbosch.detekt.api.Config
-import io.gitlab.arturbosch.detekt.api.Debt
-import io.gitlab.arturbosch.detekt.api.Entity
-import io.gitlab.arturbosch.detekt.api.Issue
-import io.gitlab.arturbosch.detekt.api.Rule
-import io.gitlab.arturbosch.detekt.api.Severity
-import io.gitlab.arturbosch.detekt.api.internal.RequiresTypeResolution
+import dev.detekt.api.Config
+import dev.detekt.api.Entity
+import dev.detekt.api.Finding
+import dev.detekt.api.RequiresAnalysisApi
+import dev.detekt.api.Rule
+import org.jetbrains.kotlin.analysis.api.KaExperimentalApi
+import org.jetbrains.kotlin.analysis.api.KaSession
+import org.jetbrains.kotlin.analysis.api.analyze
+import org.jetbrains.kotlin.analysis.api.types.KaClassType
+import org.jetbrains.kotlin.analysis.api.types.KaType
+import org.jetbrains.kotlin.name.ClassId
+import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.psi.KtNamedFunction
-import org.jetbrains.kotlin.resolve.BindingContext
-import org.jetbrains.kotlin.resolve.descriptorUtil.fqNameOrNull
-import org.jetbrains.kotlin.types.KotlinType
-import org.jetbrains.kotlin.types.typeUtil.supertypes
 
 /**
  * A Detekt rule for ensuring
  * [JUnit 5 Dynamic Tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-dynamic-tests)
- * hava a valid inferred return type.
+ * have a valid inferred return type.
  */
-@RequiresTypeResolution
-class InvalidTestFactoryReturnType(config: Config) : Rule(config) {
+class InvalidTestFactoryReturnType(config: Config) :
+	Rule(config, "JUnit @TestFactory functions must return a valid type."),
+	RequiresAnalysisApi {
 
-	override val issue = Issue(
-		id = "InvalidTestFactoryReturnType",
-		severity = Severity.Defect,
-		description = "JUnit @TestFactory functions must return a valid type.",
-		debt = Debt.Companion.FIVE_MINS
-	)
+	companion object {
+		private val TEST_FACTORY_ANNOTATION =
+			ClassId.topLevel(FqName("org.junit.jupiter.api.TestFactory"))
+		private val DYNAMIC_NODE =
+			ClassId.topLevel(FqName("org.junit.jupiter.api.DynamicNode"))
 
+		private val DYNAMIC_NODE_CONTAINERS: Set<ClassId> = setOf(
+			ClassId.topLevel(FqName("kotlin.Array")),
+			ClassId.topLevel(FqName("kotlin.collections.Collection")),
+			ClassId.topLevel(FqName("kotlin.collections.List")),
+			ClassId.topLevel(FqName("kotlin.collections.Set")),
+			ClassId.topLevel(FqName("kotlin.collections.Iterable")),
+			ClassId.topLevel(FqName("kotlin.collections.Iterator")),
+			ClassId.topLevel(FqName("kotlin.sequences.Sequence")),
+			ClassId.topLevel(FqName("java.util.stream.Stream")),
+		)
+	}
+
+	@OptIn(KaExperimentalApi::class)
 	override fun visitNamedFunction(function: KtNamedFunction) {
 		super.visitNamedFunction(function)
 
-		val isTestFactoryFunction =
-			function.annotationEntries.any { it.text == "@TestFactory" }
+		analyze(function) {
+			val symbol = function.symbol
+			val isTestFactoryFunction =
+				symbol.annotations.any { it.classId == TEST_FACTORY_ANNOTATION }
 
-		if (isTestFactoryFunction) {
-			// Get the resolved return type of the function
-			val returnType = function.resolveReturnType()
+			if (isTestFactoryFunction) {
+				val returnType = symbol.returnType
 
-			if (returnType != null && !isValidTestFactoryReturnType(returnType)) {
-				report(
-					CodeSmell(
-						issue,
-						Entity.from(function),
-						message = "JUnit @TestFactory functions must return " +
-							"a valid type. Found: $returnType."
+				if (!isValidTestFactoryReturnType(returnType)) {
+					report(
+						Finding(
+							Entity.from(function),
+							message = "JUnit @TestFactory functions must " +
+								"return a valid type. Found: $returnType."
+						)
 					)
-				)
+				}
 			}
 		}
 	}
 
-	private fun KtNamedFunction.resolveReturnType(): KotlinType? {
-		// Get the binding context and resolve the return type
-		return bindingContext[BindingContext.FUNCTION, this]?.returnType
+	private fun KaSession.isValidTestFactoryReturnType(type: KaType): Boolean {
+		return isDynamicNodeOrSubtype(type) || isDynamicNodeContainer(type)
 	}
 
-	private fun isValidTestFactoryReturnType(type: KotlinType): Boolean {
-		// Check if it's a subtype of DynamicNode (including DynamicTest and
-		// DynamicContainer)
-		if (type.isDynamicNode()
-			|| type.supertypes().any { it.isDynamicNode() }
-		) {
-			return true
-		}
-
-		// Check if it's a container (e.g., Stream, Collection, Iterable,
-		// Iterator, Array) of DynamicNode
-		if (type.isDynamicNodeContainer()) {
-			return true
-		}
-
-		return false
+	private fun KaSession.isDynamicNodeOrSubtype(type: KaType): Boolean {
+		return type.isDynamicNode() ||
+			type.allSupertypes.any { it.isDynamicNode() }
 	}
 
-	private fun KotlinType.isDynamicNode(): Boolean {
-		val fqName =
-			this.constructor.declarationDescriptor?.fqNameOrNull()?.asString()
-		return fqName == "org.junit.jupiter.api.DynamicNode"
+	private fun KaType.isDynamicNode(): Boolean {
+		val classId = (this as? KaClassType)?.classId
+		return classId == DYNAMIC_NODE
 	}
 
-	private fun KotlinType.isDynamicNodeContainer(): Boolean {
-		val fqName =
-			this.constructor.declarationDescriptor?.fqNameOrNull()?.asString()
+	private fun KaSession.isDynamicNodeContainer(type: KaType): Boolean {
+		val classType = type as? KaClassType ?: return false
+		val classId = classType.classId
+
+		// Accept both the known container interfaces/classes and any subtype
+		// of them
 		val isContainerType =
-			fqName in listOf(
-				"kotlin.Array",
-				"kotlin.collections.Collection",
-				"kotlin.collections.List",
-				"kotlin.collections.Set",
-				"kotlin.collections.Iterable",
-				"kotlin.collections.Iterator",
-				"java.util.stream.Stream",
-			)
+			classId in DYNAMIC_NODE_CONTAINERS ||
+				classType.allSupertypes
+					.mapNotNull { (it as? KaClassType)?.classId }
+					.any { it in DYNAMIC_NODE_CONTAINERS }
 
-		return isContainerType && arguments.any { arg ->
-			arg.type.isDynamicNode()
-				|| arg.type.supertypes().any { it.isDynamicNode() }
+		if (!isContainerType) return false
+
+		return classType.typeArguments.any { arg ->
+			val argType = arg.type ?: return@any false
+			isDynamicNodeOrSubtype(argType)
 		}
 	}
 }
