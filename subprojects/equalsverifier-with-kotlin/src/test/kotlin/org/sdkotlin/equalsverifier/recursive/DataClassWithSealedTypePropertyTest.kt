@@ -8,12 +8,13 @@ internal class DataClassWithSealedTypePropertyTest {
 	@Test
 	fun `test equals, hashCode, and toString`() {
 		EqualsVerifier.forClass(DataClassWithSealedTypeProperty::class.java)
-			// Required per https://github.com/jqno/equalsverifier/issues/1081.
-			.withPrefabValues(
-				Foo::class.java,
-				FooImpl(1),
-				FooImpl(2),
-			)
+			// No longer required since EqualsVerifier version 4.2.6 per
+			// https://github.com/jqno/equalsverifier/issues/1081.
+			//.withPrefabValues(
+			//	Foo::class.java,
+			//	FooImpl(1),
+			//	FooImpl(2),
+			//)
 			.verify()
 	}
 }
