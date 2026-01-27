@@ -17,7 +17,6 @@ dependencies {
 	testImplementation(libs.kotest.assertions.table.jvm)
 	testImplementation(libs.kotest.framework.engine)
 	testImplementation(libs.kotest.runner.junit5)
-	testImplementation(libs.mockk)
 
 	testRuntimeOnly(platform("org.sdkotlin.platforms:app-platform"))
 
