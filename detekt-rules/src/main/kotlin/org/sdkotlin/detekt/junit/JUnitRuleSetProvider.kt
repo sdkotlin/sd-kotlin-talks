@@ -2,11 +2,12 @@ package org.sdkotlin.detekt.junit
 
 import dev.detekt.api.RuleName
 import dev.detekt.api.RuleSet
+import dev.detekt.api.RuleSetId
 import dev.detekt.api.RuleSetProvider
 
 class JUnitRuleSetProvider : RuleSetProvider {
 
-	override val ruleSetId: RuleSet.Id = RuleSet.Id("junit")
+	override val ruleSetId: RuleSetId = RuleSetId("junit")
 
 	override fun instance(): RuleSet =
 		RuleSet(
