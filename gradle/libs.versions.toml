@@ -16,7 +16,7 @@ kotlinx-coroutines = "1.10.2"
 kotlinx-dl = "0.5.2"
 ksp = "2.3.6"
 mockito = "5.22.0"
-mockito-kotlin = "2.2.0"
+mockito-kotlin = "6.2.3"
 mockk = "1.14.9"
 mokkery = "3.2.0"
 org-json = "20251224"
@@ -162,7 +162,7 @@ module = "org.mockito:mockito-core"
 version.ref = "mockito"
 
 [libraries.mockito-kotlin]
-module = "com.nhaarman.mockitokotlin2:mockito-kotlin"
+module = "org.mockito.kotlin:mockito-kotlin"
 version.ref = "mockito-kotlin"
 
 [libraries.mockk]
