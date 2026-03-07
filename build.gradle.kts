@@ -1,6 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
+import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.BIN
 
 plugins {
 	id("base")
@@ -60,8 +60,8 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper").configure {
-		gradleVersion = "9.3.1"
-		distributionType = ALL
+		gradleVersion = "9.4.0"
+		distributionType = BIN
 	}
 }
 
