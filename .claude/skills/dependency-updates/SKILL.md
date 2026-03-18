@@ -53,7 +53,7 @@ When multiple dependency updates are available:
    - Update ONLY ONE dependency version in `libs.versions.toml`
    - Keep version catalog edits consistent with existing style
    - Search the repository for usages of its alias to ensure examples still compile
-   - Run validation (see step 4)
+   - Run validation (step 4) - BOTH `build --rerun-tasks` AND `buildHealth`
    - Report results and **PAUSE** for maintainer review and commit
    - **WAIT for explicit confirmation** before proceeding to the next dependency
 
@@ -93,19 +93,21 @@ When dependency upgrades introduce improved APIs, patterns, or idioms:
 
 ### 4. Validation
 
-After changes, verify the build with:
+**CRITICAL: Run BOTH validation tasks for EVERY dependency update.**
+
+After each dependency change, verify the build with:
 
 ```
 ./gradlew build --rerun-tasks
 ```
 
-And:
+Then run:
 
 ```
 ./gradlew buildHealth
 ```
 
-Use the smallest sufficient validation for the scope of the change first, but for dependency, wrapper, or build-logic changes these full validations are preferred.
+Both validations must pass before reporting results to the maintainer. This ensures the dependency update doesn't break compilation, tests, or introduce dependency health issues.
 
 ### 5. Reporting
 
