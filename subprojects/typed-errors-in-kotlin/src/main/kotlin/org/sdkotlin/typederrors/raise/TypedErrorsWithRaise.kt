@@ -22,31 +22,31 @@ class FruitBasketBuilder {
 
 	private val fruit: MutableList<Fruit> = mutableListOf()
 
-	context(Raise<TypedError>)
+	context(raiseContext: Raise<TypedError>)
 	fun addApple(apple: Apple): FruitBasketBuilder {
 
-		ensure(!apple.hasWorm) { BadAppleTypedError }
+		raiseContext.ensure(!apple.hasWorm) { BadAppleTypedError }
 		fruit.add(apple)
 		return this
 	}
 
-	context(Raise<TypedError>)
+	context(raiseContext: Raise<TypedError>)
 	fun addBanana(
 		banana: Banana,
 		microSievertsLimit: Double,
 	): FruitBasketBuilder {
 
-		ensure(banana.microSieverts <= microSievertsLimit) {
+		raiseContext.ensure(banana.microSieverts <= microSievertsLimit) {
 			RadioactiveBananaTypedError
 		}
 		fruit.add(banana)
 		return this
 	}
 
-	context(Raise<TypedError>)
+	context(raiseContext: Raise<TypedError>)
 	fun addGrapes(grapes: Grapes): FruitBasketBuilder {
 
-		ensure(!grapes.moreLikeRaisins) { ShriveledGrapesTypedError }
+		raiseContext.ensure(!grapes.moreLikeRaisins) { ShriveledGrapesTypedError }
 		fruit.add(grapes)
 		return this
 	}
@@ -60,7 +60,7 @@ class FruitBasketBuilder {
 	fun build(): FruitBasket = FruitBasketImpl(fruit)
 }
 
-context(Raise<TypedError>)
+context(raiseContext: Raise<TypedError>)
 fun goGroceryShopping(): FruitBasket {
 
 	val isTuesday = true
@@ -69,14 +69,18 @@ fun goGroceryShopping(): FruitBasket {
 	val fruitBasketBuilder = FruitBasketBuilder()
 
 	// Can chain.
-	fruitBasketBuilder
-		.addApple(Apple(hasWorm = false))
-		.addBanana(Banana(microSieverts = 1.1), microSievertsLimit)
-		.addBanana(Banana(microSieverts = 2.2), microSievertsLimit)
+	with(raiseContext) {
+		fruitBasketBuilder
+			.addApple(Apple(hasWorm = false))
+			.addBanana(Banana(microSieverts = 1.1), microSievertsLimit)
+			.addBanana(Banana(microSieverts = 2.2), microSievertsLimit)
+	}
 
 	// Conditional adds via breaking the chain.
 	if (isTuesday) {
-		fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = true))
+		with(raiseContext) {
+			fruitBasketBuilder.addGrapes(Grapes(moreLikeRaisins = true))
+		}
 	}
 
 	// Iterative adds via breaking the chain.
