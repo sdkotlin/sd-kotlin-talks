@@ -31,6 +31,14 @@ Run the dependency update check:
 
 Review the output to identify available updates.
 
+**If the report contains a "The following dependencies exceed the version found at the milestone revision level" section**, the dependency metadata cache may be stale. Re-run with `--refresh-dependencies` to get accurate results:
+
+```
+./gradlew dependencyUpdates --no-parallel --refresh-dependencies
+```
+
+Use the refreshed output going forward. Do not use `--refresh-dependencies` on the initial run, as it forces re-download of all metadata and is significantly slower.
+
 ### 2. Update dependencies stepwise
 
 **CRITICAL: Update dependencies ONE AT A TIME, allowing the maintainer to review and commit each update independently.**
