@@ -62,8 +62,9 @@ When multiple dependency updates are available:
    - Keep version catalog edits consistent with existing style
    - Search the repository for usages of its alias to ensure examples still compile
    - Run validation (step 4) - BOTH `build --rerun-tasks` AND `buildHealth`
-   - Report results and **PAUSE** for maintainer review and commit
-   - **WAIT for explicit confirmation** before proceeding to the next dependency
+   - Report results to the maintainer
+
+   > **MANDATORY STOP**: After reporting results, you MUST stop and wait for the maintainer to explicitly confirm before proceeding to the next dependency. Do not proceed autonomously even if the user previously said "let's do it" or gave general approval. Each dependency requires its own confirmation.
 
 4. **Watch for compatibility issues:**
    - Compiler API changes (especially with Kotlin compiler plugins)
