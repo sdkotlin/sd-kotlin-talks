@@ -21,7 +21,7 @@ mockk = "1.14.9"
 mokkery = "3.3.0"
 org-json = "20251224"
 slf4j = "2.0.17"
-versionsCheck-gradlePlugin = "0.53.0"
+versionsCheck-gradlePlugin = "0.54.0"
 
 [libraries]
 
