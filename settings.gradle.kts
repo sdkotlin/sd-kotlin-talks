@@ -7,6 +7,14 @@ pluginManagement {
 	includeBuild("build-logic")
 }
 
+buildscript {
+	// DAGP can't read Kotlin 2.4.0 metadata until it bumps kotlin-metadata-jvm:
+	// https://github.com/autonomousapps/dependency-analysis-gradle-plugin/issues/1661
+	dependencies {
+		classpath("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.21")
+	}
+}
+
 plugins {
 	id("com.gradle.develocity") version "3.18"
 	id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
