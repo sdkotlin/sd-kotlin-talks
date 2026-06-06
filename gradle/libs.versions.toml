@@ -21,7 +21,7 @@ mockito-kotlin = "6.3.0"
 mockk = "1.14.11"
 mokkery = "3.3.0"
 org-json = "20251224"
-slf4j = "2.0.17"
+slf4j = "2.0.18"
 versionsCheck-gradlePlugin = "0.54.0"
 
 [libraries]
