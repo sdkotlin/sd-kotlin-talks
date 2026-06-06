@@ -1,6 +1,9 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.BIN
+import org.gradle.buildconfiguration.tasks.UpdateDaemonJvm
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+import org.gradle.jvm.toolchain.JvmVendorSpec
 
 plugins {
 	id("base")
@@ -62,6 +65,17 @@ tasks {
 	named<Wrapper>("wrapper").configure {
 		gradleVersion = "9.5.1"
 		distributionType = BIN
+	}
+
+	named<UpdateDaemonJvm>("updateDaemonJvm").configure {
+		// Resolving the per-platform toolchain download URLs is not compatible
+		// with the configuration cache. This task only runs by hand during a
+		// Java upgrade, so opt it out rather than caching it.
+		notCompatibleWithConfigurationCache(
+			"updateDaemonJvm resolves toolchain download URLs at execution time."
+		)
+		languageVersion = JavaLanguageVersion.of(libs.versions.java.get().toInt())
+		vendor = JvmVendorSpec.ADOPTIUM
 	}
 }
 

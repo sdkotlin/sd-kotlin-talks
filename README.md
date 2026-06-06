@@ -16,7 +16,11 @@ which can be invoked from the project root once
 the [Gradle prerequisites](https://docs.gradle.org/current/userguide/installation.html#sec:prerequisites)
 are met.
 
-The project currently requires Gradle to be invoked with a Java Development
-Kit (JDK) version 21 or higher.
+The project uses [Gradle JVM Toolchains](https://docs.gradle.org/current/userguide/toolchains.html) to manage the build JDK, so you can
+initiate a build with any JVM recent enough to start Gradle (see the
+[Gradle prerequisites](https://docs.gradle.org/current/userguide/installation.html#sec:prerequisites)).
 
 The primary build task is `build`.
+
+Maintainer notes, including how to move to a new major Java version, are in
+[DEVELOPING.md](DEVELOPING.md).

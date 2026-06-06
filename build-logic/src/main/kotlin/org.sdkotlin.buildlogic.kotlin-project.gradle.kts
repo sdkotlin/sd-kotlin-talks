@@ -12,16 +12,11 @@ plugins {
 	id("org.sdkotlin.buildlogic.detekt-project")
 }
 
-val javaTargetVersion: String = JavaVersion.VERSION_21.toString()
+val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+val javaTargetVersion: String = libs.findVersion("java")
+	.orElseThrow { GradleException("Define the 'java' version in libs.versions.toml.") }
+	.requiredVersion
 
-// Pin Kotlin/Java compilation and test execution to a JDK toolchain matching
-// the target version, independent of the JDK used to launch Gradle. Combined
-// with the foojay resolver in the root settings.gradle.kts, the toolchain is
-// auto-provisioned when absent, so no manual JDK setup is needed when cloning
-// the project anew. This also keeps the `--enable-preview` usage below robust,
-// since preview features require the compiling/running JDK to exactly match the
-// release version. Setting the toolchain via the `kotlin` extension also
-// configures the Java toolchain.
 kotlin {
 	jvmToolchain(javaTargetVersion.toInt())
 }
