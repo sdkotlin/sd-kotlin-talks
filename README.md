@@ -4,8 +4,8 @@
 # San Diego Kotlin User Group Talks
 
 Code examples from
-the [San Diego Kotlin User Group](https://www.meetup.com/sd-kotlin/) meetings on
-the  [Kotlin](http://kotlinlang.org/) programming language.
+the [San Diego Kotlin User Group](https://heylo.group/sdkotlin) meetings on
+the [Kotlin](https://kotlinlang.org/) programming language.
 
 ## Building
 
