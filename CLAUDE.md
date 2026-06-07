@@ -1,4 +1,4 @@
-# CLAUDE.md
+# SD Kotlin Talks - Agents Guide
 
 ## Repository purpose
 This repository is primarily a tech demonstrator and evaluator for Kotlin, Gradle, and related tooling.
