@@ -43,21 +43,15 @@ tasks {
 	withType<JavaCompile>().configureEach {
 		with(options) {
 			release = javaTargetVersion.toInt()
-			compilerArgs.add("--enable-preview")
 			isFork = true
 		}
 	}
 
 	withType<Test>().configureEach {
 		jvmArgs(
-			"--enable-preview",
 			// For Mockito:
 			// https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 			"-XX:+EnableDynamicAgentLoading",
 		)
-	}
-
-	withType<JavaExec>().configureEach {
-		jvmArgs("--enable-preview")
 	}
 }

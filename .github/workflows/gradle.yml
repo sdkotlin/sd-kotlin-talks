@@ -21,10 +21,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: 'true'
-      - name: Set up JDK 21
+      - name: Set up JDK 25
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'temurin'
 
       # Configure Gradle for optimal use in GiHub Actions, including caching of downloaded dependencies.
