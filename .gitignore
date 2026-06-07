@@ -31,3 +31,6 @@ profile-out*/
 
 ### KotlinDL
 cache/
+
+### macOS
+.DS_Store
