@@ -1,4 +1,4 @@
-package org.sdkoltin.sort
+package org.sdkotlin.sort
 
 /**
  * In-place swaps the elements at the given indices.

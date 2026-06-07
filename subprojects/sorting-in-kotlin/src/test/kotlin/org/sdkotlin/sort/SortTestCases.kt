@@ -1,4 +1,4 @@
-package org.sdkoltin.sort
+package org.sdkotlin.sort
 
 internal object SortTestCases {
 

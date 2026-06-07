@@ -1,4 +1,4 @@
-package org.sdkoltin.sort
+package org.sdkotlin.sort
 
 /**
  * Sorts the list in-place via a stable, iterative implementation of the Bubble

@@ -1,4 +1,4 @@
-package org.sdkoltin.sort
+package org.sdkotlin.sort
 
 import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import org.assertj.core.api.Assertions.assertThatIllegalStateException

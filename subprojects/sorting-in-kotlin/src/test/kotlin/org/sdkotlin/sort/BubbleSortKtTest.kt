@@ -1,9 +1,9 @@
-package org.sdkoltin.sort
+package org.sdkotlin.sort
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
-import org.sdkoltin.sort.SortTestCases.IN_PLACE_SORT_TEST_CASES
+import org.sdkotlin.sort.SortTestCases.IN_PLACE_SORT_TEST_CASES
 
 internal class BubbleSortKtTest {
 
