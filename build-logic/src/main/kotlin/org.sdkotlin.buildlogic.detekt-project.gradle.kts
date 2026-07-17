@@ -17,10 +17,10 @@ tasks {
 			it is TaskProvider<*> && it.name == "detekt"
 		})
 
-		val detektMain by existing
+		val detektMain = tasks.named("detektMain")
 		dependsOn(detektMain)
 
-		val detektTest by existing
+		val detektTest = tasks.named("detektTest")
 		dependsOn(detektTest)
 	}
 }

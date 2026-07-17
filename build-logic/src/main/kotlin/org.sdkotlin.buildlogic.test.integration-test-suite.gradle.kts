@@ -18,7 +18,7 @@ val versionCatalog = versionCatalogs.named("libs")
 testing {
 	suites {
 
-		val test by getting(JvmTestSuite::class)
+		val test = getByName<JvmTestSuite>("test")
 
 		register<JvmTestSuite>(testSuiteName) {
 
@@ -100,7 +100,7 @@ kotlin {
 tasks {
 
 	named<Task>("check").configure {
-		val integrationTest by existing
+		val integrationTest = tasks.named(testSuiteName)
 		dependsOn(integrationTest)
 	}
 }
