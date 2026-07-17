@@ -65,6 +65,8 @@ tasks {
 	named<Wrapper>("wrapper").configure {
 		gradleVersion = "9.6.1"
 		distributionType = BIN
+		retries = 3
+		retryBackOffMs = 500
 	}
 
 	named<UpdateDaemonJvm>("updateDaemonJvm").configure {
