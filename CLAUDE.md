@@ -22,8 +22,11 @@ Some code intentionally demonstrates alternative approaches or anti-patterns for
 - Favor explicit, readable build logic over clever or compressed DSL.
 
 ## Git workflow
-Agents should not run `git commit`, `git push`, or create branches unless explicitly instructed.
-Prepare clean, reviewable working tree changes and stop after validation so the maintainer can review and commit manually.
+Commit validated work as atomic, individually-revertable commits—one logical change per commit. Match the commit-message convention in recent `git log`.
+
+This is a public repository. Do not run `git push`; leave commits for the maintainer to review and push.
+
+Do not create branches unless explicitly instructed.
 
 ## Warnings and inspections
 Some source files intentionally contain compilation warnings or IDE inspection warnings to demonstrate incorrect patterns or deprecated APIs.
@@ -45,13 +48,7 @@ To check for dependency updates:
 
 `./gradlew dependencyUpdates`
 
-When updating dependencies:
-- Prefer updating versions in `libs.versions.toml` when applicable.
-- Upgrade one dependency at a time whenever practical.
-- Structure changes so each dependency upgrade could be committed independently, but do **not** create commits. Leave changes for the repository maintainer to review and commit.
-- Keep version catalog edits consistent with existing style.
-- Watch for compatibility issues across Gradle, Kotlin, plugins, and test libraries.
-- Call out any deprecations, warnings, behavioral changes, or required source changes introduced by the upgrade.
+Upgrade one dependency per commit.
 
 When dependency upgrades introduce improved APIs, patterns, or idioms:
 - Prefer updating examples to demonstrate the modern approach.
@@ -106,7 +103,6 @@ When making changes:
 - explain what changed and why
 - report what validation was run
 - separate follow-up ideas from completed work
-- do not create Git commits; stop after changes are validated
 - avoid bundling speculative cleanup into the same change
 
 For dependency upgrades, summarize both the version change and any example modernizations performed because of it.
