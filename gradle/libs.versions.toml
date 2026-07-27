@@ -22,7 +22,6 @@ mockk = "1.14.11"
 mokkery = "3.3.0"
 org-json = "20260522"
 slf4j = "2.0.18"
-versionsCheck-gradlePlugin = "0.54.0"
 
 [libraries]
 
@@ -260,7 +259,3 @@ version.ref = "kotlin"
 [plugins.mokkery-gradlePlugin]
 id = "dev.mokkery"
 version.ref = "mokkery"
-
-[plugins.versionsCheck-gradlePlugin]
-id = "com.github.ben-manes.versions"
-version.ref = "versionsCheck-gradlePlugin"

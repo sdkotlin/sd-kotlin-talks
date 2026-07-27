@@ -43,7 +43,7 @@ A common task in this repository is checking, upgrading, and validating dependen
 
 To check for dependency updates:
 
-`./gradlew dependencyUpdates --no-parallel`
+`./gradlew dependencyUpdates`
 
 When updating dependencies:
 - Prefer updating versions in `libs.versions.toml` when applicable.
