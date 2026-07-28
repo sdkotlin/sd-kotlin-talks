@@ -37,4 +37,27 @@ fun main() {
 		""".trimMargin("> ")
 
 	println(template + rawString + prefixedRawString)
+
+	// Raw strings have no escape sequences, so you used to get a literal
+	// dollar sign by interpolating one. Java has no such problem: text blocks
+	// don't interpolate, and the string templates preview was withdrawn.
+
+	val oldDollarEscape = """
+		BUDGET=${'$'}500
+		""".trimIndent()
+
+	println(oldDollarEscape)
+
+	// As of Kotlin 2.2, you can prefix the literal with dollar signs to set
+	// how many in a row start interpolation. With two, a lone dollar sign is
+	// just text.
+
+	val budget = 500
+
+	val shellSnippet = $$"""
+		BUDGET=$${budget}
+		echo "Spent $SPENT of $BUDGET"
+		""".trimIndent()
+
+	println(shellSnippet)
 }
