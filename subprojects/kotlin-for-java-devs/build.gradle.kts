@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	id("org.sdkotlin.buildlogic.global-exec")
 	id("org.sdkotlin.buildlogic.kotlin-project")
@@ -17,4 +19,16 @@ dependencies {
 	testImplementation(platform("org.sdkotlin.platforms:test-platform"))
 
 	testImplementation(libs.equalsverifier)
+}
+
+tasks {
+	withType<KotlinCompile>().configureEach {
+		compilerOptions {
+			freeCompilerArgs.addAll(
+				"-Xcollection-literals",
+				"-Xcontext-sensitive-resolution",
+				"-Xreturn-value-checker=full",
+			)
+		}
+	}
 }
