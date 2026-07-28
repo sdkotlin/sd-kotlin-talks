@@ -60,6 +60,39 @@ fun `while driving`(light: TrafficLight) {
 	GO.lightTime = 40
 }
 
+// Importing is not the only way to drop the type name. Where the compiler
+// already knows the expected type, enum constants can be written unqualified.
+// Java's switch has allowed unqualified case labels on enums since 1.5.
+
+// The feature is called context-sensitive resolution. It is experimental as of
+// Kotlin 2.4, behind the `-Xcontext-sensitive-resolution` compiler flag,
+// enabled for this module.
+
+enum class Weekend {
+	SATURDAY, SUNDAY
+}
+
+fun `on the weekend`(day: Weekend) {
+
+	// The subject of a `when` supplies the expected type for its branches.
+
+	val plan = when (day) {
+		SATURDAY -> "Yard work."
+		SUNDAY -> "Rest."
+	}
+
+	println("plan: $plan")
+
+	// So does the declared type of a variable, both where it is initialized
+	// and where it is later assigned.
+
+	var lastDay: Weekend = SATURDAY
+
+	lastDay = SUNDAY
+
+	println("lastDay: $lastDay")
+}
+
 // Enum classes can declare abstract methods and properties to be implemented
 // by anonymous classes for each instance. Use a semicolon to separate the enum
 // constants from the rest of the class.
@@ -113,4 +146,5 @@ enum class ThreeMusketeer : Inseparable, Dandy {
 fun main() {
 	`with states`()
 	`while driving`(GO)
+	`on the weekend`(Weekend.SATURDAY)
 }
