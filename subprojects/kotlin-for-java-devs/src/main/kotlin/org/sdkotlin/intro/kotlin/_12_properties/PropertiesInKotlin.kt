@@ -44,6 +44,37 @@ var height = 1
 val area: Int
 	get() = width * height
 
+// Mutable state is often kept private and published as read-only, which has
+// meant declaring it twice.
+
+class ManualCart {
+	private val _items = mutableListOf<Int>()
+
+	val items: List<Int>
+		get() = _items
+
+	fun add(item: Int) {
+		_items += item
+	}
+}
+
+// In Java that's a private field plus a getter returning
+// Collections.unmodifiableList, which enforces read-only at runtime. Kotlin's
+// List is only a compile-time restriction: the getter returns the same list,
+// so a cast back to MutableList succeeds.
+
+// An explicit backing field, stable as of Kotlin 2.4, collapses the pair into
+// one declaration. Inside the class 'items' is the field's MutableList; to
+// callers it's the property's List.
+
+class Cart {
+	val items: List<Int> field = mutableListOf()
+
+	fun add(item: Int) {
+		items += item
+	}
+}
+
 fun main() {
 	println("readOnly is $readOnly")
 
@@ -57,4 +88,8 @@ fun main() {
 	width++
 	height++
 	println("New area: $area")
+
+	val cart = Cart()
+	cart.add(42)
+	println("Cart items: ${cart.items}")
 }
