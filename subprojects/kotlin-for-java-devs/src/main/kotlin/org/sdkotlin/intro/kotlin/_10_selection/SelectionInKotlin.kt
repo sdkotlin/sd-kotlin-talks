@@ -52,6 +52,32 @@ fun main() {
 
 	println("The myth is $mythRating")
 
+	// As of Kotlin 2.2, a branch of a `when` with a subject can carry an
+	// `if` guard.
+
+	val anything: Any = when {
+		randomBoolean() -> "Kotlin"
+		randomBoolean() -> "Kt"
+		else -> randomBinaryInt
+	}
+
+	when (anything) {
+
+		// The branch tests the subject's type and a condition on the
+		// smart-cast value. That previously took a nested `if` or a
+		// subjectless `when`. Comma-separated conditions can't take a
+		// guard; use `||` inside the guard instead.
+		is String if anything.length > 3 -> println("a long String")
+
+		// When the guard fails, matching continues with later branches.
+		is String -> println("a short String")
+
+		else -> println("not a String")
+	}
+
+	// Java 21's pattern matching for `switch` has the same idea with
+	// `case String s when s.length() > 3 ->`.
+
 	// There is a feature request to support sealed `when`s in the case where
 	// it's only used for side effects:
 	// https://youtrack.jetbrains.com/issue/KT-12380
