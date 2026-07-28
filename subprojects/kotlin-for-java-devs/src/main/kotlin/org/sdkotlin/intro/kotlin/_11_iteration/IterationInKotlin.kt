@@ -62,6 +62,26 @@ fun main() {
 		println("Letter $index of the alphabet is $character")
 	}
 
+	// As of Kotlin 2.2, 'break' and 'continue' work from inside a lambda
+	// passed to an inline function such as 'forEach'. A label targets a
+	// specific enclosing loop.
+
+	grid@ for (row in 1..3) {
+		(1..3).forEach { column ->
+			// Abandons the rest of the row, not just this element.
+			if (column > row) continue@grid
+			// Leaves the outer loop entirely.
+			if (row * column > 4) break@grid
+			println("Cell $row,$column")
+		}
+	}
+
+	// Inlining puts the lambda body inside the loop, so there is a loop to
+	// jump to. A crossinline or non-inline lambda has no such loop.
+
+	// Java has no equivalent: a lambda cannot break or continue an enclosing
+	// loop. The workaround is a plain nested loop or a boolean flag.
+
 	// Kotlin also has while and do-while loops.
 
 	var keepGoing = true
