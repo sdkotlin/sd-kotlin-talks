@@ -16,6 +16,23 @@ fun main() {
 
 	val setOfInts = setOf(1, 2, 3)
 
+	// Kotlin 2.4 adds collection literals in square brackets, experimental
+	// behind the `-Xcollection-literals` compiler flag, enabled for this
+	// module. The expected type drives which collection is built.
+
+	val literalListOfInts: List<Int> = [1, 2, 3]
+
+	val literalSetOfInts: Set<Int> = [1, 2]
+
+	val literalMutableListOfStrings: MutableList<String> = ["a", "b"]
+
+	// With no expected type the literal falls back to `List`.
+
+	val inferredListOfInts = [1, 2, 3]
+
+	// Java has array initializers, `int[] a = {1, 2, 3}`, but nothing like
+	// them for `List` or `Set`. There it's `List.of(1, 2, 3)`.
+
 	// The map factory function takes `Pair`s, which can be constructed with
 	// the handy infix function `to`.
 
