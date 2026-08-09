@@ -56,7 +56,9 @@ dependencyAnalysis {
 tasks {
 	named<DependencyUpdatesTask>("dependencyUpdates").configure {
 		checkConstraints = true
-		filterConfigurations = Spec { !isPluginInternal(it.name) }
+		filterConfigurations = Spec { !isKgpInternal(it.name) }
+		filterDeclaredConfigurations =
+			Spec { it != "dependencyAnalysisKotlinMetadata" }
 		rejectVersionIf {
 			(candidate.version.isNonStable() && !currentVersion.isNonStable()) ||
 				!satisfiesDeclaredBound
@@ -84,9 +86,8 @@ tasks {
 	}
 }
 
-fun isPluginInternal(configurationName: String): Boolean {
+fun isKgpInternal(configurationName: String): Boolean {
 	val pluginInternalConfigurations = setOf(
-		"dependencyAnalysisKotlinMetadataClasspath",
 		"kotlinAbiValidationCompatClasspath",
 		"kotlinBuildToolsApiClasspath",
 		"kotlinCompilerClasspath",
