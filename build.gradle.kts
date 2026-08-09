@@ -53,19 +53,6 @@ dependencyAnalysis {
 	useTypesafeProjectAccessors(true)
 }
 
-fun isPluginInternal(configurationName: String): Boolean {
-	val pluginInternalConfigurations = setOf(
-		"dependencyAnalysisKotlinMetadataClasspath",
-		"kotlinAbiValidationCompatClasspath",
-		"kotlinBuildToolsApiClasspath",
-		"kotlinCompilerClasspath",
-		"kotlinKlibCommonizerClasspath",
-	)
-	return configurationName in pluginInternalConfigurations ||
-		(configurationName.startsWith("kotlinCompilerPluginClasspath") &&
-			configurationName != "kotlinCompilerPluginClasspath")
-}
-
 tasks {
 	named<DependencyUpdatesTask>("dependencyUpdates").configure {
 		checkConstraints = true
@@ -91,9 +78,23 @@ tasks {
 		notCompatibleWithConfigurationCache(
 			"updateDaemonJvm resolves toolchain download URLs at execution time."
 		)
-		languageVersion = JavaLanguageVersion.of(libs.versions.java.get().toInt())
+		languageVersion =
+			JavaLanguageVersion.of(libs.versions.java.get().toInt())
 		vendor = JvmVendorSpec.ADOPTIUM
 	}
+}
+
+fun isPluginInternal(configurationName: String): Boolean {
+	val pluginInternalConfigurations = setOf(
+		"dependencyAnalysisKotlinMetadataClasspath",
+		"kotlinAbiValidationCompatClasspath",
+		"kotlinBuildToolsApiClasspath",
+		"kotlinCompilerClasspath",
+		"kotlinKlibCommonizerClasspath",
+	)
+	return configurationName in pluginInternalConfigurations ||
+		(configurationName.startsWith("kotlinCompilerPluginClasspath") &&
+			configurationName != "kotlinCompilerPluginClasspath")
 }
 
 fun String.isNonStable(): Boolean {
