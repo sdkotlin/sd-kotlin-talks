@@ -55,9 +55,18 @@ dependencyAnalysis {
 tasks {
 	named<DependencyUpdatesTask>("dependencyUpdates").configure {
 		checkConstraints = true
-		filterConfigurations = Spec { !isKgpInternal(it.name) }
-		filterDeclaredConfigurations =
-			Spec { it != "dependencyAnalysisKotlinMetadata" }
+		filterDeclaredConfigurations = Spec { name ->
+			val isKgpInternal = name in setOf(
+				"kotlinAbiValidationCompatClasspath",
+				"kotlinBouncyCastleConfiguration",
+				"kotlinBuildToolsApiClasspath",
+				"kotlinCompilerClasspath",
+				"kotlinKlibCommonizerClasspath",
+			) || (name.startsWith("kotlinCompilerPluginClasspath") &&
+				name != "kotlinCompilerPluginClasspath")
+
+			name != "dependencyAnalysisKotlinMetadata" && !isKgpInternal
+		}
 		rejectPreReleases = true
 	}
 
@@ -79,16 +88,4 @@ tasks {
 			JavaLanguageVersion.of(libs.versions.java.get().toInt())
 		vendor = JvmVendorSpec.ADOPTIUM
 	}
-}
-
-fun isKgpInternal(configurationName: String): Boolean {
-	val pluginInternalConfigurations = setOf(
-		"kotlinAbiValidationCompatClasspath",
-		"kotlinBuildToolsApiClasspath",
-		"kotlinCompilerClasspath",
-		"kotlinKlibCommonizerClasspath",
-	)
-	return configurationName in pluginInternalConfigurations ||
-		(configurationName.startsWith("kotlinCompilerPluginClasspath") &&
-			configurationName != "kotlinCompilerPluginClasspath")
 }
