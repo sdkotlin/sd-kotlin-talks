@@ -1,8 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.BIN
-import org.gradle.buildconfiguration.tasks.UpdateDaemonJvm
-import org.gradle.jvm.toolchain.JavaLanguageVersion
-import org.gradle.jvm.toolchain.JvmVendorSpec
 
 plugins {
 	id("base")
