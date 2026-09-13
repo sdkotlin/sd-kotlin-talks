@@ -35,6 +35,11 @@ rootProject.name = "sd-kotlin-talks"
 
 includeBuild("platforms")
 
+// build-logic is also included under `pluginManagement` above, which
+// substitutes plugins only. A `dependencyUpdatesAggregation` entry resolves
+// through dependency substitution, so a plain include is needed to reach it.
+includeBuild("build-logic")
+
 gradle.beforeProject {
 	// Set group and version properties for all projects
 	group = "org.sdkotlin"

@@ -5,6 +5,12 @@ pluginManagement {
 	}
 }
 
+plugins {
+	// Produces the partial report that the root build's `dependencyUpdates`
+	// task merges.
+	id("io.github.ben-manes.versions.settings") version "0.62.0"
+}
+
 dependencyResolutionManagement {
 	@Suppress("UnstableApiUsage")
 	repositories {

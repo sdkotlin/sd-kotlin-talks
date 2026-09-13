@@ -1,3 +1,5 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
 	// Not using `id("kotlin-dsl")` per:
 	// https://github.com/gradle/gradle/issues/23884
@@ -17,4 +19,12 @@ dependencies {
 	implementation(libs.kotlin.gradlePluginDependency)
 	implementation(libs.ksp.gradlePluginDependency)
 	implementation(libs.mokkery.gradlePluginDependency)
+}
+
+tasks {
+	// `checkConstraints` is read in the build that resolves, so it is declared
+	// here as well as in the root build.
+	named<DependencyUpdatesTask>("dependencyUpdates").configure {
+		checkConstraints = true
+	}
 }

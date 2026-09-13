@@ -22,6 +22,11 @@ plugins {
 	alias(libs.plugins.mokkery.gradlePlugin) apply false
 }
 
+dependencies {
+	dependencyUpdatesAggregation("org.sdkotlin.buildlogic:build-logic:1.0.0-SNAPSHOT")
+	dependencyUpdatesAggregation("org.sdkotlin.platforms:platforms:1.0.0-SNAPSHOT")
+}
+
 dependencyAnalysis {
 	issues {
 		all {
