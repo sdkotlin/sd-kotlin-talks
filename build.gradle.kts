@@ -1,5 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.BIN
 import org.gradle.buildconfiguration.tasks.UpdateDaemonJvm
 import org.gradle.jvm.toolchain.JavaLanguageVersion
@@ -59,11 +58,7 @@ tasks {
 		filterConfigurations = Spec { !isKgpInternal(it.name) }
 		filterDeclaredConfigurations =
 			Spec { it != "dependencyAnalysisKotlinMetadata" }
-		rejectVersionIf {
-			(candidate.version.isNonStable() && !currentVersion.isNonStable()) ||
-				!satisfiesDeclaredBound
-		}
-		gradleReleaseChannel = CURRENT.id
+		rejectPreReleases = true
 	}
 
 	named<Wrapper>("wrapper").configure {
@@ -96,13 +91,4 @@ fun isKgpInternal(configurationName: String): Boolean {
 	return configurationName in pluginInternalConfigurations ||
 		(configurationName.startsWith("kotlinCompilerPluginClasspath") &&
 			configurationName != "kotlinCompilerPluginClasspath")
-}
-
-fun String.isNonStable(): Boolean {
-	val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
-		uppercase().contains(it)
-	}
-	val regex = "^[0-9,.v-]+(-r|-jre|-android)?$".toRegex()
-	val isStable = stableKeyword || regex.matches(this)
-	return isStable.not()
 }
