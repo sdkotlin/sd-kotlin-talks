@@ -21,7 +21,7 @@ mockito-kotlin = "6.3.0"
 mockk = "1.14.11"
 mokkery = "3.5.0"
 org-json = "20260814"
-slf4j = "2.0.18"
+slf4j = "2.0.19"
 
 [libraries]
 
