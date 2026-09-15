@@ -26,10 +26,10 @@ internal class BuilderGenSymbolProcessor(
 		)
 
 		val annotatedSymbols: List<KSAnnotated> =
-			symbols.filter { !it.validate() }.toList()
+			symbols.filter { !it.validate(enableNewFeatures = true) }.toList()
 
 		symbols
-			.filter { it is KSClassDeclaration && it.validate() }
+			.filter { it is KSClassDeclaration && it.validate(enableNewFeatures = true) }
 			.forEach {
 				it.accept(
 					visitor = BuilderGenVisitor(codeGenerator, logger),

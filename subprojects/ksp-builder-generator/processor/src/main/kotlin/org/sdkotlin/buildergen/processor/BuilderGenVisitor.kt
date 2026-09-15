@@ -26,7 +26,7 @@ import kotlin.properties.Delegates
 internal class BuilderGenVisitor(
 	private val codeGenerator: CodeGenerator,
 	private val logger: KSPLogger,
-) : KSVisitorVoid() {
+) : KSVisitorVoid(enableNewFeatures = true) {
 
 	override fun visitClassDeclaration(
 		classDeclaration: KSClassDeclaration,
