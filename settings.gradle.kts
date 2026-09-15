@@ -9,7 +9,7 @@ pluginManagement {
 
 plugins {
 	id("com.gradle.develocity") version "4.5.1"
-	id("io.github.ben-manes.versions.settings") version "0.63.0"
+	id("io.github.ben-manes.versions.settings") version "0.63.1"
 	id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
