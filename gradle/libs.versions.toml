@@ -19,7 +19,7 @@ ksp = "2.3.12"
 mockito = "5.24.0"
 mockito-kotlin = "6.4.0"
 mockk = "1.14.11"
-mokkery = "3.5.0"
+mokkery = "3.5.1"
 org-json = "20260814"
 slf4j = "2.0.20"
 
