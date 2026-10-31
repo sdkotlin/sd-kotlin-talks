@@ -21,6 +21,7 @@ plugins {
 
 dependencies {
 	dependencyUpdatesAggregation("org.sdkotlin.buildlogic:build-logic:1.0.0-SNAPSHOT")
+	dependencyUpdatesAggregation("org.sdkotlin.detekt:detekt-rules:1.0.1-SNAPSHOT")
 	dependencyUpdatesAggregation("org.sdkotlin.platforms:platforms:1.0.0-SNAPSHOT")
 }
 
