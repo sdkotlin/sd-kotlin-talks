@@ -34,6 +34,7 @@ develocity {
 rootProject.name = "sd-kotlin-talks"
 
 includeBuild("platforms")
+includeBuild("detekt-rules")
 
 // build-logic is also included under `pluginManagement` above, which
 // substitutes plugins only. A `dependencyUpdatesAggregation` entry resolves

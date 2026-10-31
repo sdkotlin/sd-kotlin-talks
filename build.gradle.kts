@@ -56,6 +56,11 @@ dependencyAnalysis {
 }
 
 tasks {
+	named("check").configure {
+		// Lifecycle tasks don't fan out to included builds.
+		dependsOn(gradle.includedBuild("detekt-rules").task(":check"))
+	}
+
 	named<DependencyUpdatesTask>("dependencyUpdates").configure {
 		checkConstraints = true
 		filterDeclaredConfigurations = Spec { name ->
