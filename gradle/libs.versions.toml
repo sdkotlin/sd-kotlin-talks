@@ -2,7 +2,7 @@
 
 arrow = "2.3.0.1"
 assertj = "3.27.7"
-dependencyAnalysis-gradlePlugin = "3.20.1"
+dependencyAnalysis-gradlePlugin = "3.20.2"
 detekt = "2.0.0-alpha.6"
 equalsverifier = "4.5.2"
 java = "25"
