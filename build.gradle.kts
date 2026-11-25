@@ -79,7 +79,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper").configure {
-		gradleVersion = "9.9.1"
+		gradleVersion = "9.9.2"
 		distributionType = BIN
 		retries = 3
 		retryBackOffMs = 500
